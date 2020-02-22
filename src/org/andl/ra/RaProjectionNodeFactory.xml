@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<knimeNode icon="./projection.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
+    <name>RaProjection</name>
+    
+    <shortDescription>
+        RA projection operator
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>This is the projection operator defined for the relational algebra. It is equivalent to removing some columns and then copying the table removing duplicates.</intro>
+        
+        
+        <option name="Column selection">Specify which columns should be included in the output table.</option>
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="In-Port name">Description of first input port...</inPort>
+        <outPort index="0" name="Out-Port name">Description of first output port...</outPort>
+    </ports>
+</knimeNode>

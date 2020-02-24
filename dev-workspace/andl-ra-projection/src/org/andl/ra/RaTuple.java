@@ -47,7 +47,6 @@
  */
 package org.andl.ra;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import org.knime.core.data.DataCell;
 import org.knime.core.data.DataRow;
@@ -57,7 +56,7 @@ import org.knime.core.data.DataRow;
  *
  * @author Andl
  */
-class RaTuple {
+public class RaTuple {
     private DataCell[] m_cells;
 
     /**

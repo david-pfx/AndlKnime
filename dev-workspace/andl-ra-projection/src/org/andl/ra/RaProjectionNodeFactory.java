@@ -12,42 +12,32 @@ import org.knime.core.node.NodeView;
 public class RaProjectionNodeFactory 
         extends NodeFactory<RaProjectionNodeModel> {
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public RaProjectionNodeModel createNodeModel() {
         return new RaProjectionNodeModel();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public int getNrNodeViews() {
         return 0;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public NodeView<RaProjectionNodeModel> createNodeView(final int viewIndex,
             final RaProjectionNodeModel nodeModel) {
 		return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public boolean hasDialog() {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public NodeDialogPane createNodeDialogPane() {
         return new RaProjectionNodeDialog();

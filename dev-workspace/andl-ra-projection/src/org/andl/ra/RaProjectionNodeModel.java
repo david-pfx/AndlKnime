@@ -43,7 +43,7 @@ import org.knime.core.node.util.filter.column.DataColumnSpecFilterConfiguration;
 
 
 /**
- * Implements the node model of the "RaProjection" node.
+ * Implements the model for the "RaProjection" node.
  *
  * Include the columns comprising a projection subset.
  * Copy across required columns of input rows.

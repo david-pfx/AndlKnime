@@ -1,4 +1,4 @@
-package org.andl.ra;
+package org.andl.ra.projection;
 
 import org.knime.core.node.NodeView;
 

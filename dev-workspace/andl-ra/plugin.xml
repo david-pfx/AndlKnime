@@ -18,8 +18,8 @@
          point="org.knime.workbench.repository.nodes">
       <node
             category-path="/Andl"
-            factory-class="org.andl.ra.set.RaSetNodeFactory"
-            id="org.andl.ra.set.RaSetNodeFactory"/>
+            factory-class="org.andl.ra.join.RaJoinNodeFactory"
+            id="org.andl.ra.join.RaJoinNodeFactory"/>
    </extension>
    
 </plugin>

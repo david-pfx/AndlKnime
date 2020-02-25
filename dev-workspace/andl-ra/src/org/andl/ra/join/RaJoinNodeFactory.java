@@ -1,21 +1,22 @@
-package org.andl.ra;
+package org.andl.ra.join;
 
 import org.knime.core.node.NodeDialogPane;
 import org.knime.core.node.NodeFactory;
 import org.knime.core.node.NodeView;
 
 /**
- * Implements the node factory of the "RaProjection" node.
+ * This is an example implementation of the node factory of the
+ * "RaJoin" node.
  *
  * @author andl
  */
-public class RaProjectionNodeFactory 
-        extends NodeFactory<RaProjectionNodeModel> {
+public class RaJoinNodeFactory 
+        extends NodeFactory<RaJoinNodeModel> {
 
     /** {@inheritDoc} */
     @Override
-    public RaProjectionNodeModel createNodeModel() {
-        return new RaProjectionNodeModel();
+    public RaJoinNodeModel createNodeModel() {
+        return new RaJoinNodeModel();
     }
 
     /** {@inheritDoc} */
@@ -26,8 +27,8 @@ public class RaProjectionNodeFactory
 
     /** {@inheritDoc} */
     @Override
-    public NodeView<RaProjectionNodeModel> createNodeView(final int viewIndex,
-            final RaProjectionNodeModel nodeModel) {
+    public NodeView<RaJoinNodeModel> createNodeView(final int viewIndex,
+            final RaJoinNodeModel nodeModel) {
 		return null;
     }
 
@@ -40,7 +41,7 @@ public class RaProjectionNodeFactory
     /** {@inheritDoc} */
     @Override
     public NodeDialogPane createNodeDialogPane() {
-        return new RaProjectionNodeDialog();
+        return new RaJoinNodeDialog();
     }
 
 }

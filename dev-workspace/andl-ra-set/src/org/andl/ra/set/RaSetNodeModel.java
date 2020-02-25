@@ -36,6 +36,8 @@ import org.knime.core.node.defaultnodesettings.SettingsModelString;
 /**
  * Implements the model for the "RaSet" node.
  *
+ * The following set operations are supported.
+ * 
  * Union merges two tables and removes duplicates
  * Minus outputs rows in the first table but not in the second
  * Intersect outputs rows found in both tables
@@ -51,7 +53,7 @@ public class RaSetNodeModel extends NodeModel {
 	static final String[] ALL_SET_OPERATIONS = {
 		"Union", "Minus", "Intersect", "Difference"
 	};
-	private final SettingsModelString m_SetOperationSettings = createSettingsModel();
+	private final SettingsModelString _setOperationSettings = createSettingsModel();
 
 	/**
 	 * Constructor for the node model.
@@ -72,7 +74,7 @@ public class RaSetNodeModel extends NodeModel {
 	protected BufferedDataTable[] execute(final BufferedDataTable[] inData, final ExecutionContext exec)
 	throws Exception {
 
-		String operation = m_SetOperationSettings.getStringValue();
+		String operation = _setOperationSettings.getStringValue();
 		LOGGER.debug("Begin setop=" + operation);
 
 		outputGenerator outgen = new outputGenerator(exec, inData[0].getDataTableSpec());
@@ -88,7 +90,7 @@ public class RaSetNodeModel extends NodeModel {
 	/** {@inheritDoc} */
 	@Override
 	protected DataTableSpec[] configure(final DataTableSpec[] inSpecs) throws InvalidSettingsException {
-		if (!(Arrays.asList(ALL_SET_OPERATIONS).contains(m_SetOperationSettings.getStringValue())))
+		if (!(Arrays.asList(ALL_SET_OPERATIONS).contains(_setOperationSettings.getStringValue())))
 			throw new InvalidSettingsException("The selection operation is not valid");
 		
 		return new DataTableSpec[] { createOutputSpec(inSpecs[0]) };
@@ -101,19 +103,19 @@ public class RaSetNodeModel extends NodeModel {
 	/** {@inheritDoc} */
 	@Override
 	protected void saveSettingsTo(final NodeSettingsWO settings) {
-		m_SetOperationSettings.saveSettingsTo(settings);
+		_setOperationSettings.saveSettingsTo(settings);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	protected void loadValidatedSettingsFrom(final NodeSettingsRO settings) throws InvalidSettingsException {
-		m_SetOperationSettings.loadSettingsFrom(settings);
+		_setOperationSettings.loadSettingsFrom(settings);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	protected void validateSettings(final NodeSettingsRO settings) throws InvalidSettingsException {
-		m_SetOperationSettings.validateSettings(settings);
+		_setOperationSettings.validateSettings(settings);
 	}
 
 	/** {@inheritDoc} */

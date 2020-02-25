@@ -2,7 +2,7 @@
  * $Revision$ $Date$ $Author$
  *
  */
-package org.andl.ra;
+package org.andl.ra.join;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
@@ -16,14 +16,14 @@ import org.osgi.framework.BundleContext;
  *
  * @author andl
  */
-public class RaProjectionNodePlugin extends Plugin {
+public class RaJoinNodePlugin extends Plugin {
     // The shared instance.
-    private static RaProjectionNodePlugin plugin;
+    private static RaJoinNodePlugin plugin;
 
     /**
      * The constructor.
      */
-    public RaProjectionNodePlugin() {
+    public RaJoinNodePlugin() {
         super();
         plugin = this;
     }
@@ -57,7 +57,7 @@ public class RaProjectionNodePlugin extends Plugin {
      * 
      * @return Singleton instance of the Plugin
      */
-    public static RaProjectionNodePlugin getDefault() {
+    public static RaJoinNodePlugin getDefault() {
         return plugin;
     }
 

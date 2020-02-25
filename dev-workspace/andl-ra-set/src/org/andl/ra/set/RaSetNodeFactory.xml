@@ -2,7 +2,7 @@
 <knimeNode icon="./set.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
     <name>RaSetOperation</name>
     
-    <shortDescription>Combine two tables using a selected set operation.</shortDescription>
+    <shortDescription>Relational Algebra dyadic set operations.</shortDescription>
     
     <fullDescription>
         <intro>Combine two tables using a selected set operation.
@@ -10,7 +10,7 @@
         </intro>
         <option name="Union">Merges two tables, removing duplicates.</option>
         <option name="Minus">Keeps rows in the first table that do not occur in the second.</option>
-        <option name="Intersect">Keeps only rows that occur in the both tables.</option>
+        <option name="Intersect">Keeps only rows that occur in both tables.</option>
         <option name="Difference">Keeps only rows that occur in one table or the other but not both.</option>
     </fullDescription>
     

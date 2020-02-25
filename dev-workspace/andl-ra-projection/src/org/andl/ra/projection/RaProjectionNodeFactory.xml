@@ -3,7 +3,7 @@
     <name>RaProjection</name>
     
     <shortDescription>
-        RA projection operator
+        Relational Algebra projection operation.
     </shortDescription>
     
     <fullDescription>

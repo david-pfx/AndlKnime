@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<knimeNode icon="./default.png" type="Source" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
+    <name>RaJoin</name>
+    
+    <shortDescription>Relational Algebra join operations.</shortDescription>
+    
+    <fullDescription>
+        <intro>Natural join based on matching columns by name. 
+        Matching columns must be the same type.
+        There is no outer join, all output values are copied from input rows.
+        </intro>
+        <option name="Join">Output rows contain all columns from both inputs.</option>
+        <option name="Semijoin">Output rows from the left table that match a row from the right table.</option>
+        <option name="Antijoin">Output rows from the left table that DO NOT match a row from the right table.</option>
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Left">The left (top) input table.</inPort>
+        <inPort index="1" name="Right">The right (bottom) input table.</inPort>
+        <outPort index="0" name="Output">The output table resulting from the join.</outPort>
+    </ports>    
+</knimeNode>

@@ -5,17 +5,17 @@
   <extension
      point="org.knime.workbench.repository.categories">
   <category
-        description="Category containing trial nodes"
+        description="Andl trial and relational algebra nodes"
         icon="/alpha.png"
-        level-id="tryNodes"
-        name="Try nodes"
+        level-id="Andl"
+        name="Andl nodes"
         path="/"/>
    </extension>
    
    <extension
          point="org.knime.workbench.repository.nodes">
       <node
-            category-path="/tryNodes"
+            category-path="/Andl"
             factory-class="org.andl.trying.TryNumberFormatterNodeFactory"
             id="org.andl.trying.TryNumberFormatterNodeFactory"/>
    </extension>

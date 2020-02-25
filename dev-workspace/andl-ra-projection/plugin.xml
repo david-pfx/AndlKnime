@@ -17,8 +17,8 @@
    <extension
          point="org.knime.workbench.repository.nodes">
       <node
-            category-path="/"
-            factory-class="org.andl.ra.RaProjectionNodeFactory"
+            category-path="/Andl"
+            factory-class="org.andl.ra.projection.RaProjectionNodeFactory"
             id="org.andl.ra.RaProjectionNodeFactory"/>
    </extension>
    

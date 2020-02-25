@@ -1,4 +1,4 @@
-package org.andl.ra;
+package org.andl.ra.projection;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.IllegalFormatException;
 import java.util.List;
-
+import org.andl.ra.set.RaTuple;
 import org.knime.base.node.preproc.filter.row.RowFilterIterator;
 import org.knime.core.data.DataCell;
 import org.knime.core.data.DataColumnSpec;

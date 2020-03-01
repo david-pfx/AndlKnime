@@ -3,7 +3,9 @@ Bundle-ManifestVersion: 2
 Bundle-Name: RaJoin-Node extension for KNIME Workbench
 Bundle-SymbolicName: org.andl.ra.join; singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: rajoin.jar
+Bundle-ClassPath: rajoin.jar,
+ raprojection.jar,
+ raset.jar
 Bundle-Activator: org.andl.ra.join.RaJoinNodePlugin
 Bundle-Vendor: andl
 Require-Bundle: org.eclipse.core.runtime,
@@ -11,6 +13,19 @@ Require-Bundle: org.eclipse.core.runtime,
  org.knime.workbench.repository,
  org.knime.base
 Bundle-ActivationPolicy: lazy
-Export-Package: org.andl.ra.join
-Import-Package: org.andl.ra.set
+Export-Package: org.andl.ra.join;
+  uses:="org.osgi.framework,
+   org.eclipse.core.runtime,
+   org.knime.core.node.defaultnodesettings,
+   org.knime.core.node",
+ org.andl.ra.projection;
+  uses:="org.osgi.framework,
+   org.eclipse.core.runtime,
+   org.knime.core.node.util.filter.column,
+   org.knime.core.node.util.filter,
+   org.knime.core.data.container,
+   org.knime.core.data,
+   org.knime.core.node.streamable,
+   org.knime.core.node",
+ org.andl.ra.set
 

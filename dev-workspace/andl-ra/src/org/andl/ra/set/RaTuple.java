@@ -23,10 +23,6 @@ public class RaTuple {
      */
     public RaTuple(final DataCell[] cells) {
     	_cells = cells;
-//        m_cells = new ArrayList<DataCell>();
-//        for (DataCell cell : cells) { 
-//        	m_cells.add(cell); 
-//        };
     }
 
     /**

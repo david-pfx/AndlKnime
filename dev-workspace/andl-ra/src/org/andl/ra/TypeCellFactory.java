@@ -65,10 +65,7 @@ import org.knime.core.data.def.StringCell;
 import org.knime.core.data.xml.XMLCell;
 import org.knime.core.data.xml.XMLCellFactory;
 import org.knime.core.node.NodeLogger;
-import org.osgi.framework.InvalidSyntaxException;
 import org.xml.sax.SAXException;
-
-import com.sun.corba.se.impl.io.TypeMismatchException;
 
 /**
  * A TypeCellFactory creates for a string and an optional additional parameter a new cell.

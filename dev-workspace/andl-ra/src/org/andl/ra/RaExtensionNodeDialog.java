@@ -24,7 +24,7 @@ public class RaExtensionNodeDialog extends DefaultNodeSettingsPane {
     	ArrayList<StringIconOption> options = new ArrayList<>();
         for (TypeCellFactory factory : TypeCellFactory.values()) {
         	DataType type = factory.getDataType();
-            options.add(new DefaultStringIconOption(type.getName(), type.getIcon()));
+            options.add(new DefaultStringIconOption(factory.name(), type.getIcon()));
         }
 		addDialogComponent(new DialogComponentString(
 				RaExtensionNodeModel.createSettingsColumnName(), "New column name"));

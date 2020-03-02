@@ -2,6 +2,7 @@ package org.andl.ra;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.IllegalFormatException;
 
 import org.knime.core.data.DataCell;
 import org.knime.core.data.DataColumnSpec;
@@ -97,24 +98,29 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
     /** {@inheritDoc} */
     @Override
     protected ColumnRearranger createColumnRearranger(final DataTableSpec in) throws InvalidSettingsException {
-        String colname = createSettingsColumnName().getStringValue();
-        String typename = createSettingsColumnTypeName().getStringValue();
-        String expression = createSettingsExpression().getStringValue();
+        String colname = _columnNameSettings.getStringValue();
+        String typename = _columnTypeNameSettings.getStringValue();
+        String expression = _expressionSettings.getStringValue();
         TypeCellFactory tcf = TypeCellFactory.valueOf(typename); 
 
-        DataColumnSpec outcolspec = new DataColumnSpecCreator(colname, tcf.getDataType()).createSpec();
-        final DataCell constantCell = tcf.createCell(expression, "");
-
-        ColumnRearranger rearranger = new ColumnRearranger(in);
-        CellFactory fac = new SingleCellFactory(outcolspec) {
-            @Override
-            public DataCell getCell(final DataRow row) {
-                return constantCell;
-            }
-        };
-
-        rearranger.append(fac);
-        return rearranger;
+		try {
+	        DataColumnSpec outcolspec = new DataColumnSpecCreator(colname, tcf.getDataType()).createSpec();
+	        final DataCell constantCell = tcf.createCell(expression, "yyyy-MM-dd");
+	
+	        ColumnRearranger rearranger = new ColumnRearranger(in);
+	        CellFactory fac = new SingleCellFactory(outcolspec) {
+	            @Override
+	            public DataCell getCell(final DataRow row) {
+	                return constantCell;
+	            }
+	        };
+	
+	        rearranger.append(fac);
+	        return rearranger;
+		} catch (Exception e) {
+			throw new InvalidSettingsException(
+				"Not a valid expression for the type: " + e.getMessage(), e);
+		}
     }
     
     /**

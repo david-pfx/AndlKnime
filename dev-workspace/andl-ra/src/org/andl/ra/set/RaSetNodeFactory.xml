@@ -5,7 +5,7 @@
     <shortDescription>Relational Algebra dyadic set operations.</shortDescription>
     
     <fullDescription>
-        <intro>Combine two tables using a selected set operation.
+        <intro>Combines two relations (tables) by performing a selected set operation on their tuples (rows).
         Duplicates if any are removed from the output.
         </intro>
         <option name="Union">Merges two tables, removing duplicates.</option>

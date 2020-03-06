@@ -2,28 +2,20 @@ package org.andl.ra.join;
 
 import java.io.File;
 import java.io.IOException;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.IllegalFormatException;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
 import org.andl.ra.set.RaTuple;
 import org.knime.core.data.DataCell;
 import org.knime.core.data.DataColumnSpec;
-import org.knime.core.data.DataColumnSpecCreator;
 import org.knime.core.data.DataRow;
 import org.knime.core.data.DataTableSpec;
 import org.knime.core.data.container.CloseableRowIterator;
 import org.knime.core.data.def.DefaultRow;
-import org.knime.core.data.def.DoubleCell;
-import org.knime.core.data.def.StringCell;
 import org.knime.core.node.BufferedDataContainer;
 import org.knime.core.node.BufferedDataTable;
 import org.knime.core.node.CanceledExecutionException;
@@ -109,10 +101,6 @@ public class RaJoinNodeModel extends NodeModel {
 			: null;
 
 		return new DataTableSpec[] { outSpec };
-	}
-
-	private DataTableSpec createOutputSpec(DataTableSpec inSpec) {
-		return inSpec;
 	}
 
 	/** {@inheritDoc} */

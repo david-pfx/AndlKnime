@@ -7,15 +7,15 @@
   	icon="/alpha.png" 
   	level-id="Andl" 
   	name="Andl nodes"
-  	after="DB" 
+  	after="/DB" 
   	path="/"/>
    </extension>
    
    <extension point="org.knime.workbench.repository.nodes">
-      <node category-path="/Andl" factory-class="org.andl.ra.join.RaJoinNodeFactory" id="org.andl.ra.join.RaJoinNodeFactory"/>
-      <node category-path="/Andl" factory-class="org.andl.ra.projection.RaProjectionNodeFactory" id="org.andl.ra.projection.RaProjectionNodeFactory"/>
-      <node category-path="/Andl" factory-class="org.andl.ra.set.RaSetNodeFactory" id="org.andl.ra.set.RaSetNodeFactory"/>
-   	  <node category-path="/Andl" factory-class="org.andl.ra.RaExtensionNodeFactory" id="org.andl.ra.RaExtensionNodeFactory"/>
+      <node category-path="/Andl" factory-class="org.andl.ra.join.RaJoinNodeFactory"/>
+      <node category-path="/Andl" factory-class="org.andl.ra.projection.RaProjectionNodeFactory"/>
+      <node category-path="/Andl" factory-class="org.andl.ra.set.RaSetNodeFactory"/>
+   	  <node category-path="/Andl" factory-class="org.andl.ra.extension.RaExtensionNodeFactory"/>
 </extension>
    
 </plugin>

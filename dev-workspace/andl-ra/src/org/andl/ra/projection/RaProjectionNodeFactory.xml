@@ -7,8 +7,8 @@
     </shortDescription>
     
     <fullDescription>
-        <intro>This is the projection operator defined for the relational algebra. 
-        It is equivalent to removing some columns and then copying the table removing duplicates.
+        <intro>Projects relation (table) onto a reduced set of attributes (columns).
+        Equivalent to removing some columns and then copying the table removing duplicates.
         </intro>      
         
         <option name="Column selection">Specify which columns should be included in the output table.</option>

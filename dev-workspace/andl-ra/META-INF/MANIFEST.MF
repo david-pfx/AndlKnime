@@ -1,19 +1,25 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: RaJoin-Node extension for KNIME Workbench
-Bundle-SymbolicName: org.andl.ra.join; singleton:=true
+Bundle-Name: Relational Algebra extensions for KNIME Workbench
+Bundle-SymbolicName: org.andl.ra;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: rajoin.jar,
  raprojection.jar,
- raset.jar
+ raset.jar,
+ raextension.jar,
+ d:/mydocs/dev/commons-jexl3-3.1.jar
 Bundle-Activator: org.andl.ra.join.RaJoinNodePlugin
 Bundle-Vendor: andl
 Require-Bundle: org.eclipse.core.runtime,
  org.knime.workbench.core,
  org.knime.workbench.repository,
- org.knime.base
+ org.knime.base,
+ org.knime.core,
+ org.apache.commons.logging;bundle-version="1.2.0"
 Bundle-ActivationPolicy: lazy
-Export-Package: org.andl.ra.join;
+Export-Package: org.andl.ra.extension;
+  uses:=org.apache.commons.jexl,
+ org.andl.ra.join;
   uses:="org.osgi.framework,
    org.eclipse.core.runtime,
    org.knime.core.node.defaultnodesettings,
@@ -28,4 +34,6 @@ Export-Package: org.andl.ra.join;
    org.knime.core.node.streamable,
    org.knime.core.node",
  org.andl.ra.set
+Import-Package: org.knime.core.data.def
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 

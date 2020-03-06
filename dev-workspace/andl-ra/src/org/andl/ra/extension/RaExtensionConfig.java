@@ -1,4 +1,4 @@
-package org.andl.ra;
+package org.andl.ra.extension;
 
 import org.knime.core.data.DataTableSpec;
 import org.knime.core.node.InvalidSettingsException;

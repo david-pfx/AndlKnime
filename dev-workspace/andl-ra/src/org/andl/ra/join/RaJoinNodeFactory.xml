@@ -2,10 +2,10 @@
 <knimeNode icon="./join.png" type="Source" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
     <name>RaJoin</name>
     
-    <shortDescription>Relational Algebra join operations.</shortDescription>
+    <shortDescription>Relational Algebra Join operations.</shortDescription>
     
     <fullDescription>
-        <intro>Natural join based on matching columns by name. 
+        <intro>Performs natural join of two relations (tables) based on matching attributes (columns) by name. 
         Matching columns must be the same type.
         There is no outer join, all output values are copied from input rows.
         </intro>

@@ -1,8 +1,7 @@
-package org.andl.ra;
+package org.andl.ra.extension;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.IllegalFormatException;
 
 import org.knime.core.data.DataCell;
 import org.knime.core.data.DataColumnSpec;
@@ -97,7 +96,7 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
     
     /** {@inheritDoc} */
     @Override
-    protected ColumnRearranger createColumnRearranger(final DataTableSpec in) throws InvalidSettingsException {
+    protected ColumnRearranger createColumnRearranger(final DataTableSpec inspec) throws InvalidSettingsException {
         String colname = _columnNameSettings.getStringValue();
         String typename = _columnTypeNameSettings.getStringValue();
         String expression = _expressionSettings.getStringValue();
@@ -105,13 +104,13 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
 
 		try {
 	        DataColumnSpec outcolspec = new DataColumnSpecCreator(colname, tcf.getDataType()).createSpec();
-	        final DataCell constantCell = tcf.createCell(expression, "yyyy-MM-dd");
+	        RaExtensionJexl jexl = new RaExtensionJexl(inspec, outcolspec, expression); 
 	
-	        ColumnRearranger rearranger = new ColumnRearranger(in);
+	        ColumnRearranger rearranger = new ColumnRearranger(inspec);
 	        CellFactory fac = new SingleCellFactory(outcolspec) {
 	            @Override
 	            public DataCell getCell(final DataRow row) {
-	                return constantCell;
+	                return jexl.evaluate(row);
 	            }
 	        };
 	

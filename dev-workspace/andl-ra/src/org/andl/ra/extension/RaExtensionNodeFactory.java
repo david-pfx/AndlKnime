@@ -1,4 +1,4 @@
-package org.andl.ra;
+package org.andl.ra.extension;
 
 import org.knime.core.node.NodeDialogPane;
 import org.knime.core.node.NodeFactory;

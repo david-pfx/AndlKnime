@@ -1,7 +1,7 @@
 /**
  * 
  */
-package andl.ra;
+package org.andl.ra;
 
 import java.util.ArrayList;
 import java.util.HashMap;

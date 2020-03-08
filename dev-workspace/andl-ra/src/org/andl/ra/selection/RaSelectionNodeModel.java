@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
 
+import org.andl.ra.RaEvaluator;
 import org.knime.base.node.preproc.filter.row.RowFilterIterator;
 import org.knime.core.data.DataRow;
 import org.knime.core.data.DataTable;
@@ -22,8 +23,6 @@ import org.knime.core.node.NodeModel;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 import org.knime.core.node.defaultnodesettings.SettingsModelString;
-
-import andl.ra.RaEvaluator;
 
 /**
  * <code>NodeModel</code> for the "RaSelection" node.

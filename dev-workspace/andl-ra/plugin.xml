@@ -2,20 +2,15 @@
 <?eclipse version="3.0"?><plugin>
 
   <extension point="org.knime.workbench.repository.categories">
-  <category 
-  	description="Andl trial and relational algebra nodes" 
-  	icon="/alpha.png" 
-  	level-id="Andl" 
-  	name="Andl nodes"
-  	after="/IO" 
-  	path="/"/>
+  <category after="/IO" description="Andl trial and relational algebra nodes" icon="/alpha.png" level-id="Andl" name="Andl nodes" path="/"/>
    </extension>
    
    <extension point="org.knime.workbench.repository.nodes">
-      <node category-path="/Andl" factory-class="org.andl.ra.join.RaJoinNodeFactory"/>
-      <node category-path="/Andl" factory-class="org.andl.ra.projection.RaProjectionNodeFactory"/>
-      <node category-path="/Andl" factory-class="org.andl.ra.set.RaSetNodeFactory"/>
-   	  <node category-path="/Andl" factory-class="org.andl.ra.extension.RaExtensionNodeFactory"/>
+   	  <node category-path="/Andl" factory-class="org.andl.ra.selectionRaSelectionNodeFactory" />
+      <node category-path="/Andl" factory-class="org.andl.ra.projection.RaProjectionNodeFactory" />
+      <node category-path="/Andl" factory-class="org.andl.ra.join.RaJoinNodeFactory" />
+      <node category-path="/Andl" factory-class="org.andl.ra.set.RaSetNodeFactory" />
+   	  <node category-path="/Andl" factory-class="org.andl.ra.extension.RaExtensionNodeFactory" />
 </extension>
    
 </plugin>

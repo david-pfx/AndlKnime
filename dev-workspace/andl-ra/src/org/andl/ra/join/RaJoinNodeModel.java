@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import org.andl.ra.set.RaTuple;
+import andl.ra.RaTuple;
 import org.knime.core.data.DataCell;
 import org.knime.core.data.DataColumnSpec;
 import org.knime.core.data.DataRow;

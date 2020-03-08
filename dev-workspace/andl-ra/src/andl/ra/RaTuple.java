@@ -4,7 +4,7 @@
  * @author Andl
  */
 
-package org.andl.ra.set;
+package andl.ra;
 
 import java.util.Arrays;
 import org.knime.core.data.DataCell;

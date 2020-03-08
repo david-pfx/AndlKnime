@@ -21,6 +21,8 @@ import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 import org.knime.core.node.defaultnodesettings.SettingsModelString;
 
+import andl.ra.RaTuple;
+
 /**
  * Implements the model for the "RaSet" node.
  *

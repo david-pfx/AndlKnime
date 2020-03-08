@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
 
-import org.andl.ra.set.RaTuple;
 import org.knime.base.node.preproc.filter.row.RowFilterIterator;
 import org.knime.core.data.DataRow;
 import org.knime.core.data.DataTableSpec;
@@ -27,6 +26,8 @@ import org.knime.core.node.streamable.PartitionInfo;
 import org.knime.core.node.streamable.StreamableOperator;
 import org.knime.core.node.util.filter.NameFilterConfiguration.FilterResult;
 import org.knime.core.node.util.filter.column.DataColumnSpecFilterConfiguration;
+
+import andl.ra.RaTuple;
 
 
 /**

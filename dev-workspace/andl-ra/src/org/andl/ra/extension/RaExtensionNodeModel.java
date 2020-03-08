@@ -23,6 +23,8 @@ import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 import org.knime.core.node.defaultnodesettings.SettingsModelString;
 import org.knime.core.node.streamable.simple.SimpleStreamableFunctionNodeModel;
+ 
+import andl.ra.RaEvaluator;
 
 /**
  * <code>NodeModel</code> for the "RaExtension" node.
@@ -73,7 +75,7 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
         DataTableSpec spec = inData[0].getDataTableSpec();
         ColumnRearranger rearranger = createColumnRearranger(spec);
         BufferedDataTable out = exec.createColumnRearrangeTable(inData[0], rearranger, exec);
-        return new BufferedDataTable[]{out};
+        return new BufferedDataTable[] { out };
     }
 
     /**
@@ -103,7 +105,7 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
         //_disable = true;
         ColumnRearranger rearranger = createColumnRearranger(inSpecs[0]);
         DataTableSpec out = rearranger.createSpec();
-        return new DataTableSpec[]{out};
+        return new DataTableSpec[] { out };
     }
     
     /** {@inheritDoc} */
@@ -116,13 +118,13 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
 
 		try {
 	        DataColumnSpec outcolspec = new DataColumnSpecCreator(colname, tcf.getDataType()).createSpec();
-	        RaExtensionJexl jexl = new RaExtensionJexl(inspec, outcolspec, expression); 
+	        RaEvaluator jexl = new RaEvaluator(inspec, outcolspec.getType(), expression); 
 	
 	        ColumnRearranger rearranger = new ColumnRearranger(inspec);
 	        CellFactory fac = new SingleCellFactory(outcolspec) {
 	            @Override
 	            public DataCell getCell(final DataRow row) {
-	            	return jexl.evaluate(row);
+	            	return jexl.evaluateDataCell(row);
 	            }
 	        };
 	
@@ -172,9 +174,7 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
     @Override
     protected void loadInternals(final File internDir,
             final ExecutionMonitor exec) throws IOException,
-            CanceledExecutionException {
-        // TODO: generated method stub
-    }
+            CanceledExecutionException { }
     
     /**
      * {@inheritDoc}
@@ -182,9 +182,7 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
     @Override
     protected void saveInternals(final File internDir,
             final ExecutionMonitor exec) throws IOException,
-            CanceledExecutionException {
-        // TODO: generated method stub
-    }
+            CanceledExecutionException { }
 
 
 }

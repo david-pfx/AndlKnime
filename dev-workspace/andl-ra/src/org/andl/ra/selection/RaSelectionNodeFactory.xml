@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<knimeNode icon="./default.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
+    <name>RaSelection</name>
+    
+    <shortDescription>Relational Algebra Select operation.</shortDescription>
+    
+    <fullDescription>
+        <intro>Select tuples (rows) of a relation (table) that satisfy some condition. 
+        The condition is defined by an arbitrary expression, which must be of type Boolean. 
+        See the Jexl documentation for details. 
+        All columns are available to use as variables in an expression, provided the column name is a Jexl simple identifier. 
+        </intro>
+        <option name="Expression">The expression to be evaluated,  written in JEXL expression language.</option>
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Input">The input table.</inPort>
+        <outPort index="0" name="Output">The output table.</outPort>
+    </ports>    </knimeNode>

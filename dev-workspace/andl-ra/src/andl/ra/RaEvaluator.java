@@ -1,4 +1,7 @@
-package org.andl.ra.extension;
+/**
+ * 
+ */
+package andl.ra;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +28,7 @@ import org.knime.core.data.def.IntCell;
 import org.knime.core.data.def.StringCell;
 import org.knime.core.node.InvalidSettingsException;
 
-class RaExtensionJexl {
+public class RaEvaluator {
 	private DataTableSpec _intablespec;
 	private DataType _outcoltype;
 	private JexlEngine _jexl = new JexlBuilder().cache(512).strict(true).silent(false).create();
@@ -34,10 +37,10 @@ class RaExtensionJexl {
 	private JexlExpression _expr;
 
 	// create Jexl wrapper from specs and settings
-	RaExtensionJexl(DataTableSpec intablespec, DataColumnSpec outcolspec, String expression) 
+	public RaEvaluator(DataTableSpec intablespec, DataType outcoltype, String expression) 
 	throws InvalidSettingsException {
 		_intablespec = intablespec;
-		_outcoltype = outcolspec.getType();
+		_outcoltype = outcoltype;
 	    HashMap<String,Integer> map = new HashMap<>();
 	    for (DataColumnSpec colspec : _intablespec) {
 	    	map.put(colspec.getName(), _colspecs.size());
@@ -53,13 +56,24 @@ class RaExtensionJexl {
 	}
 
 	// evaluate the expression on a row and return a cell value
-	DataCell evaluate(DataRow row) {
+	public DataCell evaluateDataCell(DataRow row) {
 		_context._currentrow = row;
 		try {
 			return getCell(_expr.evaluate(_context));
 		} catch (Exception e) {
 			// TODO: what???
 			return null;
+	    }
+	}
+	
+	// evaluate the expression on a row and return a boolean
+	public Boolean evaluateBoolean(DataRow row) {
+		_context._currentrow = row;
+		try {
+			return (Boolean)_expr.evaluate(_context);
+		} catch (Exception e) {
+			// TODO: what???
+			return false;
 	    }
 	}
 	

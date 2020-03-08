@@ -2,6 +2,8 @@ package org.andl.ra.extension;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.Map;
 
 import org.knime.core.data.DataCell;
 import org.knime.core.data.DataColumnSpec;
@@ -89,6 +91,16 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
     protected DataTableSpec[] configure(final DataTableSpec[] inSpecs)
     throws InvalidSettingsException {
     	
+    	// experimental debugging code
+//    	Map<String,String> env = System.getenv();
+//    	String cp = env.get("CLASSPATH");
+//        String classpathStr = System.getProperty("java.class.path");
+//        //String name = this.getClass().getSimpleName() + ".class";
+//        String name = this.getClass().getName().replace('.', '/') + ".class";
+//        ClassLoader loader = this.getClass().getClassLoader();
+//        URL loaderURL = loader.getResource(name);
+//        URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
+        //_disable = true;
         ColumnRearranger rearranger = createColumnRearranger(inSpecs[0]);
         DataTableSpec out = rearranger.createSpec();
         return new DataTableSpec[]{out};
@@ -110,7 +122,7 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
 	        CellFactory fac = new SingleCellFactory(outcolspec) {
 	            @Override
 	            public DataCell getCell(final DataRow row) {
-	                return jexl.evaluate(row);
+	            	return jexl.evaluate(row);
 	            }
 	        };
 	

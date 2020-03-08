@@ -7,7 +7,7 @@
   	icon="/alpha.png" 
   	level-id="Andl" 
   	name="Andl nodes"
-  	after="/DB" 
+  	after="/IO" 
   	path="/"/>
    </extension>
    

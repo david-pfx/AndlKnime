@@ -55,7 +55,12 @@ class RaExtensionJexl {
 	// evaluate the expression on a row and return a cell value
 	DataCell evaluate(DataRow row) {
 		_context._currentrow = row;
-	    return getCell(_expr.evaluate(_context));
+		try {
+			return getCell(_expr.evaluate(_context));
+		} catch (Exception e) {
+			// TODO: what???
+			return null;
+	    }
 	}
 	
 	// convert object value to cell value

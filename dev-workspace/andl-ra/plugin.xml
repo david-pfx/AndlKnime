@@ -9,7 +9,7 @@
    	  <node category-path="/Andl" factory-class="org.andl.ra.selectionRaSelectionNodeFactory" />
       <node category-path="/Andl" factory-class="org.andl.ra.projection.RaProjectionNodeFactory" />
       <node category-path="/Andl" factory-class="org.andl.ra.join.RaJoinNodeFactory" />
-      <node category-path="/Andl" factory-class="org.andl.ra.set.RaSetNodeFactory" />
+      <node category-path="/Andl" factory-class="org.andl.ra.union.RaUnionNodeFactory" />
    	  <node category-path="/Andl" factory-class="org.andl.ra.extension.RaExtensionNodeFactory" />
 </extension>
    

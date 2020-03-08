@@ -5,9 +5,13 @@
     <shortDescription>Relational Algebra Select operation.</shortDescription>
     
     <fullDescription>
-        <intro>Select tuples (rows) of a relation (table) that satisfy some condition. 
+        <intro>
+        This operation selects tuples (rows) of a relation (table) that satisfy some condition. 
+        The table is copied with the same or a reduced number of rows, possibly zero.
+        
         The condition is defined by an arbitrary expression, which must be of type Boolean. 
-        See the Jexl documentation for details. 
+        See the Jexl documentation for details.
+         
         All columns are available to use as variables in an expression, provided the column name is a Jexl simple identifier. 
         </intro>
         <option name="Expression">The expression to be evaluated,  written in JEXL expression language.</option>

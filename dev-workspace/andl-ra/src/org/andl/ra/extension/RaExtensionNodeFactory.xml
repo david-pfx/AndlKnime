@@ -6,8 +6,11 @@
     
     <fullDescription>
         <intro>Extends a relation (table) by adding a single attribute (column) of a specified type.
+        This operation goes beyond first order Relational Algebra to allow new values to be created.
+        
         The value of the column is defined by an arbitrary expression, which must be of the specified type. 
         See the Jexl documentation for details. 
+        
         All columns are available to use as variables in an expression, provided the column name is a Jexl simple identifier. 
         </intro>
         <option name="New column name">Specify the name of the column to be added..</option>

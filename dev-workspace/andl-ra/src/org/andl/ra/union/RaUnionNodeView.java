@@ -1,4 +1,4 @@
-package org.andl.ra.set;
+package org.andl.ra.union;
 
 import org.knime.core.node.NodeView;
 
@@ -12,14 +12,14 @@ import org.knime.core.node.NodeView;
  *
  * @author andl
  */
-public class RaSetNodeView extends NodeView<RaSetNodeModel> {
+public class RaUnionNodeView extends NodeView<RaUnionNodeModel> {
 
     /**
      * Creates a new view.
      * 
-     * @param nodeModel The model (class: {@link RaSetNodeModel})
+     * @param nodeModel The model (class: {@link RaUnionNodeModel})
      */
-    protected RaSetNodeView(final RaSetNodeModel nodeModel) {
+    protected RaUnionNodeView(final RaUnionNodeModel nodeModel) {
         super(nodeModel);
 
         // TODO instantiate the components of the view here.
@@ -34,8 +34,8 @@ public class RaSetNodeView extends NodeView<RaSetNodeModel> {
 
         // TODO retrieve the new model from your nodemodel and 
         // update the view.
-        RaSetNodeModel nodeModel = 
-            (RaSetNodeModel)getNodeModel();
+        RaUnionNodeModel nodeModel = 
+            (RaUnionNodeModel)getNodeModel();
         assert nodeModel != null;
         
         // be aware of a possibly not executed nodeModel! The data you retrieve

@@ -1,4 +1,4 @@
-package org.andl.ra.set;
+package org.andl.ra.union;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,9 +35,9 @@ import andl.ra.RaTuple;
  * 
  * @author andl
  */
-public class RaSetNodeModel extends NodeModel {
+public class RaUnionNodeModel extends NodeModel {
     
-	private static final NodeLogger LOGGER = NodeLogger.getLogger(RaSetNodeModel.class);
+	private static final NodeLogger LOGGER = NodeLogger.getLogger(RaUnionNodeModel.class);
 	private static final String KEY_SET_OPERATION = "set-operation";
 	private static final String DEFAULT_SET_OPERATION = "Union";
 	static final String[] ALL_SET_OPERATIONS = {
@@ -48,7 +48,7 @@ public class RaSetNodeModel extends NodeModel {
 	/**
 	 * Constructor for the node model.
 	 */
-	protected RaSetNodeModel() {
+	protected RaUnionNodeModel() {
 		super(2, 1);
 	}
 

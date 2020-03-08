@@ -3,9 +3,10 @@ Bundle-ManifestVersion: 2
 Bundle-Name: SPJRUN Relational Algebra extensions for KNIME Workbench
 Bundle-SymbolicName: org.andl.ra;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: rajoin.jar,
+Bundle-ClassPath: raselection.jar,
  raprojection.jar,
- raset.jar,
+ rajoin.jar,
+ raunion.jar,
  raextension.jar,
  lib/commons-jexl3-3.1/commons-jexl3-3.1.jar,
  lib/commons-logging-1.2/commons-logging-1.2.jar
@@ -32,7 +33,8 @@ Export-Package: org.andl.ra.extension,
    org.knime.core.data,
    org.knime.core.node.streamable,
    org.knime.core.node",
- org.andl.ra.set
+ org.andl.ra.selection,
+ org.andl.ra.union
 Import-Package: org.knime.core.data.def
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 

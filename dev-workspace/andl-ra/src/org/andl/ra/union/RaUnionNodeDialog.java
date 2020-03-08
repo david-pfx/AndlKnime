@@ -1,4 +1,4 @@
-package org.andl.ra.set;
+package org.andl.ra.union;
 
 import org.knime.core.node.defaultnodesettings.DefaultNodeSettingsPane;
 import org.knime.core.node.defaultnodesettings.DialogComponentStringSelection;
@@ -9,14 +9,14 @@ import org.knime.core.node.defaultnodesettings.SettingsModelString;
  *  
  * @author andl
  */
-public class RaSetNodeDialog extends DefaultNodeSettingsPane {
+public class RaUnionNodeDialog extends DefaultNodeSettingsPane {
 
-    protected RaSetNodeDialog() {
+    protected RaUnionNodeDialog() {
         super();
         
-		SettingsModelString settings = RaSetNodeModel.createSettingsModel();
+		SettingsModelString settings = RaUnionNodeModel.createSettingsModel();
 		addDialogComponent(new DialogComponentStringSelection(settings, "Set Operation", 
-				RaSetNodeModel.ALL_SET_OPERATIONS));
+				RaUnionNodeModel.ALL_SET_OPERATIONS));
     }
 }
 

@@ -1,4 +1,4 @@
-package org.andl.ra.set;
+package org.andl.ra.union;
 
 import org.knime.core.node.NodeDialogPane;
 import org.knime.core.node.NodeFactory;
@@ -10,13 +10,13 @@ import org.knime.core.node.NodeView;
  *
  * @author andl
  */
-public class RaSetNodeFactory 
-        extends NodeFactory<RaSetNodeModel> {
+public class RaUnionNodeFactory 
+        extends NodeFactory<RaUnionNodeModel> {
 
     /** {@inheritDoc} */
     @Override
-    public RaSetNodeModel createNodeModel() {
-        return new RaSetNodeModel();
+    public RaUnionNodeModel createNodeModel() {
+        return new RaUnionNodeModel();
     }
 
     /** {@inheritDoc} */
@@ -27,8 +27,8 @@ public class RaSetNodeFactory
 
     /** {@inheritDoc} */
     @Override
-    public NodeView<RaSetNodeModel> createNodeView(final int viewIndex,
-            final RaSetNodeModel nodeModel) {
+    public NodeView<RaUnionNodeModel> createNodeView(final int viewIndex,
+            final RaUnionNodeModel nodeModel) {
 		return null;
     }
 
@@ -41,7 +41,7 @@ public class RaSetNodeFactory
     /** {@inheritDoc} */
     @Override
     public NodeDialogPane createNodeDialogPane() {
-        return new RaSetNodeDialog();
+        return new RaUnionNodeDialog();
     }
 
 }

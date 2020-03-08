@@ -3,12 +3,13 @@
     <name>RaProjection</name>
     
     <shortDescription>
-        Relational Algebra projection operation.
+        Relational Algebra Projection operation.
     </shortDescription>
     
     <fullDescription>
-        <intro>Projects relation (table) onto a reduced set of attributes (columns).
-        Equivalent to removing some columns and then copying the table removing duplicates.
+        <intro>
+        This operation projects a relation (table) onto a reduced set of attributes (columns).
+        It is equivalent to removing some columns and then copying the table removing duplicates.
         </intro>      
         
         <option name="Column selection">Specify which columns should be included in the output table.</option>

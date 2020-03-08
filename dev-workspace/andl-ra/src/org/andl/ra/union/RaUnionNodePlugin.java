@@ -2,7 +2,7 @@
  * $Revision$ $Date$ $Author$
  *
  */
-package org.andl.ra.set;
+package org.andl.ra.union;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
@@ -16,14 +16,14 @@ import org.osgi.framework.BundleContext;
  *
  * @author andl
  */
-public class RaSetNodePlugin extends Plugin {
+public class RaUnionNodePlugin extends Plugin {
     // The shared instance.
-    private static RaSetNodePlugin plugin;
+    private static RaUnionNodePlugin plugin;
 
     /**
      * The constructor.
      */
-    public RaSetNodePlugin() {
+    public RaUnionNodePlugin() {
         super();
         plugin = this;
     }
@@ -57,7 +57,7 @@ public class RaSetNodePlugin extends Plugin {
      * 
      * @return Singleton instance of the Plugin
      */
-    public static RaSetNodePlugin getDefault() {
+    public static RaUnionNodePlugin getDefault() {
         return plugin;
     }
 

@@ -6,7 +6,8 @@
     
     <fullDescription>
         <intro>Performs natural join of two relations (tables) based on matching attributes (columns) by name. 
-        Matching columns must be the same type.
+        Matching columns must be of the same type.
+        
         There is no outer join, all output values are copied from input rows.
         </intro>
         <option name="Join">Output rows contain all columns from both inputs.</option>

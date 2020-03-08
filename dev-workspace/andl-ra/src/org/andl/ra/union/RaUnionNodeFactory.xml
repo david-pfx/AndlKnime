@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<knimeNode icon="./set.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
-    <name>RaSetOperation</name>
+<knimeNode icon="./union.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
+    <name>RaUnion</name>
     
-    <shortDescription>Relational Algebra dyadic set operations.</shortDescription>
+    <shortDescription>Relational Algebra Union and Set Operations.</shortDescription>
     
     <fullDescription>
-        <intro>Combines two relations (tables) by performing a selected set operation on their tuples (rows).
+        <intro>Combines two relations (tables) by performing a Union or other set operation on their tuples (rows).
+        There is no separate Not operation, but here Union is combined with Not to create these common set operations.
+         
         Duplicates if any are removed from the output.
         </intro>
         <option name="Union">Merges two tables, removing duplicates.</option>

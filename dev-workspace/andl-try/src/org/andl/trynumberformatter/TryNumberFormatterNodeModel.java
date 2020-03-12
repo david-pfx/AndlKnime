@@ -1,4 +1,4 @@
-package org.andl.trying;
+package org.andl.trynumberformatter;
 
 import java.io.File;
 import java.io.IOException;

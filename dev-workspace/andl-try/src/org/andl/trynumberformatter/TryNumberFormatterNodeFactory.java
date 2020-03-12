@@ -1,4 +1,4 @@
-package org.andl.trying;
+package org.andl.trynumberformatter;
 
 import org.knime.core.node.NodeDialogPane;
 import org.knime.core.node.NodeFactory;

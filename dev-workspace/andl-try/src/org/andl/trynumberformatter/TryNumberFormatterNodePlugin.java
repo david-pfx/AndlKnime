@@ -2,7 +2,7 @@
  * $Revision$ $Date$ $Author$
  *
  */
-package org.andl.trying;
+package org.andl.trynumberformatter;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;

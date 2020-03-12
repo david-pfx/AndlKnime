@@ -1,6 +1,5 @@
 package org.andl.ra.selection;
 
-import org.andl.ra.extension.RaExtensionNodeModel;
 import org.knime.core.node.defaultnodesettings.DefaultNodeSettingsPane;
 import org.knime.core.node.defaultnodesettings.DialogComponentMultiLineString;
 

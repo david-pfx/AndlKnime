@@ -33,6 +33,7 @@ Export-Package: org.andl.ra.extension,
    org.knime.core.data,
    org.knime.core.node.streamable,
    org.knime.core.node",
+ org.andl.ra.rename,
  org.andl.ra.selection,
  org.andl.ra.union
 Import-Package: org.knime.core.data.def

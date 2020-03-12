@@ -2,8 +2,6 @@ package org.andl.ra.extension;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Map;
 
 import org.andl.ra.RaEvaluator;
 import org.knime.core.data.DataCell;

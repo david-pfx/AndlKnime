@@ -6,11 +6,12 @@
    </extension>
    
    <extension point="org.knime.workbench.repository.nodes">
-   	  <node category-path="/Andl" factory-class="org.andl.ra.selection.RaSelectionNodeFactory" />
-      <node category-path="/Andl" factory-class="org.andl.ra.projection.RaProjectionNodeFactory" />
-      <node category-path="/Andl" factory-class="org.andl.ra.join.RaJoinNodeFactory" />
-      <node category-path="/Andl" factory-class="org.andl.ra.union.RaUnionNodeFactory" />
-   	  <node category-path="/Andl" factory-class="org.andl.ra.extension.RaExtensionNodeFactory" />
+   	  <node category-path="/Andl" factory-class="org.andl.ra.selection.RaSelectionNodeFactory"/>
+      <node category-path="/Andl" factory-class="org.andl.ra.projection.RaProjectionNodeFactory"/>
+      <node category-path="/Andl" factory-class="org.andl.ra.join.RaJoinNodeFactory"/>
+      <node category-path="/Andl" factory-class="org.andl.ra.rename.RaRenameNodeFactory"/>
+      <node category-path="/Andl" factory-class="org.andl.ra.union.RaUnionNodeFactory"/>
+   	  <node category-path="/Andl" factory-class="org.andl.ra.extension.RaExtensionNodeFactory"/>
 </extension>
    
 </plugin>

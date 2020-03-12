@@ -2,7 +2,6 @@ package org.andl.ra.selection;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashSet;
 
 import org.andl.ra.RaEvaluator;
 import org.knime.base.node.preproc.filter.row.RowFilterIterator;
@@ -10,7 +9,6 @@ import org.knime.core.data.DataRow;
 import org.knime.core.data.DataTable;
 import org.knime.core.data.DataTableSpec;
 import org.knime.core.data.RowIterator;
-import org.knime.core.data.container.ColumnRearranger;
 import org.knime.core.data.def.BooleanCell;
 import org.knime.core.node.BufferedDataContainer;
 import org.knime.core.node.BufferedDataTable;

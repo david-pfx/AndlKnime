@@ -72,6 +72,7 @@ import org.xml.sax.SAXException;
  *
  * @author Marcel Hanser
  */
+@SuppressWarnings("deprecation")
 enum TypeCellFactory {
     /**
      * Creates a {@link LongCell} for the given String.

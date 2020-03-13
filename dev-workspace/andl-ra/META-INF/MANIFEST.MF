@@ -6,6 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: raselection.jar,
  raprojection.jar,
  rajoin.jar,
+ rarename.jar,
  raunion.jar,
  raextension.jar,
  lib/commons-jexl3-3.1/commons-jexl3-3.1.jar,

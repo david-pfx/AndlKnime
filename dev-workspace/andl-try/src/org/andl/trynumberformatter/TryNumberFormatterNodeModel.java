@@ -2,9 +2,6 @@ package org.andl.trynumberformatter;
 
 import java.io.File;
 import java.io.IOException;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.IllegalFormatException;
 import java.util.List;

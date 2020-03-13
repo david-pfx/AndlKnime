@@ -18,8 +18,7 @@
          point="org.knime.workbench.repository.nodes">
       <node
             category-path="/Andl"
-            factory-class="org.andl.trynumberformatter.TryNumberFormatterNodeFactory"
-            id="org.andl.trying.TryNumberFormatterNodeFactory"/>
+            factory-class="org.andl.trynumberformatter.TryNumberFormatterNodeFactory" />
    </extension>
    
 </plugin>

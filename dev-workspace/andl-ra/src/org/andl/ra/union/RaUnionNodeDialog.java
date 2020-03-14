@@ -16,7 +16,7 @@ public class RaUnionNodeDialog extends DefaultNodeSettingsPane {
         
 		SettingsModelString settings = RaUnionNodeModel.createSettingsModel();
 		addDialogComponent(new DialogComponentStringSelection(settings, "Set Operation", 
-				RaUnionNodeModel.ALL_SET_OPERATIONS));
+				RaUnionNodeModel.ALL_OPERATIONS));
     }
 }
 

@@ -37,10 +37,27 @@ public class RaRenameNodeDialog extends DefaultNodeSettingsPane {
     	if (specs == null || specs[0] == null || specs[0].getNumColumns() == 0)
             throw new NotConfigurableException("No columns available for selection.");
 
-    	String[] oldcols = RaRenameNodeModel.createSettingsOldColumnNames().getStringArrayValue();
-		_oldColName = new SettingsModelString("old", oldcols.length > 0 ? oldcols[0] : "");
-		String[] newcols = RaRenameNodeModel.createSettingsNewColumnNames().getStringArrayValue();
-		_newColName = new SettingsModelString("new", newcols.length > 0 ? newcols[0] : "");
+    	SettingsModelStringArray oldcolsettings = RaRenameNodeModel.createSettingsOldColumnNames();
+    	try {
+    		oldcolsettings.loadSettingsFrom(settings);
+    		String[] oldcols = oldcolsettings.getStringArrayValue();
+    		_oldColName = new SettingsModelString("old", oldcols.length > 0 ? oldcols[0] : "");
+    	} catch(InvalidSettingsException e) {
+    		_oldColName = new SettingsModelString("old", "");
+    	}
+
+    	SettingsModelStringArray newcolsettings = RaRenameNodeModel.createSettingsNewColumnNames();
+    	try {
+    		newcolsettings.loadSettingsFrom(settings);
+    		String[] newcols = newcolsettings.getStringArrayValue();
+    		_newColName = new SettingsModelString("new", newcols.length > 0 ? newcols[0] : "");
+    	} catch(InvalidSettingsException e) {
+    		_newColName = new SettingsModelString("new", "");
+    	}
+
+//		String[] newcols = RaRenameNodeModel.createSettingsNewColumnNames().getStringArrayValue();
+//		_newColName = new SettingsModelString("new", newcols.length > 0 ? newcols[0] : "");
+//		_newColName.loadSettingsFrom(settings);
     }    
 
     // construct and save string array values
@@ -49,9 +66,11 @@ public class RaRenameNodeDialog extends DefaultNodeSettingsPane {
 
     	SettingsModelStringArray oldcols = RaRenameNodeModel.createSettingsOldColumnNames();
     	oldcols.setStringArrayValue(new String[] { _oldColName.getStringValue() });
+		oldcols.saveSettingsTo(settings);
 		
 		SettingsModelStringArray newcols = RaRenameNodeModel.createSettingsNewColumnNames();
     	newcols.setStringArrayValue(new String[] { _newColName.getStringValue() });
+    	newcols.saveSettingsTo(settings);
     }
     
 }

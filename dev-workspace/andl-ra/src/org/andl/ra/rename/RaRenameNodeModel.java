@@ -1,5 +1,7 @@
 package org.andl.ra.rename;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -7,20 +9,23 @@ import org.andl.ra.extension.RaExtensionNodeModel;
 import org.knime.core.data.DataColumnSpec;
 import org.knime.core.data.DataColumnSpecCreator;
 import org.knime.core.data.DataTableSpec;
-import org.knime.core.data.container.ColumnRearranger;
+import org.knime.core.node.BufferedDataTable;
+import org.knime.core.node.CanceledExecutionException;
+import org.knime.core.node.ExecutionContext;
+import org.knime.core.node.ExecutionMonitor;
 import org.knime.core.node.InvalidSettingsException;
 import org.knime.core.node.NodeLogger;
+import org.knime.core.node.NodeModel;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 import org.knime.core.node.defaultnodesettings.SettingsModelStringArray;
-import org.knime.core.node.streamable.simple.SimpleStreamableFunctionNodeModel;
 
 /**
  * <code>NodeModel</code> for the "RaRename" node.
  *
  * @author David Bennett -- Andl
  */
-public class RaRenameNodeModel extends SimpleStreamableFunctionNodeModel {
+public class RaRenameNodeModel extends NodeModel {
     
 	private static final NodeLogger LOGGER = NodeLogger.getLogger(RaExtensionNodeModel.class);
 	private static final String KEY_OLD_COLUMN_NAMES = "old-column-names";
@@ -35,7 +40,7 @@ public class RaRenameNodeModel extends SimpleStreamableFunctionNodeModel {
      * Constructor for the node model.
      */
     protected RaRenameNodeModel() {
-        super();
+        super(1, 1);
         LOGGER.info("Rename node created");
     }
 
@@ -54,19 +59,18 @@ public class RaRenameNodeModel extends SimpleStreamableFunctionNodeModel {
     /**
      * {@inheritDoc}
      */
-//    @Override
-//    protected BufferedDataTable[] execute(final BufferedDataTable[] inData,
-//            final ExecutionContext exec) throws Exception {
-//
-//        BufferedDataTable in = inData[0];
-//        ColumnRearranger r = createColumnRearranger(in.getDataTableSpec());
-//        BufferedDataTable out = exec.createColumnRearrangeTable(in, r, exec);
-//        return new BufferedDataTable[] { out };
-//    }
-//
-//    /** {@inheritDoc} */
-//    @Override
-//    protected void reset() { }
+    @Override
+    protected BufferedDataTable[] execute(final BufferedDataTable[] inData,
+            final ExecutionContext exec) throws Exception {
+
+        BufferedDataTable in = inData[0];
+        BufferedDataTable out = exec.createSpecReplacerTable(in, createNewSpec(in.getDataTableSpec()));
+        return new BufferedDataTable[] { out };
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    protected void reset() { }
 
     /** {@inheritDoc} */
     @Override
@@ -75,19 +79,18 @@ public class RaRenameNodeModel extends SimpleStreamableFunctionNodeModel {
 
     	// get column names for use by dialog
     	_columnNames = inSpecs[0].getColumnNames();
-        return super.configure(inSpecs);
+        return new DataTableSpec[] { createNewSpec(inSpecs[0]) };
     }
 
     /** {@inheritDoc} */
-    @Override
-    protected ColumnRearranger createColumnRearranger(final DataTableSpec inSpec) throws InvalidSettingsException {
+    DataTableSpec createNewSpec(final DataTableSpec inSpec) throws InvalidSettingsException {
     	// parallel arrays of old and new names, possibly empty
         String[] oldcolnames = _oldColumnNameSettings.getStringArrayValue();
         String[] newcolnames = _newColumnNameSettings.getStringArrayValue();
     	if (oldcolnames.length != newcolnames.length)
     		throw new InvalidSettingsException("mismatched old and new names");
     	if (oldcolnames.length == 0)
-    		return new ColumnRearranger(inSpec);		// nothing to do
+    		return inSpec;
         
         HashMap<String,String> map = new HashMap<String,String>();
         for (int i = 0; i < oldcolnames.length; ++i) {
@@ -107,9 +110,39 @@ public class RaRenameNodeModel extends SimpleStreamableFunctionNodeModel {
         		newspecs.add(spec);        		
         }
         DataTableSpec outspec = new DataTableSpec(newspecs.toArray(new DataColumnSpec[newspecs.size()]));
-        ColumnRearranger rearranger = new ColumnRearranger(outspec);
-        return rearranger;
+        return outspec;
     }
+//    @Override
+//    protected ColumnRearranger createColumnRearranger(final DataTableSpec inSpec) throws InvalidSettingsException {
+//    	// parallel arrays of old and new names, possibly empty
+//        String[] oldcolnames = _oldColumnNameSettings.getStringArrayValue();
+//        String[] newcolnames = _newColumnNameSettings.getStringArrayValue();
+//    	if (oldcolnames.length != newcolnames.length)
+//    		throw new InvalidSettingsException("mismatched old and new names");
+//    	if (oldcolnames.length == 0)
+//    		return new ColumnRearranger(inSpec);		// nothing to do
+//        
+//        HashMap<String,String> map = new HashMap<String,String>();
+//        for (int i = 0; i < oldcolnames.length; ++i) {
+//        	String key = oldcolnames[i]; 
+//        	if (map.containsKey(key))
+//        		throw new InvalidSettingsException("Duplicate rename for column: " + key);
+//        	map.put(key, newcolnames[i]);
+//        }
+//        
+//        ArrayList<DataColumnSpec> newspecs = new ArrayList<DataColumnSpec>();
+//        for (DataColumnSpec spec : inSpec) {
+//        	if (map.containsKey(spec.getName())) {
+//        		DataColumnSpecCreator creator = new DataColumnSpecCreator(spec);
+//        		creator.setName(map.get(spec.getName()));
+//        		newspecs.add(creator.createSpec());
+//        	} else 
+//        		newspecs.add(spec);        		
+//        }
+//        DataTableSpec outspec = new DataTableSpec(newspecs.toArray(new DataColumnSpec[newspecs.size()]));
+//        ColumnRearranger rearranger = new ColumnRearranger(outspec);
+//        return rearranger;
+//    }
     
     /** {@inheritDoc} */
     @Override
@@ -135,18 +168,18 @@ public class RaRenameNodeModel extends SimpleStreamableFunctionNodeModel {
     }
     
     /** {@inheritDoc} */
-//    @Override
-//    protected void loadInternals(final File internDir,
-//            final ExecutionMonitor exec) throws IOException,
-//            CanceledExecutionException { }
-//    
-//    /**
-//     * {@inheritDoc}
-//     */
-//    @Override
-//    protected void saveInternals(final File internDir,
-//            final ExecutionMonitor exec) throws IOException,
-//            CanceledExecutionException { }
+    @Override
+    protected void loadInternals(final File internDir,
+            final ExecutionMonitor exec) throws IOException,
+            CanceledExecutionException { }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void saveInternals(final File internDir,
+            final ExecutionMonitor exec) throws IOException,
+            CanceledExecutionException { }
 
 
 }

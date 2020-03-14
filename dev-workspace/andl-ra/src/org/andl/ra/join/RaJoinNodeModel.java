@@ -73,13 +73,15 @@ public class RaJoinNodeModel extends NodeModel {
 	throws Exception {
 
 		String operation = _joinOperationSettings.getStringValue();
+		if (!(Arrays.asList(ALL_OPERATIONS).contains(operation)))
+			throw new InvalidSettingsException("The selected operation is not valid: '" + operation + "'");
 		LOGGER.debug("Begin setop=" + operation);
 
 		outputGenerator outgen = new outputGenerator(exec, inData);
 		BufferedDataTable out = 
-				operation == ALL_OPERATIONS[0] ? outgen.getJoin(inData)
-				: operation == ALL_OPERATIONS[1] ? outgen.getSemijoin(inData, true)
-				: operation == ALL_OPERATIONS[2] ? outgen.getSemijoin(inData, false)
+				  ALL_OPERATIONS[0].equals(operation) ? outgen.getJoin(inData)
+				: ALL_OPERATIONS[1].equals(operation) ? outgen.getSemijoin(inData, true)
+				: ALL_OPERATIONS[2].equals(operation) ? outgen.getSemijoin(inData, false)
 				: null;
 		return new BufferedDataTable[] { out };
 	}
@@ -90,14 +92,14 @@ public class RaJoinNodeModel extends NodeModel {
 
 		String operation = _joinOperationSettings.getStringValue();
 		if (!(Arrays.asList(ALL_OPERATIONS).contains(operation)))
-			throw new InvalidSettingsException("The selection operation is not valid");
+			throw new InvalidSettingsException("The selected operation is not valid: '" + operation + "'");
 
 		specGenerator gen = new specGenerator(inSpecs[0], inSpecs[1]);
 		
 		DataTableSpec outSpec = 
 			  operation == ALL_OPERATIONS[0] ? new DataTableSpec(gen._leftInputSpec, gen._rightSpec)
-			: operation == ALL_OPERATIONS[1] ? inSpecs[0]
-			: operation == ALL_OPERATIONS[2] ? inSpecs[0]
+			: operation == ALL_OPERATIONS[1] ? gen._leftInputSpec
+			: operation == ALL_OPERATIONS[2] ? gen._leftInputSpec
 			: null;
 
 		return new DataTableSpec[] { outSpec };
@@ -136,7 +138,8 @@ public class RaJoinNodeModel extends NodeModel {
 	protected void reset() { }
 }
 
-/**
+/*******************************************************************************
+ * 
  * Implement the algorithms to combine two inputs to one output by a Join operation
  */
 class outputGenerator {
@@ -253,7 +256,7 @@ class outputGenerator {
 	
 }
 
-/**
+/*******************************************************************************
  * internal class to compute various column specs and maps
  * 
  * all pre-calculated because they get used on every row

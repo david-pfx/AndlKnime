@@ -39,7 +39,7 @@ public class RaUnionNodeModel extends NodeModel {
 	private static final NodeLogger LOGGER = NodeLogger.getLogger(RaUnionNodeModel.class);
 	private static final String KEY_SET_OPERATION = "set-operation";
 	private static final String DEFAULT_SET_OPERATION = "Union";
-	static final String[] ALL_SET_OPERATIONS = {
+	static final String[] ALL_OPERATIONS = {
 		"Union", "Minus", "Intersect", "Difference"
 	};
 	private final SettingsModelString _setOperationSettings = createSettingsModel();
@@ -64,14 +64,16 @@ public class RaUnionNodeModel extends NodeModel {
 	throws Exception {
 
 		String operation = _setOperationSettings.getStringValue();
+//		if (!(Arrays.asList(ALL_OPERATIONS).contains(operation)))
+//			throw new InvalidSettingsException("The selected operation is not valid: '" + operation + "'");
 		LOGGER.debug("Begin setop=" + operation);
 
 		outputGenerator outgen = new outputGenerator(exec, inData[0].getDataTableSpec());
 		BufferedDataTable out = 
-				operation == ALL_SET_OPERATIONS[0] ? outgen.getUnion(inData)
-				: operation == ALL_SET_OPERATIONS[1] ? outgen.getMinus(inData)
-				: operation == ALL_SET_OPERATIONS[2] ? outgen.getIntersect(inData)
-				: operation == ALL_SET_OPERATIONS[3] ? outgen.getDifference(inData)
+				  ALL_OPERATIONS[0].equals(operation) ? outgen.getUnion(inData)
+				: ALL_OPERATIONS[1].equals(operation) ? outgen.getMinus(inData)
+				: ALL_OPERATIONS[2].equals(operation) ? outgen.getIntersect(inData)
+				: ALL_OPERATIONS[3].equals(operation) ? outgen.getDifference(inData)
 				: null;
 		return new BufferedDataTable[] { out };
 	}
@@ -79,8 +81,9 @@ public class RaUnionNodeModel extends NodeModel {
 	/** {@inheritDoc} */
 	@Override
 	protected DataTableSpec[] configure(final DataTableSpec[] inSpecs) throws InvalidSettingsException {
-		if (!(Arrays.asList(ALL_SET_OPERATIONS).contains(_setOperationSettings.getStringValue())))
-			throw new InvalidSettingsException("The selection operation is not valid");
+		String operation = _setOperationSettings.getStringValue();
+		if (!(Arrays.asList(ALL_OPERATIONS).contains(operation)))
+			throw new InvalidSettingsException("The selected operation is not valid: '" + operation + "'");
 		
 		return new DataTableSpec[] { createOutputSpec(inSpecs[0]) };
 	}

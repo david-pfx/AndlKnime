@@ -16,43 +16,32 @@ public class RaProjectionNodeDialog extends NodeDialogPane {
 
     private final DataColumnSpecFilterPanel m_filterPanel;
 
-    /**
-     * Creates a new {@link NodeDialogPane} for the column filter.
-     */
     public RaProjectionNodeDialog() {
-        m_filterPanel = new DataColumnSpecFilterPanel();
+        m_filterPanel = new DataColumnSpecFilterPanel(true);
         super.addTab("Column Selection", m_filterPanel);
     }
 
-    /**
-     * Calls the update method of the underlying filter panel.
-     * @param settings - the node settings to read from
-     * @param specs - the input specifications
-     * @throws NotConfigurableException if no columns are available for filtering
-     */
+    /** {@inheritDoc} */
     @Override
     protected void loadSettingsFrom(final NodeSettingsRO settings,
             final DataTableSpec[] specs) throws NotConfigurableException {
         final DataTableSpec spec = specs[0];
-        if (spec == null || spec.getNumColumns() == 0) {
+        if (spec == null || spec.getNumColumns() == 0)
             throw new NotConfigurableException("No columns available for selection.");
-        }
 
+        // create a configuration and load it into the filter panel
         DataColumnSpecFilterConfiguration config = RaProjectionNodeModel.createDCSFilterConfiguration();
         config.loadConfigurationInDialog(settings, specs[0]);
         m_filterPanel.loadConfiguration(config, specs[0]);
     }
 
-    /**
-     * Sets the list of columns to include inside the corresponding
-     * <code>NodeModel</code> which are retrieved from the filter panel.
-     * @param settings - the node settings to write into
-     * @throws InvalidSettingsException if one of the settings is not valid
-     */
+    /** {@inheritDoc} */
     @Override
     protected void saveSettingsTo(final NodeSettingsWO settings)
             throws InvalidSettingsException {
-        DataColumnSpecFilterConfiguration config = RaProjectionNodeModel.createDCSFilterConfiguration();
+
+        // create a configuration and save the filter panel into it
+    	DataColumnSpecFilterConfiguration config = RaProjectionNodeModel.createDCSFilterConfiguration();
         m_filterPanel.saveConfiguration(config);
         config.saveConfiguration(settings);
     }

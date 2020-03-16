@@ -17,9 +17,7 @@ import org.knime.core.node.util.StringIconOption;
  */
 public class RaExtensionNodeDialog extends DefaultNodeSettingsPane {
 
-    /**
-     * New pane for configuring the RaExtension node.
-     */
+    // New pane for configuring the RaExtension node.
     protected RaExtensionNodeDialog() {
     	ArrayList<StringIconOption> options = new ArrayList<>();
         for (TypeCellFactory factory : TypeCellFactory.values()) {

@@ -36,11 +36,7 @@ public class RaSelectionNodeModel extends NodeModel {
 	private final SettingsModelString _expressionSettings = createSettingsExpression();
 	private RaEvaluator _filter;
 	
-    
-    /**
-     * Constructor for the node model.
-     */
-    protected RaSelectionNodeModel() {
+        protected RaSelectionNodeModel() {
         super(1, 1);
         LOGGER.info("Selection node created");
     }
@@ -50,15 +46,64 @@ public class RaSelectionNodeModel extends NodeModel {
 	}
 
 
-    /**
-     * {@inheritDoc}
-     */
+    /* {@inheritDoc} */
     @Override
     protected BufferedDataTable[] execute(final BufferedDataTable[] inData,
             final ExecutionContext exec) throws Exception {
 
-    	DataTable intable = inData[0];
-    	DataTableSpec dspec = intable.getDataTableSpec();
+        return new BufferedDataTable[] { doSelection(inData[0], exec) };
+    }
+
+    /* {@inheritDoc} */
+    @Override
+    protected void reset() { }
+
+    /* {@inheritDoc} */
+    @Override
+    protected DataTableSpec[] configure(final DataTableSpec[] inSpecs)
+            throws InvalidSettingsException {
+
+        _filter = new RaEvaluator(inSpecs[0], BooleanCell.TYPE, _expressionSettings.getStringValue());
+        return inSpecs;
+    }
+
+    /* {@inheritDoc} */
+    @Override
+    protected void saveSettingsTo(final NodeSettingsWO settings) {
+		_expressionSettings.saveSettingsTo(settings);
+    }
+
+    /* {@inheritDoc} */
+    @Override
+    protected void loadValidatedSettingsFrom(final NodeSettingsRO settings)
+            throws InvalidSettingsException {
+		_expressionSettings.loadSettingsFrom(settings);
+    }
+
+    /* {@inheritDoc} */
+    @Override
+    protected void validateSettings(final NodeSettingsRO settings)
+            throws InvalidSettingsException {
+		_expressionSettings.validateSettings(settings);
+    }
+    
+    @Override
+    protected void loadInternals(final File internDir,
+            final ExecutionMonitor exec) throws IOException,
+            CanceledExecutionException { }
+    
+    @Override
+    protected void saveInternals(final File internDir,
+            final ExecutionMonitor exec) throws IOException,
+            CanceledExecutionException { }
+
+    //==========================================================================
+    
+    // implement selection operation
+    
+	private BufferedDataTable doSelection(DataTable intable, final ExecutionContext exec)
+			throws CanceledExecutionException {
+		DataTableSpec dspec = intable.getDataTableSpec();
         BufferedDataContainer container = exec.createDataContainer(dspec);
         
         exec.setMessage("Searching first matching row...");
@@ -79,67 +124,10 @@ public class RaSelectionNodeModel extends NodeModel {
         } finally {
             container.close();
         }
-        return new BufferedDataTable[] { container.getTable() };
-    }
+        BufferedDataTable outtable = container.getTable();
+		return outtable;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void reset() { }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected DataTableSpec[] configure(final DataTableSpec[] inSpecs)
-            throws InvalidSettingsException {
-
-        _filter = new RaEvaluator(inSpecs[0], BooleanCell.TYPE, _expressionSettings.getStringValue());
-        return inSpecs;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void saveSettingsTo(final NodeSettingsWO settings) {
-		_expressionSettings.saveSettingsTo(settings);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void loadValidatedSettingsFrom(final NodeSettingsRO settings)
-            throws InvalidSettingsException {
-		_expressionSettings.loadSettingsFrom(settings);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void validateSettings(final NodeSettingsRO settings)
-            throws InvalidSettingsException {
-		_expressionSettings.validateSettings(settings);
-    }
-    
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void loadInternals(final File internDir,
-            final ExecutionMonitor exec) throws IOException,
-            CanceledExecutionException { }
-    
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void saveInternals(final File internDir,
-            final ExecutionMonitor exec) throws IOException,
-            CanceledExecutionException { }
 
 }
 

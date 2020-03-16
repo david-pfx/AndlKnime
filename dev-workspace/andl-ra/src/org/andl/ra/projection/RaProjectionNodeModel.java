@@ -39,28 +39,19 @@ import org.knime.core.node.util.filter.column.DataColumnSpecFilterConfiguration;
  * @author andl
  */
 public class RaProjectionNodeModel extends NodeModel {
-	/**
-	 * The settings key to retrieve and store settings shared between node dialog
-	 * and node model. 
-	 */
+	// The settings key
 	private static final String KEY_PROJECTION_COLUMNS = "projection-columns";
-	
-	/** 
-	 * Configuration representing a column selection
-	 */
+	// Represent a column selection
     private DataColumnSpecFilterConfiguration m_conf;
 
-    /** Creates a new projection model with one each input and output. */
-    public RaProjectionNodeModel() {
-        super(1, 1);
+    // create new configuration object to drive selection panel
+    static final  DataColumnSpecFilterConfiguration createDCSFilterConfiguration() {
+    	// disable selection by pattern and type 
+        return new DataColumnSpecFilterConfiguration(KEY_PROJECTION_COLUMNS, null, 0);
     }
 
-    /** Constructor for in and out <code>PortType</code> objects.
-     * @param inPorts - in ports
-     * @param outPorts - out ports
-     */
-    public RaProjectionNodeModel(final PortType[] inPorts, final PortType[] outPorts) {
-        super(inPorts, outPorts);
+    public RaProjectionNodeModel() {
+        super(1, 1);
     }
 
     /** {@inheritDoc} */
@@ -69,35 +60,9 @@ public class RaProjectionNodeModel extends NodeModel {
 
     /** {@inheritDoc} */
     @Override
-    protected BufferedDataTable[] execute(final BufferedDataTable[] data, final ExecutionContext exec) 
+    protected BufferedDataTable[] execute(final BufferedDataTable[] inData, final ExecutionContext exec) 
     throws Exception {
-        ColumnRearranger c = createColumnRearranger(data[0].getDataTableSpec());
-        BufferedDataTable tempTable = exec.createColumnRearrangeTable(data[0], c, exec);
-        BufferedDataContainer container =
-            exec.createDataContainer(tempTable.getDataTableSpec());
-        
-        exec.setMessage("Searching first matching row...");
-        int count = 0;
-        HashSet<RaTuple> tupleSet = new HashSet<RaTuple>();
-        RowIterator iter = tempTable.iterator();
-        try {
-            while (iter.hasNext()) {
-                DataRow row = iter.next();
-                RaTuple tuple = new RaTuple(row);
-            	if (!tupleSet.contains(tuple)) {
-	                count++;
-	                tupleSet.add(tuple);
-	                container.addRowToTable(row);
-	                exec.setMessage("Added row " + count + " (\""
-	                        + row.getKey() + "\")");
-            	}
-            }
-        } catch (RowFilterIterator.RuntimeCanceledExecutionException rce) {
-            throw rce.getCause();
-        } finally {
-            container.close();
-        }
-        return new BufferedDataTable[] { container.getTable() };
+        return new BufferedDataTable[] { doProjection(inData[0], exec) };
     }
 
     /** {@inheritDoc} */
@@ -105,93 +70,36 @@ public class RaProjectionNodeModel extends NodeModel {
     protected void saveInternals(final File nodeInternDir, final ExecutionMonitor exec) 
     throws IOException, CanceledExecutionException { }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     protected void loadInternals(final File nodeInternDir, final ExecutionMonitor exec) 
     throws IOException, CanceledExecutionException { }
 
-    /**
-     * Excludes a number of columns from the input spec and generates a new
-     * output spec.
-     *
-     * @param inSpecs - input table specification
-     * @return outSpecs - output table specification with only the projected columns
-     * @throws InvalidSettingsException if a selected column is not available.
-     */
+    /** {@inheritDoc} 
+     * Just return the new spec
+     * */
     @Override
     protected DataTableSpec[] configure(final DataTableSpec[] inSpecs)
     throws InvalidSettingsException {
         ColumnRearranger c = createColumnRearranger(inSpecs[0]);
-        return new DataTableSpec[]{c.createSpec()};
+        return new DataTableSpec[] { c.createSpec() };
     }
 
-    /**
-     * Creates the output data table spec according to the current settings.
-     * Throws an InvalidSettingsException if columns are specified that don't
-     * exist in the input table spec.
-     *
-     * @since 3.1
-     */
-    protected ColumnRearranger createColumnRearranger(final DataTableSpec spec) {
-        if (m_conf == null) {
-            m_conf = createDCSFilterConfiguration();
-            // auto-configure
-            m_conf.loadDefaults(spec, true);
-        }
-        final FilterResult filter = getFilterResult(spec);
-        final String[] incls = filter.getIncludes();
-        final ColumnRearranger c = new ColumnRearranger(spec);
-        c.keepOnly(incls);
-        return c;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     public StreamableOperator createStreamableOperator(final PartitionInfo partitionInfo, final PortObjectSpec[] inSpecs)
         throws InvalidSettingsException {
         return createColumnRearranger((DataTableSpec) inSpecs[0]).createStreamableFunction();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public InputPortRole[] getInputPortRoles() {
-        return new InputPortRole[]{InputPortRole.DISTRIBUTED_STREAMABLE};
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public OutputPortRole[] getOutputPortRoles() {
-        return new OutputPortRole[]{OutputPortRole.DISTRIBUTED};
-    }
-
-    /**
-     * Writes number of filtered columns, and the names as
-     * {@link org.knime.core.data.DataCell} to the given settings.
-     *
-     * @param settings the object to save the settings into
-     */
+    /** {@inheritDoc} */
     @Override
     protected void saveSettingsTo(final NodeSettingsWO settings) {
-        if (m_conf != null) {
+        if (m_conf != null)
             m_conf.saveConfiguration(settings);
-        }
     }
 
-    /**
-     * Reads the filtered columns.
-     *
-     * @param settings to read from
-     * @throws InvalidSettingsException if the settings does not contain the
-     *             size or a particular column key
-     */
+    /** {@inheritDoc} */
     @Override
     protected void loadValidatedSettingsFrom(final NodeSettingsRO settings)
             throws InvalidSettingsException {
@@ -207,20 +115,52 @@ public class RaProjectionNodeModel extends NodeModel {
         DataColumnSpecFilterConfiguration conf = createDCSFilterConfiguration();
         conf.loadConfigurationInModel(settings);
     }
+    
+    //==========================================================================
 
-    /** A new configuration to store the settings. Also enables the type filter.
-     * @return ...
-     */
-    static final  DataColumnSpecFilterConfiguration createDCSFilterConfiguration() {
-        return new DataColumnSpecFilterConfiguration(KEY_PROJECTION_COLUMNS);
+    // create column rearranger 
+    ColumnRearranger createColumnRearranger(final DataTableSpec spec) {
+        if (m_conf == null) {
+            m_conf = createDCSFilterConfiguration();
+            m_conf.loadDefaults(spec, true);
+        }
+        final FilterResult filter = m_conf.applyTo(spec);
+        final String[] incls = filter.getIncludes();
+        final ColumnRearranger c = new ColumnRearranger(spec);
+        c.keepOnly(incls);
+        return c;
     }
 
-    /** Returns the object holding the include and exclude columns.
-     * @param spec - the spec to be applied to the current configuration.
-     * @return filter result
-     */
-    protected FilterResult getFilterResult(final DataTableSpec spec) {
-        return (m_conf == null) ? null : m_conf.applyTo(spec);
-    }
+    // implement projection algorithm
+	private BufferedDataTable doProjection(final BufferedDataTable inData, final ExecutionContext exec) 
+	throws CanceledExecutionException {
+
+        ColumnRearranger colre = createColumnRearranger(inData.getDataTableSpec());
+		BufferedDataTable tempTable = exec.createColumnRearrangeTable(inData, colre, exec);
+        BufferedDataContainer container = exec.createDataContainer(tempTable.getDataTableSpec());
+        
+        exec.setMessage("Searching first matching row...");
+        int count = 0;
+        HashSet<RaTuple> tupleSet = new HashSet<RaTuple>();
+        RowIterator iter = tempTable.iterator();
+        try {
+            while (iter.hasNext()) {
+                DataRow row = iter.next();
+                RaTuple tuple = new RaTuple(row);
+            	if (!tupleSet.contains(tuple)) {
+	                count++;
+	                tupleSet.add(tuple);
+	                container.addRowToTable(row);
+	                exec.setMessage("Added row " + count);
+            	}
+            }
+        } catch (RowFilterIterator.RuntimeCanceledExecutionException rce) {
+            throw rce.getCause();
+        } finally {
+            container.close();
+        }
+		return container.getTable();
+	}
+
 }
 

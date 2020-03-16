@@ -62,9 +62,7 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
 		return new SettingsModelString(KEY_EXPRESSION, DEFAULT_EXPRESSION);
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     protected BufferedDataTable[] execute(final BufferedDataTable[] inData,
             final ExecutionContext exec) throws Exception {
@@ -75,31 +73,15 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
         return new BufferedDataTable[] { out };
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
-    protected void reset() {
-        // TODO: generated method stub
-    }
+    protected void reset() { }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     protected DataTableSpec[] configure(final DataTableSpec[] inSpecs)
     throws InvalidSettingsException {
     	
-    	// experimental debugging code
-//    	Map<String,String> env = System.getenv();
-//    	String cp = env.get("CLASSPATH");
-//        String classpathStr = System.getProperty("java.class.path");
-//        //String name = this.getClass().getSimpleName() + ".class";
-//        String name = this.getClass().getName().replace('.', '/') + ".class";
-//        ClassLoader loader = this.getClass().getClassLoader();
-//        URL loaderURL = loader.getResource(name);
-//        URL url = getClass().getProtectionDomain().getCodeSource().getLocation();
-        //_disable = true;
         ColumnRearranger rearranger = createColumnRearranger(inSpecs[0]);
         DataTableSpec out = rearranger.createSpec();
         return new DataTableSpec[] { out };
@@ -133,9 +115,7 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
 		}
     }
     
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     protected void saveSettingsTo(final NodeSettingsWO settings) {
 		_columnNameSettings.saveSettingsTo(settings);
@@ -143,9 +123,7 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
 		_expressionSettings.saveSettingsTo(settings);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     protected void loadValidatedSettingsFrom(final NodeSettingsRO settings)
             throws InvalidSettingsException {
@@ -154,9 +132,7 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
 		_expressionSettings.loadSettingsFrom(settings);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     protected void validateSettings(final NodeSettingsRO settings)
             throws InvalidSettingsException {
@@ -165,17 +141,13 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
 		_expressionSettings.validateSettings(settings);
     }
     
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     protected void loadInternals(final File internDir,
             final ExecutionMonitor exec) throws IOException,
             CanceledExecutionException { }
     
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     protected void saveInternals(final File internDir,
             final ExecutionMonitor exec) throws IOException,

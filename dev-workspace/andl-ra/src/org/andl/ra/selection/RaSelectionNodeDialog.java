@@ -10,12 +10,10 @@ import org.knime.core.node.defaultnodesettings.DialogComponentMultiLineString;
  */
 public class RaSelectionNodeDialog extends DefaultNodeSettingsPane {
 
-    /**
-     * New pane for configuring the RaSelection node.
-     */
+    // New pane for configuring the RaSelection node.
     protected RaSelectionNodeDialog() {
 		addDialogComponent(new DialogComponentMultiLineString(
-				RaSelectionNodeModel.createSettingsExpression(), "Boolean expression"));
+			RaSelectionNodeModel.createSettingsExpression(), "Boolean expression"));
 
     }
 }

@@ -44,21 +44,22 @@ public class RaRenameNodeModel extends NodeModel {
         LOGGER.info("Rename node created");
     }
 
+    // get settings model for old column names
 	static SettingsModelStringArray createSettingsOldColumnNames() {
 		return new SettingsModelStringArray(KEY_OLD_COLUMN_NAMES, new String[0]);
 	}
 
+	// get settings model for new column names
 	static SettingsModelStringArray createSettingsNewColumnNames() {
 		return new SettingsModelStringArray(KEY_NEW_COLUMN_NAMES, new String[0]);
 	}
 	
+	// get list of old column names
 	static String[] getColumNames() {
 		return _columnNames;
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     protected BufferedDataTable[] execute(final BufferedDataTable[] inData,
             final ExecutionContext exec) throws Exception {
@@ -85,65 +86,11 @@ public class RaRenameNodeModel extends NodeModel {
     /** {@inheritDoc} */
     DataTableSpec createNewSpec(final DataTableSpec inSpec) throws InvalidSettingsException {
     	// parallel arrays of old and new names, possibly empty
-        String[] oldcolnames = _oldColumnNameSettings.getStringArrayValue();
-        String[] newcolnames = _newColumnNameSettings.getStringArrayValue();
-    	if (oldcolnames.length != newcolnames.length)
-    		throw new InvalidSettingsException("mismatched old and new names");
-    	if (oldcolnames.length == 0)
-    		return inSpec;
-        
-        HashMap<String,String> map = new HashMap<String,String>();
-        for (int i = 0; i < oldcolnames.length; ++i) {
-        	String key = oldcolnames[i]; 
-        	if (map.containsKey(key))
-        		throw new InvalidSettingsException("Duplicate rename for column: " + key);
-        	map.put(key, newcolnames[i]);
-        }
-        
-        ArrayList<DataColumnSpec> newspecs = new ArrayList<DataColumnSpec>();
-        for (DataColumnSpec spec : inSpec) {
-        	if (map.containsKey(spec.getName())) {
-        		DataColumnSpecCreator creator = new DataColumnSpecCreator(spec);
-        		creator.setName(map.get(spec.getName()));
-        		newspecs.add(creator.createSpec());
-        	} else 
-        		newspecs.add(spec);        		
-        }
-        DataTableSpec outspec = new DataTableSpec(newspecs.toArray(new DataColumnSpec[newspecs.size()]));
-        return outspec;
+    	return createSpec(inSpec, 
+    			_oldColumnNameSettings.getStringArrayValue(), 
+    			_newColumnNameSettings.getStringArrayValue());
     }
-//    @Override
-//    protected ColumnRearranger createColumnRearranger(final DataTableSpec inSpec) throws InvalidSettingsException {
-//    	// parallel arrays of old and new names, possibly empty
-//        String[] oldcolnames = _oldColumnNameSettings.getStringArrayValue();
-//        String[] newcolnames = _newColumnNameSettings.getStringArrayValue();
-//    	if (oldcolnames.length != newcolnames.length)
-//    		throw new InvalidSettingsException("mismatched old and new names");
-//    	if (oldcolnames.length == 0)
-//    		return new ColumnRearranger(inSpec);		// nothing to do
-//        
-//        HashMap<String,String> map = new HashMap<String,String>();
-//        for (int i = 0; i < oldcolnames.length; ++i) {
-//        	String key = oldcolnames[i]; 
-//        	if (map.containsKey(key))
-//        		throw new InvalidSettingsException("Duplicate rename for column: " + key);
-//        	map.put(key, newcolnames[i]);
-//        }
-//        
-//        ArrayList<DataColumnSpec> newspecs = new ArrayList<DataColumnSpec>();
-//        for (DataColumnSpec spec : inSpec) {
-//        	if (map.containsKey(spec.getName())) {
-//        		DataColumnSpecCreator creator = new DataColumnSpecCreator(spec);
-//        		creator.setName(map.get(spec.getName()));
-//        		newspecs.add(creator.createSpec());
-//        	} else 
-//        		newspecs.add(spec);        		
-//        }
-//        DataTableSpec outspec = new DataTableSpec(newspecs.toArray(new DataColumnSpec[newspecs.size()]));
-//        ColumnRearranger rearranger = new ColumnRearranger(outspec);
-//        return rearranger;
-//    }
-    
+
     /** {@inheritDoc} */
     @Override
     protected void saveSettingsTo(final NodeSettingsWO settings) {
@@ -173,13 +120,43 @@ public class RaRenameNodeModel extends NodeModel {
             final ExecutionMonitor exec) throws IOException,
             CanceledExecutionException { }
     
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     @Override
     protected void saveInternals(final File internDir,
             final ExecutionMonitor exec) throws IOException,
             CanceledExecutionException { }
+
+    //==========================================================================
+
+    // create a table spec with renames
+	private DataTableSpec createSpec(final DataTableSpec inSpec, String[] oldcolnames, String[] newcolnames)
+			throws InvalidSettingsException {
+		if (oldcolnames.length != newcolnames.length)
+    		throw new InvalidSettingsException("mismatched old and new names");
+    	if (oldcolnames.length == 0)
+    		return inSpec;
+        
+        HashMap<String,String> map = new HashMap<String,String>();
+        for (int i = 0; i < oldcolnames.length; ++i) {
+        	String key = oldcolnames[i]; 
+        	if (map.containsKey(key))
+        		throw new InvalidSettingsException("Duplicate rename for column: " + key);
+        	map.put(key, newcolnames[i]);
+        }
+        
+        ArrayList<DataColumnSpec> newspecs = new ArrayList<DataColumnSpec>();
+        for (DataColumnSpec spec : inSpec) {
+        	if (map.containsKey(spec.getName())) {
+        		DataColumnSpecCreator creator = new DataColumnSpecCreator(spec);
+        		creator.setName(map.get(spec.getName()));
+        		newspecs.add(creator.createSpec());
+        	} else 
+        		newspecs.add(spec);        		
+        }
+        DataTableSpec outspec = new DataTableSpec(newspecs.toArray(new DataColumnSpec[newspecs.size()]));
+		return outspec;
+	}
+    
 
 
 }

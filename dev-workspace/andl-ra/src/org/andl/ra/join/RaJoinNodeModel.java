@@ -53,18 +53,14 @@ public class RaJoinNodeModel extends NodeModel {
 	};
 	private final SettingsModelString _joinOperationSettings = createSettingsModel();
 
-	/**
-	 * Constructor for the node model.
-	 */
-	protected RaJoinNodeModel() {
-		super(2, 1);
-	}
-
-	/**
-	 * @return a new SettingsModelString with the key for the set operation String
-	 */
+	// create settings model for choice of operation (shared with dialog)
 	static SettingsModelString createSettingsModel() {
 		return new SettingsModelString(KEY_OPERATION, DEFAULT_OPERATION);
+	}
+
+	// ctor
+	protected RaJoinNodeModel() {
+		super(2, 1);
 	}
 
 	/** {@inheritDoc} */
@@ -73,16 +69,10 @@ public class RaJoinNodeModel extends NodeModel {
 	throws Exception {
 
 		String operation = _joinOperationSettings.getStringValue();
-		if (!(Arrays.asList(ALL_OPERATIONS).contains(operation)))
-			throw new InvalidSettingsException("The selected operation is not valid: '" + operation + "'");
 		LOGGER.debug("Begin setop=" + operation);
 
 		outputGenerator outgen = new outputGenerator(exec, inData);
-		BufferedDataTable out = 
-				  ALL_OPERATIONS[0].equals(operation) ? outgen.getJoin(inData)
-				: ALL_OPERATIONS[1].equals(operation) ? outgen.getSemijoin(inData, true)
-				: ALL_OPERATIONS[2].equals(operation) ? outgen.getSemijoin(inData, false)
-				: null;
+		BufferedDataTable out = outgen.getJoin(operation, inData); 
 		return new BufferedDataTable[] { out };
 	}
 	
@@ -94,15 +84,8 @@ public class RaJoinNodeModel extends NodeModel {
 		if (!(Arrays.asList(ALL_OPERATIONS).contains(operation)))
 			throw new InvalidSettingsException("The selected operation is not valid: '" + operation + "'");
 
-		specGenerator gen = new specGenerator(inSpecs[0], inSpecs[1]);
-		
-		DataTableSpec outSpec = 
-			  operation == ALL_OPERATIONS[0] ? new DataTableSpec(gen._leftInputSpec, gen._rightSpec)
-			: operation == ALL_OPERATIONS[1] ? gen._leftInputSpec
-			: operation == ALL_OPERATIONS[2] ? gen._leftInputSpec
-			: null;
-
-		return new DataTableSpec[] { outSpec };
+		SpecGenerator gen = new SpecGenerator(inSpecs[0], inSpecs[1]);
+		return new DataTableSpec[] { gen.getTableSpec(operation) };
 	}
 
 	/** {@inheritDoc} */
@@ -139,12 +122,73 @@ public class RaJoinNodeModel extends NodeModel {
 }
 
 /*******************************************************************************
+ * internal class to compute various column specs and maps
+ * 
+ * all pre-calculated because they get used on every row
+ */
+class SpecGenerator {
+	DataTableSpec _leftSpec, _rightSpec, _joinSpec, _leftInputSpec, _rightInputSpec;
+	int[] _joinleftcolmap, _joinrightcolmap, _leftcolmap, _rightcolmap;
+
+	SpecGenerator(DataTableSpec leftInputSpec, DataTableSpec rightInputSpec) 
+	throws InvalidSettingsException {
+		_leftInputSpec = leftInputSpec;
+		_rightInputSpec = rightInputSpec;
+
+		_joinSpec = getJoinSpec(_leftInputSpec, _rightInputSpec);
+		_leftSpec = specMinus(_leftInputSpec, _joinSpec);
+		_rightSpec = specMinus(_rightInputSpec, _joinSpec);
+		
+		_leftcolmap = getColMap(_leftSpec, _leftInputSpec);
+		_joinleftcolmap = getColMap(_joinSpec, _leftInputSpec);
+		_rightcolmap = getColMap(_rightSpec, _rightInputSpec);
+		_joinrightcolmap = getColMap(_joinSpec, _rightInputSpec);
+
+	}
+	
+	// return table spec according to operation requested
+	DataTableSpec getTableSpec(String operation) {
+		return operation == RaJoinNodeModel.ALL_OPERATIONS[0] ? new DataTableSpec(_leftInputSpec, _rightSpec)
+			: operation == RaJoinNodeModel.ALL_OPERATIONS[1] ? _leftInputSpec
+			: operation == RaJoinNodeModel.ALL_OPERATIONS[2] ? _leftInputSpec
+			: null;
+	}
+	
+	// get a column map for getting required columns from a row
+	private int[] getColMap(DataTableSpec destSpec, DataTableSpec sourceSpec) {
+		return destSpec.stream()
+			.mapToInt(s -> sourceSpec.findColumnIndex(s.getName()))
+			.toArray();
+	}
+
+	private DataTableSpec specMinus(DataTableSpec leftSpec, DataTableSpec rightSpec) {
+		DataColumnSpec[] cols = leftSpec.stream()
+			.filter(s -> !rightSpec.containsName(s.getName()))
+			.toArray(DataColumnSpec[]::new);
+		return new DataTableSpec(cols);
+	}
+
+	private DataTableSpec getJoinSpec(DataTableSpec leftSpec, DataTableSpec rightSpec) 
+	throws InvalidSettingsException {
+		DataColumnSpec[] cols = leftSpec.stream()
+			.filter(s -> rightSpec.containsName(s.getName()))
+			.toArray(DataColumnSpec[]::new);
+		for (DataColumnSpec col : cols) {
+			DataColumnSpec match = rightSpec.getColumnSpec(col.getName());
+			if (match != null && match.getType() != col.getType())
+				throw new InvalidSettingsException("Join columns not same type: " + col.getName());
+		}
+		return new DataTableSpec(cols);
+	}
+}
+
+/*******************************************************************************
  * 
  * Implement the algorithms to combine two inputs to one output by a Join operation
  */
 class outputGenerator {
 	final ExecutionContext _exec;
-	specGenerator _specs;
+	SpecGenerator _specs;
 	BufferedDataContainer _container;
 	long _insize = 0;
 	int _incounter = 0;
@@ -153,7 +197,16 @@ class outputGenerator {
 	outputGenerator(ExecutionContext exec, BufferedDataTable[] inputs) 
 	throws InvalidSettingsException {
 		_exec = exec;
-		_specs = new specGenerator(inputs[0].getDataTableSpec(), inputs[1].getDataTableSpec());
+		_specs = new SpecGenerator(inputs[0].getDataTableSpec(), inputs[1].getDataTableSpec());
+	}
+
+	// perform join specified by operation
+	BufferedDataTable getJoin(String operation, BufferedDataTable[] inData) throws Exception {
+		return 
+			RaJoinNodeModel.ALL_OPERATIONS[0].equals(operation) ? getJoin(inData)
+			: RaJoinNodeModel.ALL_OPERATIONS[1].equals(operation) ? getSemijoin(inData, true)
+			: RaJoinNodeModel.ALL_OPERATIONS[2].equals(operation) ? getSemijoin(inData, false)
+		    : null;
 	}
 
 	// return the Set Union of the two input tables
@@ -253,61 +306,5 @@ class outputGenerator {
 		_exec.checkCanceled();
 		_exec.setProgress(_incounter / _insize, "Input row " + _incounter);
 	}
-	
-}
-
-/*******************************************************************************
- * internal class to compute various column specs and maps
- * 
- * all pre-calculated because they get used on every row
- */
-class specGenerator {
-	DataTableSpec _leftSpec, _rightSpec, _joinSpec, _leftInputSpec, _rightInputSpec;
-	int[] _joinleftcolmap, _joinrightcolmap, _leftcolmap, _rightcolmap;
-
-	specGenerator(DataTableSpec leftInputSpec, DataTableSpec rightInputSpec) 
-	throws InvalidSettingsException {
-		_leftInputSpec = leftInputSpec;
-		_rightInputSpec = rightInputSpec;
-
-		_joinSpec = getJoinSpec(_leftInputSpec, _rightInputSpec);
-		_leftSpec = specMinus(_leftInputSpec, _joinSpec);
-		_rightSpec = specMinus(_rightInputSpec, _joinSpec);
-		
-		_leftcolmap = getColMap(_leftSpec, _leftInputSpec);
-		_joinleftcolmap = getColMap(_joinSpec, _leftInputSpec);
-		_rightcolmap = getColMap(_rightSpec, _rightInputSpec);
-		_joinrightcolmap = getColMap(_joinSpec, _rightInputSpec);
-
-	}
-	
-	// get a column map for getting required columns from a row
-	private int[] getColMap(DataTableSpec destSpec, DataTableSpec sourceSpec) {
-		return destSpec.stream()
-			.mapToInt(s -> sourceSpec.findColumnIndex(s.getName()))
-			.toArray();
-	}
-
-	private DataTableSpec specMinus(DataTableSpec leftSpec, DataTableSpec rightSpec) {
-		DataColumnSpec[] cols = leftSpec.stream()
-			.filter(s -> !rightSpec.containsName(s.getName()))
-			.toArray(DataColumnSpec[]::new);
-		return new DataTableSpec(cols);
-	}
-
-	private DataTableSpec getJoinSpec(DataTableSpec leftSpec, DataTableSpec rightSpec) 
-	throws InvalidSettingsException {
-		DataColumnSpec[] cols = leftSpec.stream()
-			.filter(s -> rightSpec.containsName(s.getName()))
-			.toArray(DataColumnSpec[]::new);
-		for (DataColumnSpec col : cols) {
-			DataColumnSpec match = rightSpec.getColumnSpec(col.getName());
-			if (match != null && match.getType() != col.getType())
-				throw new InvalidSettingsException("Join columns not same type: " + col.getName());
-		}
-		return new DataTableSpec(cols);
-	}
-
-	
 }
 

@@ -1,4 +1,4 @@
-package org.andl.ra.extension;
+package org.andl.ra.value;
 
 import java.util.ArrayList;
 
@@ -11,26 +11,26 @@ import org.knime.core.node.util.DefaultStringIconOption;
 import org.knime.core.node.util.StringIconOption;
 
 /**
- * <code>NodeDialog</code> for the "RaExtension" node.
+ * <code>NodeDialog</code> for the "RaValue" node.
  * 
  * @author andl
  */
-public class RaExtensionNodeDialog extends DefaultNodeSettingsPane {
+public class RaValueNodeDialog extends DefaultNodeSettingsPane {
 
-    // New pane for configuring the RaExtension node.
-    protected RaExtensionNodeDialog() {
+    // New pane for configuring the RaValue node.
+    protected RaValueNodeDialog() {
     	ArrayList<StringIconOption> options = new ArrayList<>();
         for (TypeCellFactory factory : TypeCellFactory.values()) {
         	DataType type = factory.getDataType();
             options.add(new DefaultStringIconOption(factory.name(), type.getIcon()));
         }
 		addDialogComponent(new DialogComponentString(
-				RaExtensionNodeModel.createSettingsColumnName(), "New column name"));
+				RaValueNodeModel.createSettingsColumnName(), "New attribute name"));
 		addDialogComponent(new DialogComponentStringSelection(
-				RaExtensionNodeModel.createSettingsColumnTypeName(), "Column type",
+				RaValueNodeModel.createSettingsColumnTypeName(), "New value type",
 				options.toArray(new StringIconOption[options.size()])));
 		addDialogComponent(new DialogComponentMultiLineString(
-				RaExtensionNodeModel.createSettingsExpression(), "Expression"));
+				RaValueNodeModel.createSettingsExpression(), "Value expression"));
     }
 }
 

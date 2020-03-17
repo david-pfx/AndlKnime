@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.andl.ra.extension.RaExtensionNodeModel;
+import org.andl.ra.value.RaValueNodeModel;
 import org.knime.core.data.DataColumnSpec;
 import org.knime.core.data.DataColumnSpecCreator;
 import org.knime.core.data.DataTableSpec;
@@ -27,7 +27,7 @@ import org.knime.core.node.defaultnodesettings.SettingsModelStringArray;
  */
 public class RaRenameNodeModel extends NodeModel {
     
-	private static final NodeLogger LOGGER = NodeLogger.getLogger(RaExtensionNodeModel.class);
+	private static final NodeLogger LOGGER = NodeLogger.getLogger(RaValueNodeModel.class);
 	private static final String KEY_OLD_COLUMN_NAMES = "old-column-names";
 	private static final String KEY_NEW_COLUMN_NAMES = "new-column-names";
 

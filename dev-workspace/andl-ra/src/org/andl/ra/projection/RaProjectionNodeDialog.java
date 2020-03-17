@@ -18,7 +18,7 @@ public class RaProjectionNodeDialog extends NodeDialogPane {
 
     public RaProjectionNodeDialog() {
         m_filterPanel = new DataColumnSpecFilterPanel(true);
-        super.addTab("Column Selection", m_filterPanel);
+        super.addTab("Attribute Selection", m_filterPanel);
     }
 
     /** {@inheritDoc} */
@@ -27,7 +27,7 @@ public class RaProjectionNodeDialog extends NodeDialogPane {
             final DataTableSpec[] specs) throws NotConfigurableException {
         final DataTableSpec spec = specs[0];
         if (spec == null || spec.getNumColumns() == 0)
-            throw new NotConfigurableException("No columns available for selection.");
+            throw new NotConfigurableException("No attributes available for selection.");
 
         // create a configuration and load it into the filter panel
         DataColumnSpecFilterConfiguration config = RaProjectionNodeModel.createDCSFilterConfiguration();

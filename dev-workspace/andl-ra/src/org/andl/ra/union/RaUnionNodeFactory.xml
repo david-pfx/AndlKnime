@@ -5,20 +5,18 @@
     <shortDescription>Relational Algebra Union and Set Operations.</shortDescription>
     
     <fullDescription>
-        <intro>Combines two relations (tables) by performing a Union or other set operation on their tuples (rows).
-        There is no separate Not operation, but here Union is combined with Not to create these common set operations.
-         
-        Duplicates if any are removed from the output.
+        <intro>Outputs the Union of two relations (tables).
+        Optionally it outputs the result of a set operation obtained by the combination of Union with Not.
         </intro>
-        <option name="Union">Merges two tables, removing duplicates.</option>
-        <option name="Minus">Keeps rows in the first table that do not occur in the second.</option>
-        <option name="Intersect">Keeps only rows that occur in both tables.</option>
-        <option name="Difference">Keeps only rows that occur in one table or the other but not both.</option>
+        <option name="Union">Merges two relations, removing duplicate tuples (rows).</option>
+        <option name="Minus">Keeps tuples in the left (top) relation that do not occur in the second.</option>
+        <option name="Intersect">Keeps only tuples that occur in both relations.</option>
+        <option name="Difference">Keeps only tuples that occur in one relation or the other but not both.</option>
     </fullDescription>
     
     <ports>
-        <inPort index="0" name="Left">Left (top) input table.</inPort>
-        <inPort index="1" name="Right">Right (bottom) input table.</inPort>
-        <outPort index="0" name="Output">Result of set operation.</outPort>
+        <inPort index="0" name="Left">The left (top) input relation.</inPort>
+        <inPort index="1" name="Right">The right (bottom) input relation.</inPort>
+        <outPort index="0" name="Output">The result of the Union or other set operation.</outPort>
     </ports>
 </knimeNode>

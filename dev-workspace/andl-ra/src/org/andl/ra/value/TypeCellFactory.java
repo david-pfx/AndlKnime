@@ -44,7 +44,7 @@
  *
  * Created on 25.11.2013 by NanoTec
  */
-package org.andl.ra.extension;
+package org.andl.ra.value;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;

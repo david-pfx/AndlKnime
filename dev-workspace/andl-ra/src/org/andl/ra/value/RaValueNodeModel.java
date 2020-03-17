@@ -1,4 +1,4 @@
-package org.andl.ra.extension;
+package org.andl.ra.value;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,13 +24,13 @@ import org.knime.core.node.defaultnodesettings.SettingsModelString;
 import org.knime.core.node.streamable.simple.SimpleStreamableFunctionNodeModel;
 
 /**
- * <code>NodeModel</code> for the "RaExtension" node.
+ * <code>NodeModel</code> for the "RaValue" node.
  *
  * @author andl
  */
-public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
+public class RaValueNodeModel extends SimpleStreamableFunctionNodeModel {
     
-	private static final NodeLogger LOGGER = NodeLogger.getLogger(RaExtensionNodeModel.class);
+	private static final NodeLogger LOGGER = NodeLogger.getLogger(RaValueNodeModel.class);
 	private static final String KEY_COLUMN_NAME = "column-name";
 	private static final String KEY_TYPE_NAME = "column-type-name";
 	private static final String KEY_EXPRESSION = "column-value-expression";
@@ -45,7 +45,7 @@ public class RaExtensionNodeModel extends SimpleStreamableFunctionNodeModel {
     /**
      * Constructor for the node model.
      */
-    protected RaExtensionNodeModel() {
+    protected RaValueNodeModel() {
         super();
         LOGGER.info("Extension node created");
     }

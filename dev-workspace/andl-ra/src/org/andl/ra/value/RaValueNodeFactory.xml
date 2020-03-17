@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<knimeNode icon="./extension.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
-    <name>RaExtension</name>
+<knimeNode icon="./value.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
+    <name>RaValue</name>
     
-    <shortDescription>Relational Algebra Extend operation.</shortDescription>
+    <shortDescription>Relational Algebra New Value operation.</shortDescription>
     
     <fullDescription>
-        <intro>Extends a relation (table) by adding a single attribute (column) of a specified type.
+        <intro>Extends a relation (table) by adding a single attribute (column) of a specified value and type.
         This operation goes beyond first order Relational Algebra to allow new values to be created.
         
         The value of the column is defined by an arbitrary expression, which must be of the specified type. 

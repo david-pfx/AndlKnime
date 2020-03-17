@@ -8,15 +8,17 @@
     
     <fullDescription>
         <intro>
-        This operation projects a relation (table) onto a reduced set of attributes (columns).
-        It is equivalent to removing some columns and then copying the table removing duplicates.
+        Outputs the projection of a a relation (table) onto a reduced set of attributes (columns).
+        The output contains all the data values found in the included attributes. 
+        Those in the excluded attributes are discarded.
+        Any duplicate tuples (rows) are removed from the output.
         </intro>      
         
-        <option name="Column selection">Specify which columns should be included in the output table.</option>
+        <option name="Attribute selection">Specify which attributes should be included in the output relation.</option>
     </fullDescription>
     
     <ports>
-        <inPort index="0" name="Input">Input table.</inPort>
-        <outPort index="0" name="Output">Result of projection.</outPort>
+        <inPort index="0" name="Input">The input relation.</inPort>
+        <outPort index="0" name="Output">The output relation resulting from the projection.</outPort>
     </ports>
 </knimeNode>

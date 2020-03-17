@@ -5,19 +5,21 @@
     <shortDescription>Relational Algebra Join operations.</shortDescription>
     
     <fullDescription>
-        <intro>Performs natural join of two relations (tables) based on matching attributes (columns) by name. 
-        Matching columns must be of the same type.
-        
-        There is no outer join, all output values are copied from input rows.
+        <intro>Outputs the natural join of two relations (tables) where attributes (columns) are matched by name. 
+        Matching attributes must be of the same type.
+        <br/><br/>
+        Optionally the output may be restricted to just the attributes of the left hand relation (semijoin), or 
+        the inverse of that (antijoin).
+        There is no outer join, tuples (rows) that do not match are dropped from the output.
         </intro>
-        <option name="Join">Output rows contain all columns from both inputs.</option>
-        <option name="Semijoin">Output rows from the left table that match a row from the right table.</option>
-        <option name="Antijoin">Output rows from the left table that DO NOT match a row from the right table.</option>
+        <option name="Join">Output tuples contain all attributes from both inputs.</option>
+        <option name="Semijoin">Output tuples from the left relation that match a tuple from the right relation.</option>
+        <option name="Antijoin">Output tuples from the left relation that DO NOT match a tuple from the right relation.</option>
     </fullDescription>
     
     <ports>
-        <inPort index="0" name="Left">The left (top) input table.</inPort>
-        <inPort index="1" name="Right">The right (bottom) input table.</inPort>
-        <outPort index="0" name="Output">The output table resulting from the join.</outPort>
+        <inPort index="0" name="Left">The left (top) input relation.</inPort>
+        <inPort index="1" name="Right">The right (bottom) input relation.</inPort>
+        <outPort index="0" name="Output">The output relation resulting from the join.</outPort>
     </ports>    
 </knimeNode>

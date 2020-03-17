@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<knimeNode icon="./default.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
+<knimeNode icon="./rename.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
     <name>RaRename</name>
     
     <shortDescription>
@@ -8,15 +8,16 @@
     
     <fullDescription>
         <intro>
-        This operation simply renames attributes (columns) in a relation (table).
-        It is often needed prior to a Join or Union, to align columns names.
+        Outputs a relation (table) where zero or more attributes (columns) have been renamed.
+        <br/><br/>
+        This operation is often needed prior to a Join or Union, to allow matching of attribute names.
         </intro>      
         
-        <option name="Column selection">Specify a column to be renamed.</option>
-        <option name="Column selection">Specify the new name for the column.</option>
+        <option name="Column selection">Specify an attribute to be renamed.</option>
+        <option name="Column selection">Specify the new name for the attribute.</option>
     </fullDescription>
     
     <ports>
-        <inPort index="0" name="Input">Input table.</inPort>
-        <outPort index="0" name="Output">Result of rename operation.</outPort>
+        <inPort index="0" name="Input">The input relation.</inPort>
+        <outPort index="0" name="Output">The output relation resulting from the rename.</outPort>
     </ports></knimeNode>

@@ -1,11 +1,11 @@
-package org.andl.ra.extension;
+package org.andl.ra.value;
 
 import org.knime.core.data.DataTableSpec;
 import org.knime.core.node.InvalidSettingsException;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 
-final class RaExtensionConfig {
+final class RaValueConfig {
     private static final String NEW_COLUMN_NAME = "new-column-name";
     private static final String TYPE = "column-type";
     static final String VALUE = "column-value";

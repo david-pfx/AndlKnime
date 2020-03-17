@@ -8,7 +8,7 @@ Bundle-ClassPath: raselection.jar,
  rajoin.jar,
  rarename.jar,
  raunion.jar,
- raextension.jar,
+ ravalue.jar,
  lib/commons-jexl3-3.1/commons-jexl3-3.1.jar,
  lib/commons-logging-1.2/commons-logging-1.2.jar
 Bundle-Activator: org.andl.ra.join.RaJoinNodePlugin
@@ -19,8 +19,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.knime.base,
  org.knime.core
 Bundle-ActivationPolicy: lazy
-Export-Package: org.andl.ra.extension,
- org.andl.ra.join;
+Export-Package: org.andl.ra.join;
   uses:="org.osgi.framework,
    org.eclipse.core.runtime,
    org.knime.core.node.defaultnodesettings,
@@ -36,7 +35,8 @@ Export-Package: org.andl.ra.extension,
    org.knime.core.node",
  org.andl.ra.rename,
  org.andl.ra.selection,
- org.andl.ra.union
+ org.andl.ra.union,
+ org.andl.ra.value
 Import-Package: org.knime.core.data.def
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 

@@ -1,20 +1,20 @@
-package org.andl.ra.extension;
+package org.andl.ra.value;
 
 import org.knime.core.node.NodeView;
 
 /**
- * <code>NodeView</code> for the "RaExtension" node.
+ * <code>NodeView</code> for the "RaValue" node.
  *
  * @author andl
  */
-public class RaExtensionNodeView extends NodeView<RaExtensionNodeModel> {
+public class RaValueNodeView extends NodeView<RaValueNodeModel> {
 
     /**
      * Creates a new view.
      * 
-     * @param nodeModel The model (class: {@link RaExtensionNodeModel})
+     * @param nodeModel The model (class: {@link RaValueNodeModel})
      */
-    protected RaExtensionNodeView(final RaExtensionNodeModel nodeModel) {
+    protected RaValueNodeView(final RaValueNodeModel nodeModel) {
         super(nodeModel);
         // TODO: generated method stub
     }

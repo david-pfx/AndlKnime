@@ -1,4 +1,4 @@
-package org.andl.ra.extension;
+package org.andl.ra.value;
 
 import org.knime.core.node.NodeDialogPane;
 import org.knime.core.node.NodeFactory;
@@ -6,20 +6,20 @@ import org.knime.core.node.NodeView;
 
 /**
  * This is an example implementation of the node factory of the
- * "RaExtension" node.
+ * "RaValue" node.
  *
  * @author andl
  */
-public class RaExtensionNodeFactory 
-        extends NodeFactory<RaExtensionNodeModel> {
+public class RaValueNodeFactory 
+        extends NodeFactory<RaValueNodeModel> {
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public RaExtensionNodeModel createNodeModel() {
+    public RaValueNodeModel createNodeModel() {
 		// Create and return a new node model.
-        return new RaExtensionNodeModel();
+        return new RaValueNodeModel();
     }
 
     /**
@@ -35,8 +35,8 @@ public class RaExtensionNodeFactory
      * {@inheritDoc}
      */
     @Override
-    public NodeView<RaExtensionNodeModel> createNodeView(final int viewIndex,
-            final RaExtensionNodeModel nodeModel) {
+    public NodeView<RaValueNodeModel> createNodeView(final int viewIndex,
+            final RaValueNodeModel nodeModel) {
 		// We return null as this example node does not provide a view. Also see "getNrNodeViews()".
 		return null;
     }
@@ -56,7 +56,7 @@ public class RaExtensionNodeFactory
     @Override
     public NodeDialogPane createNodeDialogPane() {
 		// This example node has a dialog, hence we create and return it here. Also see "hasDialog()".
-        return new RaExtensionNodeDialog();
+        return new RaValueNodeDialog();
     }
 
 }

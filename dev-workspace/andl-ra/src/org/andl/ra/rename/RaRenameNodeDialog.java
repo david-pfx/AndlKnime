@@ -26,16 +26,16 @@ public class RaRenameNodeDialog extends DefaultNodeSettingsPane {
      * @throws NotConfigurableException 
      */
     protected RaRenameNodeDialog() {
-		addDialogComponent(new DialogComponentStringSelection(_oldColName, "Column to rename",
+		addDialogComponent(new DialogComponentStringSelection(_oldColName, "Attribute to rename",
 				RaRenameNodeModel.getColumNames()));
-		addDialogComponent(new DialogComponentString(_newColName, "New column name"));
+		addDialogComponent(new DialogComponentString(_newColName, "New attribute name"));
     }
     
     // deconstruct loaded string array values
     @Override
 	public void loadSettingsFrom(NodeSettingsRO settings, DataTableSpec[] specs) throws NotConfigurableException {
     	if (specs == null || specs[0] == null || specs[0].getNumColumns() == 0)
-            throw new NotConfigurableException("No columns available for selection.");
+            throw new NotConfigurableException("No attributes available for selection.");
 
     	SettingsModelStringArray oldcolsettings = RaRenameNodeModel.createSettingsOldColumnNames();
     	try {

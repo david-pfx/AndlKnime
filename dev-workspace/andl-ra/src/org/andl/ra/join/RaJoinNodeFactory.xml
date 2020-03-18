@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <knimeNode icon="./join.png" type="Source" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
-    <name>RaJoin</name>
+    <name>Join</name>
     
-    <shortDescription>Relational Algebra Join operations.</shortDescription>
+    <shortDescription>Relational Algebra Join operation</shortDescription>
     
     <fullDescription>
         <intro>Outputs the natural join of two relations (tables) where attributes (columns) are matched by name. 
         Matching attributes must be of the same type.
         <br/><br/>
+        There is no outer join, tuples (rows) that do not match are dropped from the output.
         Optionally the output may be restricted to just the attributes of the left hand relation (semijoin), or 
         the inverse of that (antijoin).
-        There is no outer join, tuples (rows) that do not match are dropped from the output.
         </intro>
         <option name="Join">Output tuples contain all attributes from both inputs.</option>
         <option name="Semijoin">Output tuples from the left relation that match a tuple from the right relation.</option>

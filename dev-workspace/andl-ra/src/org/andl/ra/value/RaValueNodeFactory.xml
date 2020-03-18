@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <knimeNode icon="./value.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
-    <name>RaValue</name>
+    <name>Value</name>
     
-    <shortDescription>Relational Algebra New Value operation.</shortDescription>
+    <shortDescription>Relational Algebra Value operation</shortDescription>
     
     <fullDescription>
-        <intro>Extends a relation (table) by adding a single attribute (column) of a specified value and type.
-        This operation goes beyond first order Relational Algebra to allow new values to be created.
-        
-        The value of the column is defined by an arbitrary expression, which must be of the specified type. 
-        See the Jexl documentation for details. 
-        
-        All columns are available to use as variables in an expression, provided the column name is a Jexl simple identifier. 
+        <intro>Creates a new value of a specified type and adds it as a new attribute (column) 
+        to each tuple (row) of the relation (table).
+        <br/><br/>
+        The new value is defined by an arbitrary expression, which must be of the specified type. 
+        All existing attributes of the tuple are available to use as variables in an expression, 
+        provided the attribute name is a Jexl simple identifier. 
+        See the Jexl documentation for details.
+        <br/><br/>
+        Note that this operation goes beyond first order Relational Algebra by allowing new values to be created.
         </intro>
         <option name="New column name">Specify the name of the column to be added..</option>
         <option name="Column type">Select the data type for the new column.</option>

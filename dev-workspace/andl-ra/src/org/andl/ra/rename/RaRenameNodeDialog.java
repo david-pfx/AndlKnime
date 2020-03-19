@@ -1,7 +1,10 @@
 package org.andl.ra.rename;
 
+import org.andl.ra.value.RaValueNodeDialog;
+import org.andl.ra.value.RaValueNodeModel;
 import org.knime.core.data.DataTableSpec;
 import org.knime.core.node.InvalidSettingsException;
+import org.knime.core.node.NodeLogger;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 import org.knime.core.node.NotConfigurableException;
@@ -18,6 +21,9 @@ import org.knime.core.node.defaultnodesettings.SettingsModelStringArray;
  */
 public class RaRenameNodeDialog extends DefaultNodeSettingsPane {
 	
+	private static final NodeLogger LOGGER = NodeLogger.getLogger(RaValueNodeDialog.class);
+	private static final String TAB_TITLE = "Attribute Selection";
+	
 	SettingsModelString _oldColName = new SettingsModelString("old-name", "");
 	SettingsModelString _newColName = new SettingsModelString("new-name", "");
 
@@ -26,14 +32,14 @@ public class RaRenameNodeDialog extends DefaultNodeSettingsPane {
      * @throws NotConfigurableException 
      */
     protected RaRenameNodeDialog() {
-		addDialogComponent(new DialogComponentStringSelection(_oldColName, "Attribute to rename",
-				RaRenameNodeModel.getColumNames()));
-		addDialogComponent(new DialogComponentString(_newColName, "New attribute name"));
+    	LOGGER.debug("New");
+    	this.setDefaultTabTitle(TAB_TITLE);
     }
     
     // deconstruct loaded string array values
     @Override
-	public void loadSettingsFrom(NodeSettingsRO settings, DataTableSpec[] specs) throws NotConfigurableException {
+	public void loadAdditionalSettingsFrom(NodeSettingsRO settings, DataTableSpec[] specs) throws NotConfigurableException {
+    	LOGGER.debug("load from");
     	if (specs == null || specs[0] == null || specs[0].getNumColumns() == 0)
             throw new NotConfigurableException("No attributes available for selection.");
 
@@ -54,15 +60,26 @@ public class RaRenameNodeDialog extends DefaultNodeSettingsPane {
     	} catch(InvalidSettingsException e) {
     		_newColName = new SettingsModelString("new", "");
     	}
+    	
+    	AddSelectionTab(specs[0].getColumnNames());
 
 //		String[] newcols = RaRenameNodeModel.createSettingsNewColumnNames().getStringArrayValue();
 //		_newColName = new SettingsModelString("new", newcols.length > 0 ? newcols[0] : "");
 //		_newColName.loadSettingsFrom(settings);
     }    
 
-    // construct and save string array values
+    private void AddSelectionTab(String[] columnNames) {
+    	removeTab(TAB_TITLE);
+    	createNewTab(TAB_TITLE);
+    	selectTab(TAB_TITLE);
+    	addDialogComponent(new DialogComponentStringSelection(_oldColName, "Attribute to rename", columnNames));
+		addDialogComponent(new DialogComponentString(_newColName, "New attribute name"));
+	}
+
+	// construct and save string array values
     @Override
 	public void saveAdditionalSettingsTo(final NodeSettingsWO settings) throws InvalidSettingsException {
+    	LOGGER.debug("save add to");
 
     	SettingsModelStringArray oldcols = RaRenameNodeModel.createSettingsOldColumnNames();
     	oldcols.setStringArrayValue(new String[] { _oldColName.getStringValue() });

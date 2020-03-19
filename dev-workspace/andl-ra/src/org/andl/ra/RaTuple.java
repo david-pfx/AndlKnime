@@ -21,9 +21,9 @@ public class RaTuple {
      * Creates a new RaTuple from an array of cells.
      * @param cells The cells comprising the tuple.
      */
-    public RaTuple(final DataCell[] cells) {
-    	_cells = cells;
-    }
+//    public RaTuple(final DataCell[] cells) {
+//    	_cells = cells;
+//    }
 
     /**
      * Creates a new RaTuple from a DataRow

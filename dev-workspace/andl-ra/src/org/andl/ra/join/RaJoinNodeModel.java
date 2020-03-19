@@ -71,7 +71,7 @@ public class RaJoinNodeModel extends NodeModel {
 		String operation = _joinOperationSettings.getStringValue();
 		LOGGER.debug("Begin setop=" + operation);
 
-		outputGenerator outgen = new outputGenerator(exec, inData);
+		OutputGenerator outgen = new OutputGenerator(exec, inData);
 		BufferedDataTable out = outgen.getJoin(operation, inData); 
 		return new BufferedDataTable[] { out };
 	}
@@ -163,30 +163,52 @@ class SpecGenerator {
 
 	private DataTableSpec specMinus(DataTableSpec leftSpec, DataTableSpec rightSpec) {
 		DataColumnSpec[] cols = leftSpec.stream()
-			.filter(s -> !rightSpec.containsName(s.getName()))
-			.toArray(DataColumnSpec[]::new);
-		return new DataTableSpec(cols);
+				.filter(s -> !rightSpec.containsName(s.getName()))
+				.toArray(DataColumnSpec[]::new);
+			return new DataTableSpec(cols);
 	}
+			
+// do it this way because we don't trust the built in hash
+//		HashMap<String,DataColumnSpec> rcols = new HashMap<String, DataColumnSpec>();
+//		rightSpec.forEach(rs -> { rcols.put(rs.getName(), rs); });
+//		DataColumnSpec[] cols = leftSpec.stream()
+//			.filter(s -> !rcols.containsKey(s.getName()))
+//			.toArray(DataColumnSpec[]::new);
+//		return new DataTableSpec(cols);
+//		
+// one way to do it		
+//		HashMap<String,DataColumnSpec> cols = new HashMap<String, DataColumnSpec>();
+//		leftSpec.forEach(ls -> { cols.put(ls.getName(), ls); });
+//		rightSpec.forEach(rs -> { cols.remove(rs.getName()); });
+//		return new DataTableSpec(cols.values().stream().toArray(DataColumnSpec[]::new));
 
 	private DataTableSpec getJoinSpec(DataTableSpec leftSpec, DataTableSpec rightSpec) 
 	throws InvalidSettingsException {
-		DataColumnSpec[] cols = leftSpec.stream()
+		DataColumnSpec[] jcols = leftSpec.stream()
 			.filter(s -> rightSpec.containsName(s.getName()))
 			.toArray(DataColumnSpec[]::new);
-		for (DataColumnSpec col : cols) {
-			DataColumnSpec match = rightSpec.getColumnSpec(col.getName());
-			if (match != null && match.getType() != col.getType())
-				throw new InvalidSettingsException("Join columns not same type: " + col.getName());
+		for (DataColumnSpec jcol : jcols) {
+			DataColumnSpec rcol = rightSpec.getColumnSpec(jcol.getName());
+			if (rcol != null && rcol.getType() != jcol.getType())
+				throw new InvalidSettingsException("Join columns not same type: " + jcol.getName());
 		}
-		return new DataTableSpec(cols);
+		return new DataTableSpec(jcols);
 	}
+		
+// do it this way because we don't trust the built in hash
+//		HashMap<String,DataColumnSpec> rcols = new HashMap<String, DataColumnSpec>();
+//		rightSpec.forEach(rs -> { rcols.put(rs.getName(), rs); });
+//		DataColumnSpec[] jcols = leftSpec.stream()
+//			.filter(s -> rcols.containsKey(s.getName()))
+//			.toArray(DataColumnSpec[]::new);
+		
 }
 
 /*******************************************************************************
  * 
  * Implement the algorithms to combine two inputs to one output by a Join operation
  */
-class outputGenerator {
+class OutputGenerator {
 	final ExecutionContext _exec;
 	SpecGenerator _specs;
 	BufferedDataContainer _container;
@@ -194,7 +216,7 @@ class outputGenerator {
 	int _incounter = 0;
 	int _outcounter = 0;
 	
-	outputGenerator(ExecutionContext exec, BufferedDataTable[] inputs) 
+	OutputGenerator(ExecutionContext exec, BufferedDataTable[] inputs) 
 	throws InvalidSettingsException {
 		_exec = exec;
 		_specs = new SpecGenerator(inputs[0].getDataTableSpec(), inputs[1].getDataTableSpec());

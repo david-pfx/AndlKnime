@@ -5,3 +5,4 @@
 .knimeLock
 /dev-workspace/andl-try/bin
 /plugins
+/andl-projects/andl-ra/lib

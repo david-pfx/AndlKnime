@@ -1,4 +1,4 @@
-# AndlRaKnime is an implementation of the Relational Algebra as a set of Knime nodes
+# AndlRaKnime adds the Relational Algebra to Knime
 
 Andl is A New Database Language. See <http://andl.org>.
 
@@ -9,18 +9,29 @@ AndlRaKnime provides a set of nodes that implement the Relational Algebra.
 Using these nodes allows you to perform SQL-like operations on a wide variety of data sources, such as
 CSV files or data retrieved online.
 
+For more about the Relational Algebra see here: <https://en.wikipedia.org/wiki/Relational_algebra>.
+The set of nodes is currently:
+
+* Selection (as a Boolean expression)
+* Projection
+* Join (and semijoin, antijoin)
+* Rename
+* Union (and Minus, Intersection, Difference)
+* New Value (as a JEXL expression)
+
+For more about JEXL see here: <http://commons.apache.org/proper/commons-jexl/>.
+
 Sample workflows are included to demonstrate these capabilities.
 
 ## FIRST DO THIS
 
-The binary release includes a JAR file.
-Put this in your Knime installation dropins folder.
-A set of Andl nodes will appear in your node repository.
-
-The binary release also includes a ZIP archived of sample nodes.
-Put these in your Knime runtime workspace.
-
+The release includes a JAR file plugin and a ZIP archive of sample nodes.
+Put the JAR in your Knime installation dropins folder.
+Unzip the samples into your Knime runtime workspace.
 Then start or restart Knime.
+
+A set of Andl nodes will appear in your node repository.
+The samples and data will appear in your LOCAL folder.
 
 ## LICENCE
 

@@ -1,0 +1,1355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>
+Uses of Class org.apache.commons.jexl3.parser.JexlNode (Apache Commons JEXL 3.1 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="Uses of Class org.apache.commons.jexl3.parser.JexlNode (Apache Commons JEXL 3.1 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser"><FONT CLASS="NavBarFont1"><B>Class</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Use</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV&nbsp;
+&nbsp;NEXT</FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../../index.html?org/apache/commons/jexl3/parser//class-useJexlNode.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="JexlNode.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<CENTER>
+<H2>
+<B>Uses of Class<br>org.apache.commons.jexl3.parser.JexlNode</B></H2>
+</CENTER>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+Packages that use <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><A HREF="#org.apache.commons.jexl3"><B>org.apache.commons.jexl3</B></A></TD>
+<TD>Provides a framework for evaluating JEXL expressions.&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><A HREF="#org.apache.commons.jexl3.internal"><B>org.apache.commons.jexl3.internal</B></A></TD>
+<TD>Provides utilities for introspection services.&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><A HREF="#org.apache.commons.jexl3.parser"><B>org.apache.commons.jexl3.parser</B></A></TD>
+<TD>
+            Contains the Parser for JEXL script.&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+<A NAME="org.apache.commons.jexl3"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+Uses of <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A> in <A HREF="../../../../../../org/apache/commons/jexl3/package-summary.html">org.apache.commons.jexl3</A></FONT></TH>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left" COLSPAN="2">Methods in <A HREF="../../../../../../org/apache/commons/jexl3/package-summary.html">org.apache.commons.jexl3</A> with parameters of type <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B>JexlException.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.html#annotationError(org.apache.commons.jexl3.parser.JexlNode, java.lang.String)">annotationError</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;annotation)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generates a message for an annotation error.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;<A HREF="../../../../../../org/apache/commons/jexl3/JexlInfo.html" title="class in org.apache.commons.jexl3">JexlInfo</A></CODE></FONT></TD>
+<TD><CODE><B>JexlException.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.html#getInfo(org.apache.commons.jexl3.parser.JexlNode, org.apache.commons.jexl3.JexlInfo)">getInfo</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+        <A HREF="../../../../../../org/apache/commons/jexl3/JexlInfo.html" title="class in org.apache.commons.jexl3">JexlInfo</A>&nbsp;info)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets the most specific information attached to a node.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B>JexlException.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.html#methodError(org.apache.commons.jexl3.parser.JexlNode, java.lang.String)">methodError</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+            <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;method)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generates a message for a unsolvable method error.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B>JexlException.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.html#operatorError(org.apache.commons.jexl3.parser.JexlNode, java.lang.String)">operatorError</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+              <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;symbol)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generates a message for an operator error.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B>JexlException.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.html#propertyError(org.apache.commons.jexl3.parser.JexlNode, java.lang.String)">propertyError</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+              <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;var)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generates a message for an unsolvable property error.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B>JexlException.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.html#variableError(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, boolean)">variableError</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+              <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;variable,
+              boolean&nbsp;undef)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generates a message for a variable error.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left" COLSPAN="2">Constructors in <A HREF="../../../../../../org/apache/commons/jexl3/package-summary.html">org.apache.commons.jexl3</A> with parameters of type <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.Annotation.html#JexlException.Annotation(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Throwable)">JexlException.Annotation</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;name,
+                         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</A>&nbsp;cause)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new Annotation exception instance.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.Break.html#JexlException.Break(org.apache.commons.jexl3.parser.JexlNode)">JexlException.Break</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new instance of Break.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.Cancel.html#JexlException.Cancel(org.apache.commons.jexl3.parser.JexlNode)">JexlException.Cancel</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new instance of Cancel.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.Continue.html#JexlException.Continue(org.apache.commons.jexl3.parser.JexlNode)">JexlException.Continue</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new instance of Continue.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.Method.html#JexlException.Method(org.apache.commons.jexl3.parser.JexlNode, java.lang.String)">JexlException.Method</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                     <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;name)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new Method exception instance.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.Operator.html#JexlException.Operator(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Throwable)">JexlException.Operator</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;symbol,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</A>&nbsp;cause)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new Operator exception instance.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.Property.html#JexlException.Property(org.apache.commons.jexl3.parser.JexlNode, java.lang.String)">JexlException.Property</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;var)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new Property exception instance.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.Property.html#JexlException.Property(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Throwable)">JexlException.Property</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;var,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</A>&nbsp;cause)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new Property exception instance.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.Return.html#JexlException.Return(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Object)">JexlException.Return</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                     <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;msg,
+                     <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;value)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new instance of Return.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.Variable.html#JexlException.Variable(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, boolean)">JexlException.Variable</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;var,
+                       boolean&nbsp;undef)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new Variable exception instance.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.html#JexlException(org.apache.commons.jexl3.parser.JexlNode, java.lang.String)">JexlException</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+              <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;msg)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new JexlException.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/JexlException.html#JexlException(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Throwable)">JexlException</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+              <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;msg,
+              <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</A>&nbsp;cause)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new JexlException.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+<A NAME="org.apache.commons.jexl3.internal"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+Uses of <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A> in <A HREF="../../../../../../org/apache/commons/jexl3/internal/package-summary.html">org.apache.commons.jexl3.internal</A></FONT></TH>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left" COLSPAN="2">Fields in <A HREF="../../../../../../org/apache/commons/jexl3/internal/package-summary.html">org.apache.commons.jexl3.internal</A> declared as <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A></CODE></FONT></TD>
+<TD><CODE><B>Debugger.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Debugger.html#cause">cause</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The cause of the issue to debug.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left" COLSPAN="2">Methods in <A HREF="../../../../../../org/apache/commons/jexl3/internal/package-summary.html">org.apache.commons.jexl3.internal</A> that return <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A></CODE></FONT></TD>
+<TD><CODE><B>InterpreterBase.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#findNullOperand(java.lang.RuntimeException, org.apache.commons.jexl3.parser.JexlNode, java.lang.Object, java.lang.Object)">findNullOperand</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html?is-external=true" title="class or interface in java.lang">RuntimeException</A>&nbsp;xrt,
+                <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finds the node causing a NPE for diadic operators.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left" COLSPAN="2">Methods in <A HREF="../../../../../../org/apache/commons/jexl3/internal/package-summary.html">org.apache.commons.jexl3.internal</A> with parameters of type <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Debugger.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Debugger.html#accept(org.apache.commons.jexl3.parser.JexlNode, java.lang.Object)">accept</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks if a child node is the cause to debug &amp; adds its representation to the rebuilt expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>TemplateDebugger.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/TemplateDebugger.html#acceptStatement(org.apache.commons.jexl3.parser.JexlNode, java.lang.Object)">acceptStatement</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;child,
+                <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Debugger.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Debugger.html#acceptStatement(org.apache.commons.jexl3.parser.JexlNode, java.lang.Object)">acceptStatement</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;child,
+                <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a statement node to the rebuilt expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Debugger.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Debugger.html#additiveNode(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Object)">additiveNode</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;op,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rebuilds an additive expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>InterpreterBase.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#annotationError(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Throwable)">annotationError</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;annotation,
+                <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</A>&nbsp;cause)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Triggered when an annotation processing fails.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Interpreter.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Interpreter.html#call(org.apache.commons.jexl3.parser.JexlNode, java.lang.Object, java.lang.Object, org.apache.commons.jexl3.parser.ASTArguments)">call</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+     <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;target,
+     <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;functor,
+     <A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTArguments.html" title="class in org.apache.commons.jexl3.parser">ASTArguments</A>&nbsp;argNode)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calls a method (or function).</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Debugger.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Debugger.html#check(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Object)">check</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;image,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks if a terminal node is the the cause to debug &amp; adds its representation to the rebuilt expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B>Engine.VarCollector.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Engine.VarCollector.html#collect(org.apache.commons.jexl3.parser.JexlNode)">collect</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Starts/stops a variable collect.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B>Operators.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Operators.html#contains(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Object, java.lang.Object)">contains</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;op,
+         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The 'match'/'in' operator implementation.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B>Debugger.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Debugger.html#data(org.apache.commons.jexl3.parser.JexlNode)">data</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rebuilds an expression from a JEXL node.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B>Debugger.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Debugger.html#debug(org.apache.commons.jexl3.parser.JexlNode)">debug</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seeks the location of an error cause (a node) in an expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B>Debugger.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Debugger.html#debug(org.apache.commons.jexl3.parser.JexlNode, boolean)">debug</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+      boolean&nbsp;r)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seeks the location of an error cause (a node) in an expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Operators.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Operators.html#empty(org.apache.commons.jexl3.parser.JexlNode, java.lang.Object)">empty</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check for emptyness of various types: Collection, Array, Map, String, and anything that has a boolean isEmpty()
+ method.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B>Operators.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Operators.html#endsWith(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Object, java.lang.Object)">endsWith</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;operator,
+         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The 'endsWith' operator implementation.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Interpreter.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Interpreter.html#executeAssign(org.apache.commons.jexl3.parser.JexlNode, org.apache.commons.jexl3.JexlOperator, java.lang.Object)">executeAssign</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+              <A HREF="../../../../../../org/apache/commons/jexl3/JexlOperator.html" title="enum in org.apache.commons.jexl3">JexlOperator</A>&nbsp;assignop,
+              <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Executes an assignment with an optional side-effect operator.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A></CODE></FONT></TD>
+<TD><CODE><B>InterpreterBase.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#findNullOperand(java.lang.RuntimeException, org.apache.commons.jexl3.parser.JexlNode, java.lang.Object, java.lang.Object)">findNullOperand</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html?is-external=true" title="class or interface in java.lang">RuntimeException</A>&nbsp;xrt,
+                <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finds the node causing a NPE for diadic operators.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Interpreter.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Interpreter.html#getAttribute(java.lang.Object, java.lang.Object, org.apache.commons.jexl3.parser.JexlNode)">getAttribute</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;attribute,
+             <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets an attribute of an object.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B>Engine.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Engine.html#getVariables(org.apache.commons.jexl3.parser.ASTJexlScript, org.apache.commons.jexl3.parser.JexlNode, org.apache.commons.jexl3.internal.Engine.VarCollector)">getVariables</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTJexlScript.html" title="class in org.apache.commons.jexl3.parser">ASTJexlScript</A>&nbsp;script,
+             <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+             <A HREF="../../../../../../org/apache/commons/jexl3/internal/Engine.VarCollector.html" title="class in org.apache.commons.jexl3.internal">Engine.VarCollector</A>&nbsp;collector)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fills up the list of variables accessed by a node.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Debugger.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Debugger.html#infixChildren(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, boolean, java.lang.Object)">infixChildren</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+              <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;infix,
+              boolean&nbsp;paren,
+              <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks if the children of a node using infix notation is the cause to debug, adds their representation to the
+ rebuilt expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Interpreter.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Interpreter.html#interpret(org.apache.commons.jexl3.parser.JexlNode)">interpret</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Interpret the given script/expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="../../../../../../org/apache/commons/jexl3/JexlException.html" title="class in org.apache.commons.jexl3">JexlException</A></CODE></FONT></TD>
+<TD><CODE><B>InterpreterBase.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#invocationException(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Exception)">invocationException</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                    <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;methodName,
+                    <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</A>&nbsp;xany)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Triggered when method, function or constructor invocation fails with an exception.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B>Interpreter.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Interpreter.html#isTernaryProtected(org.apache.commons.jexl3.parser.JexlNode)">isTernaryProtected</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check if a null evaluated expression is protected by a ternary expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>InterpreterBase.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#operatorError(org.apache.commons.jexl3.parser.JexlNode, org.apache.commons.jexl3.JexlOperator, java.lang.Throwable)">operatorError</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+              <A HREF="../../../../../../org/apache/commons/jexl3/JexlOperator.html" title="enum in org.apache.commons.jexl3">JexlOperator</A>&nbsp;operator,
+              <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</A>&nbsp;cause)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Triggered when an operator fails.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Debugger.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Debugger.html#prefixChild(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Object)">prefixChild</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+            <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;prefix,
+            <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks if the child of a node using prefix notation is the cause to debug, adds their representation to the
+ rebuilt expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>TemplateInterpreter.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/TemplateInterpreter.html#resolveNamespace(java.lang.String, org.apache.commons.jexl3.parser.JexlNode)">resolveNamespace</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;prefix,
+                 <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Interpreter.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Interpreter.html#resolveNamespace(java.lang.String, org.apache.commons.jexl3.parser.JexlNode)">resolveNamespace</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;prefix,
+                 <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resolves a namespace, eventually allocating an instance using context as constructor argument.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B>Interpreter.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Interpreter.html#setAttribute(java.lang.Object, java.lang.Object, java.lang.Object, org.apache.commons.jexl3.parser.JexlNode)">setAttribute</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;attribute,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;value,
+             <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets an attribute of an object.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Operators.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Operators.html#size(org.apache.commons.jexl3.parser.JexlNode, java.lang.Object)">size</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+     <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calculate the <code>size</code> of various types:
+ Collection, Array, Map, String, and anything that has a int size() method.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B>Operators.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Operators.html#startsWith(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Object, java.lang.Object)">startsWith</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+           <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;operator,
+           <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+           <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The 'startsWith' operator implementation.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Operators.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Operators.html#tryAssignOverload(org.apache.commons.jexl3.parser.JexlNode, org.apache.commons.jexl3.JexlOperator, java.lang.Object...)">tryAssignOverload</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                  <A HREF="../../../../../../org/apache/commons/jexl3/JexlOperator.html" title="enum in org.apache.commons.jexl3">JexlOperator</A>&nbsp;operator,
+                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>...&nbsp;args)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Evaluates an assign operator.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>Operators.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/Operators.html#tryOverload(org.apache.commons.jexl3.parser.JexlNode, org.apache.commons.jexl3.JexlOperator, java.lang.Object...)">tryOverload</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+            <A HREF="../../../../../../org/apache/commons/jexl3/JexlOperator.html" title="enum in org.apache.commons.jexl3">JexlOperator</A>&nbsp;operator,
+            <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>...&nbsp;args)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Attempts to call an operator.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>InterpreterBase.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#unsolvableMethod(org.apache.commons.jexl3.parser.JexlNode, java.lang.String)">unsolvableMethod</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                 <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;method)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Triggered when a method can not be resolved.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>InterpreterBase.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#unsolvableProperty(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Throwable)">unsolvableProperty</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                   <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;var,
+                   <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</A>&nbsp;cause)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Triggered when a property can not be resolved.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B>InterpreterBase.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#unsolvableVariable(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, boolean)">unsolvableVariable</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                   <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;var,
+                   boolean&nbsp;undef)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Triggered when a variable can not be resolved.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+<A NAME="org.apache.commons.jexl3.parser"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+Uses of <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A> in <A HREF="../../../../../../org/apache/commons/jexl3/parser/package-summary.html">org.apache.commons.jexl3.parser</A></FONT></TH>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left" COLSPAN="2">Subclasses of <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A> in <A HREF="../../../../../../org/apache/commons/jexl3/parser/package-summary.html">org.apache.commons.jexl3.parser</A></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTAddNode.html" title="class in org.apache.commons.jexl3.parser">ASTAddNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTAmbiguous.html" title="class in org.apache.commons.jexl3.parser">ASTAmbiguous</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTAndNode.html" title="class in org.apache.commons.jexl3.parser">ASTAndNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTAnnotatedStatement.html" title="class in org.apache.commons.jexl3.parser">ASTAnnotatedStatement</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTAnnotation.html" title="class in org.apache.commons.jexl3.parser">ASTAnnotation</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Annotation.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTArguments.html" title="class in org.apache.commons.jexl3.parser">ASTArguments</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTArrayAccess.html" title="class in org.apache.commons.jexl3.parser">ASTArrayAccess</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTArrayLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTArrayLiteral</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An array literal.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTAssignment.html" title="class in org.apache.commons.jexl3.parser">ASTAssignment</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTBitwiseAndNode.html" title="class in org.apache.commons.jexl3.parser">ASTBitwiseAndNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTBitwiseComplNode.html" title="class in org.apache.commons.jexl3.parser">ASTBitwiseComplNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTBitwiseOrNode.html" title="class in org.apache.commons.jexl3.parser">ASTBitwiseOrNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTBitwiseXorNode.html" title="class in org.apache.commons.jexl3.parser">ASTBitwiseXorNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTBlock.html" title="class in org.apache.commons.jexl3.parser">ASTBlock</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTBreak.html" title="class in org.apache.commons.jexl3.parser">ASTBreak</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTConstructorNode.html" title="class in org.apache.commons.jexl3.parser">ASTConstructorNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTContinue.html" title="class in org.apache.commons.jexl3.parser">ASTContinue</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTDivNode.html" title="class in org.apache.commons.jexl3.parser">ASTDivNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTEmptyFunction.html" title="class in org.apache.commons.jexl3.parser">ASTEmptyFunction</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTEmptyMethod.html" title="class in org.apache.commons.jexl3.parser">ASTEmptyMethod</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTEQNode.html" title="class in org.apache.commons.jexl3.parser">ASTEQNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTERNode.html" title="class in org.apache.commons.jexl3.parser">ASTERNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTEWNode.html" title="class in org.apache.commons.jexl3.parser">ASTEWNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTExtendedLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTExtendedLiteral</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTFalseNode.html" title="class in org.apache.commons.jexl3.parser">ASTFalseNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTForeachStatement.html" title="class in org.apache.commons.jexl3.parser">ASTForeachStatement</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTFunctionNode.html" title="class in org.apache.commons.jexl3.parser">ASTFunctionNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTGENode.html" title="class in org.apache.commons.jexl3.parser">ASTGENode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTGTNode.html" title="class in org.apache.commons.jexl3.parser">ASTGTNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTIdentifier.html" title="class in org.apache.commons.jexl3.parser">ASTIdentifier</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identifiers, variables, ie symbols.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTIdentifierAccess.html" title="class in org.apache.commons.jexl3.parser">ASTIdentifierAccess</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Identifiers, variables and registers.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTIfStatement.html" title="class in org.apache.commons.jexl3.parser">ASTIfStatement</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTJexlLambda.html" title="class in org.apache.commons.jexl3.parser">ASTJexlLambda</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lambda (function).</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTJexlScript.html" title="class in org.apache.commons.jexl3.parser">ASTJexlScript</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enhanced script to allow parameters declaration.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTJxltLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTJxltLiteral</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTLENode.html" title="class in org.apache.commons.jexl3.parser">ASTLENode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTLTNode.html" title="class in org.apache.commons.jexl3.parser">ASTLTNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTMapEntry.html" title="class in org.apache.commons.jexl3.parser">ASTMapEntry</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTMapLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTMapLiteral</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTMethodNode.html" title="class in org.apache.commons.jexl3.parser">ASTMethodNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTModNode.html" title="class in org.apache.commons.jexl3.parser">ASTModNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTMulNode.html" title="class in org.apache.commons.jexl3.parser">ASTMulNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTNENode.html" title="class in org.apache.commons.jexl3.parser">ASTNENode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTNEWNode.html" title="class in org.apache.commons.jexl3.parser">ASTNEWNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTNotNode.html" title="class in org.apache.commons.jexl3.parser">ASTNotNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTNRNode.html" title="class in org.apache.commons.jexl3.parser">ASTNRNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTNSWNode.html" title="class in org.apache.commons.jexl3.parser">ASTNSWNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTNullLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTNullLiteral</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTNumberLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTNumberLiteral</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTOrNode.html" title="class in org.apache.commons.jexl3.parser">ASTOrNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTRangeNode.html" title="class in org.apache.commons.jexl3.parser">ASTRangeNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTReference.html" title="class in org.apache.commons.jexl3.parser">ASTReference</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTReferenceExpression.html" title="class in org.apache.commons.jexl3.parser">ASTReferenceExpression</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTReturnStatement.html" title="class in org.apache.commons.jexl3.parser">ASTReturnStatement</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTSetAddNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetAddNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTSetAndNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetAndNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTSetDivNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetDivNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTSetLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTSetLiteral</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTSetModNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetModNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTSetMultNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetMultNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTSetOrNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetOrNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTSetSubNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetSubNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTSetXorNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetXorNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTSizeFunction.html" title="class in org.apache.commons.jexl3.parser">ASTSizeFunction</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTSizeMethod.html" title="class in org.apache.commons.jexl3.parser">ASTSizeMethod</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTStringLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTStringLiteral</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTSubNode.html" title="class in org.apache.commons.jexl3.parser">ASTSubNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTSWNode.html" title="class in org.apache.commons.jexl3.parser">ASTSWNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTTernaryNode.html" title="class in org.apache.commons.jexl3.parser">ASTTernaryNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTTrueNode.html" title="class in org.apache.commons.jexl3.parser">ASTTrueNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTUnaryMinusNode.html" title="class in org.apache.commons.jexl3.parser">ASTUnaryMinusNode</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTVar.html" title="class in org.apache.commons.jexl3.parser">ASTVar</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Declares a local variable.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/ASTWhileStatement.html" title="class in org.apache.commons.jexl3.parser">ASTWhileStatement</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left" COLSPAN="2">Methods in <A HREF="../../../../../../org/apache/commons/jexl3/parser/package-summary.html">org.apache.commons.jexl3.parser</A> that return <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A></CODE></FONT></TD>
+<TD><CODE><B>SimpleNode.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/SimpleNode.html#jjtGetChild(int)">jjtGetChild</A></B>(int&nbsp;i)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets a child of this node.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A></CODE></FONT></TD>
+<TD><CODE><B>SimpleNode.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/SimpleNode.html#jjtGetParent()">jjtGetParent</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets this node's parent.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left" COLSPAN="2">Methods in <A HREF="../../../../../../org/apache/commons/jexl3/parser/package-summary.html">org.apache.commons.jexl3.parser</A> with parameters of type <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B>JexlParser.</B><B><A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlParser.html#throwParsingException(org.apache.commons.jexl3.parser.JexlNode)">throwParsingException</A></B>(<A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Throws a parsing exception.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser"><FONT CLASS="NavBarFont1"><B>Class</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Use</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV&nbsp;
+&nbsp;NEXT</FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../../index.html?org/apache/commons/jexl3/parser//class-useJexlNode.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="JexlNode.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2001&#x2013;2017 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+</BODY>
+</HTML>

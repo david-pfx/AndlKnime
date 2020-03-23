@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<knimeNode icon="./projection.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
+    <name>Projection</name>
+    
+    <shortDescription>
+        Relational Algebra Projection operation
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+        Outputs the projection of a a relation (table) onto a reduced set of attributes (columns).
+        The output contains all the data values found in the included attributes. 
+        Those in the excluded attributes are discarded.
+        Any duplicate tuples (rows) are removed from the output.
+        </intro>      
+        
+        <option name="Attribute selection">Specify which attributes should be included in the output relation.</option>
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Input">The input relation.</inPort>
+        <outPort index="0" name="Output">The output relation resulting from the projection.</outPort>
+    </ports>
+</knimeNode>

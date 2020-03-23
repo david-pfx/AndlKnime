@@ -1,0 +1,2469 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>
+Interpreter (Apache Commons JEXL 3.1 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="Interpreter (Apache Commons JEXL 3.1 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Interpreter.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/internal/IntegerRange.Descending.html" title="class in org.apache.commons.jexl3.internal"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html" title="class in org.apache.commons.jexl3.internal"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/commons/jexl3/internal/Interpreter.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="Interpreter.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.commons.jexl3.internal</FONT>
+<BR>
+Class Interpreter</H2>
+<PRE>
+<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+  <IMG SRC="../../../../../resources/inherit.gif" ALT="extended by "><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">org.apache.commons.jexl3.parser.ParserVisitor</A>
+      <IMG SRC="../../../../../resources/inherit.gif" ALT="extended by "><A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html" title="class in org.apache.commons.jexl3.internal">org.apache.commons.jexl3.internal.InterpreterBase</A>
+          <IMG SRC="../../../../../resources/inherit.gif" ALT="extended by "><B>org.apache.commons.jexl3.internal.Interpreter</B>
+</PRE>
+<DL>
+<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../../../../org/apache/commons/jexl3/internal/TemplateInterpreter.html" title="class in org.apache.commons.jexl3.internal">TemplateInterpreter</A></DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE>public class <B>Interpreter</B><DT>extends <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html" title="class in org.apache.commons.jexl3.internal">InterpreterBase</A></DL>
+</PRE>
+
+<P>
+An interpreter of JEXL syntax.
+<P>
+
+<P>
+<DL>
+<DT><B>Since:</B></DT>
+  <DD>2.0</DD>
+</DL>
+<HR>
+
+<P>
+<!-- =========== FIELD SUMMARY =========== -->
+
+<A NAME="field_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Field Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#cache">cache</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cache executors.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="../../../../../org/apache/commons/jexl3/internal/Scope.Frame.html" title="class in org.apache.commons.jexl3.internal">Scope.Frame</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#frame">frame</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Symbol values.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#functions">functions</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The map of 'prefix:function' to object resolving as namespaces.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#functors">functors</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The map of dynamically creates namespaces, NamespaceFunctor or duck-types of those.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="../../../../../org/apache/commons/jexl3/JexlContext.NamespaceResolver.html" title="interface in org.apache.commons.jexl3">JexlContext.NamespaceResolver</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#ns">ns</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The context to store/retrieve variables.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="../../../../../org/apache/commons/jexl3/internal/Operators.html" title="class in org.apache.commons.jexl3.internal">Operators</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#operators">operators</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The operators evaluation delegate.</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="fields_inherited_from_class_org.apache.commons.jexl3.internal.InterpreterBase"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Fields inherited from class org.apache.commons.jexl3.internal.<A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html" title="class in org.apache.commons.jexl3.internal">InterpreterBase</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#arithmetic">arithmetic</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#AUTOCLOSEABLE">AUTOCLOSEABLE</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#cancelled">cancelled</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#context">context</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#EMPTY_PARAMS">EMPTY_PARAMS</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#jexl">jexl</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#logger">logger</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#uberspect">uberspect</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+<A NAME="constructor_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Constructor Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected </CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#Interpreter(org.apache.commons.jexl3.internal.Engine, org.apache.commons.jexl3.JexlContext, org.apache.commons.jexl3.internal.Scope.Frame)">Interpreter</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/internal/Engine.html" title="class in org.apache.commons.jexl3.internal">Engine</A>&nbsp;engine,
+            <A HREF="../../../../../org/apache/commons/jexl3/JexlContext.html" title="interface in org.apache.commons.jexl3">JexlContext</A>&nbsp;aContext,
+            <A HREF="../../../../../org/apache/commons/jexl3/internal/Scope.Frame.html" title="class in org.apache.commons.jexl3.internal">Scope.Frame</A>&nbsp;eFrame)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates an interpreter.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected </CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#Interpreter(org.apache.commons.jexl3.internal.Interpreter, org.apache.commons.jexl3.JexlArithmetic)">Interpreter</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html" title="class in org.apache.commons.jexl3.internal">Interpreter</A>&nbsp;ii,
+            <A HREF="../../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A>&nbsp;jexla)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copy constructor.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#call(org.apache.commons.jexl3.parser.JexlNode, java.lang.Object, java.lang.Object, org.apache.commons.jexl3.parser.ASTArguments)">call</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+     <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;target,
+     <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;functor,
+     <A HREF="../../../../../org/apache/commons/jexl3/parser/ASTArguments.html" title="class in org.apache.commons.jexl3.parser">ASTArguments</A>&nbsp;argNode)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calls a method (or function).</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#executeAssign(org.apache.commons.jexl3.parser.JexlNode, org.apache.commons.jexl3.JexlOperator, java.lang.Object)">executeAssign</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+              <A HREF="../../../../../org/apache/commons/jexl3/JexlOperator.html" title="enum in org.apache.commons.jexl3">JexlOperator</A>&nbsp;assignop,
+              <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Executes an assignment with an optional side-effect operator.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#getAttribute(java.lang.Object, java.lang.Object)">getAttribute</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;attribute)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets an attribute of an object.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#getAttribute(java.lang.Object, java.lang.Object, org.apache.commons.jexl3.parser.JexlNode)">getAttribute</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;attribute,
+             <A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets an attribute of an object.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#interpret(org.apache.commons.jexl3.parser.JexlNode)">interpret</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Interpret the given script/expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#isLocalVariable(org.apache.commons.jexl3.parser.ASTReference, int)">isLocalVariable</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTReference.html" title="class in org.apache.commons.jexl3.parser">ASTReference</A>&nbsp;node,
+                int&nbsp;which)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks whether a reference child node holds a local variable reference.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#isTernaryProtected(org.apache.commons.jexl3.parser.JexlNode)">isTernaryProtected</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check if a null evaluated expression is protected by a ternary expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#processAnnotation(org.apache.commons.jexl3.parser.ASTAnnotatedStatement, int, java.lang.Object)">processAnnotation</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTAnnotatedStatement.html" title="class in org.apache.commons.jexl3.parser">ASTAnnotatedStatement</A>&nbsp;stmt,
+                  int&nbsp;index,
+                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Processes an annotated statement.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#processAnnotation(java.lang.String, java.lang.Object[], java.util.concurrent.Callable)">processAnnotation</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;annotation,
+                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>[]&nbsp;args,
+                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Callable.html?is-external=true" title="class or interface in java.util.concurrent">Callable</A>&lt;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&gt;&nbsp;stmt)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delegates the annotation processing to the JexlContext if it is an AnnotationProcessor.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#resolveNamespace(java.lang.String, org.apache.commons.jexl3.parser.JexlNode)">resolveNamespace</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;prefix,
+                 <A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resolves a namespace, eventually allocating an instance using context as constructor argument.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#setAttribute(java.lang.Object, java.lang.Object, java.lang.Object)">setAttribute</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;attribute,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;value)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets an attribute of an object.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#setAttribute(java.lang.Object, java.lang.Object, java.lang.Object, org.apache.commons.jexl3.parser.JexlNode)">setAttribute</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;attribute,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;value,
+             <A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets an attribute of an object.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTAddNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTAddNode.html" title="class in org.apache.commons.jexl3.parser">ASTAddNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTAndNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTAndNode.html" title="class in org.apache.commons.jexl3.parser">ASTAndNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTAnnotatedStatement, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTAnnotatedStatement.html" title="class in org.apache.commons.jexl3.parser">ASTAnnotatedStatement</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTAnnotation, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTAnnotation.html" title="class in org.apache.commons.jexl3.parser">ASTAnnotation</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>[]</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTArguments, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTArguments.html" title="class in org.apache.commons.jexl3.parser">ASTArguments</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTArrayAccess, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTArrayAccess.html" title="class in org.apache.commons.jexl3.parser">ASTArrayAccess</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTArrayLiteral, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTArrayLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTArrayLiteral</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTAssignment, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTAssignment.html" title="class in org.apache.commons.jexl3.parser">ASTAssignment</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTBitwiseAndNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTBitwiseAndNode.html" title="class in org.apache.commons.jexl3.parser">ASTBitwiseAndNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTBitwiseComplNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTBitwiseComplNode.html" title="class in org.apache.commons.jexl3.parser">ASTBitwiseComplNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTBitwiseOrNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTBitwiseOrNode.html" title="class in org.apache.commons.jexl3.parser">ASTBitwiseOrNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTBitwiseXorNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTBitwiseXorNode.html" title="class in org.apache.commons.jexl3.parser">ASTBitwiseXorNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTBlock, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTBlock.html" title="class in org.apache.commons.jexl3.parser">ASTBlock</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTBreak, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTBreak.html" title="class in org.apache.commons.jexl3.parser">ASTBreak</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTConstructorNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTConstructorNode.html" title="class in org.apache.commons.jexl3.parser">ASTConstructorNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTContinue, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTContinue.html" title="class in org.apache.commons.jexl3.parser">ASTContinue</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTDivNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTDivNode.html" title="class in org.apache.commons.jexl3.parser">ASTDivNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTEmptyFunction, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTEmptyFunction.html" title="class in org.apache.commons.jexl3.parser">ASTEmptyFunction</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTEmptyMethod, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTEmptyMethod.html" title="class in org.apache.commons.jexl3.parser">ASTEmptyMethod</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTEQNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTEQNode.html" title="class in org.apache.commons.jexl3.parser">ASTEQNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTERNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTERNode.html" title="class in org.apache.commons.jexl3.parser">ASTERNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTEWNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTEWNode.html" title="class in org.apache.commons.jexl3.parser">ASTEWNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTExtendedLiteral, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTExtendedLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTExtendedLiteral</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTFalseNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTFalseNode.html" title="class in org.apache.commons.jexl3.parser">ASTFalseNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTForeachStatement, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTForeachStatement.html" title="class in org.apache.commons.jexl3.parser">ASTForeachStatement</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTFunctionNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTFunctionNode.html" title="class in org.apache.commons.jexl3.parser">ASTFunctionNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTGENode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTGENode.html" title="class in org.apache.commons.jexl3.parser">ASTGENode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTGTNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTGTNode.html" title="class in org.apache.commons.jexl3.parser">ASTGTNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTIdentifierAccess, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTIdentifierAccess.html" title="class in org.apache.commons.jexl3.parser">ASTIdentifierAccess</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTIdentifier, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTIdentifier.html" title="class in org.apache.commons.jexl3.parser">ASTIdentifier</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTIfStatement, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTIfStatement.html" title="class in org.apache.commons.jexl3.parser">ASTIfStatement</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTJexlScript, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTJexlScript.html" title="class in org.apache.commons.jexl3.parser">ASTJexlScript</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTJxltLiteral, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTJxltLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTJxltLiteral</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTLENode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTLENode.html" title="class in org.apache.commons.jexl3.parser">ASTLENode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTLTNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTLTNode.html" title="class in org.apache.commons.jexl3.parser">ASTLTNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTMapEntry, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTMapEntry.html" title="class in org.apache.commons.jexl3.parser">ASTMapEntry</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTMapLiteral, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTMapLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTMapLiteral</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTMethodNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTMethodNode.html" title="class in org.apache.commons.jexl3.parser">ASTMethodNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTModNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTModNode.html" title="class in org.apache.commons.jexl3.parser">ASTModNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTMulNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTMulNode.html" title="class in org.apache.commons.jexl3.parser">ASTMulNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTNENode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNENode.html" title="class in org.apache.commons.jexl3.parser">ASTNENode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTNEWNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNEWNode.html" title="class in org.apache.commons.jexl3.parser">ASTNEWNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTNotNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNotNode.html" title="class in org.apache.commons.jexl3.parser">ASTNotNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTNRNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNRNode.html" title="class in org.apache.commons.jexl3.parser">ASTNRNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTNSWNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNSWNode.html" title="class in org.apache.commons.jexl3.parser">ASTNSWNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTNullLiteral, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNullLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTNullLiteral</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTNumberLiteral, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNumberLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTNumberLiteral</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTOrNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTOrNode.html" title="class in org.apache.commons.jexl3.parser">ASTOrNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTRangeNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTRangeNode.html" title="class in org.apache.commons.jexl3.parser">ASTRangeNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTReferenceExpression, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTReferenceExpression.html" title="class in org.apache.commons.jexl3.parser">ASTReferenceExpression</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTReference, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTReference.html" title="class in org.apache.commons.jexl3.parser">ASTReference</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTReturnStatement, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTReturnStatement.html" title="class in org.apache.commons.jexl3.parser">ASTReturnStatement</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTSetAddNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetAddNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetAddNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTSetAndNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetAndNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetAndNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTSetDivNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetDivNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetDivNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTSetLiteral, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTSetLiteral</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTSetModNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetModNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetModNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTSetMultNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetMultNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetMultNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTSetOrNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetOrNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetOrNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTSetSubNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetSubNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetSubNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTSetXorNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetXorNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetXorNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTSizeFunction, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSizeFunction.html" title="class in org.apache.commons.jexl3.parser">ASTSizeFunction</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTSizeMethod, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSizeMethod.html" title="class in org.apache.commons.jexl3.parser">ASTSizeMethod</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTStringLiteral, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTStringLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTStringLiteral</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTSubNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSubNode.html" title="class in org.apache.commons.jexl3.parser">ASTSubNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTSWNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSWNode.html" title="class in org.apache.commons.jexl3.parser">ASTSWNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTTernaryNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTTernaryNode.html" title="class in org.apache.commons.jexl3.parser">ASTTernaryNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTTrueNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTTrueNode.html" title="class in org.apache.commons.jexl3.parser">ASTTrueNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTUnaryMinusNode, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTUnaryMinusNode.html" title="class in org.apache.commons.jexl3.parser">ASTUnaryMinusNode</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTVar, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTVar.html" title="class in org.apache.commons.jexl3.parser">ASTVar</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html#visit(org.apache.commons.jexl3.parser.ASTWhileStatement, java.lang.Object)">visit</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTWhileStatement.html" title="class in org.apache.commons.jexl3.parser">ASTWhileStatement</A>&nbsp;node,
+      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_org.apache.commons.jexl3.internal.InterpreterBase"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class org.apache.commons.jexl3.internal.<A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html" title="class in org.apache.commons.jexl3.internal">InterpreterBase</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#annotationError(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Throwable)">annotationError</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#cancel()">cancel</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#closeIfSupported(java.lang.Object)">closeIfSupported</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#findNullOperand(java.lang.RuntimeException, org.apache.commons.jexl3.parser.JexlNode, java.lang.Object, java.lang.Object)">findNullOperand</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#invocationException(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Exception)">invocationException</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#isCancellable()">isCancellable</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#isCancelled()">isCancelled</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#isSilent()">isSilent</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#isStrictEngine()">isStrictEngine</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#operatorError(org.apache.commons.jexl3.parser.JexlNode, org.apache.commons.jexl3.JexlOperator, java.lang.Throwable)">operatorError</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#unsolvableMethod(org.apache.commons.jexl3.parser.JexlNode, java.lang.String)">unsolvableMethod</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#unsolvableProperty(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, java.lang.Throwable)">unsolvableProperty</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html#unsolvableVariable(org.apache.commons.jexl3.parser.JexlNode, java.lang.String, boolean)">unsolvableVariable</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_org.apache.commons.jexl3.parser.ParserVisitor"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class org.apache.commons.jexl3.parser.<A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTAmbiguous, java.lang.Object)">visit</A>, <A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.SimpleNode, java.lang.Object)">visit</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ FIELD DETAIL =========== -->
+
+<A NAME="field_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Field Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="operators"><!-- --></A><H3>
+operators</H3>
+<PRE>
+protected final <A HREF="../../../../../org/apache/commons/jexl3/internal/Operators.html" title="class in org.apache.commons.jexl3.internal">Operators</A> <B>operators</B></PRE>
+<DL>
+<DD>The operators evaluation delegate.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="cache"><!-- --></A><H3>
+cache</H3>
+<PRE>
+protected final boolean <B>cache</B></PRE>
+<DL>
+<DD>Cache executors.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="frame"><!-- --></A><H3>
+frame</H3>
+<PRE>
+protected final <A HREF="../../../../../org/apache/commons/jexl3/internal/Scope.Frame.html" title="class in org.apache.commons.jexl3.internal">Scope.Frame</A> <B>frame</B></PRE>
+<DL>
+<DD>Symbol values.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="ns"><!-- --></A><H3>
+ns</H3>
+<PRE>
+protected final <A HREF="../../../../../org/apache/commons/jexl3/JexlContext.NamespaceResolver.html" title="interface in org.apache.commons.jexl3">JexlContext.NamespaceResolver</A> <B>ns</B></PRE>
+<DL>
+<DD>The context to store/retrieve variables.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="functions"><!-- --></A><H3>
+functions</H3>
+<PRE>
+protected final <A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&gt; <B>functions</B></PRE>
+<DL>
+<DD>The map of 'prefix:function' to object resolving as namespaces.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="functors"><!-- --></A><H3>
+functors</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&gt; <B>functors</B></PRE>
+<DL>
+<DD>The map of dynamically creates namespaces, NamespaceFunctor or duck-types of those.
+<P>
+<DL>
+</DL>
+</DL>
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+<A NAME="constructor_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Constructor Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="Interpreter(org.apache.commons.jexl3.internal.Engine, org.apache.commons.jexl3.JexlContext, org.apache.commons.jexl3.internal.Scope.Frame)"><!-- --></A><H3>
+Interpreter</H3>
+<PRE>
+protected <B>Interpreter</B>(<A HREF="../../../../../org/apache/commons/jexl3/internal/Engine.html" title="class in org.apache.commons.jexl3.internal">Engine</A>&nbsp;engine,
+                      <A HREF="../../../../../org/apache/commons/jexl3/JexlContext.html" title="interface in org.apache.commons.jexl3">JexlContext</A>&nbsp;aContext,
+                      <A HREF="../../../../../org/apache/commons/jexl3/internal/Scope.Frame.html" title="class in org.apache.commons.jexl3.internal">Scope.Frame</A>&nbsp;eFrame)</PRE>
+<DL>
+<DD>Creates an interpreter.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>engine</CODE> - the engine creating this interpreter<DD><CODE>aContext</CODE> - the context to evaluate expression<DD><CODE>eFrame</CODE> - the interpreter evaluation frame</DL>
+</DL>
+<HR>
+
+<A NAME="Interpreter(org.apache.commons.jexl3.internal.Interpreter, org.apache.commons.jexl3.JexlArithmetic)"><!-- --></A><H3>
+Interpreter</H3>
+<PRE>
+protected <B>Interpreter</B>(<A HREF="../../../../../org/apache/commons/jexl3/internal/Interpreter.html" title="class in org.apache.commons.jexl3.internal">Interpreter</A>&nbsp;ii,
+                      <A HREF="../../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A>&nbsp;jexla)</PRE>
+<DL>
+<DD>Copy constructor.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>ii</CODE> - the interpreter to copy<DD><CODE>jexla</CODE> - the arithmetic instance to use (or null)</DL>
+</DL>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="interpret(org.apache.commons.jexl3.parser.JexlNode)"><!-- --></A><H3>
+interpret</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>interpret</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</PRE>
+<DL>
+<DD>Interpret the given script/expression.
+ <p>
+ If the underlying JEXL engine is silent, errors will be logged through
+ its logger as warning.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>node</CODE> - the script or expression to interpret.
+<DT><B>Returns:</B><DD>the result of the interpretation.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/JexlException.html" title="class in org.apache.commons.jexl3">JexlException</A></CODE> - if any error occurs during interpretation.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="resolveNamespace(java.lang.String, org.apache.commons.jexl3.parser.JexlNode)"><!-- --></A><H3>
+resolveNamespace</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>resolveNamespace</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;prefix,
+                                  <A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</PRE>
+<DL>
+<DD>Resolves a namespace, eventually allocating an instance using context as constructor argument.
+ <p>
+ The lifetime of such instances span the current expression or script evaluation.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>prefix</CODE> - the prefix name (may be null for global namespace)<DD><CODE>node</CODE> - the AST node
+<DT><B>Returns:</B><DD>the namespace instance</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTAddNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTAddNode.html" title="class in org.apache.commons.jexl3.parser">ASTAddNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTAddNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTSubNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSubNode.html" title="class in org.apache.commons.jexl3.parser">ASTSubNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTSubNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTMulNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTMulNode.html" title="class in org.apache.commons.jexl3.parser">ASTMulNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTMulNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTDivNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTDivNode.html" title="class in org.apache.commons.jexl3.parser">ASTDivNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTDivNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTModNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTModNode.html" title="class in org.apache.commons.jexl3.parser">ASTModNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTModNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTBitwiseAndNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTBitwiseAndNode.html" title="class in org.apache.commons.jexl3.parser">ASTBitwiseAndNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTBitwiseAndNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTBitwiseOrNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTBitwiseOrNode.html" title="class in org.apache.commons.jexl3.parser">ASTBitwiseOrNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTBitwiseOrNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTBitwiseXorNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTBitwiseXorNode.html" title="class in org.apache.commons.jexl3.parser">ASTBitwiseXorNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTBitwiseXorNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTEQNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTEQNode.html" title="class in org.apache.commons.jexl3.parser">ASTEQNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTEQNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTNENode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNENode.html" title="class in org.apache.commons.jexl3.parser">ASTNENode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTNENode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTGENode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTGENode.html" title="class in org.apache.commons.jexl3.parser">ASTGENode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTGENode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTGTNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTGTNode.html" title="class in org.apache.commons.jexl3.parser">ASTGTNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTGTNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTLENode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTLENode.html" title="class in org.apache.commons.jexl3.parser">ASTLENode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTLENode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTLTNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTLTNode.html" title="class in org.apache.commons.jexl3.parser">ASTLTNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTLTNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTSWNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSWNode.html" title="class in org.apache.commons.jexl3.parser">ASTSWNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTSWNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTNSWNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNSWNode.html" title="class in org.apache.commons.jexl3.parser">ASTNSWNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTNSWNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTEWNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTEWNode.html" title="class in org.apache.commons.jexl3.parser">ASTEWNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTEWNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTNEWNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNEWNode.html" title="class in org.apache.commons.jexl3.parser">ASTNEWNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTNEWNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTERNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTERNode.html" title="class in org.apache.commons.jexl3.parser">ASTERNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTERNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTNRNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNRNode.html" title="class in org.apache.commons.jexl3.parser">ASTNRNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTNRNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTRangeNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTRangeNode.html" title="class in org.apache.commons.jexl3.parser">ASTRangeNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTRangeNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTUnaryMinusNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTUnaryMinusNode.html" title="class in org.apache.commons.jexl3.parser">ASTUnaryMinusNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTUnaryMinusNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTBitwiseComplNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTBitwiseComplNode.html" title="class in org.apache.commons.jexl3.parser">ASTBitwiseComplNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTBitwiseComplNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTNotNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNotNode.html" title="class in org.apache.commons.jexl3.parser">ASTNotNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTNotNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTIfStatement, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTIfStatement.html" title="class in org.apache.commons.jexl3.parser">ASTIfStatement</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTIfStatement, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTBlock, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTBlock.html" title="class in org.apache.commons.jexl3.parser">ASTBlock</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTBlock, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTReturnStatement, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTReturnStatement.html" title="class in org.apache.commons.jexl3.parser">ASTReturnStatement</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTReturnStatement, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTContinue, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTContinue.html" title="class in org.apache.commons.jexl3.parser">ASTContinue</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTContinue, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTBreak, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTBreak.html" title="class in org.apache.commons.jexl3.parser">ASTBreak</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTBreak, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTForeachStatement, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTForeachStatement.html" title="class in org.apache.commons.jexl3.parser">ASTForeachStatement</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTForeachStatement, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTWhileStatement, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTWhileStatement.html" title="class in org.apache.commons.jexl3.parser">ASTWhileStatement</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTWhileStatement, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTAndNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTAndNode.html" title="class in org.apache.commons.jexl3.parser">ASTAndNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTAndNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTOrNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTOrNode.html" title="class in org.apache.commons.jexl3.parser">ASTOrNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTOrNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTNullLiteral, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNullLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTNullLiteral</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTNullLiteral, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTTrueNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTTrueNode.html" title="class in org.apache.commons.jexl3.parser">ASTTrueNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTTrueNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTFalseNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTFalseNode.html" title="class in org.apache.commons.jexl3.parser">ASTFalseNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTFalseNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTNumberLiteral, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTNumberLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTNumberLiteral</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTNumberLiteral, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTStringLiteral, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTStringLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTStringLiteral</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTStringLiteral, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTArrayLiteral, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTArrayLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTArrayLiteral</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTArrayLiteral, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTExtendedLiteral, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTExtendedLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTExtendedLiteral</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTExtendedLiteral, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTSetLiteral, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTSetLiteral</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTSetLiteral, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTMapLiteral, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTMapLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTMapLiteral</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTMapLiteral, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTMapEntry, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTMapEntry.html" title="class in org.apache.commons.jexl3.parser">ASTMapEntry</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTMapEntry, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTTernaryNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTTernaryNode.html" title="class in org.apache.commons.jexl3.parser">ASTTernaryNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTTernaryNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTSizeFunction, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSizeFunction.html" title="class in org.apache.commons.jexl3.parser">ASTSizeFunction</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTSizeFunction, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTSizeMethod, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSizeMethod.html" title="class in org.apache.commons.jexl3.parser">ASTSizeMethod</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTSizeMethod, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTEmptyFunction, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTEmptyFunction.html" title="class in org.apache.commons.jexl3.parser">ASTEmptyFunction</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTEmptyFunction, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTEmptyMethod, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTEmptyMethod.html" title="class in org.apache.commons.jexl3.parser">ASTEmptyMethod</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTEmptyMethod, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTJexlScript, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTJexlScript.html" title="class in org.apache.commons.jexl3.parser">ASTJexlScript</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTJexlScript, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTVar, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTVar.html" title="class in org.apache.commons.jexl3.parser">ASTVar</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTVar, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTReferenceExpression, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTReferenceExpression.html" title="class in org.apache.commons.jexl3.parser">ASTReferenceExpression</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTReferenceExpression, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTIdentifier, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTIdentifier.html" title="class in org.apache.commons.jexl3.parser">ASTIdentifier</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTIdentifier, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTArrayAccess, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTArrayAccess.html" title="class in org.apache.commons.jexl3.parser">ASTArrayAccess</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTArrayAccess, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isTernaryProtected(org.apache.commons.jexl3.parser.JexlNode)"><!-- --></A><H3>
+isTernaryProtected</H3>
+<PRE>
+protected boolean <B>isTernaryProtected</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</PRE>
+<DL>
+<DD>Check if a null evaluated expression is protected by a ternary expression.
+ <p>
+ The rationale is that the ternary / elvis expressions are meant for the user to explictly take control
+ over the error generation; ie, ternaries can return null even if the engine in isStrict mode
+ would normally throw an exception.
+ </p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>node</CODE> - the expression node
+<DT><B>Returns:</B><DD>true if nullable variable, false otherwise</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isLocalVariable(org.apache.commons.jexl3.parser.ASTReference, int)"><!-- --></A><H3>
+isLocalVariable</H3>
+<PRE>
+protected boolean <B>isLocalVariable</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTReference.html" title="class in org.apache.commons.jexl3.parser">ASTReference</A>&nbsp;node,
+                                  int&nbsp;which)</PRE>
+<DL>
+<DD>Checks whether a reference child node holds a local variable reference.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>node</CODE> - the reference node<DD><CODE>which</CODE> - the child we are checking
+<DT><B>Returns:</B><DD>true if child is local variable, false otherwise</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTIdentifierAccess, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTIdentifierAccess.html" title="class in org.apache.commons.jexl3.parser">ASTIdentifierAccess</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTIdentifierAccess, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTReference, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTReference.html" title="class in org.apache.commons.jexl3.parser">ASTReference</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTReference, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTAssignment, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTAssignment.html" title="class in org.apache.commons.jexl3.parser">ASTAssignment</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTAssignment, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTSetAddNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetAddNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetAddNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTSetAddNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTSetSubNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetSubNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetSubNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTSetSubNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTSetMultNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetMultNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetMultNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTSetMultNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTSetDivNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetDivNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetDivNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTSetDivNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTSetModNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetModNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetModNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTSetModNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTSetAndNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetAndNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetAndNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTSetAndNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTSetOrNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetOrNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetOrNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTSetOrNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTSetXorNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTSetXorNode.html" title="class in org.apache.commons.jexl3.parser">ASTSetXorNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTSetXorNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="executeAssign(org.apache.commons.jexl3.parser.JexlNode, org.apache.commons.jexl3.JexlOperator, java.lang.Object)"><!-- --></A><H3>
+executeAssign</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>executeAssign</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                               <A HREF="../../../../../org/apache/commons/jexl3/JexlOperator.html" title="enum in org.apache.commons.jexl3">JexlOperator</A>&nbsp;assignop,
+                               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD>Executes an assignment with an optional side-effect operator.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>node</CODE> - the node<DD><CODE>assignop</CODE> - the assignment operator or null if simply assignment<DD><CODE>data</CODE> - the data
+<DT><B>Returns:</B><DD>the left hand side</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTArguments, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>[] <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTArguments.html" title="class in org.apache.commons.jexl3.parser">ASTArguments</A>&nbsp;node,
+                         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTArguments, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTMethodNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTMethodNode.html" title="class in org.apache.commons.jexl3.parser">ASTMethodNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTMethodNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTFunctionNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTFunctionNode.html" title="class in org.apache.commons.jexl3.parser">ASTFunctionNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTFunctionNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="call(org.apache.commons.jexl3.parser.JexlNode, java.lang.Object, java.lang.Object, org.apache.commons.jexl3.parser.ASTArguments)"><!-- --></A><H3>
+call</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>call</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node,
+                      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;target,
+                      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;functor,
+                      <A HREF="../../../../../org/apache/commons/jexl3/parser/ASTArguments.html" title="class in org.apache.commons.jexl3.parser">ASTArguments</A>&nbsp;argNode)</PRE>
+<DL>
+<DD>Calls a method (or function).
+ <p>
+ Method resolution is a follows:
+ 1 - attempt to find a method in the target passed as parameter;
+ 2 - if this fails, seeks a JexlScript or JexlMethod or a duck-callable* as a property of that target;
+ 3 - if this fails, narrow the arguments and try again 1
+ 4 - if this fails, seeks a context or arithmetic method with the proper name taking the target as first argument;
+ </p>
+ *duck-callable: an object where a "call" function exists
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>node</CODE> - the method node<DD><CODE>target</CODE> - the target of the method, what it should be invoked upon<DD><CODE>functor</CODE> - the object carrying the method or function or the method identifier<DD><CODE>argNode</CODE> - the node carrying the arguments
+<DT><B>Returns:</B><DD>the result of the method invocation</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTConstructorNode, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTConstructorNode.html" title="class in org.apache.commons.jexl3.parser">ASTConstructorNode</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTConstructorNode, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getAttribute(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+getAttribute</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>getAttribute</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object,
+                           <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;attribute)</PRE>
+<DL>
+<DD>Gets an attribute of an object.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>object</CODE> - to retrieve value from<DD><CODE>attribute</CODE> - the attribute of the object, e.g. an index (1, 0, 2) or key for a map
+<DT><B>Returns:</B><DD>the attribute value</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getAttribute(java.lang.Object, java.lang.Object, org.apache.commons.jexl3.parser.JexlNode)"><!-- --></A><H3>
+getAttribute</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>getAttribute</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object,
+                              <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;attribute,
+                              <A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</PRE>
+<DL>
+<DD>Gets an attribute of an object.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>object</CODE> - to retrieve value from<DD><CODE>attribute</CODE> - the attribute of the object, e.g. an index (1, 0, 2) or key for a map<DD><CODE>node</CODE> - the node that evaluated as the object
+<DT><B>Returns:</B><DD>the attribute value</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setAttribute(java.lang.Object, java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+setAttribute</H3>
+<PRE>
+public void <B>setAttribute</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object,
+                         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;attribute,
+                         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;value)</PRE>
+<DL>
+<DD>Sets an attribute of an object.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>object</CODE> - to set the value to<DD><CODE>attribute</CODE> - the attribute of the object, e.g. an index (1, 0, 2) or key for a map<DD><CODE>value</CODE> - the value to assign to the object's attribute</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setAttribute(java.lang.Object, java.lang.Object, java.lang.Object, org.apache.commons.jexl3.parser.JexlNode)"><!-- --></A><H3>
+setAttribute</H3>
+<PRE>
+protected void <B>setAttribute</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object,
+                            <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;attribute,
+                            <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;value,
+                            <A HREF="../../../../../org/apache/commons/jexl3/parser/JexlNode.html" title="class in org.apache.commons.jexl3.parser">JexlNode</A>&nbsp;node)</PRE>
+<DL>
+<DD>Sets an attribute of an object.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>object</CODE> - to set the value to<DD><CODE>attribute</CODE> - the attribute of the object, e.g. an index (1, 0, 2) or key for a map<DD><CODE>value</CODE> - the value to assign to the object's attribute<DD><CODE>node</CODE> - the node that evaluated as the object</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTJxltLiteral, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTJxltLiteral.html" title="class in org.apache.commons.jexl3.parser">ASTJxltLiteral</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTJxltLiteral, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTAnnotation, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTAnnotation.html" title="class in org.apache.commons.jexl3.parser">ASTAnnotation</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTAnnotation, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="visit(org.apache.commons.jexl3.parser.ASTAnnotatedStatement, java.lang.Object)"><!-- --></A><H3>
+visit</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>visit</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTAnnotatedStatement.html" title="class in org.apache.commons.jexl3.parser">ASTAnnotatedStatement</A>&nbsp;node,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html#visit(org.apache.commons.jexl3.parser.ASTAnnotatedStatement, java.lang.Object)">visit</A></CODE> in class <CODE><A HREF="../../../../../org/apache/commons/jexl3/parser/ParserVisitor.html" title="class in org.apache.commons.jexl3.parser">ParserVisitor</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="processAnnotation(org.apache.commons.jexl3.parser.ASTAnnotatedStatement, int, java.lang.Object)"><!-- --></A><H3>
+processAnnotation</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>processAnnotation</B>(<A HREF="../../../../../org/apache/commons/jexl3/parser/ASTAnnotatedStatement.html" title="class in org.apache.commons.jexl3.parser">ASTAnnotatedStatement</A>&nbsp;stmt,
+                                   int&nbsp;index,
+                                   <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;data)</PRE>
+<DL>
+<DD>Processes an annotated statement.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>stmt</CODE> - the statement<DD><CODE>index</CODE> - the index of the current annotation being processed<DD><CODE>data</CODE> - the contextual data
+<DT><B>Returns:</B><DD>the result of the statement block evaluation</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="processAnnotation(java.lang.String, java.lang.Object[], java.util.concurrent.Callable)"><!-- --></A><H3>
+processAnnotation</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>processAnnotation</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;annotation,
+                                   <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>[]&nbsp;args,
+                                   <A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Callable.html?is-external=true" title="class or interface in java.util.concurrent">Callable</A>&lt;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&gt;&nbsp;stmt)
+                            throws <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</A></PRE>
+<DL>
+<DD>Delegates the annotation processing to the JexlContext if it is an AnnotationProcessor.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>annotation</CODE> - the annotation name<DD><CODE>args</CODE> - the annotation arguments<DD><CODE>stmt</CODE> - the statement / block that was annotated
+<DT><B>Returns:</B><DD>the result of statement.call()
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</A></CODE> - if anything goes wrong</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/Interpreter.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/internal/IntegerRange.Descending.html" title="class in org.apache.commons.jexl3.internal"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/internal/InterpreterBase.html" title="class in org.apache.commons.jexl3.internal"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/commons/jexl3/internal/Interpreter.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="Interpreter.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2001&#x2013;2017 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+</BODY>
+</HTML>

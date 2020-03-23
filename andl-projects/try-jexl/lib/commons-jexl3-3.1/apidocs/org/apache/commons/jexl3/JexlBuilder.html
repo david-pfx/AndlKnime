@@ -1,0 +1,971 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>
+JexlBuilder (Apache Commons JEXL 3.1 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="JexlBuilder (Apache Commons JEXL 3.1 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/JexlBuilder.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.Uberspect.html" title="interface in org.apache.commons.jexl3"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlContext.html" title="interface in org.apache.commons.jexl3"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/commons/jexl3/JexlBuilder.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="JexlBuilder.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.commons.jexl3</FONT>
+<BR>
+Class JexlBuilder</H2>
+<PRE>
+<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+  <IMG SRC="../../../../resources/inherit.gif" ALT="extended by "><B>org.apache.commons.jexl3.JexlBuilder</B>
+</PRE>
+<HR>
+<DL>
+<DT><PRE>public class <B>JexlBuilder</B><DT>extends <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></DL>
+</PRE>
+
+<P>
+Configure and builds a JexlEngine.
+
+ <p>The <code>setSilent</code> and <code>setStrict</code> methods allow to fine-tune an engine instance behavior
+ according to various error control needs. The strict flag tells the engine when and if null as operand is
+ considered an error, the silent flag tells the engine what to do with the error
+ (log as warning or throw exception).</p>
+
+ <ul>
+ <li>When "silent" &amp; "not-strict":
+ <p> 0 &amp; null should be indicators of "default" values so that even in an case of error,
+ something meaningful can still be inferred; may be convenient for configurations.
+ </p>
+ </li>
+ <li>When "silent" &amp; "strict":
+ <p>One should probably consider using null as an error case - ie, every object
+ manipulated by JEXL should be valued; the ternary operator, especially the '?:' form
+ can be used to workaround exceptional cases.
+ Use case could be configuration with no implicit values or defaults.
+ </p>
+ </li>
+ <li>When "not-silent" &amp; "not-strict":
+ <p>The error control grain is roughly on par with JEXL 1.0</p>
+ </li>
+ <li>When "not-silent" &amp; "strict":
+ <p>The finest error control grain is obtained; it is the closest to Java code -
+ still augmented by "script" capabilities regarding automated conversions and type matching.
+ </p>
+ </li>
+ </ul>
+<P>
+
+<P>
+<HR>
+
+<P>
+<!-- =========== FIELD SUMMARY =========== -->
+
+<A NAME="field_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Field Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected static&nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#CACHE_THRESHOLD">CACHE_THRESHOLD</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The default maximum expression length to hit the expression cache.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+<A NAME="constructor_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Constructor Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#JexlBuilder()">JexlBuilder</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#arithmetic()">arithmetic</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#arithmetic(org.apache.commons.jexl3.JexlArithmetic)">arithmetic</A></B>(<A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A>&nbsp;a)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the JexlArithmetic instance the engine will use.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#cache()">cache</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#cache(int)">cache</A></B>(int&nbsp;size)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the expression cache size the engine will use.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#cacheThreshold()">cacheThreshold</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#cacheThreshold(int)">cacheThreshold</A></B>(int&nbsp;length)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the maximum length for an expression to be cached.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#cancellable()">cancellable</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#cancellable(boolean)">cancellable</A></B>(boolean&nbsp;flag)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the engine behavior upon interruption: throw an JexlException.Cancel or terminates the current evaluation
+ and return null.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/nio/charset/Charset.html?is-external=true" title="class or interface in java.nio.charset">Charset</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#charset()">charset</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#charset(java.nio.charset.Charset)">charset</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/nio/charset/Charset.html?is-external=true" title="class or interface in java.nio.charset">Charset</A>&nbsp;arg)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the charset to use.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html" title="class in org.apache.commons.jexl3">JexlEngine</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#create()">create</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#debug()">debug</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#debug(boolean)">debug</A></B>(boolean&nbsp;flag)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets whether the engine will report debugging information when error occurs.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ClassLoader.html?is-external=true" title="class or interface in java.lang">ClassLoader</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#loader()">loader</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#loader(java.nio.charset.Charset)">loader</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/nio/charset/Charset.html?is-external=true" title="class or interface in java.nio.charset">Charset</A>&nbsp;arg)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I>since 3.1 use <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#charset(java.nio.charset.Charset)"><CODE>charset(Charset)</CODE></A> instead</I></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#loader(java.lang.ClassLoader)">loader</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ClassLoader.html?is-external=true" title="class or interface in java.lang">ClassLoader</A>&nbsp;l)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the class loader to use.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;org.apache.commons.logging.Log</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#logger()">logger</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#logger(org.apache.commons.logging.Log)">logger</A></B>(org.apache.commons.logging.Log&nbsp;l)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the o.a.c.Log instance to use.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#namespaces()">namespaces</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#namespaces(java.util.Map)">namespaces</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&gt;&nbsp;ns)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the default namespaces map the engine will use.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/introspection/JexlSandbox.html" title="class in org.apache.commons.jexl3.introspection">JexlSandbox</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#sandbox()">sandbox</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#sandbox(org.apache.commons.jexl3.introspection.JexlSandbox)">sandbox</A></B>(<A HREF="../../../../org/apache/commons/jexl3/introspection/JexlSandbox.html" title="class in org.apache.commons.jexl3.introspection">JexlSandbox</A>&nbsp;box)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the sandbox the engine will use.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#silent()">silent</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#silent(boolean)">silent</A></B>(boolean&nbsp;flag)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets whether the engine will throw JexlException during evaluation when an error is triggered.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/introspection/JexlUberspect.ResolverStrategy.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.ResolverStrategy</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#strategy()">strategy</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#strategy(org.apache.commons.jexl3.introspection.JexlUberspect.ResolverStrategy)">strategy</A></B>(<A HREF="../../../../org/apache/commons/jexl3/introspection/JexlUberspect.ResolverStrategy.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.ResolverStrategy</A>&nbsp;rs)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the JexlUberspect strategy strategy the engine will use.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#strict()">strict</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#strict(boolean)">strict</A></B>(boolean&nbsp;flag)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets whether the engine considers unknown variables, methods, functions and constructors as errors or
+ evaluates them as null.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#uberspect()">uberspect</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#uberspect(org.apache.commons.jexl3.introspection.JexlUberspect)">uberspect</A></B>(<A HREF="../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect</A>&nbsp;u)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the JexlUberspect instance the engine will use.</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ FIELD DETAIL =========== -->
+
+<A NAME="field_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Field Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="CACHE_THRESHOLD"><!-- --></A><H3>
+CACHE_THRESHOLD</H3>
+<PRE>
+protected static final int <B>CACHE_THRESHOLD</B></PRE>
+<DL>
+<DD>The default maximum expression length to hit the expression cache.
+<P>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../constant-values.html#org.apache.commons.jexl3.JexlBuilder.CACHE_THRESHOLD">Constant Field Values</A></DL>
+</DL>
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+<A NAME="constructor_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Constructor Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="JexlBuilder()"><!-- --></A><H3>
+JexlBuilder</H3>
+<PRE>
+public <B>JexlBuilder</B>()</PRE>
+<DL>
+</DL>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="uberspect(org.apache.commons.jexl3.introspection.JexlUberspect)"><!-- --></A><H3>
+uberspect</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>uberspect</B>(<A HREF="../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect</A>&nbsp;u)</PRE>
+<DL>
+<DD>Sets the JexlUberspect instance the engine will use.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>u</CODE> - the uberspect
+<DT><B>Returns:</B><DD>this builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="uberspect()"><!-- --></A><H3>
+uberspect</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect</A> <B>uberspect</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the uberspect</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="strategy(org.apache.commons.jexl3.introspection.JexlUberspect.ResolverStrategy)"><!-- --></A><H3>
+strategy</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>strategy</B>(<A HREF="../../../../org/apache/commons/jexl3/introspection/JexlUberspect.ResolverStrategy.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.ResolverStrategy</A>&nbsp;rs)</PRE>
+<DL>
+<DD>Sets the JexlUberspect strategy strategy the engine will use.
+ <p>This is ignored if the uberspect has been set.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>rs</CODE> - the strategy
+<DT><B>Returns:</B><DD>this builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="strategy()"><!-- --></A><H3>
+strategy</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/introspection/JexlUberspect.ResolverStrategy.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.ResolverStrategy</A> <B>strategy</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the strategy strategy</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="arithmetic(org.apache.commons.jexl3.JexlArithmetic)"><!-- --></A><H3>
+arithmetic</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>arithmetic</B>(<A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A>&nbsp;a)</PRE>
+<DL>
+<DD>Sets the JexlArithmetic instance the engine will use.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>a</CODE> - the arithmetic
+<DT><B>Returns:</B><DD>this builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="arithmetic()"><!-- --></A><H3>
+arithmetic</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A> <B>arithmetic</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the arithmetic</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="sandbox(org.apache.commons.jexl3.introspection.JexlSandbox)"><!-- --></A><H3>
+sandbox</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>sandbox</B>(<A HREF="../../../../org/apache/commons/jexl3/introspection/JexlSandbox.html" title="class in org.apache.commons.jexl3.introspection">JexlSandbox</A>&nbsp;box)</PRE>
+<DL>
+<DD>Sets the sandbox the engine will use.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>box</CODE> - the sandbox
+<DT><B>Returns:</B><DD>this builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="sandbox()"><!-- --></A><H3>
+sandbox</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/introspection/JexlSandbox.html" title="class in org.apache.commons.jexl3.introspection">JexlSandbox</A> <B>sandbox</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the sandbox</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="logger(org.apache.commons.logging.Log)"><!-- --></A><H3>
+logger</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>logger</B>(org.apache.commons.logging.Log&nbsp;l)</PRE>
+<DL>
+<DD>Sets the o.a.c.Log instance to use.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>l</CODE> - the logger
+<DT><B>Returns:</B><DD>this builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="logger()"><!-- --></A><H3>
+logger</H3>
+<PRE>
+public org.apache.commons.logging.Log <B>logger</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the logger</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="loader(java.lang.ClassLoader)"><!-- --></A><H3>
+loader</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>loader</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ClassLoader.html?is-external=true" title="class or interface in java.lang">ClassLoader</A>&nbsp;l)</PRE>
+<DL>
+<DD>Sets the class loader to use.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>l</CODE> - the class loader
+<DT><B>Returns:</B><DD>this builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="loader()"><!-- --></A><H3>
+loader</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ClassLoader.html?is-external=true" title="class or interface in java.lang">ClassLoader</A> <B>loader</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the class loader</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="loader(java.nio.charset.Charset)"><!-- --></A><H3>
+loader</H3>
+<PRE>
+<FONT SIZE="-1"><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</A>
+</FONT>public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>loader</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/nio/charset/Charset.html?is-external=true" title="class or interface in java.nio.charset">Charset</A>&nbsp;arg)</PRE>
+<DL>
+<DD><B>Deprecated.</B>&nbsp;<I>since 3.1 use <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#charset(java.nio.charset.Charset)"><CODE>charset(Charset)</CODE></A> instead</I>
+<P>
+<DD>Sets the charset to use.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>arg</CODE> - the charset
+<DT><B>Returns:</B><DD>this builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="charset(java.nio.charset.Charset)"><!-- --></A><H3>
+charset</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>charset</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/nio/charset/Charset.html?is-external=true" title="class or interface in java.nio.charset">Charset</A>&nbsp;arg)</PRE>
+<DL>
+<DD>Sets the charset to use.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>arg</CODE> - the charset
+<DT><B>Returns:</B><DD>this builder<DT><B>Since:</B></DT>
+  <DD>3.1</DD>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="charset()"><!-- --></A><H3>
+charset</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/nio/charset/Charset.html?is-external=true" title="class or interface in java.nio.charset">Charset</A> <B>charset</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the charset</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="silent(boolean)"><!-- --></A><H3>
+silent</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>silent</B>(boolean&nbsp;flag)</PRE>
+<DL>
+<DD>Sets whether the engine will throw JexlException during evaluation when an error is triggered.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>flag</CODE> - true means no JexlException will occur, false allows them
+<DT><B>Returns:</B><DD>this builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="silent()"><!-- --></A><H3>
+silent</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <B>silent</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the silent error handling flag</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="strict(boolean)"><!-- --></A><H3>
+strict</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>strict</B>(boolean&nbsp;flag)</PRE>
+<DL>
+<DD>Sets whether the engine considers unknown variables, methods, functions and constructors as errors or
+ evaluates them as null.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>flag</CODE> - true means strict error reporting, false allows them to be evaluated as null
+<DT><B>Returns:</B><DD>this builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="strict()"><!-- --></A><H3>
+strict</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <B>strict</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>true if strict, false otherwise</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="debug(boolean)"><!-- --></A><H3>
+debug</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>debug</B>(boolean&nbsp;flag)</PRE>
+<DL>
+<DD>Sets whether the engine will report debugging information when error occurs.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>flag</CODE> - true implies debug is on, false implies debug is off.
+<DT><B>Returns:</B><DD>this builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="debug()"><!-- --></A><H3>
+debug</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <B>debug</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the debugging information flag</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cancellable(boolean)"><!-- --></A><H3>
+cancellable</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>cancellable</B>(boolean&nbsp;flag)</PRE>
+<DL>
+<DD>Sets the engine behavior upon interruption: throw an JexlException.Cancel or terminates the current evaluation
+ and return null.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>flag</CODE> - true implies the engine throws the exception, false makes the engine return null.
+<DT><B>Returns:</B><DD>this builder<DT><B>Since:</B></DT>
+  <DD>3.1</DD>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cancellable()"><!-- --></A><H3>
+cancellable</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <B>cancellable</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the cancellable information flag<DT><B>Since:</B></DT>
+  <DD>3.1</DD>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="namespaces(java.util.Map)"><!-- --></A><H3>
+namespaces</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>namespaces</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&gt;&nbsp;ns)</PRE>
+<DL>
+<DD>Sets the default namespaces map the engine will use.
+ <p>
+ Each entry key is used as a prefix, each entry value used as a bean implementing
+ methods; an expression like 'nsx:method(123)' will thus be solved by looking at
+ a registered bean named 'nsx' that implements method 'method' in that map.
+ If all methods are static, you may use the bean class instead of an instance as value.
+ </p>
+ <p>
+ If the entry value is a class that has one contructor taking a JexlContext as argument, an instance
+ of the namespace will be created at evaluation time. It might be a good idea to derive a JexlContext
+ to carry the information used by the namespace to avoid variable space pollution and strongly type
+ the constructor with this specialized JexlContext.
+ </p>
+ <p>
+ The key or prefix allows to retrieve the bean that plays the role of the namespace.
+ If the prefix is null, the namespace is the top-level namespace allowing to define
+ top-level user defined namespaces ( ie: myfunc(...) )
+ </p>
+ <p>Note that the JexlContext is also used to try to solve top-level namespaces. This allows ObjectContext
+ derived instances to call methods on the wrapped object.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>ns</CODE> - the map of namespaces
+<DT><B>Returns:</B><DD>this builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="namespaces()"><!-- --></A><H3>
+namespaces</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</A>&lt;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>,<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&gt; <B>namespaces</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the map of namespaces.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cache(int)"><!-- --></A><H3>
+cache</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>cache</B>(int&nbsp;size)</PRE>
+<DL>
+<DD>Sets the expression cache size the engine will use.
+ <p>The cache will contain at most <code>size</code> expressions of at most <code>cacheThreshold</code> length.
+ Note that all JEXL caches are held through SoftReferences and may be garbage-collected.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>size</CODE> - if not strictly positive, no cache is used.
+<DT><B>Returns:</B><DD>this builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cache()"><!-- --></A><H3>
+cache</H3>
+<PRE>
+public int <B>cache</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the cache size</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cacheThreshold(int)"><!-- --></A><H3>
+cacheThreshold</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A> <B>cacheThreshold</B>(int&nbsp;length)</PRE>
+<DL>
+<DD>Sets the maximum length for an expression to be cached.
+ <p>Expression whose length is greater than this expression cache length threshold will
+ bypass the cache.</p>
+ <p>It is expected that a "long" script will be parsed once and its reference kept
+ around in user-space structures; the jexl expression cache has no added-value in this case.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>length</CODE> - if not strictly positive, the value is silently replaced by the default value (64).
+<DT><B>Returns:</B><DD>this builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cacheThreshold()"><!-- --></A><H3>
+cacheThreshold</H3>
+<PRE>
+public int <B>cacheThreshold</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the cache threshold</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="create()"><!-- --></A><H3>
+create</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html" title="class in org.apache.commons.jexl3">JexlEngine</A> <B>create</B>()</PRE>
+<DL>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>a <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html" title="class in org.apache.commons.jexl3"><CODE>JexlEngine</CODE></A> instance</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/JexlBuilder.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.Uberspect.html" title="interface in org.apache.commons.jexl3"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlContext.html" title="interface in org.apache.commons.jexl3"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/commons/jexl3/JexlBuilder.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="JexlBuilder.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2001&#x2013;2017 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+</BODY>
+</HTML>

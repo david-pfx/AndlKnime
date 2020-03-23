@@ -1,1 +1,8 @@
-/bin/org/andl/ra
+.metadata
+/dev-workspace/andl-jexl-plugin
+/dev-workspace/andl-ra/bin
+/runtime-workspace/try_extend/.knimeLock
+.knimeLock
+/dev-workspace/andl-try/bin
+/plugins
+/andl-projects/andl-ra/lib

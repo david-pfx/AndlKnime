@@ -1,7 +1,6 @@
 package org.andl.ra.rename;
 
 import org.andl.ra.value.RaValueNodeDialog;
-import org.andl.ra.value.RaValueNodeModel;
 import org.knime.core.data.DataTableSpec;
 import org.knime.core.node.InvalidSettingsException;
 import org.knime.core.node.NodeLogger;

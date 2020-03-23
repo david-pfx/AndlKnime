@@ -1,0 +1,539 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>
+JxltEngine (Apache Commons JEXL 3.1 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="JxltEngine (Apache Commons JEXL 3.1 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/JxltEngine.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlScript.html" title="interface in org.apache.commons.jexl3"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Exception.html" title="class in org.apache.commons.jexl3"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/commons/jexl3/JxltEngine.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="JxltEngine.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.commons.jexl3</FONT>
+<BR>
+Class JxltEngine</H2>
+<PRE>
+<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+  <IMG SRC="../../../../resources/inherit.gif" ALT="extended by "><B>org.apache.commons.jexl3.JxltEngine</B>
+</PRE>
+<DL>
+<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../../../org/apache/commons/jexl3/internal/TemplateEngine.html" title="class in org.apache.commons.jexl3.internal">TemplateEngine</A></DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE>public abstract class <B>JxltEngine</B><DT>extends <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></DL>
+</PRE>
+
+<P>
+A simple "JeXL Template" engine.
+
+ <p>At the base is an evaluator similar to the Unified EL evaluator used in JSP/JSF based on JEXL.
+ At the top is a template engine inspired by Velocity that uses JEXL (instead of OGNL/VTL) as the scripting
+ language.</p>
+
+ <p>The evaluator is intended to be used in configuration modules, XML based frameworks or JSP taglibs
+ and facilitate the implementation of expression evaluation.</p>
+
+ <p>The template engine is intended to output any form of text; html, XML, CSV...</p>
+<P>
+
+<P>
+<DL>
+<DT><B>Since:</B></DT>
+  <DD>3.0</DD>
+</DL>
+<HR>
+
+<P>
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+
+<A NAME="nested_class_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Nested Class Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Exception.html" title="class in org.apache.commons.jexl3">JxltEngine.Exception</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The sole type of (runtime) exception the JxltEngine can throw.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;interface</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html" title="interface in org.apache.commons.jexl3">JxltEngine.Expression</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A unified expression that can mix immediate, deferred and nested sub-expressions as well as string constants;
+ 
+   The "immediate" syntax is of the form <code>"...${jexl-expr}..."</code>
+   The "deferred" syntax is of the form <code>"...#{jexl-expr}..."</code>
+   The "nested" syntax is of the form <code>"...#{...${jexl-expr0}...}..."</code>
+   The "composite" syntax is of the form <code>"...${jexl-expr0}...</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;interface</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A template is a JEXL script that evaluates by writing its content through a Writer.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+<A NAME="constructor_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Constructor Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html#JxltEngine()">JxltEngine</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>abstract &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html#clearCache()">clearCache</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clears the cache.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>abstract &nbsp;<A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html" title="interface in org.apache.commons.jexl3">JxltEngine.Expression</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html#createExpression(org.apache.commons.jexl3.JexlInfo, java.lang.String)">createExpression</A></B>(<A HREF="../../../../org/apache/commons/jexl3/JexlInfo.html" title="class in org.apache.commons.jexl3">JexlInfo</A>&nbsp;info,
+                 <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;expression)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a a <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html" title="interface in org.apache.commons.jexl3"><CODE>JxltEngine.Expression</CODE></A> from an expression string.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html" title="interface in org.apache.commons.jexl3">JxltEngine.Expression</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html#createExpression(java.lang.String)">createExpression</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;expression)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a a <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html" title="interface in org.apache.commons.jexl3"><CODE>JxltEngine.Expression</CODE></A> from an expression string.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html#createTemplate(org.apache.commons.jexl3.JexlInfo, java.lang.String)">createTemplate</A></B>(<A HREF="../../../../org/apache/commons/jexl3/JexlInfo.html" title="class in org.apache.commons.jexl3">JexlInfo</A>&nbsp;info,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;source)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new template.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>abstract &nbsp;<A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html#createTemplate(org.apache.commons.jexl3.JexlInfo, java.lang.String, java.io.Reader, java.lang.String...)">createTemplate</A></B>(<A HREF="../../../../org/apache/commons/jexl3/JexlInfo.html" title="class in org.apache.commons.jexl3">JexlInfo</A>&nbsp;info,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;prefix,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/io/Reader.html?is-external=true" title="class or interface in java.io">Reader</A>&nbsp;source,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>...&nbsp;parms)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new template.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html#createTemplate(org.apache.commons.jexl3.JexlInfo, java.lang.String, java.lang.String...)">createTemplate</A></B>(<A HREF="../../../../org/apache/commons/jexl3/JexlInfo.html" title="class in org.apache.commons.jexl3">JexlInfo</A>&nbsp;info,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;source,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>...&nbsp;parms)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new template.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html#createTemplate(java.lang.String)">createTemplate</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;source)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new template.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html#createTemplate(java.lang.String, java.io.Reader, java.lang.String...)">createTemplate</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;prefix,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/io/Reader.html?is-external=true" title="class or interface in java.io">Reader</A>&nbsp;source,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>...&nbsp;parms)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new template.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html#createTemplate(java.lang.String, java.lang.String...)">createTemplate</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;source,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>...&nbsp;parms)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new template.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>abstract &nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html" title="class in org.apache.commons.jexl3">JexlEngine</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html#getEngine()">getEngine</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets the <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html" title="class in org.apache.commons.jexl3"><CODE>JexlEngine</CODE></A> underlying this template engine.</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+<A NAME="constructor_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Constructor Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="JxltEngine()"><!-- --></A><H3>
+JxltEngine</H3>
+<PRE>
+public <B>JxltEngine</B>()</PRE>
+<DL>
+</DL>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="createExpression(java.lang.String)"><!-- --></A><H3>
+createExpression</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html" title="interface in org.apache.commons.jexl3">JxltEngine.Expression</A> <B>createExpression</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;expression)</PRE>
+<DL>
+<DD>Creates a a <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html" title="interface in org.apache.commons.jexl3"><CODE>JxltEngine.Expression</CODE></A> from an expression string.
+ Uses and fills up the expression cache if any.
+
+ <p>If the underlying JEXL engine is silent, errors will be logged through its logger as warnings.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>expression</CODE> - the <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3"><CODE>JxltEngine.Template</CODE></A> string expression
+<DT><B>Returns:</B><DD>the <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html" title="interface in org.apache.commons.jexl3"><CODE>JxltEngine.Expression</CODE></A>, null if silent and an error occurred
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Exception.html" title="class in org.apache.commons.jexl3">JxltEngine.Exception</A></CODE> - if an error occurs and the <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html" title="class in org.apache.commons.jexl3"><CODE>JexlEngine</CODE></A> is not silent</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createExpression(org.apache.commons.jexl3.JexlInfo, java.lang.String)"><!-- --></A><H3>
+createExpression</H3>
+<PRE>
+public abstract <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html" title="interface in org.apache.commons.jexl3">JxltEngine.Expression</A> <B>createExpression</B>(<A HREF="../../../../org/apache/commons/jexl3/JexlInfo.html" title="class in org.apache.commons.jexl3">JexlInfo</A>&nbsp;info,
+                                                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;expression)</PRE>
+<DL>
+<DD>Creates a a <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html" title="interface in org.apache.commons.jexl3"><CODE>JxltEngine.Expression</CODE></A> from an expression string.
+ Uses and fills up the expression cache if any.
+
+ <p>If the underlying JEXL engine is silent, errors will be logged through its logger as warnings.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>info</CODE> - the <A HREF="../../../../org/apache/commons/jexl3/JexlInfo.html" title="class in org.apache.commons.jexl3"><CODE>JexlInfo</CODE></A> source information<DD><CODE>expression</CODE> - the <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3"><CODE>JxltEngine.Template</CODE></A> string expression
+<DT><B>Returns:</B><DD>the <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html" title="interface in org.apache.commons.jexl3"><CODE>JxltEngine.Expression</CODE></A>, null if silent and an error occured
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Exception.html" title="class in org.apache.commons.jexl3">JxltEngine.Exception</A></CODE> - if an error occurs and the <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html" title="class in org.apache.commons.jexl3"><CODE>JexlEngine</CODE></A> is not silent</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createTemplate(org.apache.commons.jexl3.JexlInfo, java.lang.String, java.io.Reader, java.lang.String...)"><!-- --></A><H3>
+createTemplate</H3>
+<PRE>
+public abstract <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A> <B>createTemplate</B>(<A HREF="../../../../org/apache/commons/jexl3/JexlInfo.html" title="class in org.apache.commons.jexl3">JexlInfo</A>&nbsp;info,
+                                                   <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;prefix,
+                                                   <A HREF="http://docs.oracle.com/javase/7/docs/api/java/io/Reader.html?is-external=true" title="class or interface in java.io">Reader</A>&nbsp;source,
+                                                   <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>...&nbsp;parms)</PRE>
+<DL>
+<DD>Creates a new template.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>info</CODE> - the jexl info (file, line, column)<DD><CODE>prefix</CODE> - the directive prefix<DD><CODE>source</CODE> - the source<DD><CODE>parms</CODE> - the parameter names
+<DT><B>Returns:</B><DD>the template</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createTemplate(org.apache.commons.jexl3.JexlInfo, java.lang.String, java.lang.String...)"><!-- --></A><H3>
+createTemplate</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A> <B>createTemplate</B>(<A HREF="../../../../org/apache/commons/jexl3/JexlInfo.html" title="class in org.apache.commons.jexl3">JexlInfo</A>&nbsp;info,
+                                          <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;source,
+                                          <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>...&nbsp;parms)</PRE>
+<DL>
+<DD>Creates a new template.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>info</CODE> - the source info<DD><CODE>parms</CODE> - the parameter names<DD><CODE>source</CODE> - the source
+<DT><B>Returns:</B><DD>the template</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createTemplate(org.apache.commons.jexl3.JexlInfo, java.lang.String)"><!-- --></A><H3>
+createTemplate</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A> <B>createTemplate</B>(<A HREF="../../../../org/apache/commons/jexl3/JexlInfo.html" title="class in org.apache.commons.jexl3">JexlInfo</A>&nbsp;info,
+                                          <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;source)</PRE>
+<DL>
+<DD>Creates a new template.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>info</CODE> - the source info<DD><CODE>source</CODE> - the source
+<DT><B>Returns:</B><DD>the template</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createTemplate(java.lang.String, java.io.Reader, java.lang.String...)"><!-- --></A><H3>
+createTemplate</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A> <B>createTemplate</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;prefix,
+                                          <A HREF="http://docs.oracle.com/javase/7/docs/api/java/io/Reader.html?is-external=true" title="class or interface in java.io">Reader</A>&nbsp;source,
+                                          <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>...&nbsp;parms)</PRE>
+<DL>
+<DD>Creates a new template.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>prefix</CODE> - the directive prefix<DD><CODE>source</CODE> - the source<DD><CODE>parms</CODE> - the parameter names
+<DT><B>Returns:</B><DD>the template</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createTemplate(java.lang.String, java.lang.String...)"><!-- --></A><H3>
+createTemplate</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A> <B>createTemplate</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;source,
+                                          <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>...&nbsp;parms)</PRE>
+<DL>
+<DD>Creates a new template.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>source</CODE> - the source<DD><CODE>parms</CODE> - the parameter names
+<DT><B>Returns:</B><DD>the template</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createTemplate(java.lang.String)"><!-- --></A><H3>
+createTemplate</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A> <B>createTemplate</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;source)</PRE>
+<DL>
+<DD>Creates a new template.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>source</CODE> - the source
+<DT><B>Returns:</B><DD>the template</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getEngine()"><!-- --></A><H3>
+getEngine</H3>
+<PRE>
+public abstract <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html" title="class in org.apache.commons.jexl3">JexlEngine</A> <B>getEngine</B>()</PRE>
+<DL>
+<DD>Gets the <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html" title="class in org.apache.commons.jexl3"><CODE>JexlEngine</CODE></A> underlying this template engine.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the JexlEngine</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="clearCache()"><!-- --></A><H3>
+clearCache</H3>
+<PRE>
+public abstract void <B>clearCache</B>()</PRE>
+<DL>
+<DD>Clears the cache.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/JxltEngine.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlScript.html" title="interface in org.apache.commons.jexl3"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Exception.html" title="class in org.apache.commons.jexl3"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/commons/jexl3/JxltEngine.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="JxltEngine.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2001&#x2013;2017 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+</BODY>
+</HTML>

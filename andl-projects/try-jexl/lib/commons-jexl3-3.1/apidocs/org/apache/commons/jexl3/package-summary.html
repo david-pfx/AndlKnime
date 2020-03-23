@@ -1,0 +1,869 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>
+org.apache.commons.jexl3 (Apache Commons JEXL 3.1 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="org.apache.commons.jexl3 (Apache Commons JEXL 3.1 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV PACKAGE&nbsp;
+&nbsp;<A HREF="../../../../org/apache/commons/jexl3/annotations/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/commons/jexl3/package-summary.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="package-summary.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<H2>
+Package org.apache.commons.jexl3
+</H2>
+Provides a framework for evaluating JEXL expressions.
+<P>
+<B>See:</B>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="#package_description"><B>Description</B></A>
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Interface Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.ArrayBuilder.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.ArrayBuilder</A></B></TD>
+<TD>Helper interface used when creating an array literal.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.MapBuilder.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.MapBuilder</A></B></TD>
+<TD>Helper interface used when creating a map literal.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.SetBuilder.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.SetBuilder</A></B></TD>
+<TD>Helper interface used when creating a set literal.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.Uberspect.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.Uberspect</A></B></TD>
+<TD>The interface that uberspects JexlArithmetic classes.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlContext.html" title="interface in org.apache.commons.jexl3">JexlContext</A></B></TD>
+<TD>Manages variables which can be referenced in a JEXL expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlContext.AnnotationProcessor.html" title="interface in org.apache.commons.jexl3">JexlContext.AnnotationProcessor</A></B></TD>
+<TD>A marker interface of the JexlContext that allows to process annotations.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlContext.NamespaceFunctor.html" title="interface in org.apache.commons.jexl3">JexlContext.NamespaceFunctor</A></B></TD>
+<TD>A marker interface of the JexlContext, NamespaceFunctor allows creating an instance
+ to delegate namespace methods calls to.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlContext.NamespaceResolver.html" title="interface in org.apache.commons.jexl3">JexlContext.NamespaceResolver</A></B></TD>
+<TD>A marker interface of the JexlContext that declares how to resolve a namespace from its name;
+ it is used by the interpreter during evaluation.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlContext.ThreadLocal.html" title="interface in org.apache.commons.jexl3">JexlContext.ThreadLocal</A></B></TD>
+<TD>A marker interface  of the JexlContext that indicates the interpreter to put this context
+ in the JexlEngine thread local context instance during evaluation.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlEngine.Options.html" title="interface in org.apache.commons.jexl3">JexlEngine.Options</A></B></TD>
+<TD>Script evaluation options.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlExpression.html" title="interface in org.apache.commons.jexl3">JexlExpression</A></B></TD>
+<TD>Represents a single JEXL expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlInfo.Detail.html" title="interface in org.apache.commons.jexl3">JexlInfo.Detail</A></B></TD>
+<TD>Describes errors more precisely.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlScript.html" title="interface in org.apache.commons.jexl3">JexlScript</A></B></TD>
+<TD>A JEXL Script.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html" title="interface in org.apache.commons.jexl3">JxltEngine.Expression</A></B></TD>
+<TD>A unified expression that can mix immediate, deferred and nested sub-expressions as well as string constants;
+ 
+   The "immediate" syntax is of the form <code>"...${jexl-expr}..."</code>
+   The "deferred" syntax is of the form <code>"...#{jexl-expr}..."</code>
+   The "nested" syntax is of the form <code>"...#{...${jexl-expr0}...}..."</code>
+   The "composite" syntax is of the form <code>"...${jexl-expr0}...</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html" title="interface in org.apache.commons.jexl3">JxltEngine.Template</A></B></TD>
+<TD>A template is a JEXL script that evaluates by writing its content through a Writer.</TD>
+</TR>
+</TABLE>
+&nbsp;
+
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Class Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A></B></TD>
+<TD>Perform arithmetic, implements JexlOperator methods.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3">JexlBuilder</A></B></TD>
+<TD>Configure and builds a JexlEngine.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html" title="class in org.apache.commons.jexl3">JexlEngine</A></B></TD>
+<TD>Creates and evaluates JexlExpression and JexlScript objects.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlInfo.html" title="class in org.apache.commons.jexl3">JexlInfo</A></B></TD>
+<TD>Helper class to carry information such as a url/file name, line and column for
+ debugging information reporting.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html" title="class in org.apache.commons.jexl3">JxltEngine</A></B></TD>
+<TD>A simple "JeXL Template" engine.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/MapContext.html" title="class in org.apache.commons.jexl3">MapContext</A></B></TD>
+<TD>Wraps a map in a context.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/ObjectContext.html" title="class in org.apache.commons.jexl3">ObjectContext&lt;T&gt;</A></B></TD>
+<TD>Wraps an Object as a JEXL context and NamespaceResolver.</TD>
+</TR>
+</TABLE>
+&nbsp;
+
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Enum Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlOperator.html" title="enum in org.apache.commons.jexl3">JexlOperator</A></B></TD>
+<TD>The JEXL operators.</TD>
+</TR>
+</TABLE>
+&nbsp;
+
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Exception Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.NullOperand.html" title="class in org.apache.commons.jexl3">JexlArithmetic.NullOperand</A></B></TD>
+<TD>Marker class for null operand exceptions.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.html" title="class in org.apache.commons.jexl3">JexlException</A></B></TD>
+<TD>Wraps any error that might occur during interpretation of a script or expression.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.Ambiguous.html" title="class in org.apache.commons.jexl3">JexlException.Ambiguous</A></B></TD>
+<TD>Thrown when parsing fails due to an ambiguous statement.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.Annotation.html" title="class in org.apache.commons.jexl3">JexlException.Annotation</A></B></TD>
+<TD>Thrown when an annotation handler throws an exception.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.Assignment.html" title="class in org.apache.commons.jexl3">JexlException.Assignment</A></B></TD>
+<TD>Thrown when parsing fails due to an invalid assigment.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.Break.html" title="class in org.apache.commons.jexl3">JexlException.Break</A></B></TD>
+<TD>Thrown to break a loop.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.Cancel.html" title="class in org.apache.commons.jexl3">JexlException.Cancel</A></B></TD>
+<TD>Thrown to cancel a script execution.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.Continue.html" title="class in org.apache.commons.jexl3">JexlException.Continue</A></B></TD>
+<TD>Thrown to continue a loop.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.Method.html" title="class in org.apache.commons.jexl3">JexlException.Method</A></B></TD>
+<TD>Thrown when a method or ctor is unknown, ambiguous or inaccessible.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.Operator.html" title="class in org.apache.commons.jexl3">JexlException.Operator</A></B></TD>
+<TD>Thrown when an operator fails.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.Parsing.html" title="class in org.apache.commons.jexl3">JexlException.Parsing</A></B></TD>
+<TD>Thrown when parsing fails.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.Property.html" title="class in org.apache.commons.jexl3">JexlException.Property</A></B></TD>
+<TD>Thrown when a property is unknown.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.Return.html" title="class in org.apache.commons.jexl3">JexlException.Return</A></B></TD>
+<TD>Thrown to return a value.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.Tokenization.html" title="class in org.apache.commons.jexl3">JexlException.Tokenization</A></B></TD>
+<TD>Thrown when tokenization fails.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JexlException.Variable.html" title="class in org.apache.commons.jexl3">JexlException.Variable</A></B></TD>
+<TD>Thrown when a variable is unknown.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Exception.html" title="class in org.apache.commons.jexl3">JxltEngine.Exception</A></B></TD>
+<TD>The sole type of (runtime) exception the JxltEngine can throw.</TD>
+</TR>
+</TABLE>
+&nbsp;
+
+<P>
+<A NAME="package_description"><!-- --></A><H2>
+Package org.apache.commons.jexl3 Description
+</H2>
+
+<P>
+Provides a framework for evaluating JEXL expressions.
+        <br/><br/>
+        <ul>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#example">Brief Example</a></li>
+            <li><a href="#usage">Using JEXL</a></li>
+            <li><a href="#configuration">Configuring JEXL</a></li>
+            <li><a href="#customization">Customizing JEXL</a></li>
+            <li><a href="#extension">Extending JEXL</a></li>
+        </ul>
+
+        <h2><a name="intro">Introduction</a></h2>
+        <p>
+            JEXL is a library intended to facilitate the implementation of dynamic and scripting features in applications
+            and frameworks.
+        </p>
+
+        <h2><a name="example">A Brief Example</a></h2>
+        <p>
+            In its simplest form, JEXL merges an
+            <A HREF="../../../../org/apache/commons/jexl3/JexlExpression.html" title="interface in org.apache.commons.jexl3"><CODE>JexlExpression</CODE></A>
+            with a
+            <A HREF="../../../../org/apache/commons/jexl3/JexlContext.html" title="interface in org.apache.commons.jexl3"><CODE>JexlContext</CODE></A> when evaluating expressions.
+            An Expression is created using
+            <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html#createExpression(java.lang.String)"><CODE>JexlEngine.createExpression(java.lang.String)</CODE></A>,
+            passing a String containing valid JEXL syntax.  A simple JexlContext can be created using
+            a <A HREF="../../../../org/apache/commons/jexl3/MapContext.html" title="class in org.apache.commons.jexl3"><CODE>MapContext</CODE></A> instance;
+            a map of variables that will be internally wrapped can be optionally provided through its constructor.
+            The following example, takes a variable named 'car', and
+            invokes the checkStatus() method on the property 'engine'
+        </p>
+        <pre>
+            // Create a JexlEngine (could reuse one instead)
+            JexlEngine jexl = new JexlBuilder().create();
+            // Create an expression object equivalent to 'car.getEngine().checkStatus()':
+            String jexlExp = "car.engine.checkStatus()";
+            Expression e = jexl.createExpression( jexlExp );
+            // The car we have to handle coming as an argument...
+            Car car = theCarThatWeHandle;
+            // Create a context and add data
+            JexlContext jc = new MapContext();
+            jc.set("car", car );
+            // Now evaluate the expression, getting the result
+            Object o = e.evaluate(jc);
+        </pre>
+
+
+        <h2><a name="usage">Using JEXL</a></h2>
+        The API is composed of three levels addressing different functional needs:
+        <ul>
+            <li>Dynamic invocation of setters, getters, methods and constructors</li>
+            <li>Script expressions known as JEXL expressions</li>
+            <li>JSP/JSF like expression known as JXLT expressions</li>
+        </ul>
+
+        <h3><a name="usage_note">Important note</a></h3>
+        The public API classes reside in the 2 packages:
+        <ul>
+            <li>org.apache.commons.jexl3</li>
+            <li>org.apache.commons.jexl3.introspection</li>
+        </ul>
+        <p>
+        The following packages follow a "use at your own maintenance cost" policy; these are only intended to be used
+        for extending JEXL.
+        Their classes and methods are not guaranteed to remain compatible in subsequent versions.
+        If you think you need to use  directly some of their features or methods, it might be a good idea to check with
+        the community through the mailing list first.
+        </p>
+        <ul>
+            <li>org.apache.commons.jexl3.parser</li>
+            <li>org.apache.commons.jexl3.scripting</li>
+            <li>org.apache.commons.jexl3.internal</li>
+            <li>org.apache.commons.jexl3.internal.introspection</li>
+        </ul>
+
+        <h3><a name="usage_api">Dynamic Invocation</a></h3>
+        <p>
+            These functionalities are close to the core level utilities found in
+            <a href="http://commons.apache.org/beanutils/">BeanUtils</a>.
+            For basic dynamic property manipulations and method invocation, you can use the following
+            set of methods:
+        </p>
+        <ul>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html#newInstance(java.lang.Class, java.lang.Object...)"><CODE>JexlEngine.newInstance(java.lang.Class<? extends T>, java.lang.Object...)</CODE></A></li>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html#setProperty(java.lang.Object, java.lang.String, java.lang.Object)"><CODE>JexlEngine.setProperty(java.lang.Object, java.lang.String, java.lang.Object)</CODE></A></li>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html#getProperty(java.lang.Object, java.lang.String)"><CODE>JexlEngine.getProperty(java.lang.Object, java.lang.String)</CODE></A></li>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html#invokeMethod(java.lang.Object, java.lang.String, java.lang.Object...)"><CODE>JexlEngine.invokeMethod(java.lang.Object, java.lang.String, java.lang.Object...)</CODE></A></li>
+        </ul>
+        The following example illustrate their usage:
+        <pre>
+            // test outer class
+            public static class Froboz {
+                int value;
+                public Froboz(int v) { value = v; }
+                public void setValue(int v) { value = v; }
+                public int getValue() { return value; }
+            }
+            // test inner class
+            public static class Quux {
+                String str;
+                Froboz froboz;
+                public Quux(String str, int fro) {
+                    this.str = str;
+                    froboz = new Froboz(fro);
+                }
+                public Froboz getFroboz() { return froboz; }
+                public void setFroboz(Froboz froboz) { this.froboz = froboz; }
+                public String getStr() { return str; }
+                public void setStr(String str) { this.str = str; }
+            }
+            // test API
+            JexlEngine jexl = new JexlBuilder().create();
+            Quux quux = jexl.newInstance(Quux.class, "xuuq", 100);
+            jexl.setProperty(quux, "froboz.value", Integer.valueOf(100));
+            Object o = jexl.getProperty(quux, "froboz.value");
+            assertEquals("Result is not 100", new Integer(100), o);
+            jexl.setProperty(quux, "['froboz'].value", Integer.valueOf(1000));
+            o = jexl.getProperty(quux, "['froboz']['value']");
+            assertEquals("Result is not 1000", new Integer(1000), o);
+        </pre>
+
+        <h3><a name="usage_jexl">Expressions and Scripts</a></h3>
+        <p>
+            If your needs require simple expression evaluation capabilities, the core JEXL features
+            will most likely fit.
+            The main methods are:
+        </p>
+        <ul>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html#createScript(org.apache.commons.jexl3.JexlInfo, java.lang.String, java.lang.String[])"><CODE>JexlEngine.createScript(org.apache.commons.jexl3.JexlInfo, java.lang.String, java.lang.String[])</CODE></A></li>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JexlScript.html#execute(org.apache.commons.jexl3.JexlContext)"><CODE>JexlScript.execute(org.apache.commons.jexl3.JexlContext)</CODE></A></li>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html#createExpression(org.apache.commons.jexl3.JexlInfo, java.lang.String)"><CODE>JexlEngine.createExpression(org.apache.commons.jexl3.JexlInfo, java.lang.String)</CODE></A></li>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JexlExpression.html#evaluate(org.apache.commons.jexl3.JexlContext)"><CODE>JexlExpression.evaluate(org.apache.commons.jexl3.JexlContext)</CODE></A></li>
+        </ul>
+        The following example illustrates their usage:
+        <pre>
+            JexlEngine jexl = new JexlBuilder().create();
+
+            JexlContext jc = new MapContext();
+            jc.set("quuxClass", quux.class);
+
+            JexlExpression create = jexl.createExpression("quux = new(quuxClass, 'xuuq', 100)");
+            JelxExpression assign = jexl.createExpression("quux.froboz.value = 10");
+            JexlExpression check = jexl.createExpression("quux[\"froboz\"].value");
+            Quux quux = (Quux) create.evaluate(jc);
+            Object o = assign.evaluate(jc);
+            assertEquals("Result is not 10", new Integer(10), o);
+            o = check.evaluate(jc);
+            assertEquals("Result is not 10", new Integer(10), o);
+        </pre>
+
+        <h3><a name="usage_ujexl">Unified Expressions and Templates</a></h3>
+        <p>
+            If you are looking for JSP-EL like and basic templating features, you can
+            use Expression from a JxltEngine.
+        </p>
+        The main methods are:
+        <ul>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html#createExpression(java.lang.String)"><CODE>JxltEngine.createExpression(java.lang.String)</CODE></A></li>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html#prepare(org.apache.commons.jexl3.JexlContext)"><CODE>JxltEngine.Expression.prepare(org.apache.commons.jexl3.JexlContext)</CODE></A></li>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Expression.html#evaluate(org.apache.commons.jexl3.JexlContext)"><CODE>JxltEngine.Expression.evaluate(org.apache.commons.jexl3.JexlContext)</CODE></A></li>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.html#createTemplate(org.apache.commons.jexl3.JexlInfo, java.lang.String, java.io.Reader, java.lang.String...)"><CODE>JxltEngine.createTemplate(org.apache.commons.jexl3.JexlInfo, java.lang.String, java.io.Reader, java.lang.String...)</CODE></A></li>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html#prepare(org.apache.commons.jexl3.JexlContext)"><CODE>JxltEngine.Template.prepare(org.apache.commons.jexl3.JexlContext)</CODE></A></li>
+            <li><A HREF="../../../../org/apache/commons/jexl3/JxltEngine.Template.html#evaluate(org.apache.commons.jexl3.JexlContext, java.io.Writer)"><CODE>JxltEngine.Template.evaluate(org.apache.commons.jexl3.JexlContext, java.io.Writer)</CODE></A></li>
+        </ul>
+        The following example illustrates their usage:
+        <pre>
+            JexlEngine jexl = new JexlBuilder().create();
+            JxltEngine jxlt = jexl.createJxltEngine();
+            JxltEngine.Expression expr = jxlt.createExpression("Hello ${user}");
+            String hello = expr.evaluate(context).toString();
+        </pre>
+
+        <h3>JexlExpression, JexlScript, Expression and Template: summary</h3>
+        <h4>JexlExpression </h4>
+        <p>
+            These are the most basic form of JexlEngine expressions and only allow for a single command
+            to be executed and its result returned. If you try to use multiple commands, it ignores
+            everything after the first semi-colon and just returns the result from
+            the first command.
+        </p>
+        <p>
+            Also note that expressions are not statements (which is what scripts are made of) and do not allow
+            using the flow control (if, while, for), variables or lambdas syntactic elements.
+        </p>
+        <h4>JexlScript</h4>
+        <p>
+            These allow you to use multiple statements and you can
+            use variable assignments, loops, calculations, etc. More or less what can be achieved in Shell or
+            JavaScript at its basic level. The result from the last command is returned from the script.
+        </p>
+        <h4>JxltEngine.Expression</h4>
+        <p>
+            These are ideal to produce "one-liner" text, like a 'toString()' on steroids.
+            To get a calculation you use the EL-like syntax
+            as in ${someVariable}. The expression that goes between the brackets
+            behaves like a JexlScript, not an expression. You can use semi-colons to
+            execute multiple commands and the result from the last command is
+            returned from the script. You also have the ability to use a 2-pass evaluation using
+            the #{someScript} syntax.
+        </p>
+        <h4>JxltEngine.Template</h4>
+        <p>
+            These produce text documents. Each line beginning with '$$' (as a default) is
+            considered JEXL code and all others considered as JxltEngine.Expression.
+            Think of those as simple Velocity templates. A rewritten MudStore initial Velocity sample looks like this:
+        </p>
+        <pre><code>
+        &lt;html&gt;
+            &lt;body&gt;
+                Hello ${customer.name}!
+                &lt;table&gt;
+        $$      for(var mud : mudsOnSpecial ) {
+        $$          if (customer.hasPurchased(mud) ) {
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            ${flogger.getPromo( mud )}
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+        $$          }
+        $$      }
+        &lt;/table&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code></pre>
+
+        <h2><a name="configuration">JEXL Configuration</a></h2>
+        <p>
+            The JexlEngine can be configured through a few parameters that will drive how it reacts
+            in case of errors.
+            These configuration methods are embedded through a <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3"><CODE>JexlBuilder</CODE></A>.
+        </p>
+        <h3><a name="static_configuration">Static &amp; Shared Configuration</a></h3>
+        <p>
+            Both JexlEngine and JxltEngine are thread-safe, most of their inner fields are final; the same instance can be shared between different
+            threads and proper synchronization is enforced in critical areas (introspection caches).
+        </p>
+        <p>
+            Of particular importance is <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#loader"><CODE>JexlBuilder.loader</CODE></A> which indicates to the JexlEngine
+            being built which class loader to use to solve a class name; this directly affects how JexlEngine.newInstance and the 'new' script method operates.
+        </p>
+        <p>
+            This can also be very useful in cases where you rely on JEXL to dynamically load and call plugins for your application.
+            To avoid having to restart the server in case of a plugin implementation change, you can call
+            <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.html#setClassLoader(java.lang.ClassLoader)"><CODE>JexlEngine.setClassLoader(java.lang.ClassLoader)</CODE></A> and all the scripts created through this engine instance
+            will automatically point to the newly loaded classes.
+        </p>
+        <p>
+            You can state what can be manipulated through scripting by the <A HREF="../../../../org/apache/commons/jexl3/annotations/NoJexl.html" title="annotation in org.apache.commons.jexl3.annotations"><CODE>NoJexl</CODE></A>
+            annotation that completely shield classes and methods from JEXL introspection.
+            The other configurable way to restrict JEXL is by using a
+            <A HREF="../../../../org/apache/commons/jexl3/introspection/JexlSandbox.html" title="class in org.apache.commons.jexl3.introspection"><CODE>JexlSandbox</CODE></A> which allows finer control over what is exposed; the sandbox
+            can be set through <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#sandbox"><CODE>JexlBuilder.sandbox</CODE></A>.
+        </p>
+        <p>
+            <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#namespaces"><CODE>JexlBuilder.namespaces</CODE></A> extends JEXL scripting by registering your own classes as
+            namespaces allowing your own functions to be exposed at will.
+        </p>
+        This can be used as in:
+        <pre><code>
+            public static MyMath {
+                public double cos(double x) {
+                    return Math.cos(x);
+                }
+            }
+            Map&lt;String, Object> funcs = new HashMap&lt;String, Object&gt;();
+            funcs.put("math", new MyMath());
+            JexlEngine jexl = new JexlBuilder().namespaces(funcs).create();
+
+            JexlContext jc = new MapContext();
+            jc.set("pi", Math.PI);
+
+            JexlExpression e = JEXL.createExpression("math:cos(pi)");
+            o = e.evaluate(jc);
+            assertEquals(Double.valueOf(-1),o);
+        </code></pre>
+        <p>
+            If the <i>namespace</i> is a Class and that class declares a constructor that takes a JexlContext (or
+            a class extending JexlContext), one <i>namespace</i> instance is created on first usage in an
+            expression; this instance lifetime is limited to the expression evaluation.
+        </p>
+        <p>
+            JexlEngine and JxltEngine expression caches can be configured as well. If you intend to use JEXL
+            repeatedly in your application, these are worth configuring since expression parsing is quite heavy.
+            Note that all caches created by JEXL are held through SoftReference; under high memory pressure, the GC will be able
+            to reclaim those caches and JEXL will rebuild them if needed. By default, a JexlEngine does create a cache for "small" expressions
+            and a JxltEngine does create one for Expression .
+        </p>
+        <p><A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#cache"><CODE>JexlBuilder.cache</CODE></A> will set how many expressions can be simultaneously cached by the
+            JEXL engine. JxltEngine allows to define the cache size through its constructor.
+        </p>
+        <p>
+            <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#debug"><CODE>JexlBuilder.debug</CODE></A>
+            makes stacktraces carried by JExlException more meaningful; in particular, these
+            traces will carry the exact caller location the Expression was created from.
+        </p>
+
+        <h3><a name="dynamic_configuration">Dynamic Configuration</a></h3>
+        <p>
+            Those configuration options can be overridden during evaluation by implementing a
+            <A HREF="../../../../org/apache/commons/jexl3/JexlContext.html" title="interface in org.apache.commons.jexl3"><CODE>JexlContext</CODE></A>
+            that also implements <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.Options.html" title="interface in org.apache.commons.jexl3"><CODE>JexlEngine.Options</CODE></A> to carry evaluation options.
+            An example of such a class exists in the test package.
+        </p>
+        <p>
+            <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#strict"><CODE>JexlBuilder.strict</CODE></A> or <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.Options.html#isStrict()"><CODE>JexlEngine.Options.isStrict()</CODE></A>
+            configures when JEXL considers 'null' as an error or not in various situations;
+            when facing an unreferenceable variable, using null as an argument to an arithmetic operator or failing to call
+            a method or constructor. The lenient mode is close to JEXL-1.1 behavior.
+        </p>
+        <p>
+            <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#silent"><CODE>JexlBuilder.silent</CODE></A> or <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.Options.html#isSilent()"><CODE>JexlEngine.Options.isSilent()</CODE></A>
+            configures how JEXL reacts to errors; if silent, the engine will not throw exceptions
+            but will warn through loggers and return null in case of errors. Note that when non-silent, JEXL throws
+            JexlException which are unchecked exception.
+        </p>
+        <p>
+            Implementing a <A HREF="../../../../org/apache/commons/jexl3/JexlContext.NamespaceResolver.html" title="interface in org.apache.commons.jexl3"><CODE>JexlContext.NamespaceResolver</CODE></A> through a JexlContext - look at
+            <a href="http://svn.apache.org/viewvc/commons/proper/jexl/trunk/src/test/org/apache/commons/jexl3/JexlEvalContext.java?view=markup">JexlEvalContext</a>
+            as an example - allows to override the namespace resolution and the default namespace map defined
+            through <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html#namespaces"><CODE>JexlBuilder.namespaces</CODE></A>.
+        </p>
+
+
+        <h2><a name="customization">JEXL Customization</a></h2>
+        <p>
+            The <A HREF="../../../../org/apache/commons/jexl3/JexlContext.html" title="interface in org.apache.commons.jexl3"><CODE>JexlContext</CODE></A>, <A HREF="../../../../org/apache/commons/jexl3/JexlBuilder.html" title="class in org.apache.commons.jexl3"><CODE>JexlBuilder</CODE></A> and
+            <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.Options.html" title="interface in org.apache.commons.jexl3"><CODE>JexlEngine.Options</CODE></A> are
+            the most likely interfaces you'll want to implement for customization. Since they expose variables and options,
+            they are the primary targets. Before you do so, have a look at JexlEvalContext in the test directory
+            and <A HREF="../../../../org/apache/commons/jexl3/ObjectContext.html" title="class in org.apache.commons.jexl3"><CODE>ObjectContext</CODE></A> which may already cover some of your needs.
+        </p>
+        <p>
+            <A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3"><CODE>JexlArithmetic</CODE></A>
+            is the class to derive if you need to change how operators behave or add types upon which they
+            operate.
+
+            There are 3 entry points that allow customizing the type of objects created:
+        </p>
+        <ul>
+            <li>array literals: <A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#arrayBuilder(int)"><CODE>JexlArithmetic.arrayBuilder(int)</CODE></A></li>
+            <li>map literals: <A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#mapBuilder(int)"><CODE>JexlArithmetic.mapBuilder(int)</CODE></A></li>
+            <li>set literals: <A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#setBuilder(int)"><CODE>JexlArithmetic.setBuilder(int)</CODE></A></li>
+            <li>range objects: <A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#createRange(java.lang.Object, java.lang.Object)"><CODE>JexlArithmetic.createRange(java.lang.Object, java.lang.Object)</CODE></A></li>
+        </ul>
+        <p>
+            You can also overload operator methods; by convention, each operator has a method name associated to it.
+            If you overload some in your JexlArithmetic derived implementation, these methods will be called when the
+            arguments match your method signature.
+            For example, this would be the case if you wanted '+' to operate on arrays; you'd need to derive
+            JexlArithmetic and implement 'public Object add(Set<?> x, Set<?> y)' method.
+            Note however that you can <em>not</em> change the operator precedence.
+            The list of operator / method matches is the following:
+        </p>
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Method Name</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>add</td>
+                    <td>add(x, y)</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>subtract</td>
+                    <td>subtract(x, y)</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td>multiply</td>
+                    <td>multiply(x, y)</td>
+                </tr>
+                <tr>
+                    <td>/</td>
+                    <td>divide</td>
+                    <td>divide(x, y)</td>
+                </tr>
+                <tr>
+                    <td>%</td>
+                    <td>mod</td>
+                    <td>mod(x, y)</td>
+                </tr>
+                <tr>
+                    <td>&</td>
+                    <td>bitwiseAnd</td>
+                    <td>bitwiseAnd(x, y)</td>
+                </tr>
+                <tr>
+                    <td>|</td>
+                    <td>bitwiseOr</td>
+                    <td>bitwiseOr(x, y)</td>
+                </tr>
+                <tr>
+                    <td>^</td>
+                    <td>bitwiseXor</td>
+                    <td>bitwiseXor(x, y)</td>
+                </tr>
+                <tr>
+                    <td>!</td>
+                    <td>logicalNot</td>
+                    <td>logicalNot(x)</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>bitwiseComplement</td>
+                    <td>bitiwiseComplement(x)</td>
+                </tr>
+                <tr>
+                    <td>==</td>
+                    <td>equals</td>
+                    <td>equals(x, y)</td>
+                </tr>
+                <tr>
+                    <td>&lt;</td>
+                    <td>lessThan</td>
+                    <td>lessThan(x, y)</td>
+                </tr>
+                <tr>
+                    <td>&lt;=</td>
+                    <td>lessThanOrEqual</td>
+                    <td>lessThanOrEqual(x, y)</td>
+                </tr>
+                <tr>
+                    <td>&gt;</td>
+                    <td>greaterThan</td>
+                    <td>greaterThan(x, y)</td>
+                </tr>
+                <tr>
+                    <td>&gt;=</td>
+                    <td>greaterThanOrEqual</td>
+                    <td>greaterThanOrEqual(x, y)</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>negate</td>
+                    <td>negate(x)</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>size</td>
+                    <td>size(x)</td>
+                </tr>
+                <tr>
+                    <td>empty</td>
+                    <td>empty</td>
+                    <td>empty(x)</td>
+                </tr>
+            </table>
+        <p>
+            You can also add methods to overload property getters and setters operators behaviors.
+            Public methods of the JexlArithmetic instance named propertyGet/propertySet/arrayGet/arraySet are potential
+            overrides that will be called when appropriate.
+            The following table is an overview of the relation between a syntactic form and the method to call
+            where V is the property value class, O the object class and  P the property identifier class (usually String or Integer).
+        </p>
+
+            <table>
+                <tr>
+                    <th>Expression</th>
+                    <th>Method Template</th>
+                </tr>
+                <tr>
+                    <td>foo.property</td>
+                    <td>public V propertyGet(O obj, P property);</td>
+                </tr>
+                <tr>
+                    <td>foo.property = value</td>
+                    <td>public V propertySet(O obj, P property, V value);</td>
+                </tr>
+                <tr>
+                    <td>foo[property]</td>
+                    <td>public V arrayGet(O obj, P property, V value);</td>
+                </tr>
+                <tr>
+                    <td>foo[property] = value</td>
+                    <td>public V arraySet(O obj, P property, V value);</td>
+                </tr>
+            </table>
+        <p>
+            You can also override the base operator methods, those whose arguments are Object which gives you total
+            control.
+        </p>
+
+        <h2><a name="extension">Extending JEXL</a></h2>
+        If you need to make JEXL treat some objects in a specialized manner or tweak how it
+        reacts to some settings, you can derive most of its inner-workings. The classes and methods are rarely private or
+        final - only when the inner contract really requires it. However, using the protected methods
+        and internal package classes imply you might have to re-adapt your code when new JEXL versions are released.
+        <p>
+            <A HREF="../../../../org/apache/commons/jexl3/internal/Engine.html" title="class in org.apache.commons.jexl3.internal"><CODE>Engine</CODE></A> can be
+            extended to let you capture your own configuration defaults wrt cache sizes and various flags.
+            Implementing your own cache - instead of the basic LinkedHashMap based one - would be
+            another possible extension.
+        </p>
+        <p>
+            <A HREF="../../../../org/apache/commons/jexl3/internal/Interpreter.html" title="class in org.apache.commons.jexl3.internal"><CODE>Interpreter</CODE></A>
+            is the class to derive if you need to add more features to the evaluation
+            itself; for instance, you want pre- and post- resolvers for variables or nested scopes for
+            for variable contexts.
+        </p>
+        <p>
+            <A HREF="../../../../org/apache/commons/jexl3/internal/introspection/Uberspect.html" title="class in org.apache.commons.jexl3.internal.introspection"><CODE>Uberspect</CODE></A>
+            is the class to derive if you need to add introspection or reflection capabilities for some objects, for
+            instance adding factory based support to the 'new' operator.
+            The code already reflects public fields as properties on top of Java-beans conventions.
+        </p>
+<P>
+
+<P>
+<DL>
+</DL>
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV PACKAGE&nbsp;
+&nbsp;<A HREF="../../../../org/apache/commons/jexl3/annotations/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/commons/jexl3/package-summary.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="package-summary.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2001&#x2013;2017 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+</BODY>
+</HTML>

@@ -1,0 +1,295 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>
+org.apache.commons.jexl3.internal.introspection (Apache Commons JEXL 3.1 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="org.apache.commons.jexl3.internal.introspection (Apache Commons JEXL 3.1 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../../../org/apache/commons/jexl3/internal/package-summary.html"><B>PREV PACKAGE</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../org/apache/commons/jexl3/introspection/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../../index.html?org/apache/commons/jexl3/internal/introspection/package-summary.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="package-summary.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<H2>
+Package org.apache.commons.jexl3.internal.introspection
+</H2>
+Provides low-level introspective services.
+<P>
+<B>See:</B>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="#package_description"><B>Description</B></A>
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Class Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/ArrayIterator.html" title="class in org.apache.commons.jexl3.internal.introspection">ArrayIterator</A></B></TD>
+<TD>
+  An Iterator wrapper for an Object[].</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/ArrayListWrapper.html" title="class in org.apache.commons.jexl3.internal.introspection">ArrayListWrapper</A></B></TD>
+<TD>A class that wraps an array within an AbstractList.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/BooleanGetExecutor.html" title="class in org.apache.commons.jexl3.internal.introspection">BooleanGetExecutor</A></B></TD>
+<TD>Specialized executor to get a boolean property from an object.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/ConstructorMethod.html" title="class in org.apache.commons.jexl3.internal.introspection">ConstructorMethod</A></B></TD>
+<TD>A JexlMethod that wraps a constructor.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/DuckGetExecutor.html" title="class in org.apache.commons.jexl3.internal.introspection">DuckGetExecutor</A></B></TD>
+<TD>Specialized executor to get a property from an object.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/DuckSetExecutor.html" title="class in org.apache.commons.jexl3.internal.introspection">DuckSetExecutor</A></B></TD>
+<TD>Specialized executor to set a property of an object.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/EnumerationIterator.html" title="class in org.apache.commons.jexl3.internal.introspection">EnumerationIterator&lt;T&gt;</A></B></TD>
+<TD>An Iterator wrapper for an Enumeration.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/FieldGetExecutor.html" title="class in org.apache.commons.jexl3.internal.introspection">FieldGetExecutor</A></B></TD>
+<TD>A JexlPropertyGet for public fields.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/FieldSetExecutor.html" title="class in org.apache.commons.jexl3.internal.introspection">FieldSetExecutor</A></B></TD>
+<TD>A JexlPropertySet for public fields.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/IndexedType.html" title="class in org.apache.commons.jexl3.internal.introspection">IndexedType</A></B></TD>
+<TD>Abstract an indexed property container.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/IndexedType.IndexedContainer.html" title="class in org.apache.commons.jexl3.internal.introspection">IndexedType.IndexedContainer</A></B></TD>
+<TD>A generic indexed property container, exposes get(key) and set(key, value)
+ and solves method call dynamically based on arguments.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/Introspector.html" title="class in org.apache.commons.jexl3.internal.introspection">Introspector</A></B></TD>
+<TD>This basic function of this class is to return a Method object for a
+ particular class given the name of a method and the parameters to the method
+ in the form of an Object[].</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/ListGetExecutor.html" title="class in org.apache.commons.jexl3.internal.introspection">ListGetExecutor</A></B></TD>
+<TD>Specialized executor to get a property from a List or array.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/ListSetExecutor.html" title="class in org.apache.commons.jexl3.internal.introspection">ListSetExecutor</A></B></TD>
+<TD>Specialized executor to set a property in a List or array.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/MapGetExecutor.html" title="class in org.apache.commons.jexl3.internal.introspection">MapGetExecutor</A></B></TD>
+<TD>Specialized executor to get a property from a Map.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/MapSetExecutor.html" title="class in org.apache.commons.jexl3.internal.introspection">MapSetExecutor</A></B></TD>
+<TD>Specialized executor to set a property in a Map.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/MethodExecutor.html" title="class in org.apache.commons.jexl3.internal.introspection">MethodExecutor</A></B></TD>
+<TD>Specialized executor to invoke a method on an object.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/MethodKey.html" title="class in org.apache.commons.jexl3.internal.introspection">MethodKey</A></B></TD>
+<TD>A method key usable by the introspector cache.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/Permissions.html" title="class in org.apache.commons.jexl3.internal.introspection">Permissions</A></B></TD>
+<TD>Checks whether an element (ctor, field or method) is visible by JEXL introspection
+ by checking if has been annotated with NoJexl.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/PropertyGetExecutor.html" title="class in org.apache.commons.jexl3.internal.introspection">PropertyGetExecutor</A></B></TD>
+<TD>Specialized executor to get a property from an object.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/PropertySetExecutor.html" title="class in org.apache.commons.jexl3.internal.introspection">PropertySetExecutor</A></B></TD>
+<TD>Specialized executor to set a property in an object.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/SandboxUberspect.html" title="class in org.apache.commons.jexl3.internal.introspection">SandboxUberspect</A></B></TD>
+<TD>An uberspect that controls usage of properties, methods and constructors through a sandbox.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/Uberspect.html" title="class in org.apache.commons.jexl3.internal.introspection">Uberspect</A></B></TD>
+<TD>Implementation of Uberspect to provide the default introspective
+ functionality of JEXL.</TD>
+</TR>
+</TABLE>
+&nbsp;
+
+<P>
+
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Exception Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD WIDTH="15%"><B><A HREF="../../../../../../org/apache/commons/jexl3/internal/introspection/MethodKey.AmbiguousException.html" title="class in org.apache.commons.jexl3.internal.introspection">MethodKey.AmbiguousException</A></B></TD>
+<TD>Simple distinguishable exception, used when
+ we run across ambiguous overloading.</TD>
+</TR>
+</TABLE>
+&nbsp;
+
+<P>
+<A NAME="package_description"><!-- --></A><H2>
+Package org.apache.commons.jexl3.internal.introspection Description
+</H2>
+
+<P>
+Provides low-level introspective services.
+        <p>
+            This internal package is not intended for public usage and there is <b>no</b>
+            guarantee that its public classes or methods will remain as is in subsequent
+            versions.
+        </p>
+        <p>
+            The IntrospectorBase, ClassMap, MethodKey, MethodMap form the
+            base of the introspection service. They allow to describe classes and their
+            methods, keeping them in a cache (@see IntrospectorBase) to speed up property
+            getters/setters and method discovery used during expression evaluation.
+        </p>
+        <p>
+            The cache materialized in Introspector creates one entry per class containing a map of all
+            accessible public methods keyed by name and signature.
+        </p>
+<P>
+
+<P>
+<DL>
+</DL>
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Package</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <FONT CLASS="NavBarFont1">Class</FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-use.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../../../org/apache/commons/jexl3/internal/package-summary.html"><B>PREV PACKAGE</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../../org/apache/commons/jexl3/introspection/package-summary.html"><B>NEXT PACKAGE</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../../index.html?org/apache/commons/jexl3/internal/introspection/package-summary.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="package-summary.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2001&#x2013;2017 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+</BODY>
+</HTML>

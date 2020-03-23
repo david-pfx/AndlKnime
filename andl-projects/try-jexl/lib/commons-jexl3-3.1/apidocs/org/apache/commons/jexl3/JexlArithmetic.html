@@ -1,0 +1,1850 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>
+JexlArithmetic (Apache Commons JEXL 3.1 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="JexlArithmetic (Apache Commons JEXL 3.1 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/JexlArithmetic.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV CLASS&nbsp;
+&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.ArrayBuilder.html" title="interface in org.apache.commons.jexl3"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/commons/jexl3/JexlArithmetic.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="JexlArithmetic.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.commons.jexl3</FONT>
+<BR>
+Class JexlArithmetic</H2>
+<PRE>
+<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+  <IMG SRC="../../../../resources/inherit.gif" ALT="extended by "><B>org.apache.commons.jexl3.JexlArithmetic</B>
+</PRE>
+<HR>
+<DL>
+<DT><PRE>public class <B>JexlArithmetic</B><DT>extends <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></DL>
+</PRE>
+
+<P>
+Perform arithmetic, implements JexlOperator methods.
+
+ <p>This is the class to derive to implement new operator behaviors.</p>
+
+ <p>The 5 base arithmetic operators (+, - , *, /, %) follow the same evaluation rules regarding their arguments.</p>
+ <ol>
+   <li>If both are null, result is 0</li>
+   <li>If either is a BigDecimal, coerce both to BigDecimal and perform operation</li>
+   <li>If either is a floating point number, coerce both to Double and perform operation</li>
+   <li>Else treat as BigInteger, perform operation and attempt to narrow result:
+     <ol>
+       <li>if both arguments can be narrowed to Integer, narrow result to Integer</li>
+       <li>if both arguments can be narrowed to Long, narrow result to Long</li>
+       <li>Else return result as BigInteger</li>
+     </ol>
+   </li>
+ </ol>
+
+ Note that the only exception thrown by JexlArithmetic is and must be ArithmeticException.
+<P>
+
+<P>
+<DL>
+<DT><B>Since:</B></DT>
+  <DD>2.0</DD>
+<DT><B>See Also:</B><DD><A HREF="../../../../org/apache/commons/jexl3/JexlOperator.html" title="enum in org.apache.commons.jexl3"><CODE>JexlOperator</CODE></A></DL>
+<HR>
+
+<P>
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+
+<A NAME="nested_class_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Nested Class Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;interface</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.ArrayBuilder.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.ArrayBuilder</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helper interface used when creating an array literal.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;interface</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.MapBuilder.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.MapBuilder</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helper interface used when creating a map literal.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.NullOperand.html" title="class in org.apache.commons.jexl3">JexlArithmetic.NullOperand</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Marker class for null operand exceptions.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;interface</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.SetBuilder.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.SetBuilder</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Helper interface used when creating a set literal.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;interface</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.Uberspect.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.Uberspect</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The interface that uberspects JexlArithmetic classes.</TD>
+</TR>
+</TABLE>
+&nbsp;<!-- =========== FIELD SUMMARY =========== -->
+
+<A NAME="field_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Field Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected static&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#BIGD_DOUBLE_MAX_VALUE">BIGD_DOUBLE_MAX_VALUE</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Double.MAX_VALUE as BigDecimal.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected static&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#BIGD_DOUBLE_MIN_VALUE">BIGD_DOUBLE_MIN_VALUE</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Double.MIN_VALUE as BigDecimal.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected static&nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#BIGD_SCALE">BIGD_SCALE</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default BigDecimal scale.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected static&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#BIGI_LONG_MAX_VALUE">BIGI_LONG_MAX_VALUE</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Long.MAX_VALUE as BigInteger.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected static&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#BIGI_LONG_MIN_VALUE">BIGI_LONG_MIN_VALUE</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Long.MIN_VALUE as BigInteger.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true" title="class or interface in java.util.regex">Pattern</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#FLOAT_PATTERN">FLOAT_PATTERN</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The float regular expression pattern.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+
+<A NAME="constructor_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Constructor Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#JexlArithmetic(boolean)">JexlArithmetic</A></B>(boolean&nbsp;astrict)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a JexlArithmetic.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#JexlArithmetic(boolean, java.math.MathContext, int)">JexlArithmetic</A></B>(boolean&nbsp;astrict,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/MathContext.html?is-external=true" title="class or interface in java.math">MathContext</A>&nbsp;bigdContext,
+               int&nbsp;bigdScale)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a JexlArithmetic.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#add(java.lang.Object, java.lang.Object)">add</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+    <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add two values together.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#and(java.lang.Object, java.lang.Object)">and</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+    <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Performs a bitwise and.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.ArrayBuilder.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.ArrayBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#arrayBuilder(int)">arrayBuilder</A></B>(int&nbsp;size)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called by the interpreter when evaluating a literal array.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#bitwiseAnd(java.lang.Object, java.lang.Object)">bitwiseAnd</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;lhs,
+           <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;rhs)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I></I>&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#bitwiseOr(java.lang.Object, java.lang.Object)">bitwiseOr</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;lhs,
+          <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;rhs)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I></I>&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#bitwiseXor(java.lang.Object, java.lang.Object)">bitwiseXor</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;lhs,
+           <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;rhs)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I></I>&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#compare(java.lang.Object, java.lang.Object, java.lang.String)">compare</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+        <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right,
+        <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;operator)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Performs a comparison.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#complement(java.lang.Object)">complement</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Performs a bitwise complement.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#contains(java.lang.Object, java.lang.Object)">contains</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;container,
+         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;value)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test if left contains right (right matches/in left).</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#controlNullNullOperands()">controlNullNullOperands</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The result of +,/,-,*,% when both operands are null.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#controlNullOperand()">controlNullOperand</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Throw a NPE if arithmetic is strict.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</A>&lt;?&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#createRange(java.lang.Object, java.lang.Object)">createRange</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;from,
+            <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;to)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a literal range.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#createWithOptions(boolean, java.math.MathContext, int)">createWithOptions</A></B>(boolean&nbsp;astrict,
+                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/MathContext.html?is-external=true" title="class or interface in java.math">MathContext</A>&nbsp;bigdContext,
+                  int&nbsp;bigdScale)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a JexlArithmetic instance.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#divide(java.lang.Object, java.lang.Object)">divide</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Divide the left value by the right.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#endsWith(java.lang.Object, java.lang.Object)">endsWith</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test if left ends with right.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#equals(java.lang.Object, java.lang.Object)">equals</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test if left and right are equal.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/MathContext.html?is-external=true" title="class or interface in java.math">MathContext</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#getMathContext()">getMathContext</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The MathContext instance used for +,-,/,*,% operations on big decimals.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#getMathScale()">getMathScale</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The BigDecimal scale used for comparison and coericion operations.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#greaterThan(java.lang.Object, java.lang.Object)">greaterThan</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+            <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test if left &gt; right.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#greaterThanOrEqual(java.lang.Object, java.lang.Object)">greaterThanOrEqual</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                   <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test if left &gt;= right.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#isEmpty(java.lang.Object)">isEmpty</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check for emptyness of various types: Number, Collection, Array, Map, String.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#isFloatingPoint(java.lang.Object)">isFloatingPoint</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;o)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Is Object a floating point number.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#isFloatingPointNumber(java.lang.Object)">isFloatingPointNumber</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test if the passed value is a floating point number, i.e.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#isNumberable(java.lang.Object)">isNumberable</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;o)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Is Object a whole number.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#isStrict()">isStrict</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Checks whether this JexlArithmetic instance
+ strictly considers null as an error when used as operand unexpectedly.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#lessThan(java.lang.Object, java.lang.Object)">lessThan</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test if left &lt; right.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#lessThanOrEqual(java.lang.Object, java.lang.Object)">lessThanOrEqual</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test if left &lt;= right.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#logicalNot(java.lang.Object)">logicalNot</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;arg)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I></I>&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.MapBuilder.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.MapBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#mapBuilder(int)">mapBuilder</A></B>(int&nbsp;size)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called by the interpreter when evaluating a literal map.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#matches(java.lang.Object, java.lang.Object)">matches</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;lhs,
+        <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;rhs)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;<I></I>&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#mod(java.lang.Object, java.lang.Object)">mod</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+    <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left value modulo right.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#multiply(java.lang.Object, java.lang.Object)">multiply</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiply the left value by the right.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#narrow(java.lang.Number)">narrow</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</A>&nbsp;original)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given a Number, return back the value using the smallest type the result
+ will fit into.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#narrowAccept(java.lang.Class, java.lang.Class)">narrowAccept</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</A>&lt;?&gt;&nbsp;narrow,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</A>&lt;?&gt;&nbsp;source)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Whether we consider the narrow class as a potential candidate for narrowing the source.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#narrowArguments(java.lang.Object[])">narrowArguments</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>[]&nbsp;args)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Replace all numbers in an arguments array with the smallest type that will fit.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#narrowBigDecimal(java.lang.Object, java.lang.Object, java.math.BigDecimal)">narrowBigDecimal</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;lhs,
+                 <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;rhs,
+                 <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</A>&nbsp;bigd)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given a BigDecimal, attempt to narrow it to an Integer or Long if it fits if
+ one of the arguments is a numberable.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#narrowBigInteger(java.lang.Object, java.lang.Object, java.math.BigInteger)">narrowBigInteger</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;lhs,
+                 <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;rhs,
+                 <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</A>&nbsp;bigi)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given a BigInteger, narrow it to an Integer or Long if it fits and the arguments
+ class allow it.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#narrowNumber(java.lang.Number, java.lang.Class)">narrowNumber</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</A>&nbsp;original,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</A>&lt;?&gt;&nbsp;narrow)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given a Number, return back the value attempting to narrow it to a target class.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#negate(java.lang.Object)">negate</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Negates a value (unary minus for numbers).</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#not(java.lang.Object)">not</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Performs a logical not.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#options(org.apache.commons.jexl3.JexlContext)">options</A></B>(<A HREF="../../../../org/apache/commons/jexl3/JexlContext.html" title="interface in org.apache.commons.jexl3">JexlContext</A>&nbsp;context)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apply options to this arithmetic which eventually may create another instance.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#options(org.apache.commons.jexl3.JexlEngine.Options)">options</A></B>(<A HREF="../../../../org/apache/commons/jexl3/JexlEngine.Options.html" title="interface in org.apache.commons.jexl3">JexlEngine.Options</A>&nbsp;options)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apply options to this arithmetic which eventually may create another instance.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#or(java.lang.Object, java.lang.Object)">or</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+   <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Performs a bitwise or.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#roundBigDecimal(java.math.BigDecimal)">roundBigDecimal</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</A>&nbsp;number)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ensure a big decimal is rounded by this arithmetic scale and rounding mode.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.SetBuilder.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.SetBuilder</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#setBuilder(int)">setBuilder</A></B>(int&nbsp;size)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called by the interpreter when evaluating a literal set.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#size(java.lang.Object)">size</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calculate the <code>size</code> of various types: Collection, Array, Map, String.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#startsWith(java.lang.Object, java.lang.Object)">startsWith</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+           <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test if left starts with right.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#subtract(java.lang.Object, java.lang.Object)">subtract</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subtract the right value from the left.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#toBigDecimal(java.lang.Object)">toBigDecimal</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coerce to a BigDecimal.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#toBigInteger(java.lang.Object)">toBigInteger</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coerce to a BigInteger.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#toBoolean(java.lang.Object)">toBoolean</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coerce to a primitive boolean.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;double</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#toDouble(java.lang.Object)">toDouble</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coerce to a primitive double.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#toInteger(java.lang.Object)">toInteger</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coerce to a primitive int.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;long</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#toLong(java.lang.Object)">toLong</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coerce to a primitive long.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#toString(java.lang.Object)">toString</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coerce to a string.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#xor(java.lang.Object, java.lang.Object)">xor</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+    <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Performs a bitwise xor.</TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ FIELD DETAIL =========== -->
+
+<A NAME="field_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Field Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="BIGD_DOUBLE_MAX_VALUE"><!-- --></A><H3>
+BIGD_DOUBLE_MAX_VALUE</H3>
+<PRE>
+protected static final <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</A> <B>BIGD_DOUBLE_MAX_VALUE</B></PRE>
+<DL>
+<DD>Double.MAX_VALUE as BigDecimal.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="BIGD_DOUBLE_MIN_VALUE"><!-- --></A><H3>
+BIGD_DOUBLE_MIN_VALUE</H3>
+<PRE>
+protected static final <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</A> <B>BIGD_DOUBLE_MIN_VALUE</B></PRE>
+<DL>
+<DD>Double.MIN_VALUE as BigDecimal.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="BIGI_LONG_MAX_VALUE"><!-- --></A><H3>
+BIGI_LONG_MAX_VALUE</H3>
+<PRE>
+protected static final <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</A> <B>BIGI_LONG_MAX_VALUE</B></PRE>
+<DL>
+<DD>Long.MAX_VALUE as BigInteger.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="BIGI_LONG_MIN_VALUE"><!-- --></A><H3>
+BIGI_LONG_MIN_VALUE</H3>
+<PRE>
+protected static final <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</A> <B>BIGI_LONG_MIN_VALUE</B></PRE>
+<DL>
+<DD>Long.MIN_VALUE as BigInteger.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="BIGD_SCALE"><!-- --></A><H3>
+BIGD_SCALE</H3>
+<PRE>
+protected static final int <B>BIGD_SCALE</B></PRE>
+<DL>
+<DD>Default BigDecimal scale.
+<P>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../../../constant-values.html#org.apache.commons.jexl3.JexlArithmetic.BIGD_SCALE">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="FLOAT_PATTERN"><!-- --></A><H3>
+FLOAT_PATTERN</H3>
+<PRE>
+public static final <A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true" title="class or interface in java.util.regex">Pattern</A> <B>FLOAT_PATTERN</B></PRE>
+<DL>
+<DD>The float regular expression pattern.
+ <p>
+ The decimal and exponent parts are optional and captured allowing to determine if the number is a real
+ by checking whether one of these 2 capturing groups is not empty.
+<P>
+<DL>
+</DL>
+</DL>
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+
+<A NAME="constructor_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Constructor Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="JexlArithmetic(boolean)"><!-- --></A><H3>
+JexlArithmetic</H3>
+<PRE>
+public <B>JexlArithmetic</B>(boolean&nbsp;astrict)</PRE>
+<DL>
+<DD>Creates a JexlArithmetic.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>astrict</CODE> - whether this arithmetic is strict or lenient</DL>
+</DL>
+<HR>
+
+<A NAME="JexlArithmetic(boolean, java.math.MathContext, int)"><!-- --></A><H3>
+JexlArithmetic</H3>
+<PRE>
+public <B>JexlArithmetic</B>(boolean&nbsp;astrict,
+                      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/MathContext.html?is-external=true" title="class or interface in java.math">MathContext</A>&nbsp;bigdContext,
+                      int&nbsp;bigdScale)</PRE>
+<DL>
+<DD>Creates a JexlArithmetic.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>astrict</CODE> - whether this arithmetic is lenient or strict<DD><CODE>bigdContext</CODE> - the math context instance to use for +,-,/,*,% operations on big decimals.<DD><CODE>bigdScale</CODE> - the scale used for big decimals.</DL>
+</DL>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="options(org.apache.commons.jexl3.JexlEngine.Options)"><!-- --></A><H3>
+options</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A> <B>options</B>(<A HREF="../../../../org/apache/commons/jexl3/JexlEngine.Options.html" title="interface in org.apache.commons.jexl3">JexlEngine.Options</A>&nbsp;options)</PRE>
+<DL>
+<DD>Apply options to this arithmetic which eventually may create another instance.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>options</CODE> - the <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.Options.html" title="interface in org.apache.commons.jexl3"><CODE>JexlEngine.Options</CODE></A> to use
+<DT><B>Returns:</B><DD>an arithmetic with those options set<DT><B>See Also:</B><DD><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#createWithOptions(boolean, java.math.MathContext, int)"><CODE>createWithOptions(boolean, java.math.MathContext, int)</CODE></A></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="options(org.apache.commons.jexl3.JexlContext)"><!-- --></A><H3>
+options</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A> <B>options</B>(<A HREF="../../../../org/apache/commons/jexl3/JexlContext.html" title="interface in org.apache.commons.jexl3">JexlContext</A>&nbsp;context)</PRE>
+<DL>
+<DD>Apply options to this arithmetic which eventually may create another instance.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>context</CODE> - the context that may extend <A HREF="../../../../org/apache/commons/jexl3/JexlEngine.Options.html" title="interface in org.apache.commons.jexl3"><CODE>JexlEngine.Options</CODE></A> to use
+<DT><B>Returns:</B><DD>a new arithmetic instance or this<DT><B>Since:</B></DT>
+  <DD>3.1</DD>
+<DT><B>See Also:</B><DD><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#createWithOptions(boolean, java.math.MathContext, int)"><CODE>createWithOptions(boolean, java.math.MathContext, int)</CODE></A></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createWithOptions(boolean, java.math.MathContext, int)"><!-- --></A><H3>
+createWithOptions</H3>
+<PRE>
+protected <A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A> <B>createWithOptions</B>(boolean&nbsp;astrict,
+                                           <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/MathContext.html?is-external=true" title="class or interface in java.math">MathContext</A>&nbsp;bigdContext,
+                                           int&nbsp;bigdScale)</PRE>
+<DL>
+<DD>Creates a JexlArithmetic instance.
+ Called by options(...) method when another instance of the same class of arithmetic is required.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>astrict</CODE> - whether this arithmetic is lenient or strict<DD><CODE>bigdContext</CODE> - the math context instance to use for +,-,/,*,% operations on big decimals.<DD><CODE>bigdScale</CODE> - the scale used for big decimals.
+<DT><B>Returns:</B><DD>default is a new JexlArithmetic instance<DT><B>Since:</B></DT>
+  <DD>3.1</DD>
+<DT><B>See Also:</B><DD><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#options(org.apache.commons.jexl3.JexlEngine.Options)"><CODE>options(org.apache.commons.jexl3.JexlEngine.Options)</CODE></A></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="arrayBuilder(int)"><!-- --></A><H3>
+arrayBuilder</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.ArrayBuilder.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.ArrayBuilder</A> <B>arrayBuilder</B>(int&nbsp;size)</PRE>
+<DL>
+<DD>Called by the interpreter when evaluating a literal array.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>size</CODE> - the number of elements in the array
+<DT><B>Returns:</B><DD>the array builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setBuilder(int)"><!-- --></A><H3>
+setBuilder</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.SetBuilder.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.SetBuilder</A> <B>setBuilder</B>(int&nbsp;size)</PRE>
+<DL>
+<DD>Called by the interpreter when evaluating a literal set.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>size</CODE> - the number of elements in the set
+<DT><B>Returns:</B><DD>the array builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="mapBuilder(int)"><!-- --></A><H3>
+mapBuilder</H3>
+<PRE>
+public <A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.MapBuilder.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.MapBuilder</A> <B>mapBuilder</B>(int&nbsp;size)</PRE>
+<DL>
+<DD>Called by the interpreter when evaluating a literal map.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>size</CODE> - the number of elements in the map
+<DT><B>Returns:</B><DD>the map builder</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="createRange(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+createRange</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</A>&lt;?&gt; <B>createRange</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;from,
+                               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;to)
+                        throws <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ArithmeticException.html?is-external=true" title="class or interface in java.lang">ArithmeticException</A></PRE>
+<DL>
+<DD>Creates a literal range.
+ <p>The default implementation only accepts integers and longs.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>from</CODE> - the included lower bound value (null if none)<DD><CODE>to</CODE> - the included upper bound value (null if none)
+<DT><B>Returns:</B><DD>the range as an iterable
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ArithmeticException.html?is-external=true" title="class or interface in java.lang">ArithmeticException</A></CODE> - as an option if creation fails</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isStrict()"><!-- --></A><H3>
+isStrict</H3>
+<PRE>
+public boolean <B>isStrict</B>()</PRE>
+<DL>
+<DD>Checks whether this JexlArithmetic instance
+ strictly considers null as an error when used as operand unexpectedly.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>true if strict, false if lenient</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getMathContext()"><!-- --></A><H3>
+getMathContext</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/MathContext.html?is-external=true" title="class or interface in java.math">MathContext</A> <B>getMathContext</B>()</PRE>
+<DL>
+<DD>The MathContext instance used for +,-,/,*,% operations on big decimals.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the math context</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getMathScale()"><!-- --></A><H3>
+getMathScale</H3>
+<PRE>
+public int <B>getMathScale</B>()</PRE>
+<DL>
+<DD>The BigDecimal scale used for comparison and coericion operations.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the scale</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="roundBigDecimal(java.math.BigDecimal)"><!-- --></A><H3>
+roundBigDecimal</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</A> <B>roundBigDecimal</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</A>&nbsp;number)</PRE>
+<DL>
+<DD>Ensure a big decimal is rounded by this arithmetic scale and rounding mode.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>number</CODE> - the big decimal to round
+<DT><B>Returns:</B><DD>the rounded big decimal</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="controlNullNullOperands()"><!-- --></A><H3>
+controlNullNullOperands</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>controlNullNullOperands</B>()</PRE>
+<DL>
+<DD>The result of +,/,-,*,% when both operands are null.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>Integer(0) if lenient
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ArithmeticException.html?is-external=true" title="class or interface in java.lang">ArithmeticException</A></CODE> - if strict</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="controlNullOperand()"><!-- --></A><H3>
+controlNullOperand</H3>
+<PRE>
+protected void <B>controlNullOperand</B>()</PRE>
+<DL>
+<DD>Throw a NPE if arithmetic is strict.
+<P>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ArithmeticException.html?is-external=true" title="class or interface in java.lang">ArithmeticException</A></CODE> - if strict</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isFloatingPointNumber(java.lang.Object)"><!-- --></A><H3>
+isFloatingPointNumber</H3>
+<PRE>
+protected boolean <B>isFloatingPointNumber</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</PRE>
+<DL>
+<DD>Test if the passed value is a floating point number, i.e. a float, double
+ or string with ( "." | "E" | "e").
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>val</CODE> - the object to be tested
+<DT><B>Returns:</B><DD>true if it is, false otherwise.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isFloatingPoint(java.lang.Object)"><!-- --></A><H3>
+isFloatingPoint</H3>
+<PRE>
+protected boolean <B>isFloatingPoint</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;o)</PRE>
+<DL>
+<DD>Is Object a floating point number.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>o</CODE> - Object to be analyzed.
+<DT><B>Returns:</B><DD>true if it is a Float or a Double.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isNumberable(java.lang.Object)"><!-- --></A><H3>
+isNumberable</H3>
+<PRE>
+protected boolean <B>isNumberable</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;o)</PRE>
+<DL>
+<DD>Is Object a whole number.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>o</CODE> - Object to be analyzed.
+<DT><B>Returns:</B><DD>true if Integer, Long, Byte, Short or Character.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="narrow(java.lang.Number)"><!-- --></A><H3>
+narrow</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</A> <B>narrow</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</A>&nbsp;original)</PRE>
+<DL>
+<DD>Given a Number, return back the value using the smallest type the result
+ will fit into.
+ <p>This works hand in hand with parameter 'widening' in java
+ method calls, e.g. a call to substring(int,int) with an int and a long
+ will fail, but a call to substring(int,int) with an int and a short will
+ succeed.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>original</CODE> - the original number.
+<DT><B>Returns:</B><DD>a value of the smallest type the original number will fit into.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="narrowAccept(java.lang.Class, java.lang.Class)"><!-- --></A><H3>
+narrowAccept</H3>
+<PRE>
+protected boolean <B>narrowAccept</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</A>&lt;?&gt;&nbsp;narrow,
+                               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</A>&lt;?&gt;&nbsp;source)</PRE>
+<DL>
+<DD>Whether we consider the narrow class as a potential candidate for narrowing the source.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>narrow</CODE> - the target narrow class<DD><CODE>source</CODE> - the orginal source class
+<DT><B>Returns:</B><DD>true if attempt to narrow source to target is accepted</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="narrowNumber(java.lang.Number, java.lang.Class)"><!-- --></A><H3>
+narrowNumber</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</A> <B>narrowNumber</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</A>&nbsp;original,
+                           <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</A>&lt;?&gt;&nbsp;narrow)</PRE>
+<DL>
+<DD>Given a Number, return back the value attempting to narrow it to a target class.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>original</CODE> - the original number<DD><CODE>narrow</CODE> - the attempted target class
+<DT><B>Returns:</B><DD>the narrowed number or the source if no narrowing was possible</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="narrowBigInteger(java.lang.Object, java.lang.Object, java.math.BigInteger)"><!-- --></A><H3>
+narrowBigInteger</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</A> <B>narrowBigInteger</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;lhs,
+                                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;rhs,
+                                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</A>&nbsp;bigi)</PRE>
+<DL>
+<DD>Given a BigInteger, narrow it to an Integer or Long if it fits and the arguments
+ class allow it.
+ <p>
+ The rules are:
+ if either arguments is a BigInteger, no narrowing will occur
+ if either arguments is a Long, no narrowing to Integer will occur
+ </p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>lhs</CODE> - the left hand side operand that lead to the bigi result<DD><CODE>rhs</CODE> - the right hand side operand that lead to the bigi result<DD><CODE>bigi</CODE> - the BigInteger to narrow
+<DT><B>Returns:</B><DD>an Integer or Long if narrowing is possible, the original BigInteger otherwise</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="narrowBigDecimal(java.lang.Object, java.lang.Object, java.math.BigDecimal)"><!-- --></A><H3>
+narrowBigDecimal</H3>
+<PRE>
+protected <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</A> <B>narrowBigDecimal</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;lhs,
+                                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;rhs,
+                                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</A>&nbsp;bigd)</PRE>
+<DL>
+<DD>Given a BigDecimal, attempt to narrow it to an Integer or Long if it fits if
+ one of the arguments is a numberable.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>lhs</CODE> - the left hand side operand that lead to the bigd result<DD><CODE>rhs</CODE> - the right hand side operand that lead to the bigd result<DD><CODE>bigd</CODE> - the BigDecimal to narrow
+<DT><B>Returns:</B><DD>an Integer or Long if narrowing is possible, the original BigInteger otherwise</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="narrowArguments(java.lang.Object[])"><!-- --></A><H3>
+narrowArguments</H3>
+<PRE>
+public boolean <B>narrowArguments</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>[]&nbsp;args)</PRE>
+<DL>
+<DD>Replace all numbers in an arguments array with the smallest type that will fit.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>args</CODE> - the argument array
+<DT><B>Returns:</B><DD>true if some arguments were narrowed and args array is modified,
+         false if no narrowing occurred and args array has not been modified</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="add(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+add</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>add</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Add two values together.
+ <p>
+ If any numeric add fails on coercion to the appropriate type,
+ treat as Strings and do concatenation.
+ </p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - left argument<DD><CODE>right</CODE> - right argument
+<DT><B>Returns:</B><DD>left + right.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="divide(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+divide</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>divide</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                     <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Divide the left value by the right.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - left argument<DD><CODE>right</CODE> - right argument
+<DT><B>Returns:</B><DD>left / right
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ArithmeticException.html?is-external=true" title="class or interface in java.lang">ArithmeticException</A></CODE> - if right == 0</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="mod(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+mod</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>mod</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>left value modulo right.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - left argument<DD><CODE>right</CODE> - right argument
+<DT><B>Returns:</B><DD>left % right
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ArithmeticException.html?is-external=true" title="class or interface in java.lang">ArithmeticException</A></CODE> - if right == 0.0</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="multiply(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+multiply</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>multiply</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Multiply the left value by the right.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - left argument<DD><CODE>right</CODE> - right argument
+<DT><B>Returns:</B><DD>left * right.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="subtract(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+subtract</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>subtract</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Subtract the right value from the left.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - left argument<DD><CODE>right</CODE> - right argument
+<DT><B>Returns:</B><DD>left - right.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="negate(java.lang.Object)"><!-- --></A><H3>
+negate</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>negate</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</PRE>
+<DL>
+<DD>Negates a value (unary minus for numbers).
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>val</CODE> - the value to negate
+<DT><B>Returns:</B><DD>the negated value</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="contains(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+contains</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <B>contains</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;container,
+                        <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;value)</PRE>
+<DL>
+<DD>Test if left contains right (right matches/in left).
+ <p>Beware that this method arguments are the opposite of the operator arguments.
+ 'x in y' means 'y contains x'.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>container</CODE> - the container<DD><CODE>value</CODE> - the value
+<DT><B>Returns:</B><DD>test result or null if there is no arithmetic solution</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="endsWith(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+endsWith</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <B>endsWith</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                        <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Test if left ends with right.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - left argument<DD><CODE>right</CODE> - right argument
+<DT><B>Returns:</B><DD>left $= right if there is no arithmetic solution</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="startsWith(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+startsWith</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <B>startsWith</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                          <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Test if left starts with right.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - left argument<DD><CODE>right</CODE> - right argument
+<DT><B>Returns:</B><DD>left ^= right or null if there is no arithmetic solution</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="isEmpty(java.lang.Object)"><!-- --></A><H3>
+isEmpty</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</A> <B>isEmpty</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object)</PRE>
+<DL>
+<DD>Check for emptyness of various types: Number, Collection, Array, Map, String.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>object</CODE> - the object to check the emptyness of
+<DT><B>Returns:</B><DD>the boolean or null of there is no arithmetic solution</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="size(java.lang.Object)"><!-- --></A><H3>
+size</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</A> <B>size</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;object)</PRE>
+<DL>
+<DD>Calculate the <code>size</code> of various types: Collection, Array, Map, String.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>object</CODE> - the object to get the size of
+<DT><B>Returns:</B><DD>the size of object or null if there is no arithmetic solution</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="and(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+and</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>and</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Performs a bitwise and.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - the left operand<DD><CODE>right</CODE> - the right operator
+<DT><B>Returns:</B><DD>left &amp; right</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="or(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+or</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>or</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                 <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Performs a bitwise or.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - the left operand<DD><CODE>right</CODE> - the right operator
+<DT><B>Returns:</B><DD>left | right</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="xor(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+xor</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>xor</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Performs a bitwise xor.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - the left operand<DD><CODE>right</CODE> - the right operator
+<DT><B>Returns:</B><DD>left ^ right</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="complement(java.lang.Object)"><!-- --></A><H3>
+complement</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>complement</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</PRE>
+<DL>
+<DD>Performs a bitwise complement.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>val</CODE> - the operand
+<DT><B>Returns:</B><DD>~val</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="not(java.lang.Object)"><!-- --></A><H3>
+not</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>not</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</PRE>
+<DL>
+<DD>Performs a logical not.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>val</CODE> - the operand
+<DT><B>Returns:</B><DD>!val</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="compare(java.lang.Object, java.lang.Object, java.lang.String)"><!-- --></A><H3>
+compare</H3>
+<PRE>
+protected int <B>compare</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right,
+                      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;operator)</PRE>
+<DL>
+<DD>Performs a comparison.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - the left operand<DD><CODE>right</CODE> - the right operator<DD><CODE>operator</CODE> - the operator
+<DT><B>Returns:</B><DD>-1 if left &lt; right; +1 if left &gt; right; 0 if left == right
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ArithmeticException.html?is-external=true" title="class or interface in java.lang">ArithmeticException</A></CODE> - if either left or right is null</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="equals(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+equals</H3>
+<PRE>
+public boolean <B>equals</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                      <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Test if left and right are equal.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - left argument<DD><CODE>right</CODE> - right argument
+<DT><B>Returns:</B><DD>the test result</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="lessThan(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+lessThan</H3>
+<PRE>
+public boolean <B>lessThan</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                        <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Test if left &lt; right.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - left argument<DD><CODE>right</CODE> - right argument
+<DT><B>Returns:</B><DD>the test result</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="greaterThan(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+greaterThan</H3>
+<PRE>
+public boolean <B>greaterThan</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                           <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Test if left &gt; right.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - left argument<DD><CODE>right</CODE> - right argument
+<DT><B>Returns:</B><DD>the test result</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="lessThanOrEqual(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+lessThanOrEqual</H3>
+<PRE>
+public boolean <B>lessThanOrEqual</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Test if left &lt;= right.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - left argument<DD><CODE>right</CODE> - right argument
+<DT><B>Returns:</B><DD>the test result</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="greaterThanOrEqual(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+greaterThanOrEqual</H3>
+<PRE>
+public boolean <B>greaterThanOrEqual</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;left,
+                                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;right)</PRE>
+<DL>
+<DD>Test if left &gt;= right.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>left</CODE> - left argument<DD><CODE>right</CODE> - right argument
+<DT><B>Returns:</B><DD>the test result</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toBoolean(java.lang.Object)"><!-- --></A><H3>
+toBoolean</H3>
+<PRE>
+public boolean <B>toBoolean</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</PRE>
+<DL>
+<DD>Coerce to a primitive boolean.
+ <p>Double.NaN, null, "false" and empty string coerce to false.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>val</CODE> - value to coerce
+<DT><B>Returns:</B><DD>the boolean value if coercion is possible, true if value was not null.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toInteger(java.lang.Object)"><!-- --></A><H3>
+toInteger</H3>
+<PRE>
+public int <B>toInteger</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</PRE>
+<DL>
+<DD>Coerce to a primitive int.
+ <p>Double.NaN, null and empty string coerce to zero.</p>
+ <p>Boolean false is 0, true is 1.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>val</CODE> - value to coerce
+<DT><B>Returns:</B><DD>the value coerced to int
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ArithmeticException.html?is-external=true" title="class or interface in java.lang">ArithmeticException</A></CODE> - if val is null and mode is strict or if coercion is not possible</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toLong(java.lang.Object)"><!-- --></A><H3>
+toLong</H3>
+<PRE>
+public long <B>toLong</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</PRE>
+<DL>
+<DD>Coerce to a primitive long.
+ <p>Double.NaN, null and empty string coerce to zero.</p>
+ <p>Boolean false is 0, true is 1.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>val</CODE> - value to coerce
+<DT><B>Returns:</B><DD>the value coerced to long
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ArithmeticException.html?is-external=true" title="class or interface in java.lang">ArithmeticException</A></CODE> - if value is null and mode is strict or if coercion is not possible</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toBigInteger(java.lang.Object)"><!-- --></A><H3>
+toBigInteger</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</A> <B>toBigInteger</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</PRE>
+<DL>
+<DD>Coerce to a BigInteger.
+ <p>Double.NaN, null and empty string coerce to zero.</p>
+ <p>Boolean false is 0, true is 1.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>val</CODE> - the object to be coerced.
+<DT><B>Returns:</B><DD>a BigDecimal
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ArithmeticException.html?is-external=true" title="class or interface in java.lang">ArithmeticException</A></CODE> - if val is null and mode is strict or if coercion is not possible</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toBigDecimal(java.lang.Object)"><!-- --></A><H3>
+toBigDecimal</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</A> <B>toBigDecimal</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</PRE>
+<DL>
+<DD>Coerce to a BigDecimal.
+ <p>Double.NaN, null and empty string coerce to zero.</p>
+ <p>Boolean false is 0, true is 1.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>val</CODE> - the object to be coerced.
+<DT><B>Returns:</B><DD>a BigDecimal.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ArithmeticException.html?is-external=true" title="class or interface in java.lang">ArithmeticException</A></CODE> - if val is null and mode is strict or if coercion is not possible</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toDouble(java.lang.Object)"><!-- --></A><H3>
+toDouble</H3>
+<PRE>
+public double <B>toDouble</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</PRE>
+<DL>
+<DD>Coerce to a primitive double.
+ <p>Double.NaN, null and empty string coerce to zero.</p>
+ <p>Boolean false is 0, true is 1.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>val</CODE> - value to coerce.
+<DT><B>Returns:</B><DD>The double coerced value.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ArithmeticException.html?is-external=true" title="class or interface in java.lang">ArithmeticException</A></CODE> - if val is null and mode is strict or if coercion is not possible</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="toString(java.lang.Object)"><!-- --></A><H3>
+toString</H3>
+<PRE>
+public <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <B>toString</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;val)</PRE>
+<DL>
+<DD>Coerce to a string.
+ <p>Double.NaN coerce to the empty string.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>val</CODE> - value to coerce.
+<DT><B>Returns:</B><DD>The String coerced value.
+<DT><B>Throws:</B>
+<DD><CODE><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ArithmeticException.html?is-external=true" title="class or interface in java.lang">ArithmeticException</A></CODE> - if val is null and mode is strict or if coercion is not possible</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="bitwiseAnd(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+bitwiseAnd</H3>
+<PRE>
+<FONT SIZE="-1"><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</A>
+</FONT>public final <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>bitwiseAnd</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;lhs,
+                                          <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;rhs)</PRE>
+<DL>
+<DD><B>Deprecated.</B>&nbsp;<I></I>
+<P>
+<DD>Use or overload and() instead.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>lhs</CODE> - left hand side<DD><CODE>rhs</CODE> - right hand side
+<DT><B>Returns:</B><DD>lhs &amp; rhs<DT><B>See Also:</B><DD><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#and(java.lang.Object, java.lang.Object)"><CODE>and(java.lang.Object, java.lang.Object)</CODE></A></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="bitwiseOr(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+bitwiseOr</H3>
+<PRE>
+<FONT SIZE="-1"><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</A>
+</FONT>public final <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>bitwiseOr</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;lhs,
+                                         <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;rhs)</PRE>
+<DL>
+<DD><B>Deprecated.</B>&nbsp;<I></I>
+<P>
+<DD>Use or overload or() instead.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>lhs</CODE> - left hand side<DD><CODE>rhs</CODE> - right hand side
+<DT><B>Returns:</B><DD>lhs | rhs<DT><B>See Also:</B><DD><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#or(java.lang.Object, java.lang.Object)"><CODE>or(java.lang.Object, java.lang.Object)</CODE></A></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="bitwiseXor(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+bitwiseXor</H3>
+<PRE>
+<FONT SIZE="-1"><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</A>
+</FONT>public final <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>bitwiseXor</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;lhs,
+                                          <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;rhs)</PRE>
+<DL>
+<DD><B>Deprecated.</B>&nbsp;<I></I>
+<P>
+<DD>Use or overload xor() instead.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>lhs</CODE> - left hand side<DD><CODE>rhs</CODE> - right hand side
+<DT><B>Returns:</B><DD>lhs ^ rhs<DT><B>See Also:</B><DD><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#xor(java.lang.Object, java.lang.Object)"><CODE>xor(java.lang.Object, java.lang.Object)</CODE></A></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="logicalNot(java.lang.Object)"><!-- --></A><H3>
+logicalNot</H3>
+<PRE>
+<FONT SIZE="-1"><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</A>
+</FONT>public final <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>logicalNot</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;arg)</PRE>
+<DL>
+<DD><B>Deprecated.</B>&nbsp;<I></I>
+<P>
+<DD>Use or overload not() instead.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>arg</CODE> - argument
+<DT><B>Returns:</B><DD>!arg<DT><B>See Also:</B><DD><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#not(java.lang.Object)"><CODE>not(java.lang.Object)</CODE></A></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="matches(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+matches</H3>
+<PRE>
+<FONT SIZE="-1"><A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</A>
+</FONT>public final <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A> <B>matches</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;lhs,
+                                       <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;rhs)</PRE>
+<DL>
+<DD><B>Deprecated.</B>&nbsp;<I></I>
+<P>
+<DD>Use or overload contains() instead.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>lhs</CODE> - left hand side<DD><CODE>rhs</CODE> - right hand side
+<DT><B>Returns:</B><DD>contains(rhs, lhs)<DT><B>See Also:</B><DD><A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.html#contains(java.lang.Object, java.lang.Object)"><CODE>contains(java.lang.Object, java.lang.Object)</CODE></A></DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/JexlArithmetic.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;PREV CLASS&nbsp;
+&nbsp;<A HREF="../../../../org/apache/commons/jexl3/JexlArithmetic.ArrayBuilder.html" title="interface in org.apache.commons.jexl3"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../index.html?org/apache/commons/jexl3/JexlArithmetic.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="JexlArithmetic.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2001&#x2013;2017 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+</BODY>
+</HTML>

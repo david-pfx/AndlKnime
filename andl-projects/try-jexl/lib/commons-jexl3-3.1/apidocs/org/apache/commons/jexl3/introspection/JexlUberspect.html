@@ -1,0 +1,620 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--NewPage-->
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>
+JexlUberspect (Apache Commons JEXL 3.1 API)
+</TITLE>
+
+
+<LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../../stylesheet.css" TITLE="Style">
+
+<SCRIPT type="text/javascript">
+function windowTitle()
+{
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="JexlUberspect (Apache Commons JEXL 3.1 API)";
+    }
+}
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+
+</HEAD>
+
+<BODY BGCOLOR="white" onload="windowTitle();">
+<HR>
+
+
+<!-- ========= START OF TOP NAVBAR ======= -->
+<A NAME="navbar_top"><!-- --></A>
+<A HREF="#skip-navbar_top" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_top_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/JexlUberspect.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlSandbox.WhiteSet.html" title="class in org.apache.commons.jexl3.introspection"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.JexlResolver.html" title="enum in org.apache.commons.jexl3.introspection"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/commons/jexl3/introspection/JexlUberspect.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="JexlUberspect.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_top"></A>
+<!-- ========= END OF TOP NAVBAR ========= -->
+
+<HR>
+<!-- ======== START OF CLASS DATA ======== -->
+<H2>
+<FONT SIZE="-1">
+org.apache.commons.jexl3.introspection</FONT>
+<BR>
+Interface JexlUberspect</H2>
+<DL>
+<DT><B>All Known Implementing Classes:</B> <DD><A HREF="../../../../../org/apache/commons/jexl3/internal/introspection/SandboxUberspect.html" title="class in org.apache.commons.jexl3.internal.introspection">SandboxUberspect</A>, <A HREF="../../../../../org/apache/commons/jexl3/internal/introspection/Uberspect.html" title="class in org.apache.commons.jexl3.internal.introspection">Uberspect</A></DD>
+</DL>
+<HR>
+<DL>
+<DT><PRE>public interface <B>JexlUberspect</B></DL>
+</PRE>
+
+<P>
+'Federated' introspection/reflection interface to allow JEXL introspection
+ behavior to be customized.
+<P>
+
+<P>
+<DL>
+<DT><B>Since:</B></DT>
+  <DD>1.0</DD>
+</DL>
+<HR>
+
+<P>
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+
+<A NAME="nested_class_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Nested Class Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.JexlResolver.html" title="enum in org.apache.commons.jexl3.introspection">JexlUberspect.JexlResolver</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The various builtin property resolvers.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;interface</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.PropertyResolver.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.PropertyResolver</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Abstracts getting property setter and getter.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;interface</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.ResolverStrategy.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.ResolverStrategy</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Determines property resolution strategy.</TD>
+</TR>
+</TABLE>
+&nbsp;<!-- =========== FIELD SUMMARY =========== -->
+
+<A NAME="field_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Field Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.ResolverStrategy.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.ResolverStrategy</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#JEXL_STRATEGY">JEXL_STRATEGY</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The default strategy.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.PropertyResolver.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.PropertyResolver</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#MAP">MAP</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A resolver types list tailored for Maps, favors '[]' over '.'.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.ResolverStrategy.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.ResolverStrategy</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#MAP_STRATEGY">MAP_STRATEGY</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The map strategy.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.PropertyResolver.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.PropertyResolver</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#POJO">POJO</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A resolver types list tailored for POJOs, favors '.' over '[]'.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<!-- ========== METHOD SUMMARY =========== -->
+
+<A NAME="method_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/JexlArithmetic.Uberspect.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.Uberspect</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#getArithmetic(org.apache.commons.jexl3.JexlArithmetic)">getArithmetic</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A>&nbsp;arithmetic)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets an arithmetic operator resolver for a given arithmetic instance.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlMethod.html" title="interface in org.apache.commons.jexl3.introspection">JexlMethod</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#getConstructor(java.lang.Object, java.lang.Object...)">getConstructor</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;ctorHandle,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>...&nbsp;args)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a class constructor.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</A>&lt;?&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#getIterator(java.lang.Object)">getIterator</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets an iterator from an object.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlMethod.html" title="interface in org.apache.commons.jexl3.introspection">JexlMethod</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#getMethod(java.lang.Object, java.lang.String, java.lang.Object...)">getMethod</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj,
+          <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;method,
+          <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>...&nbsp;args)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a JexlMethod.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlPropertyGet.html" title="interface in org.apache.commons.jexl3.introspection">JexlPropertyGet</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#getPropertyGet(java.util.List, java.lang.Object, java.lang.Object)">getPropertyGet</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.PropertyResolver.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.PropertyResolver</A>&gt;&nbsp;resolvers,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;identifier)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Property getter.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlPropertyGet.html" title="interface in org.apache.commons.jexl3.introspection">JexlPropertyGet</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#getPropertyGet(java.lang.Object, java.lang.Object)">getPropertyGet</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;identifier)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Property getter.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlPropertySet.html" title="interface in org.apache.commons.jexl3.introspection">JexlPropertySet</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#getPropertySet(java.util.List, java.lang.Object, java.lang.Object, java.lang.Object)">getPropertySet</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.PropertyResolver.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.PropertyResolver</A>&gt;&nbsp;resolvers,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;identifier,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;arg)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Property setter.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlPropertySet.html" title="interface in org.apache.commons.jexl3.introspection">JexlPropertySet</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#getPropertySet(java.lang.Object, java.lang.Object, java.lang.Object)">getPropertySet</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;identifier,
+               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;arg)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Property setter.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.PropertyResolver.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.PropertyResolver</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#getResolvers(org.apache.commons.jexl3.JexlOperator, java.lang.Object)">getResolvers</A></B>(<A HREF="../../../../../org/apache/commons/jexl3/JexlOperator.html" title="enum in org.apache.commons.jexl3">JexlOperator</A>&nbsp;op,
+             <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Applies this uberspect property resolver strategy.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;int</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#getVersion()">getVersion</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gets this uberspect version.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.html#setClassLoader(java.lang.ClassLoader)">setClassLoader</A></B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ClassLoader.html?is-external=true" title="class or interface in java.lang">ClassLoader</A>&nbsp;loader)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sets the class loader to use.</TD>
+</TR>
+</TABLE>
+&nbsp;
+<P>
+
+<!-- ============ FIELD DETAIL =========== -->
+
+<A NAME="field_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Field Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="POJO"><!-- --></A><H3>
+POJO</H3>
+<PRE>
+static final <A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.PropertyResolver.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.PropertyResolver</A>&gt; <B>POJO</B></PRE>
+<DL>
+<DD>A resolver types list tailored for POJOs, favors '.' over '[]'.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="MAP"><!-- --></A><H3>
+MAP</H3>
+<PRE>
+static final <A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.PropertyResolver.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.PropertyResolver</A>&gt; <B>MAP</B></PRE>
+<DL>
+<DD>A resolver types list tailored for Maps, favors '[]' over '.'.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="JEXL_STRATEGY"><!-- --></A><H3>
+JEXL_STRATEGY</H3>
+<PRE>
+static final <A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.ResolverStrategy.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.ResolverStrategy</A> <B>JEXL_STRATEGY</B></PRE>
+<DL>
+<DD>The default strategy.
+ <p>
+ If the operator is '[]' or if the operator is null and the object is a map, use the MAP list of resolvers;
+ Other cases use the POJO list of resolvers.
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
+<A NAME="MAP_STRATEGY"><!-- --></A><H3>
+MAP_STRATEGY</H3>
+<PRE>
+static final <A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.ResolverStrategy.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.ResolverStrategy</A> <B>MAP_STRATEGY</B></PRE>
+<DL>
+<DD>The map strategy.
+ 
+ <p>If the operator is '[]' or if the object is a map, use the MAP list of resolvers.
+ Otherwise, use the POJO list of resolvers.</p>
+<P>
+<DL>
+</DL>
+</DL>
+
+<!-- ============ METHOD DETAIL ========== -->
+
+<A NAME="method_detail"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="1"><FONT SIZE="+2">
+<B>Method Detail</B></FONT></TH>
+</TR>
+</TABLE>
+
+<A NAME="getResolvers(org.apache.commons.jexl3.JexlOperator, java.lang.Object)"><!-- --></A><H3>
+getResolvers</H3>
+<PRE>
+<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.PropertyResolver.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.PropertyResolver</A>&gt; <B>getResolvers</B>(<A HREF="../../../../../org/apache/commons/jexl3/JexlOperator.html" title="enum in org.apache.commons.jexl3">JexlOperator</A>&nbsp;op,
+                                                  <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj)</PRE>
+<DL>
+<DD>Applies this uberspect property resolver strategy.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>op</CODE> - the operator<DD><CODE>obj</CODE> - the object
+<DT><B>Returns:</B><DD>the applied strategy resolver list</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="setClassLoader(java.lang.ClassLoader)"><!-- --></A><H3>
+setClassLoader</H3>
+<PRE>
+void <B>setClassLoader</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/ClassLoader.html?is-external=true" title="class or interface in java.lang">ClassLoader</A>&nbsp;loader)</PRE>
+<DL>
+<DD>Sets the class loader to use.
+ 
+ <p>This increments the version.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>loader</CODE> - the class loader</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getVersion()"><!-- --></A><H3>
+getVersion</H3>
+<PRE>
+int <B>getVersion</B>()</PRE>
+<DL>
+<DD>Gets this uberspect version.
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the class loader modification count</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getConstructor(java.lang.Object, java.lang.Object...)"><!-- --></A><H3>
+getConstructor</H3>
+<PRE>
+<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlMethod.html" title="interface in org.apache.commons.jexl3.introspection">JexlMethod</A> <B>getConstructor</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;ctorHandle,
+                          <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>...&nbsp;args)</PRE>
+<DL>
+<DD>Returns a class constructor.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>ctorHandle</CODE> - a class or class name<DD><CODE>args</CODE> - constructor arguments
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlMethod.html" title="interface in org.apache.commons.jexl3.introspection"><CODE>JexlMethod</CODE></A><DT><B>Since:</B></DT>
+  <DD>3.0</DD>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getMethod(java.lang.Object, java.lang.String, java.lang.Object...)"><!-- --></A><H3>
+getMethod</H3>
+<PRE>
+<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlMethod.html" title="interface in org.apache.commons.jexl3.introspection">JexlMethod</A> <B>getMethod</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj,
+                     <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;method,
+                     <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>...&nbsp;args)</PRE>
+<DL>
+<DD>Returns a JexlMethod.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>obj</CODE> - the object<DD><CODE>method</CODE> - the method name<DD><CODE>args</CODE> - method arguments
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlMethod.html" title="interface in org.apache.commons.jexl3.introspection"><CODE>JexlMethod</CODE></A></DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getPropertyGet(java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+getPropertyGet</H3>
+<PRE>
+<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlPropertyGet.html" title="interface in org.apache.commons.jexl3.introspection">JexlPropertyGet</A> <B>getPropertyGet</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj,
+                               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;identifier)</PRE>
+<DL>
+<DD>Property getter.
+ 
+ <p>returns a JelPropertySet apropos to an expression like <code>bar.woogie</code>.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>obj</CODE> - the object to get the property from<DD><CODE>identifier</CODE> - property name
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlPropertyGet.html" title="interface in org.apache.commons.jexl3.introspection"><CODE>JexlPropertyGet</CODE></A> or null</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getPropertyGet(java.util.List, java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+getPropertyGet</H3>
+<PRE>
+<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlPropertyGet.html" title="interface in org.apache.commons.jexl3.introspection">JexlPropertyGet</A> <B>getPropertyGet</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.PropertyResolver.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.PropertyResolver</A>&gt;&nbsp;resolvers,
+                               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj,
+                               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;identifier)</PRE>
+<DL>
+<DD>Property getter.
+ <p>
+ Seeks a JexlPropertyGet apropos to an expression like <code>bar.woogie</code>.</p>
+ See <A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.ResolverStrategy.html#apply(org.apache.commons.jexl3.JexlOperator, java.lang.Object)"><CODE>JexlUberspect.ResolverStrategy.apply(JexlOperator, java.lang.Object)</CODE></A>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>resolvers</CODE> - the list of property resolvers to try<DD><CODE>obj</CODE> - the object to get the property from<DD><CODE>identifier</CODE> - property name
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlPropertyGet.html" title="interface in org.apache.commons.jexl3.introspection"><CODE>JexlPropertyGet</CODE></A> or null<DT><B>Since:</B></DT>
+  <DD>3.0</DD>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getPropertySet(java.lang.Object, java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+getPropertySet</H3>
+<PRE>
+<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlPropertySet.html" title="interface in org.apache.commons.jexl3.introspection">JexlPropertySet</A> <B>getPropertySet</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj,
+                               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;identifier,
+                               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;arg)</PRE>
+<DL>
+<DD>Property setter.
+ <p>
+ Seeks a JelPropertySet apropos to an expression like  <code>foo.bar = "geir"</code>.</p>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>obj</CODE> - the object to get the property from.<DD><CODE>identifier</CODE> - property name<DD><CODE>arg</CODE> - value to set
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlPropertySet.html" title="interface in org.apache.commons.jexl3.introspection"><CODE>JexlPropertySet</CODE></A> or null</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getPropertySet(java.util.List, java.lang.Object, java.lang.Object, java.lang.Object)"><!-- --></A><H3>
+getPropertySet</H3>
+<PRE>
+<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlPropertySet.html" title="interface in org.apache.commons.jexl3.introspection">JexlPropertySet</A> <B>getPropertySet</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</A>&lt;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.PropertyResolver.html" title="interface in org.apache.commons.jexl3.introspection">JexlUberspect.PropertyResolver</A>&gt;&nbsp;resolvers,
+                               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj,
+                               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;identifier,
+                               <A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;arg)</PRE>
+<DL>
+<DD>Property setter.
+ <p>
+ Seeks a JelPropertySet apropos to an expression like <code>foo.bar = "geir"</code>.</p>
+ See <A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.ResolverStrategy.html#apply(org.apache.commons.jexl3.JexlOperator, java.lang.Object)"><CODE>JexlUberspect.ResolverStrategy.apply(JexlOperator, java.lang.Object)</CODE></A>
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>resolvers</CODE> - the list of property resolvers to try,<DD><CODE>obj</CODE> - the object to get the property from<DD><CODE>identifier</CODE> - property name<DD><CODE>arg</CODE> - value to set
+<DT><B>Returns:</B><DD>a <A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlPropertySet.html" title="interface in org.apache.commons.jexl3.introspection"><CODE>JexlPropertySet</CODE></A> or null<DT><B>Since:</B></DT>
+  <DD>3.0</DD>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getIterator(java.lang.Object)"><!-- --></A><H3>
+getIterator</H3>
+<PRE>
+<A HREF="http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</A>&lt;?&gt; <B>getIterator</B>(<A HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A>&nbsp;obj)</PRE>
+<DL>
+<DD>Gets an iterator from an object.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>obj</CODE> - to get the iterator from
+<DT><B>Returns:</B><DD>an iterator over obj or null</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getArithmetic(org.apache.commons.jexl3.JexlArithmetic)"><!-- --></A><H3>
+getArithmetic</H3>
+<PRE>
+<A HREF="../../../../../org/apache/commons/jexl3/JexlArithmetic.Uberspect.html" title="interface in org.apache.commons.jexl3">JexlArithmetic.Uberspect</A> <B>getArithmetic</B>(<A HREF="../../../../../org/apache/commons/jexl3/JexlArithmetic.html" title="class in org.apache.commons.jexl3">JexlArithmetic</A>&nbsp;arithmetic)</PRE>
+<DL>
+<DD>Gets an arithmetic operator resolver for a given arithmetic instance.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>arithmetic</CODE> - the arithmetic instance
+<DT><B>Returns:</B><DD>the arithmetic uberspect or null if no operator method were overridden<DT><B>Since:</B></DT>
+  <DD>3.0</DD>
+</DL>
+</DD>
+</DL>
+<!-- ========= END OF CLASS DATA ========= -->
+<HR>
+
+
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<A NAME="navbar_bottom"><!-- --></A>
+<A HREF="#skip-navbar_bottom" title="Skip navigation links"></A>
+<TABLE BORDER="0" WIDTH="100%" CELLPADDING="1" CELLSPACING="0" SUMMARY="">
+<TR>
+<TD COLSPAN=2 BGCOLOR="#EEEEFF" CLASS="NavBarCell1">
+<A NAME="navbar_bottom_firstrow"><!-- --></A>
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="3" SUMMARY="">
+  <TR ALIGN="center" VALIGN="top">
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../overview-summary.html"><FONT CLASS="NavBarFont1"><B>Overview</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-summary.html"><FONT CLASS="NavBarFont1"><B>Package</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<FONT CLASS="NavBarFont1Rev"><B>Class</B></FONT>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="class-use/JexlUberspect.html"><FONT CLASS="NavBarFont1"><B>Use</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="package-tree.html"><FONT CLASS="NavBarFont1"><B>Tree</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../deprecated-list.html"><FONT CLASS="NavBarFont1"><B>Deprecated</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../index-all.html"><FONT CLASS="NavBarFont1"><B>Index</B></FONT></A>&nbsp;</TD>
+  <TD BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    <A HREF="../../../../../help-doc.html"><FONT CLASS="NavBarFont1"><B>Help</B></FONT></A>&nbsp;</TD>
+  </TR>
+</TABLE>
+</TD>
+<TD ALIGN="right" VALIGN="top" ROWSPAN=3><EM>
+</EM>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlSandbox.WhiteSet.html" title="class in org.apache.commons.jexl3.introspection"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../../../org/apache/commons/jexl3/introspection/JexlUberspect.JexlResolver.html" title="enum in org.apache.commons.jexl3.introspection"><B>NEXT CLASS</B></A></FONT></TD>
+<TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
+  <A HREF="../../../../../index.html?org/apache/commons/jexl3/introspection/JexlUberspect.html" target="_top"><B>FRAMES</B></A>  &nbsp;
+&nbsp;<A HREF="JexlUberspect.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
+&nbsp;<SCRIPT type="text/javascript">
+  <!--
+  if(window==top) {
+    document.writeln('<A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>');
+  }
+  //-->
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="../../../../../allclasses-noframe.html"><B>All Classes</B></A>
+</NOSCRIPT>
+
+
+</FONT></TD>
+</TR>
+<TR>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+<TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
+DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;CONSTR&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
+</TR>
+</TABLE>
+<A NAME="skip-navbar_bottom"></A>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+
+<HR>
+Copyright &#169; 2001&#x2013;2017 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+</BODY>
+</HTML>

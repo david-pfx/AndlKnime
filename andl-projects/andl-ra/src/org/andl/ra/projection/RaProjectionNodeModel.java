@@ -47,6 +47,8 @@ public class RaProjectionNodeModel extends NodeModel {
         return new DataColumnSpecFilterConfiguration(KEY_PROJECTION_COLUMNS, null, 0);
     }
 
+    //--------------------------------------------------------------------------
+    // ctor and dummy overrides
     public RaProjectionNodeModel() {
         super(1, 1);
     }
@@ -54,13 +56,6 @@ public class RaProjectionNodeModel extends NodeModel {
     /** {@inheritDoc} */
     @Override
     protected void reset() { }
-
-    /** {@inheritDoc} */
-    @Override
-    protected BufferedDataTable[] execute(final BufferedDataTable[] inData, final ExecutionContext exec) 
-    throws Exception {
-        return new BufferedDataTable[] { doProjection(inData[0], exec) };
-    }
 
     /** {@inheritDoc} */
     @Override
@@ -72,20 +67,35 @@ public class RaProjectionNodeModel extends NodeModel {
     protected void loadInternals(final File nodeInternDir, final ExecutionMonitor exec) 
     throws IOException, CanceledExecutionException { }
 
-    /** {@inheritDoc} 
-     * Just return the new spec
-     * */
+    //--------------------------------------------------------------------------
+    // execute, configure, settings
+    //
+    // project creates a new table using a container
+    //
+    /** {@inheritDoc} */
     @Override
-    protected DataTableSpec[] configure(final DataTableSpec[] inSpecs)
-    throws InvalidSettingsException {
-    	for (String name : inSpecs[0].getColumnNames()) 
-    		if (name.charAt(0) <= ' ')
-    			throw new InvalidSettingsException("bad column name: " + name);
-        ColumnRearranger c = createColumnRearranger(inSpecs[0]);
-        return new DataTableSpec[] { c.createSpec() };
+    protected BufferedDataTable[] execute(final BufferedDataTable[] inData, final ExecutionContext exec) 
+    throws Exception {
+    	
+        return new BufferedDataTable[] { 
+        	doProjection(inData[0], exec) 
+        };
     }
 
     /** {@inheritDoc} */
+    @Override
+    protected DataTableSpec[] configure(final DataTableSpec[] inSpecs)
+    throws InvalidSettingsException {
+    	
+        ColumnRearranger c = createColumnRearranger(inSpecs[0]);
+        return new DataTableSpec[] { 
+        	c.createSpec() 
+        };
+    }
+
+    /** === TODO: I have absolutely no idea why this is here ===<br><br>
+     * 
+     * {@inheritDoc} */
     @Override
     public StreamableOperator createStreamableOperator(final PartitionInfo partitionInfo, final PortObjectSpec[] inSpecs)
         throws InvalidSettingsException {
@@ -118,9 +128,9 @@ public class RaProjectionNodeModel extends NodeModel {
     
     //==========================================================================
 
-    // create column rearranger 
+    // create column rearranger as a convenient way to create the new spec
     ColumnRearranger createColumnRearranger(final DataTableSpec spec) {
-        if (m_conf == null) {
+    	if (m_conf == null) {
             m_conf = createDCSFilterConfiguration();
             m_conf.loadDefaults(spec, true);
         }
@@ -131,7 +141,7 @@ public class RaProjectionNodeModel extends NodeModel {
         return c;
     }
 
-    // implement projection algorithm
+    // implement projection algorithm using a row iterator and container
 	private BufferedDataTable doProjection(final BufferedDataTable inData, final ExecutionContext exec) 
 	throws CanceledExecutionException {
 

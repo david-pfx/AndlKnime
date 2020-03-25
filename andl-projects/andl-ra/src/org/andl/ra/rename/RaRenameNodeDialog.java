@@ -60,14 +60,13 @@ public class RaRenameNodeDialog extends DefaultNodeSettingsPane {
     		_newColName = new SettingsModelString("new", "");
     	}
     	
-    	AddSelectionTab(specs[0].getColumnNames());
-
-//		String[] newcols = RaRenameNodeModel.createSettingsNewColumnNames().getStringArrayValue();
-//		_newColName = new SettingsModelString("new", newcols.length > 0 ? newcols[0] : "");
-//		_newColName.loadSettingsFrom(settings);
+    	addSelectionTab(specs[0].getColumnNames());
     }    
 
-    private void AddSelectionTab(String[] columnNames) {
+    // create and add the default tab, replacing any existing
+    // the parent DefaultNodeSettingsPane hosts whatever DialogComponents we then add
+    // the effect is a dynamic dialog    
+    private void addSelectionTab(String[] columnNames) {
     	removeTab(TAB_TITLE);
     	createNewTab(TAB_TITLE);
     	selectTab(TAB_TITLE);

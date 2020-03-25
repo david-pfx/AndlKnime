@@ -42,26 +42,52 @@ public class RaValueNodeModel extends SimpleStreamableFunctionNodeModel {
 	private final SettingsModelString _columnTypeNameSettings = createSettingsColumnTypeName();
 	private final SettingsModelString _expressionSettings = createSettingsExpression();
 	
+	static SettingsModelString createSettingsColumnName() {
+		return new SettingsModelString(KEY_COLUMN_NAME, DEFAULT_COLUMN_NAME);
+	}
+	
+	static SettingsModelString createSettingsColumnTypeName() {
+		return new SettingsModelString(KEY_TYPE_NAME, DEFAULT_TYPE_NAME);
+	}
+	
+	static SettingsModelString createSettingsExpression() {
+		return new SettingsModelString(KEY_EXPRESSION, DEFAULT_EXPRESSION);
+	}
+	
+    //--------------------------------------------------------------------------
+    // ctor and dummy overrides
+    //
+    // 
+	//
     /**
-     * Constructor for the node model.
+     * Default constructor is all that is needed<br>
+     * 
+     * New Value uses a streamable node model and adds column(s) created by evaluating an expression
      */
     protected RaValueNodeModel() {
         super();
         LOGGER.info("Extension node created");
     }
 
-	static SettingsModelString createSettingsColumnName() {
-		return new SettingsModelString(KEY_COLUMN_NAME, DEFAULT_COLUMN_NAME);
-	}
+    /** {@inheritDoc} */
+    @Override
+    protected void reset() { }
+    
+    /** {@inheritDoc} */
+    @Override
+    protected void loadInternals(final File internDir,
+            final ExecutionMonitor exec) throws IOException,
+            CanceledExecutionException { }
+    
+    /** {@inheritDoc} */
+    @Override
+    protected void saveInternals(final File internDir,
+            final ExecutionMonitor exec) throws IOException,
+            CanceledExecutionException { }
 
-	static SettingsModelString createSettingsColumnTypeName() {
-		return new SettingsModelString(KEY_TYPE_NAME, DEFAULT_TYPE_NAME);
-	}
-
-	static SettingsModelString createSettingsExpression() {
-		return new SettingsModelString(KEY_EXPRESSION, DEFAULT_EXPRESSION);
-	}
-
+    //--------------------------------------------------------------------------
+    // execute, configure, settings
+    //
     /** {@inheritDoc} */
     @Override
     protected BufferedDataTable[] execute(final BufferedDataTable[] inData,
@@ -69,13 +95,10 @@ public class RaValueNodeModel extends SimpleStreamableFunctionNodeModel {
 
         DataTableSpec spec = inData[0].getDataTableSpec();
         ColumnRearranger rearranger = createColumnRearranger(spec);
-        BufferedDataTable out = exec.createColumnRearrangeTable(inData[0], rearranger, exec);
-        return new BufferedDataTable[] { out };
+        return new BufferedDataTable[] { 
+        	exec.createColumnRearrangeTable(inData[0], rearranger, exec)
+        };
     }
-
-    /** {@inheritDoc} */
-    @Override
-    protected void reset() { }
 
     /** {@inheritDoc} */
     @Override
@@ -83,38 +106,20 @@ public class RaValueNodeModel extends SimpleStreamableFunctionNodeModel {
     throws InvalidSettingsException {
     	
         ColumnRearranger rearranger = createColumnRearranger(inSpecs[0]);
-        DataTableSpec out = rearranger.createSpec();
-        return new DataTableSpec[] { out };
+        return new DataTableSpec[] { 
+        	rearranger.createSpec() 
+        };
     }
     
     /** {@inheritDoc} */
     @Override
     protected ColumnRearranger createColumnRearranger(final DataTableSpec inspec) throws InvalidSettingsException {
-        String colname = _columnNameSettings.getStringValue();
-        String typename = _columnTypeNameSettings.getStringValue();
-        String expression = _expressionSettings.getStringValue();
-        TypeCellFactory tcf = TypeCellFactory.valueOf(typename); 
-
-		try {
-	        DataColumnSpec outcolspec = new DataColumnSpecCreator(colname, tcf.getDataType()).createSpec();
-	        RaEvaluator jexl = new RaEvaluator(inspec, outcolspec.getType(), expression); 
-	
-	        ColumnRearranger rearranger = new ColumnRearranger(inspec);
-	        CellFactory fac = new SingleCellFactory(outcolspec) {
-	            @Override
-	            public DataCell getCell(final DataRow row) {
-	            	return jexl.evaluateDataCell(row);
-	            }
-	        };
-	
-	        rearranger.append(fac);
-	        return rearranger;
-		} catch (Exception e) {
-			throw new InvalidSettingsException(
-				"Not a valid expression for the type: " + e.getMessage(), e);
-		}
+    	return createRearranger(inspec,
+    			_columnNameSettings.getStringValue(),
+    			_columnTypeNameSettings.getStringValue(), 
+    			_expressionSettings.getStringValue());
     }
-    
+
     /** {@inheritDoc} */
     @Override
     protected void saveSettingsTo(final NodeSettingsWO settings) {
@@ -141,18 +146,35 @@ public class RaValueNodeModel extends SimpleStreamableFunctionNodeModel {
 		_expressionSettings.validateSettings(settings);
     }
     
-    /** {@inheritDoc} */
-    @Override
-    protected void loadInternals(final File internDir,
-            final ExecutionMonitor exec) throws IOException,
-            CanceledExecutionException { }
+    //--------------------------------------------------------------------------
     
-    /** {@inheritDoc} */
-    @Override
-    protected void saveInternals(final File internDir,
-            final ExecutionMonitor exec) throws IOException,
-            CanceledExecutionException { }
+    // create the rearranger that actually does all the work
+    // TODO: multiple columns
 
+    private ColumnRearranger createRearranger(final DataTableSpec inspec, String colname, String typename, String expression) 
+    throws InvalidSettingsException {
 
+    	TypeCellFactory tcf = TypeCellFactory.valueOf(typename);
+   		try {
+	        DataColumnSpec outcolspec = new DataColumnSpecCreator(colname, tcf.getDataType()).createSpec();
+	        RaEvaluator jexl = new RaEvaluator(inspec, outcolspec.getType(), expression); 
+	
+	        ColumnRearranger rearranger = new ColumnRearranger(inspec);
+	        CellFactory fac = new SingleCellFactory(outcolspec) {
+	            @Override
+	            public DataCell getCell(final DataRow row) {
+	            	return jexl.evaluateDataCell(row);
+	            }
+	        };
+	
+	        rearranger.append(fac);
+	        return rearranger;
+		} catch (Exception e) {
+			throw new InvalidSettingsException(
+				"Not a valid expression for the type: " + e.getMessage(), e);
+		}
+	}
+    
+    
 }
 

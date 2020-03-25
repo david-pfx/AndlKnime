@@ -31,18 +31,9 @@ public class RaRenameNodeModel extends NodeModel {
 	private static final String KEY_OLD_COLUMN_NAMES = "old-column-names";
 	private static final String KEY_NEW_COLUMN_NAMES = "new-column-names";
 
+	// paired arrays for those columns that will be renamed, possibly empty
 	private final SettingsModelStringArray _oldColumnNameSettings = createSettingsOldColumnNames();
 	private final SettingsModelStringArray _newColumnNameSettings = createSettingsNewColumnNames();
-
-	private static String[] _columnNames = new String[0];
-
-    /**
-     * Constructor for the node model.
-     */
-    protected RaRenameNodeModel() {
-        super(1, 1);
-        LOGGER.info("Rename node created");
-    }
 
     // get settings model for old column names
 	static SettingsModelStringArray createSettingsOldColumnNames() {
@@ -54,11 +45,34 @@ public class RaRenameNodeModel extends NodeModel {
 		return new SettingsModelStringArray(KEY_NEW_COLUMN_NAMES, new String[0]);
 	}
 	
-	// get list of old column names
-	static String[] getColumNames() {
-		return _columnNames;
-	}
+    //--------------------------------------------------------------------------
+    // ctor and dummy overrides
+    protected RaRenameNodeModel() {
+        super(1, 1);
+        LOGGER.info("Rename node created");
+    }
 
+    /** {@inheritDoc} */
+    @Override
+    protected void reset() { }
+    
+    /** {@inheritDoc} */
+    @Override
+    protected void loadInternals(final File internDir,
+            final ExecutionMonitor exec) throws IOException,
+            CanceledExecutionException { }
+    
+    /** {@inheritDoc} */
+    @Override
+    protected void saveInternals(final File internDir,
+            final ExecutionMonitor exec) throws IOException,
+            CanceledExecutionException { }
+
+    //--------------------------------------------------------------------------
+    // execute, configure, settings
+    //
+    // rename only has to create a new spec and replace it
+    //
     /** {@inheritDoc} */
     @Override
     protected BufferedDataTable[] execute(final BufferedDataTable[] inData,
@@ -66,29 +80,19 @@ public class RaRenameNodeModel extends NodeModel {
 
         BufferedDataTable in = inData[0];
         BufferedDataTable out = exec.createSpecReplacerTable(in, createNewSpec(in.getDataTableSpec()));
-        return new BufferedDataTable[] { out };
+        return new BufferedDataTable[] { 
+        	out 
+        };
     }
-
-    /** {@inheritDoc} */
-    @Override
-    protected void reset() { }
 
     /** {@inheritDoc} */
     @Override
     protected DataTableSpec[] configure(final DataTableSpec[] inSpecs)
     throws InvalidSettingsException {
 
-    	// get column names for use by dialog
-    	_columnNames = inSpecs[0].getColumnNames();
-        return new DataTableSpec[] { createNewSpec(inSpecs[0]) };
-    }
-
-    /** {@inheritDoc} */
-    DataTableSpec createNewSpec(final DataTableSpec inSpec) throws InvalidSettingsException {
-    	// parallel arrays of old and new names, possibly empty
-    	return createSpec(inSpec, 
-    			_oldColumnNameSettings.getStringArrayValue(), 
-    			_newColumnNameSettings.getStringArrayValue());
+        return new DataTableSpec[] { 
+        	createNewSpec(inSpecs[0]) 
+        };
     }
 
     /** {@inheritDoc} */
@@ -114,19 +118,14 @@ public class RaRenameNodeModel extends NodeModel {
 		_newColumnNameSettings.validateSettings(settings);
     }
     
-    /** {@inheritDoc} */
-    @Override
-    protected void loadInternals(final File internDir,
-            final ExecutionMonitor exec) throws IOException,
-            CanceledExecutionException { }
-    
-    /** {@inheritDoc} */
-    @Override
-    protected void saveInternals(final File internDir,
-            final ExecutionMonitor exec) throws IOException,
-            CanceledExecutionException { }
-
     //==========================================================================
+    // create a table spec with renames
+
+    DataTableSpec createNewSpec(final DataTableSpec inSpec) throws InvalidSettingsException {
+    	return createSpec(inSpec, 
+    			_oldColumnNameSettings.getStringArrayValue(), 
+    			_newColumnNameSettings.getStringArrayValue());
+    }
 
     // create a table spec with renames
 	private DataTableSpec createSpec(final DataTableSpec inSpec, String[] oldcolnames, String[] newcolnames)

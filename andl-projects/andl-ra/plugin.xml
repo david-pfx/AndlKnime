@@ -12,6 +12,7 @@
       <node category-path="/Andl" factory-class="org.andl.ra.rename.RaRenameNodeFactory"/>
       <node category-path="/Andl" factory-class="org.andl.ra.union.RaUnionNodeFactory"/>
    	  <node category-path="/Andl" factory-class="org.andl.ra.value.RaValueNodeFactory"/>
+	  <node category-path="/Andl" factory-class="org.andl.ra.aggregation.RaAggregationNodeFactory"/>
 </extension>
    
 </plugin>

@@ -22,19 +22,25 @@ public class RaAggregationNodeDialog extends DefaultNodeSettingsPane {
 	private static final String TAB_COLUMN_TITLE = "Attributes to Aggregate";
 	private static final String TAB_ACTION_TITLE = "Define Aggregation";
 
-	private final DataColumnSpecFilterPanel m_filterPanel;
+    DataColumnSpecFilterConfiguration config = RaAggregationNodeModel.createDCSFilterConfiguration();
+	SettingsModelString[] _newColumnNameSettings = RaAggregationNodeModel.createSettingsNewColumnNames(0);
+	SettingsModelString[] _newExpressionsSettings = RaAggregationNodeModel.createSettingsExpressions(0);
+    
+	String[] _oldColumnNames = new String[0];      
+	private final DataColumnSpecFilterPanel _filterPanel;
 
     protected RaAggregationNodeDialog() {
-        m_filterPanel = new DataColumnSpecFilterPanel(true);
+    	LOGGER.debug("aggregation dialog created");
+        _filterPanel = new DataColumnSpecFilterPanel(true);
     	this.setDefaultTabTitle(TAB_ACTION_TITLE);
-        addTabAt(0, TAB_COLUMN_TITLE, m_filterPanel);
+        addTabAt(0, TAB_COLUMN_TITLE, _filterPanel);
         selectTab(TAB_COLUMN_TITLE);
     }
     
     // deconstruct loaded string array values
     @Override
 	public void loadAdditionalSettingsFrom(NodeSettingsRO settings, DataTableSpec[] specs) throws NotConfigurableException {
-    	LOGGER.debug("load from");
+    	LOGGER.debug("load add from " + settings + "spec=" + specs[0]);
     	if (specs == null || specs[0] == null || specs[0].getNumColumns() == 0)
             throw new NotConfigurableException("No attributes available for selection.");
 
@@ -45,44 +51,54 @@ public class RaAggregationNodeDialog extends DefaultNodeSettingsPane {
         // create a filter config and load it into the filter panel
         DataColumnSpecFilterConfiguration config = RaAggregationNodeModel.createDCSFilterConfiguration();
         config.loadConfigurationInDialog(settings, spec);
-        m_filterPanel.loadConfiguration(config, spec);
+        _filterPanel.loadConfiguration(config, spec);
 
         final FilterResult filter = config.applyTo(spec);
-        final String[] incls = filter.getIncludes();
+        _oldColumnNames = filter.getIncludes();
         
-    	String[] names = RaAggregationNodeModel.createSettingsNewColumnNames().getStringArrayValue();
-    	String[] exprs = RaAggregationNodeModel.createSettingsExpressions().getStringArrayValue();
-        SettingsModelString[] namesettings = new SettingsModelString[incls.length]; 
-        SettingsModelString[] exprsettings = new SettingsModelString[incls.length];
-        for (int i = 0; i < incls.length; ++i) {
-        	namesettings[i] = new SettingsModelString("dummy-name=" + i, 
-        			i < names.length ? names[i] : "sum(" + incls[i] + ")");
-        	exprsettings[i] = new SettingsModelString("dummy-expr=" + i, i < exprs.length ? exprs[i] : "sum");
+    	_newColumnNameSettings = RaAggregationNodeModel.createSettingsNewColumnNames(_oldColumnNames.length);
+    	_newExpressionsSettings = RaAggregationNodeModel.createSettingsExpressions(_oldColumnNames.length);
+        for (int i = 0; i < _oldColumnNames.length; ++i) {
+        	try {
+				_newColumnNameSettings[i].loadSettingsFrom(settings);
+			} catch (InvalidSettingsException e) {
+				_newColumnNameSettings[i].setStringValue("sum(" + _oldColumnNames[i] + ")");
+			}
+        	try {
+				_newExpressionsSettings[i].loadSettingsFrom(settings);
+			} catch (InvalidSettingsException e) {
+				_newExpressionsSettings[i].setStringValue("sum()");
+			}
         }
-    	addSelectionTab(incls, namesettings, exprsettings);
+    	addSelectionTab(_oldColumnNames, _newColumnNameSettings, _newExpressionsSettings);
+//		smsa.addChangeListener(e -> {
+//			dclb.setText(String.format("selected=%d counter=%d", smsa.getStringArrayValue().length, ++counter));
+//		});
+
     }    
 
 	// construct and save string array values
     @Override
 	public void saveAdditionalSettingsTo(final NodeSettingsWO settings) throws InvalidSettingsException {
-    	LOGGER.debug("save add to");
+    	LOGGER.debug("save add to " + settings);
 
     	DataColumnSpecFilterConfiguration config = RaAggregationNodeModel.createDCSFilterConfiguration();
-        m_filterPanel.saveConfiguration(config);
+        _filterPanel.saveConfiguration(config);
         config.saveConfiguration(settings);
+        
+    	addSelectionTab(_oldColumnNames, _newColumnNameSettings, _newExpressionsSettings);
     }
     
     // create and add the default tab, replacing any existing
     // the parent DefaultNodeSettingsPane hosts whatever DialogComponents we then add
     // the effect is a dynamic dialog    
-    private void addSelectionTab(String[] columnNames, SettingsModelString[] typesettings, SettingsModelString[] exprsettings) {
+    private void addSelectionTab(String[] columnNames, SettingsModelString[] namesettings, SettingsModelString[] exprsettings) {
     	removeTab(TAB_ACTION_TITLE);
     	createNewTab(TAB_ACTION_TITLE);
-    	selectTab(TAB_ACTION_TITLE);
     	addDialogComponent(new DialogComponentLabel(String.format("cols=%d", columnNames.length)) );
     	
     	for (int i = 0; i < columnNames.length; ++i) {
-        	addDialogComponent(new DialogComponentString(typesettings[i], "New column name"));
+        	addDialogComponent(new DialogComponentString(namesettings[i], "New column name"));
         	setHorizontalPlacement(true);
         	addDialogComponent(new DialogComponentString(exprsettings[i], "Aggregation function"));
         	setHorizontalPlacement(false);    		

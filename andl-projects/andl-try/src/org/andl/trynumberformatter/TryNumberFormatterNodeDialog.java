@@ -65,7 +65,6 @@ public class TryNumberFormatterNodeDialog extends DefaultNodeSettingsPane {
 		DialogComponent dcs = new DialogComponentString(stringSettings, "Number Format - modified x2", true, 10);
 		dcs.setToolTipText("tool tip text");
 		addDialogComponent(dcs);
-		//addDialogComponent(new DialogComponentString(stringSettings, "Number Format - modified x2", true, 10));
 		
 		SettingsModelFilterString sms = new SettingsModelFilterString("cols");
 		DialogComponent dcf = new DialogComponentColumnFilter(sms, 0, true);
@@ -87,4 +86,3 @@ public class TryNumberFormatterNodeDialog extends DefaultNodeSettingsPane {
 	}
 
 }
-

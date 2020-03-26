@@ -21,6 +21,7 @@ import org.knime.core.node.NodeLogger;
 import org.knime.core.node.NodeModel;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
+import org.knime.core.node.defaultnodesettings.SettingsModelString;
 import org.knime.core.node.defaultnodesettings.SettingsModelStringArray;
 import org.knime.core.node.util.filter.NameFilterConfiguration.FilterResult;
 import org.knime.core.node.util.filter.column.DataColumnSpecFilterConfiguration;
@@ -33,43 +34,35 @@ import org.knime.core.node.util.filter.column.DataColumnSpecFilterConfiguration;
 public class RaAggregationNodeModel extends NodeModel {
     
 	private static final NodeLogger LOGGER = NodeLogger.getLogger(RaValueNodeModel.class);
-	private static final String KEY_PROJECTION_COLUMNS = "projection-columns";
-//	private static final String KEY_OLD_COLUMN_NAMES = "old-column-names";
+	private static final String KEY_COLUMN_SELECTOR = "column-selector";
 	private static final String KEY_NEW_COLUMN_NAMES = "new-column-names";
-//	private static final String KEY_NEW_COLUMN_TYPES = "new-column-types";
 	private static final String KEY_EXPRESSIONS = "expressions";
 
-//	private final SettingsModelStringArray _oldColumnNameSettings = createSettingsOldColumnNames();
-//	private final SettingsModelStringArray _newColumnNameSettings = createSettingsNewColumnNames();
-	private final SettingsModelStringArray _newColumnNameSettings = createSettingsNewColumnNames();
-	private final SettingsModelStringArray _newExpressionsSettings = createSettingsExpressions();
+	private final SettingsModelString[] _newColumnNameSettings = createSettingsNewColumnNames(0);
+	private final SettingsModelString[] _newExpressionsSettings = createSettingsExpressions(0);
 
     private DataColumnSpecFilterConfiguration m_conf;
 
     // create new configuration object to drive selection panel
     static final  DataColumnSpecFilterConfiguration createDCSFilterConfiguration() {
     	// disable selection by pattern and type 
-        return new DataColumnSpecFilterConfiguration(KEY_PROJECTION_COLUMNS, null, 0);
+        return new DataColumnSpecFilterConfiguration(KEY_COLUMN_SELECTOR, null, 0);
     }
 
-//    // get settings model for old column names
-//	static SettingsModelStringArray createSettingsOldColumnNames() {
-//		return new SettingsModelStringArray(KEY_OLD_COLUMN_NAMES, new String[0]);
-//	}
-//
-//	// get settings model for new column names
-//	static SettingsModelStringArray createSettingsNewColumnNames() {
-//		return new SettingsModelStringArray(KEY_NEW_COLUMN_NAMES, new String[0]);
-//	}
-//	
 	// get settings model for new column names
-	static SettingsModelStringArray createSettingsNewColumnNames() {
-		return new SettingsModelStringArray(KEY_NEW_COLUMN_NAMES, new String[0]);
+	static SettingsModelString[] createSettingsNewColumnNames(int noCols) {
+		SettingsModelString[] settings = new SettingsModelString[noCols];
+		for (int i = 0; i < noCols; ++i)
+			settings[i] = new SettingsModelString(KEY_NEW_COLUMN_NAMES + i, "");
+		return settings;
 	}
 	
 	// get settings model for new column names
-	static SettingsModelStringArray createSettingsExpressions() {
-		return new SettingsModelStringArray(KEY_EXPRESSIONS, new String[0]);
+	static SettingsModelString[] createSettingsExpressions(int noCols) {
+		SettingsModelString[] settings = new SettingsModelString[noCols];
+		for (int i = 0; i < noCols; ++i)
+			settings[i] = new SettingsModelString(KEY_EXPRESSIONS + i, "");
+		return settings;
 	}
 	
     //--------------------------------------------------------------------------
@@ -84,7 +77,7 @@ public class RaAggregationNodeModel extends NodeModel {
 	
     protected RaAggregationNodeModel() {
         super(1, 1);
-        LOGGER.info("Aggregation node created");
+        LOGGER.info("node created");
     }
 
     /** {@inheritDoc} */
@@ -112,6 +105,7 @@ public class RaAggregationNodeModel extends NodeModel {
     protected BufferedDataTable[] execute(final BufferedDataTable[] inData,
             final ExecutionContext exec) throws Exception {
 
+        LOGGER.info("execute " + inData[0]);
         return new BufferedDataTable[] { 
         	doAggregation(inData[0], exec) 
         };
@@ -122,6 +116,7 @@ public class RaAggregationNodeModel extends NodeModel {
     protected DataTableSpec[] configure(final DataTableSpec[] inSpecs)
     throws InvalidSettingsException {
 
+        LOGGER.info("config " + inSpecs[0]);
         ColumnRearranger c = createColumnRearranger(inSpecs[0]);
         return new DataTableSpec[] { 
         	c.createSpec() 
@@ -131,30 +126,30 @@ public class RaAggregationNodeModel extends NodeModel {
     /** {@inheritDoc} */
     @Override
     protected void saveSettingsTo(final NodeSettingsWO settings) {
-//		_oldColumnNameSettings.saveSettingsTo(settings);
-//		_newColumnNameSettings.saveSettingsTo(settings);
-		_newColumnNameSettings.saveSettingsTo(settings);
-		_newExpressionsSettings.saveSettingsTo(settings);
+    	for (SettingsModelString model : _newColumnNameSettings)
+    		model.saveSettingsTo(settings);
+    	for (SettingsModelString model : _newExpressionsSettings)
+    		model.saveSettingsTo(settings);
     }
 
     /** {@inheritDoc} */
     @Override
     protected void loadValidatedSettingsFrom(final NodeSettingsRO settings)
             throws InvalidSettingsException {
-//		_oldColumnNameSettings.loadSettingsFrom(settings);
-//		_newColumnNameSettings.loadSettingsFrom(settings);
-		_newColumnNameSettings.loadSettingsFrom(settings);
-		_newExpressionsSettings.loadSettingsFrom(settings);
+    	for (SettingsModelString model : _newColumnNameSettings)
+    		model.loadSettingsFrom(settings);
+    	for (SettingsModelString model : _newExpressionsSettings)
+    		model.loadSettingsFrom(settings);
     }
 
     /** {@inheritDoc} */
     @Override
     protected void validateSettings(final NodeSettingsRO settings)
             throws InvalidSettingsException {
-//		_oldColumnNameSettings.validateSettings(settings);
-//		_newColumnNameSettings.validateSettings(settings);
-		_newColumnNameSettings.validateSettings(settings);
-		_newExpressionsSettings.validateSettings(settings);
+    	for (SettingsModelString model : _newColumnNameSettings)
+    		model.validateSettings(settings);
+    	for (SettingsModelString model : _newExpressionsSettings)
+    		model.validateSettings(settings);
     }
     
     //==========================================================================

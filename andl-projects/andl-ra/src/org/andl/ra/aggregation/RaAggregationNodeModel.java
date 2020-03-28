@@ -3,6 +3,7 @@ package org.andl.ra.aggregation;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 
 import org.andl.ra.RaTuple;
 import org.andl.ra.value.RaValueNodeModel;
@@ -21,10 +22,8 @@ import org.knime.core.node.NodeLogger;
 import org.knime.core.node.NodeModel;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
+import org.knime.core.node.defaultnodesettings.SettingsModelFilterString;
 import org.knime.core.node.defaultnodesettings.SettingsModelString;
-import org.knime.core.node.defaultnodesettings.SettingsModelStringArray;
-import org.knime.core.node.util.filter.NameFilterConfiguration.FilterResult;
-import org.knime.core.node.util.filter.column.DataColumnSpecFilterConfiguration;
 
 /**
  * <code>NodeModel</code> for the "RaAggregation" node.
@@ -38,16 +37,13 @@ public class RaAggregationNodeModel extends NodeModel {
 	private static final String KEY_NEW_COLUMN_NAMES = "new-column-names";
 	private static final String KEY_EXPRESSIONS = "expressions";
 
+	private final SettingsModelFilterString _columnFilterSettings = createSettingsColumnFilter();
 	private final SettingsModelString[] _newColumnNameSettings = createSettingsNewColumnNames(0);
 	private final SettingsModelString[] _newExpressionsSettings = createSettingsExpressions(0);
 
-    private DataColumnSpecFilterConfiguration m_conf;
-
-    // create new configuration object to drive selection panel
-    static final  DataColumnSpecFilterConfiguration createDCSFilterConfiguration() {
-    	// disable selection by pattern and type 
-        return new DataColumnSpecFilterConfiguration(KEY_COLUMN_SELECTOR, null, 0);
-    }
+	static SettingsModelFilterString createSettingsColumnFilter() {
+		return new SettingsModelFilterString(KEY_COLUMN_SELECTOR);
+	}
 
 	// get settings model for new column names
 	static SettingsModelString[] createSettingsNewColumnNames(int noCols) {
@@ -154,18 +150,11 @@ public class RaAggregationNodeModel extends NodeModel {
     
     //==========================================================================
 
-    //==========================================================================
-
     // create column rearranger 
     ColumnRearranger createColumnRearranger(final DataTableSpec spec) {
-        if (m_conf == null) {
-            m_conf = createDCSFilterConfiguration();
-            m_conf.loadDefaults(spec, true);
-        }
-        final FilterResult filter = m_conf.applyTo(spec);
-        final String[] incls = filter.getIncludes();
+        final List<String> incls = _columnFilterSettings.getIncludeList();
         final ColumnRearranger c = new ColumnRearranger(spec);
-        c.keepOnly(incls);
+        c.keepOnly(incls.toArray(new String[incls.size()]));
         return c;
     }
 

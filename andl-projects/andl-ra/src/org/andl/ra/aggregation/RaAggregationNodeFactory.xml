@@ -1,37 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<knimeNode icon="./default.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
-    <name>RaAggregation</name>
+<knimeNode icon="./aggregation.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
+    <name>Aggregation</name>
     
     <shortDescription>
-        Implement aggregation operation
+        Relational Algebra Aggregation operation
     </shortDescription>
     
     <fullDescription>
-        <intro>Insert long description here...</intro>
+        <intro>
+        Outputs the projection of a a relation (table) onto a set of attributes (columns),
+        replacing one or more attributes by an aggregation of its values.
+        The output contains as many attributes as the input, but aggregated attributes are usually renamed. 
+        The output typically has less tuples (rows) than the input.
+        </intro>      
         
-        
-        <option name="short name of first option (like in the dialog)">description of first option</option>
-        <option name="short name of second option (like in the dialog)">description of second option</option>
-        <!-- possibly more options that can also be grouped by tabs -->
-        <!--
-        <tab name="Standard Options">
-            <option name="short name of first option (like in the dialog)">description of first option</option>
-            <option name="short name of second option (like in the dialog)">description of second option</option>
-        </tab>
-        <tab name="Advanced Options">
-            <option name="short name of first advanced option (like in the dialog)">description of first advanced option</option>
-        </tab>
-        -->
+        <option name="Attribute selection">Specify which attributes should be aggregated.</option>
+        <option name="New name for attribute">Specify the new named for the aggregated attribute.</option>
+        <option name="Attribute expression">Specify the aggregation function.</option>
     </fullDescription>
     
     <ports>
-        <inPort index="0" name="In-Port name">Description of first input port...</inPort>
-        <!-- possibly more input ports here-->
-        <outPort index="0" name="Out-Port name">Description of first output port...</outPort>
-        <!-- possibly more output ports here-->
-    </ports>    
-    <views>
-        <view index="0" name="name of first view">Description of first view...</view>
-        <!--view index="1" name="name of second view">Description of second view...</view-->
-    </views>
+        <inPort index="0" name="Input">The input relation.</inPort>
+        <outPort index="0" name="Output">The output relation resulting from the aggregation.</outPort>
+    </ports>
 </knimeNode>

@@ -122,9 +122,9 @@ public class RaJoinNodeModel extends NodeModel {
 }
 
 /*******************************************************************************
- * internal class to compute various column specs and maps
- * 
- * all pre-calculated because they get used on every row
+ * Internal class to compute various column specs and maps.
+ * <br>
+ * All pre-calculated because they get used on every row
  */
 class SpecGenerator {
 	DataTableSpec _leftSpec, _rightSpec, _joinSpec, _leftInputSpec, _rightInputSpec;

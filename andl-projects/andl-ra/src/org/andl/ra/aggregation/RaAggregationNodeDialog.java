@@ -1,7 +1,6 @@
 package org.andl.ra.aggregation;
 
-import java.util.List;
-import java.util.function.Function;
+import java.util.Arrays;
 
 import org.knime.core.data.DataTableSpec;
 import org.knime.core.node.InvalidSettingsException;
@@ -10,34 +9,29 @@ import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 import org.knime.core.node.NotConfigurableException;
 import org.knime.core.node.defaultnodesettings.DefaultNodeSettingsPane;
-import org.knime.core.node.defaultnodesettings.DialogComponent;
 import org.knime.core.node.defaultnodesettings.DialogComponentColumnFilter;
 import org.knime.core.node.defaultnodesettings.DialogComponentLabel;
 import org.knime.core.node.defaultnodesettings.DialogComponentString;
+import org.knime.core.node.defaultnodesettings.DialogComponentStringSelection;
 import org.knime.core.node.defaultnodesettings.SettingsModelFilterString;
 import org.knime.core.node.defaultnodesettings.SettingsModelString;
-
-import com.sun.xml.internal.ws.util.StringUtils;
 
 //Dialog for selecting projection columns. 
 public class RaAggregationNodeDialog extends DefaultNodeSettingsPane {
 
 	private static final NodeLogger LOGGER = NodeLogger.getLogger(RaAggregationNodeDialog.class);
-	private static final String TAB_COLUMN_TITLE = "Attributes to Aggregate";
+	private static final String TAB_COLUMN_TITLE = "Select Grouping";
 	private static final String TAB_ACTION_TITLE = "Define Aggregation";
-	private static final String INCL_TITLE = "Aggregate Columns";
-	private static final String EXCL_TITLE = "Retain Columns";
+	private static final String EXCL_TITLE = "Grouping Columns";
+	private static final String INCL_TITLE = "Available Columns";
 
-    //DataColumnSpecFilterConfiguration config = RaAggregationNodeModel.createDCSFilterConfiguration();
-	private final SettingsModelFilterString _columnFilterSettings = RaAggregationNodeModel.createSettingsColumnFilter();
-	SettingsModelString[] _newColumnNameSettings = RaAggregationNodeModel.createSettingsNewColumnNames(0);
-	SettingsModelString[] _newExpressionsSettings = RaAggregationNodeModel.createSettingsExpressions(0);
+	private final SettingsModelFilterString _columnFilterSettings = RaAggregationNodeModel.createColumnFilterSettings();
+	SettingsModelString _oldColumnNameSettings = RaAggregationNodeModel.createSettingsOldColumnName();
+	SettingsModelString _newColumnNameSettings = RaAggregationNodeModel.createSettingsNewColumnName();
+	SettingsModelString _aggFunctionSettings = RaAggregationNodeModel.createSettingsAggFunction();
     
-	String[] _columnNames = new String[0];      
-	//private final DataColumnSpecFilterPanel _filterPanel;
-
     protected RaAggregationNodeDialog() {
-    	LOGGER.debug("aggregation dialog created");
+    	LOGGER.debug("*aggregation dialog created");
 
     	setDefaultTabTitle(TAB_COLUMN_TITLE);
     	DialogComponentColumnFilter dcf = new DialogComponentColumnFilter(_columnFilterSettings, 0, true);
@@ -45,87 +39,61 @@ public class RaAggregationNodeDialog extends DefaultNodeSettingsPane {
 		dcf.setExcludeTitle(EXCL_TITLE);
 		addDialogComponent(dcf);
 
-		createNewTab(TAB_ACTION_TITLE);
+		addSelectionTab();
 		_columnFilterSettings.addChangeListener(e -> {
-	        final List<String> incls = _columnFilterSettings.getIncludeList();
-	    	addSelectionTab(incls);
+	    	addSelectionTab();
 		});
         selectTab(TAB_COLUMN_TITLE);
-    	
-    	//_filterPanel = new DataColumnSpecFilterPanel(true);
-    	//this.setDefaultTabTitle(TAB_ACTION_TITLE);
-        //addTabAt(0, TAB_COLUMN_TITLE, _filterPanel);
     }
     
-    // deconstruct loaded string array values
-    /**
-     *
-     */
+    // just a sanity check
     @Override
 	public void loadAdditionalSettingsFrom(NodeSettingsRO settings, DataTableSpec[] specs) throws NotConfigurableException {
     	DataTableSpec spec = specs[0];
-    	LOGGER.debug("load add from " + settings + "spec=" + spec);
+    	LOGGER.debug("*load add from " + settings + " spec=" + spec);
     	if (spec.getNumColumns() == 0)
-            throw new NotConfigurableException("No attributes available for selection.");
-
-    	// keep all the original column names, and make settings for all of them
-        _columnNames = spec.getColumnNames();
-        
-    	_newColumnNameSettings = RaAggregationNodeModel.createSettingsNewColumnNames(_columnNames.length);
-    	_newExpressionsSettings = RaAggregationNodeModel.createSettingsExpressions(_columnNames.length);
-        for (int i = 0; i < _columnNames.length; ++i) {
-        	try {
-				_newColumnNameSettings[i].loadSettingsFrom(settings);
-			} catch (InvalidSettingsException e) { }
-        	try {
-				_newExpressionsSettings[i].loadSettingsFrom(settings);
-			} catch (InvalidSettingsException e) { }
-        }
-        final List<String> incls = _columnFilterSettings.getIncludeList();
-        updateColumnInfo(incls);
-    	addSelectionTab(incls);
-        selectTab(incls.size() == 0 ? TAB_COLUMN_TITLE : TAB_ACTION_TITLE);
+            throw new NotConfigurableException("No columns available for selection.");
     }    
 
-	// construct and save string array values
+	// just helps with debugging
     @Override
 	public void saveAdditionalSettingsTo(final NodeSettingsWO settings) throws InvalidSettingsException {
-    	LOGGER.debug("save add to " + settings);
+    	LOGGER.debug("*save add to " + settings);
 
-    	// dialog components do it all
     }
-    
-    void updateColumnInfo(List<String> incls) {
-    	Function<String, Boolean> safeIsEmpty = (String s) -> s == null || s.isEmpty();
-    	for (int i = 0; i < _columnNames.length; ++i) {
-    		if (incls.contains(_columnNames[i])) {
-    			if (safeIsEmpty.apply(_newColumnNameSettings[i].getStringValue()))
-    				_newColumnNameSettings[i].setStringValue("sum(" + _columnNames[i] + ")");
-    			if (safeIsEmpty.apply(_newExpressionsSettings[i].getStringValue()))
-    				_newExpressionsSettings[i].setStringValue("sum()");
-    		} else {
-    			_newColumnNameSettings[i].setStringValue(null);
-    			_newExpressionsSettings[i].setStringValue(null);    			
-    		}
-    	}
-    }
-    
-    private void addSelectionTab(List<String> incls) {
+
+    // add a new tab dynamically to select aggregated column, function and new name
+    private void addSelectionTab() {
     	removeTab(TAB_ACTION_TITLE);
     	createNewTab(TAB_ACTION_TITLE);
-    	addDialogComponent(new DialogComponentLabel(String.format("incls = %s", incls)) );
     	
-    	for (int i = 0; i < _columnNames.length; ++i) {
-    		if (incls.contains(_columnNames[i])) {
-    			createNewGroup(String.format("Aggregating %s", _columnNames[i]));
-	    		setHorizontalPlacement(true);
-	        	addDialogComponent(new DialogComponentString(_newColumnNameSettings[i], "New column name"));
-	        	addDialogComponent(new DialogComponentString(_newExpressionsSettings[i], "Aggregation function"));
-	        	setHorizontalPlacement(false);    	
-    		}
+    	String[] availCols = _columnFilterSettings.getIncludeList().toArray(new String[0]);
+    	String[] availFuncs = AggFunction.getAllNames().toArray(new String[0]); //TODO: filter by type
+    	addDialogComponent(new DialogComponentLabel("Grouping columns: " + 
+    			_columnFilterSettings.getExcludeList()));
+    	addDialogComponent(new DialogComponentLabel(String.format("Available columns: %s", 
+    			_columnFilterSettings.getIncludeList())));
+    	addDialogComponent(new DialogComponentLabel(String.format("Available functions: %s", 
+    			Arrays.asList(availFuncs))));
+    	
+    	if (availCols.length == 0) {
+        	addDialogComponent(new DialogComponentLabel("No columns available for selection"));    		
+    	} else {
+    		// make sure everything has valid values going in
+    		if (!Arrays.asList(availCols).contains(_oldColumnNameSettings.getStringValue()))
+    			_oldColumnNameSettings.setStringValue(availCols[0]);
+
+	    	if (!Arrays.asList(availFuncs).contains(_aggFunctionSettings.getStringValue()))
+	    		_aggFunctionSettings.setStringValue(availFuncs[0]);
+	    	
+	    	if (_oldColumnNameSettings.getStringValue() == null)
+	    		_oldColumnNameSettings.setStringValue(_aggFunctionSettings.getStringValue() + "(" +
+	    				_oldColumnNameSettings.getStringValue() + ")");
+
+    		addDialogComponent(new DialogComponentStringSelection(_oldColumnNameSettings, "Aggregated Column", availCols));
+    		addDialogComponent(new DialogComponentStringSelection(_aggFunctionSettings, "Aggregation function", availFuncs));
+    		addDialogComponent(new DialogComponentString(_newColumnNameSettings, "New column name"));
     	}
 	}
-
-    
 }
 

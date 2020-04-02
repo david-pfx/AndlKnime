@@ -4,7 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.andl.ra.RaTuple;
 import org.knime.base.node.preproc.filter.row.RowFilterIterator;
 import org.knime.core.data.DataCell;
@@ -14,9 +19,9 @@ import org.knime.core.data.DataRow;
 import org.knime.core.data.DataTableSpec;
 import org.knime.core.data.DataType;
 import org.knime.core.data.RowIterator;
-import org.knime.core.data.def.DoubleCell;
 import org.knime.core.data.def.BooleanCell;
 import org.knime.core.data.def.DefaultRow;
+import org.knime.core.data.def.DoubleCell;
 //import org.knime.core.data.def.DateAndTimeCell;
 import org.knime.core.data.def.IntCell;
 import org.knime.core.data.def.StringCell;
@@ -32,6 +37,7 @@ import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 import org.knime.core.node.defaultnodesettings.SettingsModelFilterString;
 import org.knime.core.node.defaultnodesettings.SettingsModelString;
+import org.knime.core.util.Pair;
 
 /**
  * <code>NodeModel</code> for the "RaAggregation" node.
@@ -42,33 +48,31 @@ public class RaAggregationNodeModel extends NodeModel {
     
 	private static final NodeLogger LOGGER = NodeLogger.getLogger(RaAggregationNodeModel.class);
 	private static final String KEY_COLUMN_SELECTOR = "column-selector";
-	private static final String KEY_NEW_COLUMN_NAMES = "new-column-names";
-	private static final String KEY_EXPRESSIONS = "expressions";
+	private static final String KEY_OLD_COLUMN_NAME = "old-column-name";
+	private static final String KEY_NEW_COLUMN_NAME = "new-column-name";
+	private static final String KEY_AGG_FUNCTION = "agg-function";
 
-	private final SettingsModelFilterString _columnFilterSettings = createSettingsColumnFilter();
-	private final SettingsModelString[] _newColumnNameSettings = createSettingsNewColumnNames(0);
-	private final SettingsModelString[] _newExpressionsSettings = createSettingsExpressions(0);
+	private final SettingsModelFilterString _columnFilterSettings = createColumnFilterSettings();
+	private final SettingsModelString _oldColumnNameSettings = createSettingsOldColumnName();
+	private final SettingsModelString _newColumnNameSettings = createSettingsNewColumnName();
+	private final SettingsModelString _aggFunctionSettings = createSettingsAggFunction();
 
 	private AggManager _aggManager;
 
-	static SettingsModelFilterString createSettingsColumnFilter() {
+	static SettingsModelFilterString createColumnFilterSettings() {
 		return new SettingsModelFilterString(KEY_COLUMN_SELECTOR);
 	}
 
-	// get settings model for new column names
-	static SettingsModelString[] createSettingsNewColumnNames(int noCols) {
-		SettingsModelString[] settings = new SettingsModelString[noCols];
-		for (int i = 0; i < noCols; ++i)
-			settings[i] = new SettingsModelString(KEY_NEW_COLUMN_NAMES + i, "");
-		return settings;
+	static SettingsModelString createSettingsOldColumnName() {
+		return new SettingsModelString(KEY_OLD_COLUMN_NAME, "");
 	}
-	
-	// get settings model for new column names
-	static SettingsModelString[] createSettingsExpressions(int noCols) {
-		SettingsModelString[] settings = new SettingsModelString[noCols];
-		for (int i = 0; i < noCols; ++i)
-			settings[i] = new SettingsModelString(KEY_EXPRESSIONS + i, "");
-		return settings;
+
+	static SettingsModelString createSettingsNewColumnName() {
+		return new SettingsModelString(KEY_NEW_COLUMN_NAME, "new-total");
+	}
+
+	static SettingsModelString createSettingsAggFunction() {
+		return new SettingsModelString(KEY_AGG_FUNCTION, "Sum");
 	}
 	
     //--------------------------------------------------------------------------
@@ -83,7 +87,7 @@ public class RaAggregationNodeModel extends NodeModel {
 	
     protected RaAggregationNodeModel() {
         super(1, 1);
-        LOGGER.info("node created");
+        LOGGER.info("*ctor node created");
     }
 
     /** {@inheritDoc} */
@@ -111,7 +115,7 @@ public class RaAggregationNodeModel extends NodeModel {
     protected BufferedDataTable[] execute(final BufferedDataTable[] inData,
             final ExecutionContext exec) throws Exception {
 
-        LOGGER.info("execute " + inData[0]);
+        LOGGER.info("*execute data=" + inData[0]);
         return new BufferedDataTable[] { 
         	_aggManager.execute(inData[0], exec) 
         };
@@ -122,12 +126,17 @@ public class RaAggregationNodeModel extends NodeModel {
     protected DataTableSpec[] configure(final DataTableSpec[] inSpecs)
     throws InvalidSettingsException {
 
-        LOGGER.info("config " + inSpecs[0]);
+        LOGGER.info("*config specs=" + inSpecs[0]);
+        
+        Pair<Boolean, String> check = checkSettings();
+        if (!check.getFirst())
+        	throw new InvalidSettingsException(check.getSecond());
+        
         _aggManager = new AggManager(inSpecs[0], 
-                _columnFilterSettings.getIncludeList().toArray(new String[0]),
-                _newColumnNameSettings[0].getStringValue(),
-                _newColumnNameSettings[0].getStringValue(),
-                _newExpressionsSettings[0].getStringValue());
+                _columnFilterSettings.getExcludeList().toArray(new String[0]),
+                _oldColumnNameSettings.getStringValue(),
+                _newColumnNameSettings.getStringValue(),
+                _aggFunctionSettings.getStringValue());
         return new DataTableSpec[] { 
        		_aggManager.getOutputSpec()
         };
@@ -136,70 +145,73 @@ public class RaAggregationNodeModel extends NodeModel {
     /** {@inheritDoc} */
     @Override
     protected void saveSettingsTo(final NodeSettingsWO settings) {
-    	for (SettingsModelString model : _newColumnNameSettings)
-    		model.saveSettingsTo(settings);
-    	for (SettingsModelString model : _newExpressionsSettings)
-    		model.saveSettingsTo(settings);
+        LOGGER.debug("*save to settings=" + settings);
+        
+        // might not be valid but who cares
+        _columnFilterSettings.saveSettingsTo(settings);
+    	_oldColumnNameSettings.saveSettingsTo(settings);
+    	_newColumnNameSettings.saveSettingsTo(settings);
+    	_aggFunctionSettings.saveSettingsTo(settings);
     }
 
     /** {@inheritDoc} */
     @Override
     protected void loadValidatedSettingsFrom(final NodeSettingsRO settings)
             throws InvalidSettingsException {
-    	for (SettingsModelString model : _newColumnNameSettings)
-    		model.loadSettingsFrom(settings);
-    	for (SettingsModelString model : _newExpressionsSettings)
-    		model.loadSettingsFrom(settings);
+        LOGGER.debug("*load from settings=" + settings);
+
+        // muad be valid because it's been validated
+        _columnFilterSettings.loadSettingsFrom(settings);
+    	_oldColumnNameSettings.loadSettingsFrom(settings);
+    	_newColumnNameSettings.loadSettingsFrom(settings);
+    	_aggFunctionSettings.loadSettingsFrom(settings);
     }
 
     /** {@inheritDoc} */
     @Override
     protected void validateSettings(final NodeSettingsRO settings)
             throws InvalidSettingsException {
-    	for (SettingsModelString model : _newColumnNameSettings)
-    		model.validateSettings(settings);
-    	for (SettingsModelString model : _newExpressionsSettings)
-    		model.validateSettings(settings);
+        LOGGER.debug("*validate settings=" + settings);
+        
+        _columnFilterSettings.validateSettings(settings);
+    	_oldColumnNameSettings.validateSettings(settings);
+    	_newColumnNameSettings.validateSettings(settings);
+    	_aggFunctionSettings.validateSettings(settings);
     }
     
     //==========================================================================
+    // implementation
+    //
+    
+    // Carry out tests to see if settings are valid
+    Pair<Boolean, String> checkSettings() {
+        List<String> groupCols =_columnFilterSettings.getExcludeList(); 
+        List<String> availCols =_columnFilterSettings.getIncludeList(); 
+        if (availCols.isEmpty())
+        	return Pair.create(false, "no columns available for aggregation");
+        
+		String aggCol = _oldColumnNameSettings.getStringValue();
+		if (!availCols.contains(aggCol))
+			return Pair.create(false, "invalid column for aggregation: " + aggCol);
 
-    // implement aggregation algorithm
-//	private BufferedDataTable doAggregation(final BufferedDataTable inData, final ExecutionContext exec) 
-//	throws CanceledExecutionException {
-//
-//        ColumnRearranger colre = createColumnRearranger(inData.getDataTableSpec());
-//		BufferedDataTable tempTable = exec.createColumnRearrangeTable(inData, colre, exec);
-//        BufferedDataContainer container = exec.createDataContainer(tempTable.getDataTableSpec());
-//        
-//        
-//        Hashtable<RaTuple, Accumulators> tupleHash = new Hashtable<>();
-//        
-//        RowIterator iter = tempTable.iterator();
-//        exec.setMessage("Searching first matching row...");
-//        int count = 0;
-//        try {
-//            while (iter.hasNext()) {
-//                DataRow row = iter.next();
-//                RaTuple tuple = new RaTuple(row);
-//                count++;
-//            	if (tupleHash.contains(tuple)) {
-//            		tupleHash.get(tuple).accumulate(cells);
-//            	} else {
-//            		Accumulators accum = new Accumulators(functions, cells);
-//	                tupleHash.put(tuple, accum);
-////	                container.addRowToTable(row);
-////	                exec.setMessage("Added row " + count);
-//            	}
-//            }
-//        } catch (RowFilterIterator.RuntimeCanceledExecutionException rce) {
-//            throw rce.getCause();
-//        } finally {
-//            container.close();
-//        }
-//		return container.getTable();
-//	}
+    	String aggFunc = _aggFunctionSettings.getStringValue();
+    	List<String> availFuncs = AggFunction.getAllNames(); //TODO: filter by type
+		if (!availFuncs.contains(aggFunc))
+			return Pair.create(false, "not a valid aggregating function: " + aggFunc);
+
+    	String aggedCol = _newColumnNameSettings.getStringValue();
+    	if (" ".compareTo(aggedCol) >= 0 || groupCols.contains(aggedCol))
+    		return Pair.create(false, "not a valid aggregated column name: " + aggedCol);
+    	// ok
+    	return Pair.create(true, null);
+    }
+    
 }
+
+//==============================================================================
+//
+// Implementation
+//
 
 /*******************************************************************************
  *  
@@ -209,28 +221,30 @@ class AggManager {
 	DataTableSpec _inputSpec, _outputSpec;
 	int[] _groupColNos;
 	int _argColNo;
-	AggFunctions _function = null;
+	AggFunction _function = null;
 
+	private static final NodeLogger LOGGER = NodeLogger.getLogger(AggManager.class);
 	DataTableSpec getOutputSpec() { return _outputSpec; }
 
 	AggManager(DataTableSpec inputSpec, String[] groupCols, String argCol, String retCol, String aggFunction) 
 	throws InvalidSettingsException {
+        LOGGER.debug(String.format("*ctor spec=%s gcols=%s acol=%s rcol=%s afunc=%s",
+        		inputSpec, Arrays.asList(groupCols), argCol, retCol, aggFunction));
 		_inputSpec = inputSpec;
 		_groupColNos = inputSpec.columnsToIndices(groupCols);
-		_argColNo = inputSpec.findColumnIndex(argCol); 
+		_argColNo = inputSpec.findColumnIndex(argCol);
+		LOGGER.assertLog(_argColNo >= 0, "Aggregation column not valid");
 		
-		for (AggFunctions value : AggFunctions.values()) {
+		for (AggFunction value : AggFunction.values()) {
 			if (value.getName().equals(aggFunction)) {
 				_function = value;
 				break;
 			}
 		}
-		if (_function == null)
-			throw new InvalidSettingsException("Unknown function: " + aggFunction);
+		LOGGER.assertLog(_function != null, "Unknown function");
 		
 		AggType argType = AggType.getAggType(_inputSpec.getColumnSpec(_argColNo).getType());
-		if (argType == null)
-			throw new InvalidSettingsException("Unsupported column type: " + aggFunction);
+		LOGGER.assertLog(argType != null, "Unsupported column type: " + aggFunction);
 		
 		AggType retType = _function.getReturnType(argType);
 		
@@ -247,7 +261,7 @@ class AggManager {
 	throws CanceledExecutionException {
 
 		BufferedDataContainer container = exec.createDataContainer(_outputSpec);
-		Hashtable<RaTuple, Accumulator> tupleHash = new Hashtable<>();
+		HashMap<RaTuple, Accumulator> tupleHash = new HashMap<>();
 		RowIterator iter = inData.iterator();
 		exec.setMessage("Searching first matching row...");
 		try {
@@ -258,20 +272,21 @@ class AggManager {
 				incount++;
 				exec.setMessage("Reading row " + incount);
 				DataCell cell = row.getCell(_argColNo);
-				if (tupleHash.contains(tuple)) {
+				if (tupleHash.containsKey(tuple)) {
 					tupleHash.get(tuple).accumulate(cell);
 				} else {
 					Accumulator accum = new Accumulator(_function, cell);
 					tupleHash.put(tuple, accum);
 				}
 			}
-			tupleHash.forEach((t,a) -> {
-				//outcount++;
-				//exec.setMessage("Writing row " + outcount);
-				ArrayList<DataCell> cells = new ArrayList<>(Arrays.asList(t.getCells()));
-				cells.add(a.getResult());
-				container.addRowToTable(new DefaultRow("", cells));
-			} );
+			int outcount = 0;
+			for (Entry<RaTuple, Accumulator> entry : tupleHash.entrySet()) {
+				outcount++;
+				exec.setMessage("Writing row " + outcount);
+				ArrayList<DataCell> cells = new ArrayList<>(Arrays.asList(entry.getKey().getCells()));
+				cells.add(entry.getValue().getResult());
+				container.addRowToTable(new DefaultRow("Row" + outcount, cells));
+			}
 		} catch (RowFilterIterator.RuntimeCanceledExecutionException rce) {
 			throw rce.getCause();
 		} finally {
@@ -286,7 +301,7 @@ class AggManager {
  * Aggregation type as enumeration plus extras
  */
 enum AggType {
-	NUL(null),
+	//NUL(null),
 	BOOL(BooleanCell.TYPE),
 	INT(IntCell.TYPE),
 	REAL(DoubleCell.TYPE),
@@ -300,9 +315,11 @@ enum AggType {
 		_dataType = type;
 	}
 	
+	// compute aggregation type
 	static AggType getAggType(DataType arg) {
+		if (arg == null) return null;
 		for (AggType atype : AggType.values()) {
-			if (atype.getDataType().equals(arg))
+			if (arg.equals(atype.getDataType()))
 				return atype;
 		}
 		return null;
@@ -312,8 +329,8 @@ enum AggType {
 /*******************************************************************************
  * Aggregation function as enumeration plus extras
  */
-enum AggFunctions {
-	NUL(null),
+enum AggFunction {
+	//NUL(null),
 	COUNT("Count"),
 	SUM("Sum"),
 	AVG("Average"),
@@ -323,7 +340,15 @@ enum AggFunctions {
 	private String _name;
 	
 	String getName() { return _name; }
+
+	// get all names as a list
+	static List<String> getAllNames() {
+		return Stream.of(AggFunction.values())
+				.map(v -> v.getName())
+				.collect(Collectors.toList());
+	}
 	
+	// compute function return type
 	AggType getReturnType(AggType argtype) {
 		return this.equals(COUNT) ? AggType.INT :
 			this.equals(MAX) || this.equals(MIN) ? argtype :
@@ -332,7 +357,7 @@ enum AggFunctions {
 			null;
 	}
 
-	AggFunctions(String name) {
+	AggFunction(String name) {
 		_name = name;
 	}
 }
@@ -344,12 +369,12 @@ enum AggFunctions {
  */
 
 class Accumulator {
-	AggFunctions _function;
+	AggFunction _function;
 	AggType _argtype;
 	AggType _aggtype;
 	Object _accumulator;
 	
-	public Accumulator(AggFunctions function, DataCell initValue) {
+	public Accumulator(AggFunction function, DataCell initValue) {
 		_function = function;
 		_argtype = AggType.getAggType(initValue.getType());
 		_aggtype = _function.getReturnType(_argtype);

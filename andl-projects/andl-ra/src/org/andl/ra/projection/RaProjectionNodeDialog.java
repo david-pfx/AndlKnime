@@ -16,7 +16,7 @@ public class RaProjectionNodeDialog extends NodeDialogPane {
 
     public RaProjectionNodeDialog() {
         m_filterPanel = new DataColumnSpecFilterPanel(true);
-        super.addTab("Projection Attributes", m_filterPanel);
+        addTab("Projection Attributes", m_filterPanel);
     }
 
     /** {@inheritDoc} */

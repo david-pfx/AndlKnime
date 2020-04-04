@@ -8,15 +8,19 @@
     
     <fullDescription>
         <intro>
-        Outputs the projection of a a relation (table) onto a set of attributes (columns),
-        replacing one or more attributes by an aggregation of its values.
-        The output contains as many attributes as the input, but aggregated attributes are usually renamed. 
-        The output typically has less tuples (rows) than the input.
+        Outputs the projection of a relation (table) onto a set of attributes (columns), 
+        comprising a set of grouping attributes and one aggregate. 
+        The value of the aggregate is calculated for each group, according to the selected aggregation function.
+        The aggregate attribute is given a new name. 
         </intro>      
         
-        <option name="Attribute selection">Specify which attributes should be aggregated.</option>
-        <option name="New name for attribute">Specify the new named for the aggregated attribute.</option>
-        <option name="Attribute expression">Specify the aggregation function.</option>
+        <option name="Select grouping">Specify which are the grouping attributes. 
+        	The others are available for aggregation.</option>
+        <option name="Column to Aggregate">Specify which column (attribute) should be aggregated.</option>
+        <option name="Aggregation function">Specify the function to perform the aggregation. 
+        The available functions for all attribute types are Count, Max and Min.
+        Sum and Average are only valid for numeric attributes.</option>
+        <option name="Name for Aggregated Column">Specify the new name for the aggregated attribute.</option>
     </fullDescription>
     
     <ports>

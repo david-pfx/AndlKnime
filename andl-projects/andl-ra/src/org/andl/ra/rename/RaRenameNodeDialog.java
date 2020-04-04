@@ -32,7 +32,7 @@ public class RaRenameNodeDialog extends DefaultNodeSettingsPane {
      */
     protected RaRenameNodeDialog() {
     	LOGGER.debug("New");
-    	this.setDefaultTabTitle(TAB_TITLE);
+    	setDefaultTabTitle(TAB_TITLE);
     }
     
     // deconstruct loaded string array values

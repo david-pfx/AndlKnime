@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: SPJRUN Relational Algebra extensions for KNIME Workbench
+Bundle-Name: Andl Extended Relational Algebra for KNIME Workbench
 Bundle-SymbolicName: org.andl.ra;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: raselection.jar,
@@ -12,7 +12,7 @@ Bundle-ClassPath: raselection.jar,
  raaggregation.jar,
  lib/commons-jexl3-3.1/commons-jexl3-3.1.jar,
  lib/commons-logging-1.2/commons-logging-1.2.jar
-Bundle-Activator: org.andl.ra.join.RaJoinNodePlugin
+Bundle-Activator: org.andl.ra.RaNodePlugin
 Bundle-Vendor: andl
 Require-Bundle: org.eclipse.core.runtime,
  org.knime.workbench.core,

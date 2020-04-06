@@ -39,7 +39,8 @@ public class RaProjectionNodeModel extends NodeModel {
 	// The settings key
 	private static final String KEY_PROJECTION_COLUMNS = "projection-columns";
 	// Represent a column selection
-    private DataColumnSpecFilterConfiguration m_conf;
+    private DataColumnSpecFilterConfiguration _columnConfig;
+	private ProjectionManager _projectionManager;
 
     // create new configuration object to drive selection panel
     static final  DataColumnSpecFilterConfiguration createDCSFilterConfiguration() {
@@ -77,8 +78,8 @@ public class RaProjectionNodeModel extends NodeModel {
     protected BufferedDataTable[] execute(final BufferedDataTable[] inData, final ExecutionContext exec) 
     throws Exception {
     	
-        return new BufferedDataTable[] { 
-        	doProjection(inData[0], exec) 
+        return new BufferedDataTable[] {
+        	_projectionManager.execute(inData[0], exec) 
         };
     }
 
@@ -87,26 +88,21 @@ public class RaProjectionNodeModel extends NodeModel {
     protected DataTableSpec[] configure(final DataTableSpec[] inSpecs)
     throws InvalidSettingsException {
     	
-        ColumnRearranger c = createColumnRearranger(inSpecs[0]);
-        return new DataTableSpec[] { 
-        	c.createSpec() 
-        };
-    }
-
-    /** === TODO: I have absolutely no idea why this is here ===<br><br>
-     * 
-     * {@inheritDoc} */
-    @Override
-    public StreamableOperator createStreamableOperator(final PartitionInfo partitionInfo, final PortObjectSpec[] inSpecs)
-        throws InvalidSettingsException {
-        return createColumnRearranger((DataTableSpec) inSpecs[0]).createStreamableFunction();
+    	if (_columnConfig == null) {
+    		_columnConfig = createDCSFilterConfiguration();
+    		_columnConfig.loadDefaults(inSpecs[0], true);
+    	}
+    	_projectionManager = new ProjectionManager(inSpecs[0], _columnConfig);
+    	return new DataTableSpec[] { 
+    		_projectionManager.getTableSpec() 
+    	};
     }
 
     /** {@inheritDoc} */
     @Override
     protected void saveSettingsTo(final NodeSettingsWO settings) {
-        if (m_conf != null)
-            m_conf.saveConfiguration(settings);
+        if (_columnConfig != null)
+            _columnConfig.saveConfiguration(settings);
     }
 
     /** {@inheritDoc} */
@@ -115,7 +111,7 @@ public class RaProjectionNodeModel extends NodeModel {
             throws InvalidSettingsException {
         DataColumnSpecFilterConfiguration conf = createDCSFilterConfiguration();
         conf.loadConfigurationInModel(settings);
-        m_conf = conf;
+        _columnConfig = conf;
     }
 
     /** {@inheritDoc} */
@@ -125,52 +121,4 @@ public class RaProjectionNodeModel extends NodeModel {
         DataColumnSpecFilterConfiguration conf = createDCSFilterConfiguration();
         conf.loadConfigurationInModel(settings);
     }
-    
-    //==========================================================================
-
-    // create column rearranger as a convenient way to create the new spec
-    ColumnRearranger createColumnRearranger(final DataTableSpec spec) {
-    	if (m_conf == null) {
-            m_conf = createDCSFilterConfiguration();
-            m_conf.loadDefaults(spec, true);
-        }
-        final FilterResult filter = m_conf.applyTo(spec);
-        final String[] incls = filter.getIncludes();
-        final ColumnRearranger c = new ColumnRearranger(spec);
-        c.keepOnly(incls);
-        return c;
-    }
-
-    // implement projection algorithm using a row iterator and container
-	private BufferedDataTable doProjection(final BufferedDataTable inData, final ExecutionContext exec) 
-	throws CanceledExecutionException {
-
-        ColumnRearranger colre = createColumnRearranger(inData.getDataTableSpec());
-		BufferedDataTable tempTable = exec.createColumnRearrangeTable(inData, colre, exec);
-        BufferedDataContainer container = exec.createDataContainer(tempTable.getDataTableSpec());
-        
-        exec.setMessage("Searching first matching row...");
-        int count = 0;
-        HashSet<RaTuple> tupleSet = new HashSet<RaTuple>();
-        RowIterator iter = tempTable.iterator();
-        try {
-            while (iter.hasNext()) {
-                DataRow row = iter.next();
-                RaTuple tuple = new RaTuple(row);
-            	if (!tupleSet.contains(tuple)) {
-	                count++;
-	                tupleSet.add(tuple);
-	                container.addRowToTable(row);
-	                exec.setMessage("Added row " + count);
-            	}
-            }
-        } catch (RowFilterIterator.RuntimeCanceledExecutionException rce) {
-            throw rce.getCause();
-        } finally {
-            container.close();
-        }
-		return container.getTable();
-	}
-
 }
-

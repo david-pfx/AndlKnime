@@ -19,29 +19,33 @@ import org.knime.core.node.BufferedDataTable;
 import org.knime.core.node.CanceledExecutionException;
 import org.knime.core.node.ExecutionContext;
 import org.knime.core.node.InvalidSettingsException;
+import org.knime.core.node.NodeLogger;
 
 /*******************************************************************************
  * 
  * Implement the algorithms to combine two inputs to one output by a Join operation
  */
 class JoinManager {
+	static String[] _allOps = RaJoinNodeModel.ALL_OPERATIONS;
+	private static final NodeLogger LOGGER = NodeLogger.getLogger(JoinManager.class);
+	
 	SpecGenerator _specGen;
 	DataTableSpec _tableSpec;
 	String _operation;
-	static String[] _allOps;
 
 	DataTableSpec getTableSpec() { return _tableSpec; }
 
 	JoinManager(DataTableSpec[] inSpecs, String operation) 
 	throws InvalidSettingsException {
 
-		_allOps = RaJoinNodeModel.ALL_OPERATIONS;
+//		_allOps = RaJoinNodeModel.ALL_OPERATIONS;
 		if (!(Arrays.asList(_allOps).contains(operation)))
 			throw new InvalidSettingsException("The selected operation is not valid: '" + operation + "'");
 
 		_specGen = new SpecGenerator(inSpecs[0], inSpecs[1]);
 		_operation = operation;
 		_tableSpec = tableSpec();
+		LOGGER.info(String.format("Join operation op=%s join spec=%s", operation, _specGen._joinSpec));
 	}
 	
 	// return table spec according to operation requested

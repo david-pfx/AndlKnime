@@ -34,36 +34,53 @@ public class RaSelectionNodeModel extends NodeModel {
 	private static final String DEFAULT_EXPRESSION = "";
 
 	private final SettingsModelString _expressionSettings = createSettingsExpression();
-	private RaEvaluator _filter;
+	private RaEvaluator _evaluator;
 	
-        protected RaSelectionNodeModel() {
-        super(1, 1);
-        LOGGER.info("Selection node created");
-    }
-    
 	static SettingsModelString createSettingsExpression() {
 		return new SettingsModelString(KEY_EXPRESSION, DEFAULT_EXPRESSION);
 	}
 
-
-    /* {@inheritDoc} */
-    @Override
-    protected BufferedDataTable[] execute(final BufferedDataTable[] inData,
-            final ExecutionContext exec) throws Exception {
-
-        return new BufferedDataTable[] { doSelection(inData[0], exec) };
+    //--------------------------------------------------------------------------
+    // ctor and dummy overrides
+    protected RaSelectionNodeModel() {
+        super(1, 1);
+        LOGGER.info("Selection node created");
     }
 
     /* {@inheritDoc} */
     @Override
     protected void reset() { }
+    
+    @Override
+    protected void loadInternals(final File internDir,
+            final ExecutionMonitor exec) throws IOException,
+            CanceledExecutionException { }
+    
+    @Override
+    protected void saveInternals(final File internDir,
+            final ExecutionMonitor exec) throws IOException,
+            CanceledExecutionException { }
+
+	//--------------------------------------------------------------------------
+    // execute, configure, settings
+    //
+    // selection creates a new table using a container and a boolean evaluator
+    //
+    @Override
+    protected BufferedDataTable[] execute(final BufferedDataTable[] inData, final ExecutionContext exec) 
+    throws Exception {
+
+        return new BufferedDataTable[] { 
+        	doSelection(inData[0], exec) 
+        };
+    }
 
     /* {@inheritDoc} */
     @Override
     protected DataTableSpec[] configure(final DataTableSpec[] inSpecs)
-            throws InvalidSettingsException {
+    throws InvalidSettingsException {
 
-        _filter = new RaEvaluator(inSpecs[0], BooleanCell.TYPE, _expressionSettings.getStringValue());
+        _evaluator = new RaEvaluator(inSpecs[0], BooleanCell.TYPE, _expressionSettings.getStringValue());
         return inSpecs;
     }
 
@@ -76,33 +93,25 @@ public class RaSelectionNodeModel extends NodeModel {
     /* {@inheritDoc} */
     @Override
     protected void loadValidatedSettingsFrom(final NodeSettingsRO settings)
-            throws InvalidSettingsException {
+    throws InvalidSettingsException {
 		_expressionSettings.loadSettingsFrom(settings);
     }
 
     /* {@inheritDoc} */
     @Override
     protected void validateSettings(final NodeSettingsRO settings)
-            throws InvalidSettingsException {
+    throws InvalidSettingsException {
 		_expressionSettings.validateSettings(settings);
     }
     
-    @Override
-    protected void loadInternals(final File internDir,
-            final ExecutionMonitor exec) throws IOException,
-            CanceledExecutionException { }
-    
-    @Override
-    protected void saveInternals(final File internDir,
-            final ExecutionMonitor exec) throws IOException,
-            CanceledExecutionException { }
-
     //==========================================================================
     
     // implement selection operation
+    // uses row iterator and boolean expression evaluator
     
 	private BufferedDataTable doSelection(DataTable intable, final ExecutionContext exec)
-			throws CanceledExecutionException {
+	throws CanceledExecutionException {
+		
 		DataTableSpec dspec = intable.getDataTableSpec();
         BufferedDataContainer container = exec.createDataContainer(dspec);
         
@@ -112,11 +121,10 @@ public class RaSelectionNodeModel extends NodeModel {
         try {
             while (iter.hasNext()) {
                 DataRow row = iter.next();
-                if (_filter.evaluateBoolean(row)) {
+                if (_evaluator.evaluateBoolean(row)) {
 	                count++;
 	                container.addRowToTable(row);
-	                exec.setMessage("Added row " + count + " (\""
-	                        + row.getKey() + "\")");
+	                exec.setMessage("Added row " + count);
             	}
             }
         } catch (RowFilterIterator.RuntimeCanceledExecutionException rce) {
@@ -127,7 +135,5 @@ public class RaSelectionNodeModel extends NodeModel {
         BufferedDataTable outtable = container.getTable();
 		return outtable;
 	}
-
-
 }
 

@@ -19,6 +19,7 @@ import org.knime.core.data.DataTableSpec;
 import org.knime.core.data.DataType;
 import org.knime.core.data.DoubleValue;
 import org.knime.core.data.IntValue;
+import org.knime.core.data.MissingCell;
 import org.knime.core.data.StringValue;
 //import org.knime.core.data.date.DateAndTimeCell;
 //import org.knime.core.data.date.DateAndTimeValue;
@@ -61,8 +62,7 @@ public class RaEvaluator {
 		try {
 			return getCell(_expr.evaluate(_context));
 		} catch (Exception e) {
-			// TODO: what???
-			return null;
+			return new MissingCell("Invalid expression: " + e.getMessage());
 	    }
 	}
 	

@@ -12,8 +12,6 @@ import org.knime.core.node.defaultnodesettings.SettingsModelString;
 public class RaJoinNodeDialog extends DefaultNodeSettingsPane {
 
     protected RaJoinNodeDialog() {
-        super();
-        
 		SettingsModelString settings = RaJoinNodeModel.createSettingsModel();
 		addDialogComponent(new DialogComponentStringSelection(settings, "Join Operation", 
 				RaJoinNodeModel.ALL_OPERATIONS));

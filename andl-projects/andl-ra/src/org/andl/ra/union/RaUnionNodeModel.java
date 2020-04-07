@@ -42,42 +42,53 @@ public class RaUnionNodeModel extends NodeModel {
 	static final String[] ALL_OPERATIONS = {
 		"Union", "Minus", "Intersect", "Difference"
 	};
+	
 	private final SettingsModelString _setOperationSettings = createSettingsModel();
 
-	/**
-	 * Constructor for the node model.
-	 */
+	static SettingsModelString createSettingsModel() {
+		return new SettingsModelString(KEY_SET_OPERATION, DEFAULT_SET_OPERATION);
+	}
+	
+    //--------------------------------------------------------------------------
+    // ctor and dummy overrides
 	protected RaUnionNodeModel() {
 		super(2, 1);
 	}
 
-	/**
-	 * @return a new SettingsModelString with the key for the set operation String
-	 */
-	static SettingsModelString createSettingsModel() {
-		return new SettingsModelString(KEY_SET_OPERATION, DEFAULT_SET_OPERATION);
-	}
+	/** {@inheritDoc} */
+	@Override
+	protected void reset() { }
+	
+	/** {@inheritDoc} */
+	@Override
+	protected void loadInternals(File nodeInternDir, ExecutionMonitor exec)
+	throws IOException, CanceledExecutionException { }
 
+	/** {@inheritDoc} */
+	@Override
+	protected void saveInternals(File nodeInternDir, ExecutionMonitor exec)
+	throws IOException, CanceledExecutionException { }
+
+    //--------------------------------------------------------------------------
+    // execute, configure, settings
+    //
+    // union creates a new table using a container
+    //
+	
 	/** {@inheritDoc} */
 	@Override
 	protected BufferedDataTable[] execute(final BufferedDataTable[] inData, final ExecutionContext exec)
 	throws Exception {
 
 		String operation = _setOperationSettings.getStringValue();
-//		if (!(Arrays.asList(ALL_OPERATIONS).contains(operation)))
-//			throw new InvalidSettingsException("The selected operation is not valid: '" + operation + "'");
 		LOGGER.debug("Begin setop=" + operation);
 
 		outputGenerator outgen = new outputGenerator(exec, inData[0].getDataTableSpec());
-		BufferedDataTable out = 
-				  ALL_OPERATIONS[0].equals(operation) ? outgen.getUnion(inData)
-				: ALL_OPERATIONS[1].equals(operation) ? outgen.getMinus(inData)
-				: ALL_OPERATIONS[2].equals(operation) ? outgen.getIntersect(inData)
-				: ALL_OPERATIONS[3].equals(operation) ? outgen.getDifference(inData)
-				: null;
-		return new BufferedDataTable[] { out };
+		return new BufferedDataTable[] { 
+			outgen.getOutputTable(inData, operation)
+		};
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	protected DataTableSpec[] configure(final DataTableSpec[] inSpecs) throws InvalidSettingsException {
@@ -85,7 +96,9 @@ public class RaUnionNodeModel extends NodeModel {
 		if (!(Arrays.asList(ALL_OPERATIONS).contains(operation)))
 			throw new InvalidSettingsException("The selected operation is not valid: '" + operation + "'");
 		
-		return new DataTableSpec[] { createOutputSpec(inSpecs[0]) };
+		return new DataTableSpec[] { 
+			createOutputSpec(inSpecs[0]) 
+		};
 	}
 
 	private DataTableSpec createOutputSpec(DataTableSpec inSpec) {
@@ -109,25 +122,12 @@ public class RaUnionNodeModel extends NodeModel {
 	protected void validateSettings(final NodeSettingsRO settings) throws InvalidSettingsException {
 		_setOperationSettings.validateSettings(settings);
 	}
-
-	/** {@inheritDoc} */
-	@Override
-	protected void loadInternals(File nodeInternDir, ExecutionMonitor exec)
-	throws IOException, CanceledExecutionException { }
-
-	/** {@inheritDoc} */
-	@Override
-	protected void saveInternals(File nodeInternDir, ExecutionMonitor exec)
-	throws IOException, CanceledExecutionException { }
-
-	/** {@inheritDoc} */
-	@Override
-	protected void reset() { }
 }
 
-/**
- * Implement the algorithms to combine two inputs to one output by a Set operation
- */
+//==========================================================================
+//
+// Implement the algorithms to combine two inputs to one output by a Set operation
+//
 class outputGenerator {
 	final ExecutionContext _exec;
 	DataTableSpec _outputSpec;	
@@ -139,6 +139,17 @@ class outputGenerator {
 	outputGenerator(ExecutionContext exec, DataTableSpec outputSpec) {
 		_exec = exec;
 		_outputSpec = outputSpec;
+	}
+
+	BufferedDataTable getOutputTable(final BufferedDataTable[] inData, String operation)
+	throws Exception {
+		String[] allops = RaUnionNodeModel.ALL_OPERATIONS;
+		return 
+			  allops[0].equals(operation) ? getUnion(inData)
+			: allops[1].equals(operation) ? getMinus(inData)
+			: allops[2].equals(operation) ? getIntersect(inData)
+			: allops[3].equals(operation) ? getDifference(inData)
+			: null;
 	}
 
 	// return the Set Union of the two input tables
@@ -268,6 +279,7 @@ class outputGenerator {
 		return _container.getTable();
 	}
 	
+	// utility function to add a row and check for cancellation
 	void addRow(DataRow row) throws Exception {
 		DataRow newrow = new DefaultRow("Row" + _outcounter++, row);
 		_container.addRowToTable(newrow);

@@ -27,10 +27,10 @@ public class RaValueNodeDialog extends DefaultNodeSettingsPane {
 		addDialogComponent(new DialogComponentString(
 				RaValueNodeModel.createSettingsColumnName(), "New attribute name"));
 		addDialogComponent(new DialogComponentStringSelection(
-				RaValueNodeModel.createSettingsColumnTypeName(), "New value type",
+				RaValueNodeModel.createSettingsColumnType(), "New value type",
 				options.toArray(new StringIconOption[options.size()])));
 		addDialogComponent(new DialogComponentMultiLineString(
-				RaValueNodeModel.createSettingsExpression(), "Value expression"));
+				RaValueNodeModel.createSettingsNewExpression(), "Value expression"));
     }
 }
 

@@ -16,6 +16,11 @@ public class RaTuple {
     public DataCell[] getCells() {
 		return _cells;
 	}
+    
+    @Override
+    public String toString() {
+    	return Arrays.asList(_cells).toString();
+    }
 
     /**
      * Creates a new RaTuple from an array of cells.

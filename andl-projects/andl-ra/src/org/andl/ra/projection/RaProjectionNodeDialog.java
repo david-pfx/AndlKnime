@@ -9,16 +9,14 @@ import org.knime.core.node.NotConfigurableException;
 import org.knime.core.node.util.filter.column.DataColumnSpecFilterConfiguration;
 import org.knime.core.node.util.filter.column.DataColumnSpecFilterPanel;
 
-/**
- * Implement dialog for selecting projection columns. 
- */
+// dialog for selecting projection columns. 
 public class RaProjectionNodeDialog extends NodeDialogPane {
 
     private final DataColumnSpecFilterPanel m_filterPanel;
 
     public RaProjectionNodeDialog() {
         m_filterPanel = new DataColumnSpecFilterPanel(true);
-        super.addTab("Attribute Selection", m_filterPanel);
+        addTab("Projection Attributes", m_filterPanel);
     }
 
     /** {@inheritDoc} */

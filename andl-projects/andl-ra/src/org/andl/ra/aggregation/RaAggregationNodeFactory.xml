@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<knimeNode icon="./aggregation.png" type="Manipulator" xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://knime.org/node/v2.10 http://knime.org/node/v2.10.xsd">
+    <name>Aggregation</name>
+    
+    <shortDescription>
+        Relational Algebra Aggregation operation
+    </shortDescription>
+    
+    <fullDescription>
+        <intro>
+        Outputs the projection of a relation (table) onto a set of attributes (columns), 
+        comprising a set of grouping attributes and one aggregate. 
+        The value of the aggregate is calculated for each group, according to the selected aggregation function.
+        The aggregate attribute is given a new name. 
+        </intro>      
+        
+        <option name="Select grouping">Specify which are the grouping attributes. 
+        	The others are available for aggregation.</option>
+        <option name="Column to Aggregate">Specify which column (attribute) should be aggregated.</option>
+        <option name="Aggregation function">Specify the function to perform the aggregation. 
+        The available functions for all attribute types are Count, Max and Min.
+        Sum and Average are only valid for numeric attributes.</option>
+        <option name="Name for Aggregated Column">Specify the new name for the aggregated attribute.</option>
+    </fullDescription>
+    
+    <ports>
+        <inPort index="0" name="Input">The input relation.</inPort>
+        <outPort index="0" name="Output">The output relation resulting from the aggregation.</outPort>
+    </ports>
+</knimeNode>

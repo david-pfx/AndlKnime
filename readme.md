@@ -18,6 +18,7 @@ The set of nodes is currently:
 * Rename
 * Union (and Minus, Intersection, Difference)
 * New Value (as a JEXL expression)
+* Aggregation (selected functions)
 
 For more about JEXL see here: <http://commons.apache.org/proper/commons-jexl/>.
 

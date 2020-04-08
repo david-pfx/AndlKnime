@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.andl.ra.feature"
+      label="Andl Relational Algebra"
+      version="1.0.0.qualifier"
+      provider-name="Andl">
+
+   <description url="http://www.example.com/description">
+      A set of nodes implementing the Relational Algebra, with some
+extensions.
+The basic set includes Select, Project, Join, Rename, Union and
+Negation. The extensions include computing new values and performing
+aggregation.
+This node set can express a full set of queries comparable to
+SQL on Knime data tables.
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      Copyright © David M. Bennett 2020 as an unpublished work. All
+rights reserved.
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      This version of AndlRaKnime is free for any kind of experimental use, especially helping to make it better. For now, the licence does not grant rights for distribution or commercial use. That will have to wait until I can choose the right licence, which depends a lot on who might want to use it.
+   </license>
+
+   <url>
+      <discovery label="Andl is A New Data Language" url="http://www.andl.org/"/>
+   </url>
+
+   <plugin
+         id="org.andl.ra"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+</feature>

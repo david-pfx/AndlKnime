@@ -6,3 +6,6 @@
 /dev-workspace/andl-try/bin
 /plugins
 /andl-projects/andl-ra/lib
+/org.andl.ra.update/plugins
+/org.andl.ra.update/*.jar
+*.jar

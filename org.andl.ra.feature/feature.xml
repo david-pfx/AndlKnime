@@ -11,8 +11,8 @@ extensions.
 The basic set includes Select, Project, Join, Rename, Union and
 Negation. The extensions include computing new values and performing
 aggregation.
-This node set can express a full set of queries comparable to
-SQL on Knime data tables.
+This node set can express a full range of queries comparable to
+SQL on Knime data tables from any source.
    </description>
 
    <copyright url="http://www.example.com/copyright">
@@ -21,7 +21,9 @@ rights reserved.
    </copyright>
 
    <license url="http://www.example.com/license">
-      This version of AndlRaKnime is free for any kind of experimental use, especially helping to make it better. For now, the licence does not grant rights for distribution or commercial use. That will have to wait until I can choose the right licence, which depends a lot on who might want to use it.
+      This version of AndlRaKnime is free for any kind of experimental use, especially helping to make it better. 
+      For now, the licence does not grant rights for distribution or commercial use. 
+      That will have to wait until I can choose the right licence, which depends a lot on who might want to use it.
    </license>
 
    <url>

@@ -9,3 +9,6 @@
 /andl-projects/try-jexl
 /andl-projects/andl-try
 /Inkscape
+/org.andl.ra.update/plugins
+/org.andl.ra.update/*.jar
+*.jar

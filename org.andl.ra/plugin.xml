@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.0"?><plugin>
+
+  <extension point="org.knime.workbench.repository.categories">
+  <category path="/" after="/IO" level-id="Andl" name="Andl Relational Algebra" 
+  		icon="/alpha.png" description="Andl extended relational algebra nodes" /> 
+   </extension>
+   
+   <extension point="org.knime.workbench.repository.nodes">
+   	<node category-path="/Andl" factory-class="org.andl.ra.selection.RaSelectionNodeFactory"/>
+    <node category-path="/Andl" factory-class="org.andl.ra.projection.RaProjectionNodeFactory"/>
+    <node category-path="/Andl" factory-class="org.andl.ra.join.RaJoinNodeFactory"/>
+    <node category-path="/Andl" factory-class="org.andl.ra.rename.RaRenameNodeFactory"/>
+    <node category-path="/Andl" factory-class="org.andl.ra.union.RaUnionNodeFactory"/>
+   	<node category-path="/Andl" factory-class="org.andl.ra.value.RaValueNodeFactory"/>
+	  <node category-path="/Andl" factory-class="org.andl.ra.aggregation.RaAggregationNodeFactory"/>
+</extension>
+   
+</plugin>

@@ -14,15 +14,8 @@ package org.andl.ra.projection;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashSet;
 
-import org.andl.ra.RaTuple;
-import org.knime.base.node.preproc.filter.row.RowFilterIterator;
-import org.knime.core.data.DataRow;
 import org.knime.core.data.DataTableSpec;
-import org.knime.core.data.RowIterator;
-import org.knime.core.data.container.ColumnRearranger;
-import org.knime.core.node.BufferedDataContainer;
 import org.knime.core.node.BufferedDataTable;
 import org.knime.core.node.CanceledExecutionException;
 import org.knime.core.node.ExecutionContext;
@@ -31,10 +24,6 @@ import org.knime.core.node.InvalidSettingsException;
 import org.knime.core.node.NodeModel;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
-import org.knime.core.node.port.PortObjectSpec;
-import org.knime.core.node.streamable.PartitionInfo;
-import org.knime.core.node.streamable.StreamableOperator;
-import org.knime.core.node.util.filter.NameFilterConfiguration.FilterResult;
 import org.knime.core.node.util.filter.column.DataColumnSpecFilterConfiguration;
 
 

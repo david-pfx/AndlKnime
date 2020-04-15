@@ -44,8 +44,6 @@ import org.knime.core.node.ExecutionContext;
 import org.knime.core.node.InvalidSettingsException;
 import org.knime.core.node.NodeLogger;
 
-import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
-
 /*******************************************************************************
  * Internal data types as enumeration plus extras
  */

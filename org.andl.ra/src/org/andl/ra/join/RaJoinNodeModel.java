@@ -62,6 +62,7 @@ public class RaJoinNodeModel extends NodeModel {
 	// ctor
 	protected RaJoinNodeModel() {
 		super(2, 1);
+		LOGGER.info("created");
 	}
 
 	/** {@inheritDoc} */

@@ -6,24 +6,27 @@
       provider-name="Andl">
 
    <description url="http://www.example.com/description">
-      A set of nodes implementing the Relational Algebra, with some
-extensions.
+      The Andl Extended Relational Algebra as a set of Knime nodes.
+
 The basic set includes Select, Project, Join, Rename, Union and
-Negation. The extensions include computing new values and performing
-aggregation.
-This node set can express a full range of queries comparable to
-SQL on Knime data tables from any source.
+Negation. The extensions include computing New Values and performing
+Aggregation.
+
+This node set can express a full range of queries comparable
+to SQL on Knime data tables from any source.
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      Copyright © David M. Bennett 2020 as an unpublished work. All
-rights reserved.
+   <copyright>
+      Copyright (C) David M. Bennett 2020 as an unpublished work.
    </copyright>
 
    <license url="http://www.example.com/license">
-      This version of AndlRaKnime is free for any kind of experimental use, especially helping to make it better. 
-      For now, the licence does not grant rights for distribution or commercial use. 
-      That will have to wait until I can choose the right licence, which depends a lot on who might want to use it.
+      This software is released as open source for unrestricted personal, experimental or non-commercial use, with the intention to invite contributions that help to make it better. 
+A licence is hereby granted for you to use or modify it for these purposes without further restriction.
+
+At your option you may use, modify and redistribute the software under the terms of any version of the GNU General Public Licence, by complying with its terms. This author does not agree with the Preamble, but does not impose any condition as to its use.
+
+This software is built using a variety of components based on Java, Eclipse and Knime. The reader is referred to those products for relevant licence terms.
    </license>
 
    <url>

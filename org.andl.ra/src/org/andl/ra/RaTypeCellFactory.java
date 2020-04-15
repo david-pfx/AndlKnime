@@ -44,7 +44,7 @@
  *
  * Created on 25.11.2013 by NanoTec
  */
-package org.andl.ra.value;
+package org.andl.ra;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -73,7 +73,7 @@ import org.xml.sax.SAXException;
  * @author Marcel Hanser
  */
 @SuppressWarnings("deprecation")
-enum TypeCellFactory {
+public enum RaTypeCellFactory {
     /**
      * Creates a {@link LongCell} for the given String.
      */
@@ -148,11 +148,11 @@ enum TypeCellFactory {
         }
     };
 
-    private static final NodeLogger LOGGER = NodeLogger.getLogger(TypeCellFactory.class);
+    private static final NodeLogger LOGGER = NodeLogger.getLogger(RaTypeCellFactory.class);
 
     private final DataType m_dataType;
 
-    private TypeCellFactory(final DataType dataType) {
+    private RaTypeCellFactory(final DataType dataType) {
         this.m_dataType = dataType;
     }
 
@@ -167,7 +167,7 @@ enum TypeCellFactory {
      * Should not be called. Call {@link #createCell(String, String)} instead.
      *
      * @param toConvert the string to convert
-     * @param pattern an additional argument, semantic definition is done by the concrete {@link TypeCellFactory}
+     * @param pattern an additional argument, semantic definition is done by the concrete {@link RaTypeCellFactory}
      * @return the data cell
      * @throws Exception if the toConvert string is not parseable to the DataCell to create
      */
@@ -178,7 +178,7 @@ enum TypeCellFactory {
      * a DataAndTimeCell).
      *
      * @param toConvert the string to convert
-     * @param otherArgument an additional argument, semantic definition is done by the concrete {@link TypeCellFactory}
+     * @param otherArgument an additional argument, semantic definition is done by the concrete {@link RaTypeCellFactory}
      * @return a new data cell from the given value
      * @throws TypeParsingException if an error occurred during conversion
      */
@@ -192,11 +192,11 @@ enum TypeCellFactory {
     }
 
     /**
-     * @param dataType the data type top receive the {@link TypeCellFactory} for
-     * @return the the {@link TypeCellFactory} responsible for creating {@link DataCell}s of the given {@link DataType}
+     * @param dataType the data type top receive the {@link RaTypeCellFactory} for
+     * @return the the {@link RaTypeCellFactory} responsible for creating {@link DataCell}s of the given {@link DataType}
      */
-    static final TypeCellFactory forDataType(final DataType dataType) {
-        for (TypeCellFactory factory : values()) {
+    static final RaTypeCellFactory forDataType(final DataType dataType) {
+        for (RaTypeCellFactory factory : values()) {
             if (factory.getDataType().equals(dataType)) {
                 return factory;
             }

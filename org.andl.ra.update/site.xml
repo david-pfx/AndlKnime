@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.andl.ra.feature_1.0.0.202004082102.jar" id="org.andl.ra.feature" version="1.0.0.202004082102">
+   <feature url="features/org.andl.ra.feature_1.0.0.202004151040.jar" id="org.andl.ra.feature" version="1.0.0.202004151040">
       <category name="relational_algebra"/>
    </feature>
    <category-def name="relational_algebra" label="Relational Algebra">
       <description>
-         Implementation of the Relational Algebra with extensions on Knime data tables
+         The Andl Extended Relational Algebra as a set of Knime nodes for use on Knime data tables
       </description>
    </category-def>
 </site>

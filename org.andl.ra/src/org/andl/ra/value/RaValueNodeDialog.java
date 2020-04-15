@@ -1,7 +1,20 @@
+/*******************************************************************************
+ * Andl Extended Relational Algebra Nodes for Knime
+ * 
+ * Andl is A New Data Language. See andl.org.
+ *  
+ * Copyright (c) David M. Bennett 2020 as an unpublished work.
+ *  
+ * Rights to copy, modify and distribute this work are granted under the terms of a licence agreement.
+ * See readme.md for details.
+ *  
+ *******************************************************************************/
+
 package org.andl.ra.value;
 
 import java.util.ArrayList;
 
+import org.andl.ra.RaTypeCellFactory;
 import org.knime.core.data.DataType;
 import org.knime.core.node.defaultnodesettings.DefaultNodeSettingsPane;
 import org.knime.core.node.defaultnodesettings.DialogComponentMultiLineString;
@@ -20,7 +33,7 @@ public class RaValueNodeDialog extends DefaultNodeSettingsPane {
     // New pane for configuring the RaValue node.
     protected RaValueNodeDialog() {
     	ArrayList<StringIconOption> options = new ArrayList<>();
-        for (TypeCellFactory factory : TypeCellFactory.values()) {
+        for (RaTypeCellFactory factory : RaTypeCellFactory.values()) {
         	DataType type = factory.getDataType();
             options.add(new DefaultStringIconOption(factory.name(), type.getIcon()));
         }

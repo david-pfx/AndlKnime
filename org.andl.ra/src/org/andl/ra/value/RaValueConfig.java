@@ -1,5 +1,6 @@
 package org.andl.ra.value;
 
+import org.andl.ra.RaTypeCellFactory;
 import org.knime.core.data.DataTableSpec;
 import org.knime.core.node.InvalidSettingsException;
 import org.knime.core.node.NodeSettingsRO;
@@ -12,7 +13,7 @@ final class RaValueConfig {
 
     private String m_newColumnName;
     private String m_value;
-    private TypeCellFactory m_cellFactory;
+    private RaTypeCellFactory m_cellFactory;
 
     /**
      * @return the newColumnName
@@ -45,14 +46,14 @@ final class RaValueConfig {
     /**
      * @return the cellFactory
      */
-    public TypeCellFactory getCellFactory() {
+    public RaTypeCellFactory getCellFactory() {
         return m_cellFactory;
     }
 
     /**
      * @param cellFactory the cellFactory to set
      */
-    public void setCellFactory(final TypeCellFactory cellFactory) {
+    public void setCellFactory(final RaTypeCellFactory cellFactory) {
         m_cellFactory = cellFactory;
     }
 
@@ -89,9 +90,9 @@ final class RaValueConfig {
         m_newColumnName = settings.getString(NEW_COLUMN_NAME, null);
         m_value = settings.getString(VALUE, null);
         try {
-            m_cellFactory = getEnum(settings.getString(TYPE, TypeCellFactory.STRING.toString()));
+            m_cellFactory = getEnum(settings.getString(TYPE, RaTypeCellFactory.STRING.toString()));
         } catch (InvalidSettingsException e) {
-            m_cellFactory = TypeCellFactory.STRING;
+            m_cellFactory = RaTypeCellFactory.STRING;
         }
     }
 
@@ -100,9 +101,9 @@ final class RaValueConfig {
      * @param b
      * @return
      */
-    private TypeCellFactory getEnum(final String string) throws InvalidSettingsException {
+    private RaTypeCellFactory getEnum(final String string) throws InvalidSettingsException {
         try {
-            return TypeCellFactory.valueOf(string);
+            return RaTypeCellFactory.valueOf(string);
         } catch (IllegalArgumentException e) {
             // NOOP
         }

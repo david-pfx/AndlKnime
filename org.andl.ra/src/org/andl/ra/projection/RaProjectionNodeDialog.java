@@ -1,3 +1,15 @@
+/*******************************************************************************
+ * Andl Extended Relational Algebra Nodes for Knime
+ * 
+ * Andl is A New Data Language. See andl.org.
+ *  
+ * Copyright (c) David M. Bennett 2020 as an unpublished work.
+ *  
+ * Rights to copy, modify and distribute this work are granted under the terms of a licence agreement.
+ * See readme.md for details.
+ *  
+ *******************************************************************************/
+
 package org.andl.ra.projection;
 
 import org.knime.core.data.DataTableSpec;
@@ -9,7 +21,10 @@ import org.knime.core.node.NotConfigurableException;
 import org.knime.core.node.util.filter.column.DataColumnSpecFilterConfiguration;
 import org.knime.core.node.util.filter.column.DataColumnSpecFilterPanel;
 
-// dialog for selecting projection columns. 
+/*
+ * dialog for selecting projection columns. 
+ * 
+ */
 public class RaProjectionNodeDialog extends NodeDialogPane {
 
     private final DataColumnSpecFilterPanel m_filterPanel;

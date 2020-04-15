@@ -1,3 +1,15 @@
+/*******************************************************************************
+ * Andl Extended Relational Algebra Nodes for Knime
+ * 
+ * Andl is A New Data Language. See andl.org.
+ *  
+ * Copyright (c) David M. Bennett 2020 as an unpublished work.
+ *  
+ * Rights to copy, modify and distribute this work are granted under the terms of a licence agreement.
+ * See readme.md for details.
+ *  
+ *******************************************************************************/
+
 package org.andl.ra.value;
 
 import java.io.File;
@@ -6,6 +18,7 @@ import java.util.HashSet;
 
 import org.andl.ra.RaEvaluator;
 import org.andl.ra.RaTuple;
+import org.andl.ra.RaTypeCellFactory;
 import org.knime.base.node.preproc.filter.row.RowFilterIterator;
 import org.knime.core.data.DataCell;
 import org.knime.core.data.DataColumnSpec;
@@ -27,7 +40,7 @@ import org.knime.core.node.NodeModel;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 import org.knime.core.node.defaultnodesettings.SettingsModelString;
-import org.knime.core.node.streamable.simple.SimpleStreamableFunctionNodeModel;
+import org.knime.core.data.DataType;
 
 /**
  * <code>NodeModel</code> for the "RaValue" node.
@@ -142,7 +155,7 @@ public class RaValueNodeModel extends NodeModel {
  *  Implementation of new value
  */
 class NewValueManager {
-	TypeCellFactory _tcf;
+	RaTypeCellFactory _tcf;
 	DataColumnSpec _outColSpec;
 	ColumnRearranger _colre;
 	RaEvaluator _jexl;
@@ -155,7 +168,7 @@ class NewValueManager {
 	// construct the rearranger, table spec, jexl, etc
 	NewValueManager(DataTableSpec inspec, String colname, String typename, String expression)
 	throws InvalidSettingsException {
-		_tcf = TypeCellFactory.valueOf(typename);
+		_tcf = RaTypeCellFactory.valueOf(typename);
 		_outColSpec = new DataColumnSpecCreator(colname, _tcf.getDataType()).createSpec();
 
 		_jexl = new RaEvaluator(inspec, _outColSpec.getType(), expression);

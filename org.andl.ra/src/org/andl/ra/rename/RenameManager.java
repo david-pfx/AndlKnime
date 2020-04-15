@@ -14,23 +14,13 @@ package org.andl.ra.rename;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
-import org.andl.ra.RaTuple;
-import org.knime.base.node.preproc.filter.row.RowFilterIterator;
 import org.knime.core.data.DataColumnSpec;
 import org.knime.core.data.DataColumnSpecCreator;
-import org.knime.core.data.DataRow;
 import org.knime.core.data.DataTableSpec;
-import org.knime.core.data.RowIterator;
-import org.knime.core.data.container.ColumnRearranger;
-import org.knime.core.node.BufferedDataContainer;
 import org.knime.core.node.BufferedDataTable;
-import org.knime.core.node.CanceledExecutionException;
 import org.knime.core.node.ExecutionContext;
 import org.knime.core.node.InvalidSettingsException;
-import org.knime.core.node.util.filter.NameFilterConfiguration.FilterResult;
-import org.knime.core.node.util.filter.column.DataColumnSpecFilterConfiguration;
 
 /**
  * Implement projection algorithm

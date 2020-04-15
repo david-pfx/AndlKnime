@@ -12,7 +12,6 @@
 
 package org.andl.ra.aggregation;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.knime.core.data.DataTableSpec;

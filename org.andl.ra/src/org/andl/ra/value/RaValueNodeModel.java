@@ -40,7 +40,6 @@ import org.knime.core.node.NodeModel;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
 import org.knime.core.node.defaultnodesettings.SettingsModelString;
-import org.knime.core.data.DataType;
 
 /**
  * <code>NodeModel</code> for the "RaValue" node.

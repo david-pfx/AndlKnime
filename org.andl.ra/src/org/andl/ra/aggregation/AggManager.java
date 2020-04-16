@@ -13,6 +13,7 @@
 /**
  * Aggregation Manager
  */
+
 package org.andl.ra.aggregation;
 
 import java.util.ArrayList;
@@ -24,13 +25,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.andl.ra.RaTuple;
+import org.andl.ra.RaType;
 import org.knime.base.node.preproc.filter.row.RowFilterIterator;
 import org.knime.core.data.DataCell;
 import org.knime.core.data.DataColumnSpec;
 import org.knime.core.data.DataColumnSpecCreator;
 import org.knime.core.data.DataRow;
 import org.knime.core.data.DataTableSpec;
-import org.knime.core.data.DataType;
 import org.knime.core.data.RowIterator;
 import org.knime.core.data.def.BooleanCell;
 import org.knime.core.data.def.DefaultRow;
@@ -43,35 +44,6 @@ import org.knime.core.node.CanceledExecutionException;
 import org.knime.core.node.ExecutionContext;
 import org.knime.core.node.InvalidSettingsException;
 import org.knime.core.node.NodeLogger;
-
-/*******************************************************************************
- * Internal data types as enumeration plus extras
- */
-enum RaType {
-	//NUL(null),
-	BOOL(BooleanCell.TYPE),
-	INT(IntCell.TYPE),
-	REAL(DoubleCell.TYPE),
-	//DATE(DateAndTimeCell.TYPE),
-	CHAR(StringCell.TYPE);
-	
-	DataType _dataType;
-	DataType getDataType() { return _dataType; }
-	
-	RaType(DataType type) {
-		_dataType = type;
-	}
-	
-	// compute aggregation type
-	static RaType getRaType(DataType arg) {
-		if (arg == null) return null;
-		for (RaType atype : RaType.values()) {
-			if (arg.equals(atype.getDataType()))
-				return atype;
-		}
-		return null;
-	}
-}
 
 /*******************************************************************************
  * Aggregation function as enumeration plus extras

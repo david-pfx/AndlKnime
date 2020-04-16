@@ -87,8 +87,8 @@ enum AggFunction {
 	RaType getReturnType(RaType argtype) {
 		return this.equals(COUNT) ? RaType.INT :
 			this.equals(MAX) || this.equals(MIN) ? argtype :
-			this.equals(AVG) && argtype.equals(RaType.INT) ? RaType.REAL :
-			argtype.equals(RaType.INT) || argtype.equals(RaType.REAL) ? argtype :
+			this.equals(AVG) && argtype.equals(RaType.INT) ? RaType.DOUBLE :
+			argtype.equals(RaType.INT) || argtype.equals(RaType.DOUBLE) ? argtype :
 			null;
 	}
 
@@ -222,8 +222,8 @@ class Accumulator {
 		switch(type) {
 		case BOOL: return ((BooleanCell)dataCell).getBooleanValue();
 		case INT: return ((IntCell)dataCell).getIntValue();
-		case CHAR: return ((StringCell)dataCell).getStringValue();
-		case REAL: return ((DoubleCell)dataCell).getDoubleValue();
+		case STRING: return ((StringCell)dataCell).getStringValue();
+		case DOUBLE: return ((DoubleCell)dataCell).getDoubleValue();
 		//case DATE: return ((DateAndTimeCell)dataCell).getDateValue();
 		default: return null;
 		}
@@ -234,8 +234,8 @@ class Accumulator {
 		switch (type) {
 		case BOOL: return (boolean)accumulator ? BooleanCell.TRUE :BooleanCell.FALSE; 
 		case INT: return new IntCell((Integer)accumulator);
-		case REAL: return new DoubleCell((double)accumulator);
-		case CHAR: return new StringCell((String)accumulator);
+		case DOUBLE: return new DoubleCell((double)accumulator);
+		case STRING: return new StringCell((String)accumulator);
 		//case DATE: TODO
 		default: return null;
 		}
@@ -264,22 +264,22 @@ class Accumulator {
 		case AVG: 
 			switch (_accumtype) {
 			case INT: return (Integer)accum + (Integer)value;
-			case REAL: return (double)accum + (double)value;
+			case DOUBLE: return (double)accum + (double)value;
 			default: break;
 			}
 		case MAX: 
 			switch (_accumtype) {
 			case INT: return (Integer)accum > (Integer)value ? accum : value; 
-			case REAL: return (double)accum > (double)value ? accum : value; 
-			case CHAR: return ((String)accum).compareTo((String)value) > 0 ? accum : value;
+			case DOUBLE: return (double)accum > (double)value ? accum : value; 
+			case STRING: return ((String)accum).compareTo((String)value) > 0 ? accum : value;
 			//case DATE: TODO
 			default: break;
 			}
 		case MIN: 
 			switch (_accumtype) {
 			case INT: return (Integer)accum < (Integer)value ? accum : value; 
-			case REAL: return (double)accum < (double)value ? accum : value; 
-			case CHAR: return ((String)accum).compareTo((String)value) < 0 ? accum : value;
+			case DOUBLE: return (double)accum < (double)value ? accum : value; 
+			case STRING: return ((String)accum).compareTo((String)value) < 0 ? accum : value;
 			//case DATE: TODO
 			default: break;
 			}

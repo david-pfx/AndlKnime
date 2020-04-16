@@ -16,7 +16,7 @@ import java.util.HashSet;
 
 import org.andl.ra.RaEvaluator;
 import org.andl.ra.RaTuple;
-import org.andl.ra.RaTypeCellFactory;
+import org.andl.ra.RaType;
 import org.knime.base.node.preproc.filter.row.RowFilterIterator;
 import org.knime.core.data.DataCell;
 import org.knime.core.data.DataColumnSpec;
@@ -38,7 +38,7 @@ import org.knime.core.node.InvalidSettingsException;
  *  Based on evaluating expression using Jexl.
  */
 class NewValueManager {
-	RaTypeCellFactory _tcf;
+	RaType _tcf;
 	DataColumnSpec _outColSpec;
 	ColumnRearranger _colre;
 	RaEvaluator _jexl;
@@ -51,7 +51,7 @@ class NewValueManager {
 	// construct the rearranger, table spec, jexl, etc
 	NewValueManager(DataTableSpec inspec, String colname, String typename, String expression)
 	throws InvalidSettingsException {
-		_tcf = RaTypeCellFactory.valueOf(typename);
+		_tcf = RaType.valueOf(typename);
 		_outColSpec = new DataColumnSpecCreator(colname, _tcf.getDataType()).createSpec();
 
 		_jexl = new RaEvaluator(inspec, _outColSpec.getType(), expression);

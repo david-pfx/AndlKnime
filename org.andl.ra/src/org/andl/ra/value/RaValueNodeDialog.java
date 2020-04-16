@@ -14,7 +14,7 @@ package org.andl.ra.value;
 
 import java.util.ArrayList;
 
-import org.andl.ra.RaTypeCellFactory;
+import org.andl.ra.RaType;
 import org.knime.core.data.DataType;
 import org.knime.core.node.defaultnodesettings.DefaultNodeSettingsPane;
 import org.knime.core.node.defaultnodesettings.DialogComponentMultiLineString;
@@ -33,7 +33,7 @@ public class RaValueNodeDialog extends DefaultNodeSettingsPane {
     // New pane for configuring the RaValue node.
     protected RaValueNodeDialog() {
     	ArrayList<StringIconOption> options = new ArrayList<>();
-        for (RaTypeCellFactory factory : RaTypeCellFactory.values()) {
+        for (RaType factory : RaType.values()) {
         	DataType type = factory.getDataType();
             options.add(new DefaultStringIconOption(factory.name(), type.getIcon()));
         }

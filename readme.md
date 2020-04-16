@@ -1,4 +1,4 @@
-# AndlEraKnime adds the Andl Extended Relational Algebra to Knime
+# The Andl Extended Relational Algebra for Knime
 
 Andl is A New Database Language. See <http://andl.org>.
 

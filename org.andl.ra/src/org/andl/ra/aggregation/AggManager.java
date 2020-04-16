@@ -13,6 +13,7 @@
 /**
  * Aggregation Manager
  */
+
 package org.andl.ra.aggregation;
 
 import java.util.ArrayList;
@@ -24,13 +25,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.andl.ra.RaTuple;
+import org.andl.ra.RaType;
 import org.knime.base.node.preproc.filter.row.RowFilterIterator;
 import org.knime.core.data.DataCell;
 import org.knime.core.data.DataColumnSpec;
 import org.knime.core.data.DataColumnSpecCreator;
 import org.knime.core.data.DataRow;
 import org.knime.core.data.DataTableSpec;
-import org.knime.core.data.DataType;
 import org.knime.core.data.RowIterator;
 import org.knime.core.data.def.BooleanCell;
 import org.knime.core.data.def.DefaultRow;
@@ -43,35 +44,6 @@ import org.knime.core.node.CanceledExecutionException;
 import org.knime.core.node.ExecutionContext;
 import org.knime.core.node.InvalidSettingsException;
 import org.knime.core.node.NodeLogger;
-
-/*******************************************************************************
- * Internal data types as enumeration plus extras
- */
-enum RaType {
-	//NUL(null),
-	BOOL(BooleanCell.TYPE),
-	INT(IntCell.TYPE),
-	REAL(DoubleCell.TYPE),
-	//DATE(DateAndTimeCell.TYPE),
-	CHAR(StringCell.TYPE);
-	
-	DataType _dataType;
-	DataType getDataType() { return _dataType; }
-	
-	RaType(DataType type) {
-		_dataType = type;
-	}
-	
-	// compute aggregation type
-	static RaType getRaType(DataType arg) {
-		if (arg == null) return null;
-		for (RaType atype : RaType.values()) {
-			if (arg.equals(atype.getDataType()))
-				return atype;
-		}
-		return null;
-	}
-}
 
 /*******************************************************************************
  * Aggregation function as enumeration plus extras
@@ -115,8 +87,8 @@ enum AggFunction {
 	RaType getReturnType(RaType argtype) {
 		return this.equals(COUNT) ? RaType.INT :
 			this.equals(MAX) || this.equals(MIN) ? argtype :
-			this.equals(AVG) && argtype.equals(RaType.INT) ? RaType.REAL :
-			argtype.equals(RaType.INT) || argtype.equals(RaType.REAL) ? argtype :
+			this.equals(AVG) && argtype.equals(RaType.INT) ? RaType.DOUBLE :
+			argtype.equals(RaType.INT) || argtype.equals(RaType.DOUBLE) ? argtype :
 			null;
 	}
 
@@ -250,8 +222,8 @@ class Accumulator {
 		switch(type) {
 		case BOOL: return ((BooleanCell)dataCell).getBooleanValue();
 		case INT: return ((IntCell)dataCell).getIntValue();
-		case CHAR: return ((StringCell)dataCell).getStringValue();
-		case REAL: return ((DoubleCell)dataCell).getDoubleValue();
+		case STRING: return ((StringCell)dataCell).getStringValue();
+		case DOUBLE: return ((DoubleCell)dataCell).getDoubleValue();
 		//case DATE: return ((DateAndTimeCell)dataCell).getDateValue();
 		default: return null;
 		}
@@ -262,8 +234,8 @@ class Accumulator {
 		switch (type) {
 		case BOOL: return (boolean)accumulator ? BooleanCell.TRUE :BooleanCell.FALSE; 
 		case INT: return new IntCell((Integer)accumulator);
-		case REAL: return new DoubleCell((double)accumulator);
-		case CHAR: return new StringCell((String)accumulator);
+		case DOUBLE: return new DoubleCell((double)accumulator);
+		case STRING: return new StringCell((String)accumulator);
 		//case DATE: TODO
 		default: return null;
 		}
@@ -292,22 +264,22 @@ class Accumulator {
 		case AVG: 
 			switch (_accumtype) {
 			case INT: return (Integer)accum + (Integer)value;
-			case REAL: return (double)accum + (double)value;
+			case DOUBLE: return (double)accum + (double)value;
 			default: break;
 			}
 		case MAX: 
 			switch (_accumtype) {
 			case INT: return (Integer)accum > (Integer)value ? accum : value; 
-			case REAL: return (double)accum > (double)value ? accum : value; 
-			case CHAR: return ((String)accum).compareTo((String)value) > 0 ? accum : value;
+			case DOUBLE: return (double)accum > (double)value ? accum : value; 
+			case STRING: return ((String)accum).compareTo((String)value) > 0 ? accum : value;
 			//case DATE: TODO
 			default: break;
 			}
 		case MIN: 
 			switch (_accumtype) {
 			case INT: return (Integer)accum < (Integer)value ? accum : value; 
-			case REAL: return (double)accum < (double)value ? accum : value; 
-			case CHAR: return ((String)accum).compareTo((String)value) < 0 ? accum : value;
+			case DOUBLE: return (double)accum < (double)value ? accum : value; 
+			case STRING: return ((String)accum).compareTo((String)value) < 0 ? accum : value;
 			//case DATE: TODO
 			default: break;
 			}

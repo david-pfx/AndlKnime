@@ -3,22 +3,17 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Andl Extended Relational Algebra for KNIME Workbench
 Bundle-SymbolicName: org.andl.ra;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: raselection.jar,
- raprojection.jar,
- rajoin.jar,
- rarename.jar,
- raunion.jar,
- ravalue.jar,
- raaggregation.jar,
- lib/commons-jexl3-3.1/commons-jexl3-3.1.jar,
- lib/commons-logging-1.2/commons-logging-1.2.jar
+Bundle-ClassPath: lib/commons-jexl3-3.1/commons-jexl3-3.1.jar,
+ lib/commons-logging-1.2/commons-logging-1.2.jar,
+ .
 Bundle-Activator: org.andl.ra.RaNodePlugin
 Bundle-Vendor: andl
 Require-Bundle: org.eclipse.core.runtime,
  org.knime.workbench.core,
  org.knime.workbench.repository,
  org.knime.base,
- org.knime.core
+ org.knime.core,
+ org.apache.commons.logging;bundle-version="1.2.0"
 Bundle-ActivationPolicy: lazy
 Export-Package: org.andl.ra.aggregation,
  org.andl.ra.join;

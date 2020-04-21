@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.andl.ra.update"
+      label="Andl Relational Algebra Update site"
+      version="1.0.0.qualifier"
+      provider-name="Andl">
+
+   <description url="http://www.example.com/description">
+      Update Site Project
+   </description>
+
+   <copyright>
+      Copyright (C) David M. Bennett 2020 as an unpublished work.
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      
+   </license>
+
+   <url>
+      <discovery label="Andl is A New Data Language" url="http://www.andl.org/"/>
+   </url>
+
+   <includes
+         id="org.andl.ra.feature"
+         version="0.0.0"/>
+
+</feature>
